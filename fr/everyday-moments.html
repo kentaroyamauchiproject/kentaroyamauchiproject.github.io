@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Available Languages -->
+<link rel="alternate" hreflang="en" href="https://www.mindbebop.com/everyday-moments.html">
+<link rel="alternate" hreflang="ja" href="https://www.mindbebop.com/jp/everyday-moments.html">
+<link rel="alternate" hreflang="de" href="https://www.mindbebop.com/de/everyday-moments.html">
+<link rel="alternate" hreflang="ko" href="https://www.mindbebop.com/ko/everyday-moments.html">
+<link rel="alternate" hreflang="fr" href="https://www.mindbebop.com/fr/everyday-moments.html">
+<link rel="alternate" hreflang="es" href="https://www.mindbebop.com/es/everyday-moments.html">
+<link rel="alternate" hreflang="pt-BR" href="https://www.mindbebop.com/pt-br/everyday-moments.html">
+<link rel="alternate" hreflang="x-default" href="https://www.mindbebop.com/everyday-moments.html">
+
+<!-- Favicons -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<title>MINDBEBOP — Moments du Quotidien</title>
+
+<meta name="description" content="De courts moments de calme où les apps MINDBEBOP s'utilisent en toute légèreté — quand une pensée survient.">
+
+<style>
+/* =========================
+   VARIABLES
+   ========================= */
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --border: #333333;
+  --muted: rgba(0,0,0,0.75);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --fg: #f2f2f7;
+    --border: rgba(242,242,247,0.25);
+    --muted: rgba(242,242,247,0.75);
+  }
+}
+
+/* =========================
+   BASE
+   ========================= */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  overflow-y: scroll; /* 🔒 prevents horizontal jump */
+}
+
+a {
+  color: inherit;
+}
+
+/* =========================
+   NAV CONTAINER
+   ========================= */
+.mb-nav {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 16px 20px 0;
+}
+
+/* =========================
+   HEADER / MENU
+   ========================= */
+.mb-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mb-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-size: 1.15rem;
+}
+
+.mb-brand img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.mb-brand-name {
+  font-weight: 600;
+}
+
+.mb-brand-tagline {
+  opacity: 0.75;
+  font-weight: 400;
+}
+
+.mb-hamburger {
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.mb-hamburger .mb-close {
+  display: none;
+}
+
+.mb-hamburger[aria-expanded="true"] .mb-open {
+  display: none;
+}
+
+.mb-hamburger[aria-expanded="true"] .mb-close {
+  display: inline;
+}
+
+.mb-hamburger {
+  position: relative;
+  z-index: 1100; /* must be higher than .mb-menu */
+}
+
+.mb-menu[aria-hidden="false"] + .mb-hamburger,
+.mb-hamburger[aria-expanded="true"] {
+  color: var(--fg);
+}
+
+/* =========================
+   MENU
+   ========================= */
+.mb-menu {
+  position: fixed;
+  inset: 0;
+  padding: 80px 24px;
+  display: none;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.04); /* fallback */
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+}
+
+.mb-menu[aria-hidden="false"] {
+  display: flex;
+}
+
+.mb-menu a {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+/* =========================
+   DESKTOP NAV
+   ========================= */
+@media (min-width: 900px) {
+  .mb-hamburger {
+    display: none;
+  }
+
+  .mb-menu {
+    margin-top: 14px; /* 👈 adds breathing room */
+    position: static;
+    display: flex !important;
+    flex-direction: row;
+    gap: 28px;
+    padding: 0; /* <- make consistent */
+    background: none;
+    backdrop-filter: none;
+  }
+
+  .mb-menu a {
+    font-size: 0.8rem;
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+}
+
+@media (min-width: 900px) {
+  .mb-menu a {
+    transition: opacity 0.15s ease;
+  }
+
+  .mb-menu a:hover {
+    opacity: 0.6;
+  }
+}
+
+/* =========================
+   PAGE
+   ========================= */
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+.subtle {
+  color: var(--muted);
+}
+
+.rule {
+  border: none;
+  border-bottom: 1px solid var(--border);
+  margin: 48px 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+.lang-switch {
+  display: flex;
+  gap: 10px;
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.lang-switch a {
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.lang-switch a:hover {
+  opacity: 1;
+}
+
+.lang-switch a[aria-current="true"] {
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* Hide on small screens */
+@media (max-width: 900px) {
+  .lang-switch {
+    display: none;
+  }
+}
+
+/* Active menu item */
+.mb-menu a[aria-current="page"] {
+  opacity: 0.6;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MINDBEBOP MENU -->
+<!-- NAV -->
+<div class="mb-nav">
+  <header class="mb-header">
+<a class="mb-brand" href="index.html">
+  <img
+    src="../image/MB_LOGO_V5_1024.png"
+    data-dark="../image/MB_LOGO_V5_1024_INV.png"
+    alt="MINDBEBOP logo">
+  <span class="mb-brand-name">MINDBEBOP</span>
+  <span class="mb-brand-tagline"> Thoughts, as they happen</span>
+</a>
+
+    <button class="mb-hamburger" aria-expanded="false" aria-controls="mb-menu">
+      <span class="mb-open">☰</span>
+      <span class="mb-close">×</span>
+    </button>
+</header>
+
+<div class="mb-lang">
+  <a href="../everyday-moments.html">EN</a>
+  <a href="/jp/everyday-moments.html">JP</a>
+  <a href="/de/everyday-moments.html">DE</a>
+  <a href="/ko/everyday-moments.html">KO</a>
+  <a href="/everyday-moments.html" aria-current="true">FR</a>
+  <a href="/es/everyday-moments.html">ES</a>
+  <a href="/pt-br/everyday-moments.html">PT-BR</a>
+</div>
+
+<nav id="mb-menu" class="mb-menu" aria-hidden="true">
+    <a href="how-it-works.html">Fonctionnement</a>
+    <a href="everyday-thought-friction.html">Friction Mentale</a>
+    <a href="everyday-moments.html" aria-current="page">Moments du Quotidien</a>
+    <a href="philosophy.html">Philosophie</a>
+  </nav>
+</div>
+
+<div class="page">
+
+<h1>Moments du quotidien</h1>
+
+<p>
+Les applications MINDBEBOP n'ont pas de mode d'emploi figé.<br>
+Elles sont simplement là lorsqu'une pensée surgit.
+</p>
+
+<p class="subtle">
+Pas de routines. Pas de techniques. Juste des moments.
+</p>
+
+<br><br><br>
+
+<div class="section">
+<h2>Tard dans la nuit</h2>
+<p>
+Un étudiant est au lit, ressassant la même phrase encore et encore.
+</p>
+<p>
+Il ouvre <strong>MindFlipOut</strong>, écrit une réponse à cette pensée, et referme l'application.
+La pensée ne disparaît pas — elle s'arrête simplement de tourner en boucle.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Réveil trop précoce</h2>
+<p>
+Une inquiétude tournée vers l'avenir arrive avant même que le corps ne soit prêt.
+</p>
+<p>
+On ouvre <strong>MindEaseOut</strong>, on reconnaît que la pensée appartient au futur,
+et on la laisse se dissoudre dans le temps.
+Le sommeil revient.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>À moitié endormi</h2>
+<p>
+Un fragment de pensée fait surface — pas même encore une phrase complète.
+</p>
+<p>
+On le dépose dans <strong>MindShoutOut</strong> sans le terminer.
+Le matin s'en chargera, ou non.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>En se brossant les dents</h2>
+<p>
+Un rappel apparaît brièvement sur l'écran de verrouillage.
+</p>
+<p>
+Il vient de <strong>MindShoutOut</strong> — pas un conseil, juste une phrase notée plus tôt en toute confiance.
+On en prend acte et on continue de se brosser les dents.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Sous la douche</h2>
+<p>
+Une pensée arrive, parfaitement formée et impromptue.
+</p>
+<p>
+On n'y répond pas tout de suite.
+Savoir qu'on pourra la déposer dans <strong>MindShoutOut</strong> plus tard
+l'empêche de devenir envahissante.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Au moment de franchir la porte</h2>
+<p>
+Un rappel surgit à l'orée de la journée.
+</p>
+<p>
+C'est une notification de <strong>MindShoutOut</strong>.
+On la note sans pour autant agir, et on part quand même.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Entre deux réunions</h2>
+<p>
+Une pensée liée au travail semble trop lourde à porter entre deux appels.
+</p>
+<p>
+On la dépose dans <strong>MindShoutOut</strong>.
+La réunion suivante commence sans que cette pensée ne s'y invite.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Avant d'ouvrir ses e-mails</h2>
+<p>
+Une tension familière apparaît avant même la boîte de réception.
+</p>
+<p>
+On ouvre <strong>MindFlipOut</strong> et on répond à la tension elle-même,
+pas aux messages.
+Les e-mails peuvent attendre.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Fatigue de milieu d'après-midi</h2>
+<p>
+Rien ne va mal — tout semble juste trop bruyant.
+</p>
+<p>
+On ouvre <strong>MindZoneOut</strong>.
+Un écran apaisé apparaît.
+Une pensée enregistrée précédemment s'affiche en douceur.
+Rien ne requiert d'action. Le bruit mental retombe.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Pendant un travail répétitif</h2>
+<p>
+La tâche est simple, mais l'attention s'échappe sans cesse à mi-parcours.
+</p>
+<p>
+Un court rappel se répète discrètement via <strong>MindShoutOut</strong>.
+Pas un encouragement — juste une présence.
+Le travail se poursuit sans avoir besoin d'être surveillé.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Après avoir fini une tâche</h2>
+<p>
+Le corps se relâche, mais l'esprit ne lâche pas prise.
+</p>
+<p>
+On ouvre <strong>MindShoutOut</strong> et on y dépose la pensée persistante,
+pour que la pause soit réellement une pause.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Après une dispute</h2>
+<p>
+Une phrase tourne en boucle.
+</p>
+<p>
+On écrit une réponse dans <strong>MindFlipOut</strong> — pas forcément la réponse parfaite, juste assez.
+Plus tard, on la programme dans <strong>MindShoutOut</strong> pour y revenir à tête reposée.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Avant d'envoyer un message</h2>
+<p>
+Un brouillon reste en suspens.
+</p>
+<p>
+Au lieu de répondre, on ouvre <strong>MindFlipOut</strong>
+et on répond à la pensée derrière le message.
+Le téléphone retourne dans la poche.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Après avoir reçu une nouvelle</h2>
+<p>
+La réaction arrive plus vite que la clarté.
+</p>
+<p>
+On dépose la réaction dans <strong>MindShoutOut</strong>
+sans chercher à l'interpréter pour le moment.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Dans les transports</h2>
+<p>
+On ouvre <strong>MindZoneOut</strong> pendant moins d'une minute.
+</p>
+<p>
+Une pensée apparaît sur l'écran, puis s'efface.
+Rien n'est résolu — mais le corps se détend.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Pendant une promenade</h2>
+<p>
+Une pensée semble importante mais reste inaboutie.
+</p>
+<p>
+On la place dans <strong>MindShoutOut</strong> pour ne plus avoir à la porter.
+La marche redevient simplement une marche.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Assis dans un café</h2>
+<p>
+Le bruit ambiant remplace le bruit interne.
+</p>
+<p>
+On jette un œil à <strong>MindZoneOut</strong>.
+Un rappel apparaît une fois, discrètement, puis s'en va.
+Le café reste chaud.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>En fin de journée</h2>
+<p>
+Quelques pensées restent en suspens.
+</p>
+<p>
+L'une trouve réponse dans <strong>MindFlipOut</strong>.<br>
+L'autre est mise de côté dans <strong>MindShoutOut</strong>.<br>
+Une dernière est laissée au calme dans <strong>MindZoneOut</strong>.
+</p>
+<p>
+Rien n'a besoin d'être conclu ce soir.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Envies nocturnes</h2>
+<p>
+Une envie soudaine de "junk food" surgit, plus forte que la faim.
+</p>
+<p>
+On dépose cette envie dans <strong>MindZoneOut</strong>.
+Sans lutter contre, l'intensité se déplace.
+Parfois l'envie passe. Parfois non.
+Quoi qu'il en soit, elle n'exige plus de réponse immédiate.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Avant de dormir</h2>
+<p>
+Une pensée insiste pour être retenue.
+</p>
+<p>
+On la place dans <strong>MindShoutOut</strong> —
+non pas pour l'oublier,
+mais pour arrêter de la serrer trop fort.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Quand ce n'est pas une pensée</h2>
+<p>
+La pression ne vient pas des mots —
+elle vient d'un rôle que l'on n'a pas encore quitté.
+</p>
+<p>
+On ouvre brièvement <strong>MindBackOut</strong>.
+Au retour, les pensées qui réclamaient l'attention sont bien moins nombreuses.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>Après une longue journée à assurer</h2>
+<p>
+Rien de précis ne va mal.
+</p>
+<p>
+On entre dans <strong>MindBackOut</strong> pour quitter le rôle lui-même.
+La soirée semble plus légère.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>N'utiliser qu'une seule app</h2>
+<p class="subtle">
+Certains n'utilisent qu'un seul outil.
+</p>
+<p>
+Ils utilisent <strong>MindFlipOut</strong> pour répondre et passer à autre chose.<br>
+Ou <strong>MindShoutOut</strong> pour porter les pensées importantes.<br>
+Ou <strong>MindZoneOut</strong> pour laisser le système s'apaiser de lui-même.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<h2>En utiliser plusieurs, légèrement</h2>
+<p class="subtle">
+D'autres laissent les apps se soutenir mutuellement.
+</p>
+<p>
+Une pensée reçoit une réponse dans <strong>MindFlipOut</strong>,<br>
+est portée par <strong>MindShoutOut</strong>,<br>
+et contemplée calmement dans <strong>MindZoneOut</strong>.
+</p>
+</div>
+
+<br><br><br>
+
+<div class="section">
+<p>
+Rien de tout ceci n'est une instruction.<br>
+Ce sont des exemples de ce qui peut arriver lorsque l'on accueille les pensées
+<strong>telles qu'elles apparaissent</strong>.
+</p>
+<p>
+De petits moments.<br>
+Un peu de distance.<br>
+Moins de poids à porter.
+</p>
+</div>
+
+<br><br><br>
+
+
+<!-- Footer -->
+<div style="margin-top:60px; opacity:0.7; font-size:0.9rem;">
+Copyright © 2026 MINDBEBOP — All rights reserved.
+</div>
+
+</div>
+
+<!-- DARK MODE IMAGE SWAP (REQUIRED) -->
+<script>
+(function () {
+  function applyDarkImages(isDark) {
+    document.querySelectorAll('img[data-dark]').forEach(img => {
+      img.src = isDark
+        ? img.getAttribute('data-dark')
+        : img.getAttribute('data-light') || img.src;
+    });
+  }
+
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  applyDarkImages(media.matches);
+  media.addEventListener('change', e => applyDarkImages(e.matches));
+})();
+</script>
+
+<!-- MENU TOGGLE -->
+<script>
+(() => {
+  const btn = document.querySelector('.mb-hamburger');
+  const menu = document.querySelector('.mb-menu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    menu.setAttribute('aria-hidden', String(open));
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      btn.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+</body>
+</html>
