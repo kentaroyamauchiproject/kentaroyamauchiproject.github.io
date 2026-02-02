@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Available Languages -->
+<link rel="alternate" hreflang="en" href="https://www.mindbebop.com/everyday-moments.html">
+<link rel="alternate" hreflang="ja" href="https://www.mindbebop.com/jp/everyday-moments.html">
+<link rel="alternate" hreflang="de" href="https://www.mindbebop.com/de/everyday-moments.html">
+<link rel="alternate" hreflang="ko" href="https://www.mindbebop.com/ko/everyday-moments.html">
+<link rel="alternate" hreflang="fr" href="https://www.mindbebop.com/fr/everyday-moments.html">
+<link rel="alternate" hreflang="es" href="https://www.mindbebop.com/es/everyday-moments.html">
+<link rel="alternate" hreflang="pt-BR" href="https://www.mindbebop.com/pt-br/everyday-moments.html">
+<link rel="alternate" hreflang="x-default" href="https://www.mindbebop.com/everyday-moments.html">
+
+<!-- Favicons -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<title>MINDBEBOP — 일상의 순간들</title>
+
+<meta name="description" content="생각이 떠오르는 순간, MINDBEBOP 앱이 가볍게 스며드는 평온한 일상의 기록들.">
+
+<style>
+/* =========================
+   VARIABLES
+   ========================= */
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --border: #333333;
+  --muted: rgba(0,0,0,0.75);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --fg: #f2f2f7;
+    --border: rgba(242,242,247,0.25);
+    --muted: rgba(242,242,247,0.75);
+  }
+}
+
+/* =========================
+   BASE
+   ========================= */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  overflow-y: scroll; /* 🔒 prevents horizontal jump */
+}
+
+a {
+  color: inherit;
+}
+
+/* =========================
+   NAV CONTAINER
+   ========================= */
+.mb-nav {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 16px 20px 0;
+}
+
+/* =========================
+   HEADER / MENU
+   ========================= */
+.mb-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mb-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-size: 1.15rem;
+}
+
+.mb-brand img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.mb-brand-name {
+  font-weight: 600;
+}
+
+.mb-brand-tagline {
+  opacity: 0.75;
+  font-weight: 400;
+}
+
+.mb-hamburger {
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.mb-hamburger .mb-close {
+  display: none;
+}
+
+.mb-hamburger[aria-expanded="true"] .mb-open {
+  display: none;
+}
+
+.mb-hamburger[aria-expanded="true"] .mb-close {
+  display: inline;
+}
+
+.mb-hamburger {
+  position: relative;
+  z-index: 1100; /* must be higher than .mb-menu */
+}
+
+.mb-menu[aria-hidden="false"] + .mb-hamburger,
+.mb-hamburger[aria-expanded="true"] {
+  color: var(--fg);
+}
+
+/* =========================
+   MENU
+   ========================= */
+.mb-menu {
+  position: fixed;
+  inset: 0;
+  padding: 80px 24px;
+  display: none;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.04); /* fallback */
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+}
+
+.mb-menu[aria-hidden="false"] {
+  display: flex;
+}
+
+.mb-menu a {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+/* =========================
+   DESKTOP NAV
+   ========================= */
+@media (min-width: 900px) {
+  .mb-hamburger {
+    display: none;
+  }
+
+  .mb-menu {
+    margin-top: 14px; /* 👈 adds breathing room */
+    position: static;
+    display: flex !important;
+    flex-direction: row;
+    gap: 28px;
+    padding: 0; /* <- make consistent */
+    background: none;
+    backdrop-filter: none;
+  }
+
+  .mb-menu a {
+    font-size: 0.8rem;
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+}
+
+@media (min-width: 900px) {
+  .mb-menu a {
+    transition: opacity 0.15s ease;
+  }
+
+  .mb-menu a:hover {
+    opacity: 0.6;
+  }
+}
+
+/* =========================
+   PAGE
+   ========================= */
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+.subtle {
+  color: var(--muted);
+}
+
+.rule {
+  border: none;
+  border-bottom: 1px solid var(--border);
+  margin: 48px 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+.lang-switch {
+  display: flex;
+  gap: 10px;
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.lang-switch a {
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.lang-switch a:hover {
+  opacity: 1;
+}
+
+.lang-switch a[aria-current="true"] {
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* Hide on small screens */
+@media (max-width: 900px) {
+  .lang-switch {
+    display: none;
+  }
+}
+
+/* Active menu item */
+.mb-menu a[aria-current="page"] {
+  opacity: 0.6;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MINDBEBOP MENU -->
+<!-- NAV -->
+<div class="mb-nav">
+  <header class="mb-header">
+<a class="mb-brand" href="index.html">
+  <img
+    src="../image/MB_LOGO_V5_1024.png"
+    data-dark="../image/MB_LOGO_V5_1024_INV.png"
+    alt="MINDBEBOP logo">
+  <span class="mb-brand-name">MINDBEBOP</span>
+  <span class="mb-brand-tagline"> Thoughts, as they happen</span>
+</a>
+
+    <button class="mb-hamburger" aria-expanded="false" aria-controls="mb-menu">
+      <span class="mb-open">☰</span>
+      <span class="mb-close">×</span>
+    </button>
+</header>
+
+<div class="mb-lang">
+  <a href="../everyday-moments.html">EN</a>
+  <a href="/jp/everyday-moments.html">JP</a>
+  <a href="/de/everyday-moments.html">DE</a>
+  <a href="/everyday-moments.html" aria-current="true">KO</a>
+  <a href="/fr/everyday-moments.html">FR</a>
+  <a href="/es/everyday-moments.html">ES</a>
+  <a href="/pt-br/everyday-moments.html">PT-BR</a>
+</div>
+
+<nav id="mb-menu" class="mb-menu" aria-hidden="true">
+    <a href="how-it-works.html">작동 방식</a>
+    <a href="everyday-thought-friction.html">생각의 마찰</a>
+    <a href="everyday-moments.html" aria-current="page">일상의 순간들</a>
+    <a href="philosophy.html">철학</a>
+  </nav>
+</div>
+
+<div class="page">
+
+<h1>일상의 순간들</h1>
+
+<p>
+MINDBEBOP 앱은 정해진 사용 방식이 없습니다.<br>
+그저 생각이 떠오르는 그 자리에 함께하기 위해 존재합니다.
+</p>
+
+<p class="subtle">
+규칙적인 루틴도, 거창한 기술도 아닙니다. 그저 찰나의 순간일 뿐입니다.
+</p>
+<br><br><br>
+
+<div class="section">
+<h2>깊은 밤</h2>
+<p>
+침대에 누운 한 학생이 같은 문장을 머릿속으로 끊임없이 되뇌고 있습니다.
+</p>
+<p>
+그는 <strong>MindFlipOut</strong>을 열어 그 생각에 대한 하나의 응답을 적고 앱을 닫습니다.
+생각이 사라지지는 않지만, 맴도는 것은 멈춥니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>너무 일찍 잠에서 깼을 때</h2>
+<p>
+몸이 깨어나기도 전에 미래에 대한 걱정이 먼저 찾아옵니다.
+</p>
+<p>
+그들은 <strong>MindEaseOut</strong>을 열고, 그 생각이 미래에 속한 것임을 인정하며
+시간의 흐름에 따라 흘려보냅니다.
+다시 잠이 찾아옵니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>잠결에</h2>
+<p>
+아직 완전한 문장조차 되지 못한 생각의 파편이 떠오릅니다.
+</p>
+<p>
+그들은 생각을 미완성인 채로 <strong>MindShoutOut</strong>에 담아둡니다.
+아침이 그 생각을 이어가든 말든, 지금은 괜찮습니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>양치질을 하며</h2>
+<p>
+잠금 화면에 짧은 알림이 나타납니다.
+</p>
+<p>
+이전에 스스로를 믿고 적어둔 문장, <strong>MindShoutOut</strong>으로부터 온 메시지입니다.
+조언이 아닌 그저 자신의 생각일 뿐입니다. 그들은 이를 확인하고 다시 양치질을 계속합니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>샤워를 하다가</h2>
+<p>
+어떤 생각이 불쑥, 완전한 형태를 갖추고 찾아옵니다.
+</p>
+<p>
+지금 당장 반응하지 않습니다.
+나중에 <strong>MindShoutOut</strong>에 넣어두면 된다는 걸 알기에,
+그 생각에 사로잡히지 않을 수 있습니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>문을 나서며</h2>
+<p>
+하루의 시작점에서 알림이 도착합니다.
+</p>
+<p>
+<strong>MindShoutOut</strong> 알림입니다.
+당장 행동에 옮기지 않아도 괜찮습니다. 그저 인지한 채로 하루를 시작합니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>회의 사이사이</h2>
+<p>
+다음 회의가 시작되기 전, 일에 대한 생각이 너무 무겁게 느껴집니다.
+</p>
+<p>
+그들은 그 생각을 <strong>MindShoutOut</strong>에 담아둡니다.
+다음 회의는 그 생각의 무게를 덜어낸 채 시작됩니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>이메일을 확인하기 전</h2>
+<p>
+받은 편지함이 열리기도 전에 익숙한 긴장감이 찾아옵니다.
+</p>
+<p>
+그들은 <strong>MindFlipOut</strong>을 열어 메시지가 아닌, 긴장감 그 자체에 응답합니다.
+이메일은 조금 뒤에 확인해도 늦지 않습니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>나른한 오후</h2>
+<p>
+딱히 잘못된 건 없지만, 모든 것이 소란스럽게 느껴집니다.
+</p>
+<p>
+그들은 <strong>MindZoneOut</strong>을 엽니다.
+고요한 화면이 나타나고, 저장해두었던 생각이 부드럽게 떠오릅니다.
+아무것도 할 필요가 없습니다. 소음이 잦아듭니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>반복적인 업무 중에</h2>
+<p>
+단순한 일이지만 자꾸만 집중력이 흐트러집니다.
+</p>
+<p>
+<strong>MindShoutOut</strong>에서 짧은 알림이 조용히 반복됩니다.
+격려가 아닌, 그저 곁에 있어 주는 존재감입니다.
+누가 지켜보지 않아도 일은 계속됩니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>할 일을 마친 후</h2>
+<p>
+몸은 쉬고 있지만, 마음은 여전히 일에 매여 있습니다.
+</p>
+<p>
+그들은 <strong>MindShoutOut</strong>을 열어 남아있는 생각을 그곳에 둡니다.
+비로소 휴식이 진짜 휴식이 됩니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>다툰 직후</h2>
+<p>
+방금 들은 문장이 머릿속에서 계속 재생됩니다.
+</p>
+<p>
+그들은 <strong>MindFlipOut</strong>에 하나의 응답을 적습니다. 완벽하지 않아도 충분합니다.
+나중에 감정이 식었을 때 다시 볼 수 있도록 <strong>MindShoutOut</strong>에 예약해둡니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>메시지를 보내기 전</h2>
+<p>
+보내지 못한 답장 초안이 그대로 멈춰 있습니다.
+</p>
+<p>
+답장을 보내는 대신 <strong>MindFlipOut</strong>을 열어
+메시지 이면에 숨겨진 생각에 응답합니다.
+휴대폰을 다시 주머니에 넣습니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>소식을 접한 후</h2>
+<p>
+이성적인 판단보다 감정적인 반응이 먼저 앞섭니다.
+</p>
+<p>
+그들은 그 반응을 해석하려 애쓰지 않고,
+있는 그대로 <strong>MindShoutOut</strong>에 담아둡니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>대중교통 안에서</h2>
+<p>
+잠시 <strong>MindZoneOut</strong>을 엽니다. 1분도 채 걸리지 않습니다.
+</p>
+<p>
+생각이 화면에 나타났다 사라집니다.
+문제가 해결된 건 아니지만, 몸의 긴장이 풀립니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>산책하며</h2>
+<p>
+의미 있는 것 같지만 아직 정리되지 않은 생각이 떠오릅니다.
+</p>
+<p>
+그들은 그 생각을 <strong>MindShoutOut</strong>에 맡겨두어 더 이상 짊어지지 않기로 합니다.
+산책은 다시 오롯이 산책이 됩니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>카페에 앉아</h2>
+<p>
+주변의 소음이 내면의 소란함을 대신합니다.
+</p>
+<p>
+그들은 <strong>MindZoneOut</strong>을 힐끗 봅니다.
+알림이 조용히 한 번 나타났다 사라집니다.
+커피는 여전히 따뜻합니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>하루를 마무리하며</h2>
+<p>
+매듭지어지지 않은 몇 가지 생각들이 남아 있습니다.
+</p>
+<p>
+하나는 <strong>MindFlipOut</strong>으로 답하고,<br>
+하나는 <strong>MindShoutOut</strong>에 보관하며,<br>
+나머지 하나는 <strong>MindZoneOut</strong>에 조용히 남겨둡니다.
+</p>
+<p>
+오늘 밤, 모든 것을 끝낼 필요는 없습니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>늦은 밤의 야식 유혹</h2>
+<p>
+배고픔보다 더 강렬하게 패스트푸드가 생각납니다.
+</p>
+<p>
+그들은 그 갈망을 <strong>MindZoneOut</strong>에 넣습니다.
+욕구와 싸우지 않아도 강도는 변합니다.
+유혹이 지나가기도 하고, 그렇지 않기도 합니다.
+어느 쪽이든, 더 이상 즉각적인 답을 요구하지 않습니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>잠들기 전</h2>
+<p>
+어떤 생각이 머릿속에서 떠나지 않습니다.
+</p>
+<p>
+그들은 <strong>MindShoutOut</strong>에 그 생각을 담습니다.
+잊기 위해서가 아니라,
+더 이상 움켜쥐지 않기 위해서입니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>생각이 아닌 것들</h2>
+<p>
+압박감은 때로 단어가 아닌,
+아직 벗지 못한 '역할'에서 오기도 합니다.
+</p>
+<p>
+잠시 <strong>MindBackOut</strong>을 엽니다.
+다시 돌아왔을 때, 신경 써야 할 생각들이 줄어든 것을 느낍니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>하루 종일 무언가로 지낸 후</h2>
+<p>
+특별히 잘못된 건 없지만 피곤합니다.
+</p>
+<p>
+그들은 <strong>MindBackOut</strong>을 통해 잠시 그 역할에서 벗어납니다.
+저녁 시간이 한결 가벼워집니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>하나의 앱만 사용하기</h2>
+<p class="subtle">
+어떤 사람들은 단 하나의 도구만 사용합니다.
+</p>
+<p>
+<strong>MindFlipOut</strong>으로 응답하고 털어내거나,<br>
+<strong>MindShoutOut</strong>으로 중요한 생각을 간직하거나,<br>
+<strong>MindZoneOut</strong>으로 마음을 가라앉힙니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<h2>여러 앱을 가볍게 섞어 쓰기</h2>
+<p class="subtle">
+서로의 앱을 보완하며 사용하기도 합니다.
+</p>
+<p>
+생각에 <strong>MindFlipOut</strong>으로 답하고,<br>
+<strong>MindShoutOut</strong>이 이를 보관하며,<br>
+<strong>MindZoneOut</strong>을 통해 조용히 마주합니다.
+</p>
+</div>
+<br><br><br>
+
+<div class="section">
+<p>
+이것들은 지침이 아닙니다.<br>
+생각이 <strong>떠오르는 그 순간</strong>을 마주할 때 어떤 일이 일어날 수 있는지 보여주는 예시일 뿐입니다.
+</p>
+<p>
+작은 순간들.<br>
+약간의 거리.<br>
+짊어질 짐의 무게를 덜어내는 일.
+</p>
+</div>
+<br><br><br>
+
+<!-- Footer -->
+<div style="margin-top:60px; opacity:0.7; font-size:0.9rem;">
+Copyright © 2026 MINDBEBOP — All rights reserved.
+</div>
+
+</div>
+
+<!-- DARK MODE IMAGE SWAP (REQUIRED) -->
+<script>
+(function () {
+  function applyDarkImages(isDark) {
+    document.querySelectorAll('img[data-dark]').forEach(img => {
+      img.src = isDark
+        ? img.getAttribute('data-dark')
+        : img.getAttribute('data-light') || img.src;
+    });
+  }
+
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  applyDarkImages(media.matches);
+  media.addEventListener('change', e => applyDarkImages(e.matches));
+})();
+</script>
+
+<!-- MENU TOGGLE -->
+<script>
+(() => {
+  const btn = document.querySelector('.mb-hamburger');
+  const menu = document.querySelector('.mb-menu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    menu.setAttribute('aria-hidden', String(open));
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      btn.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+</body>
+</html>

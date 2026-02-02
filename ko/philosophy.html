@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Available Languages -->
+<link rel="alternate" hreflang="en" href="https://www.mindbebop.com/philosophy.html">
+<link rel="alternate" hreflang="ja" href="https://www.mindbebop.com/jp/philosophy.html">
+<link rel="alternate" hreflang="de" href="https://www.mindbebop.com/de/philosophy.html">
+<link rel="alternate" hreflang="ko" href="https://www.mindbebop.com/ko/philosophy.html">
+<link rel="alternate" hreflang="fr" href="https://www.mindbebop.com/fr/philosophy.html">
+<link rel="alternate" hreflang="es" href="https://www.mindbebop.com/es/philosophy.html">
+<link rel="alternate" hreflang="pt-BR" href="https://www.mindbebop.com/pt-br/philosophy.html">
+<link rel="alternate" hreflang="x-default" href="https://www.mindbebop.com/philosophy.html">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<title>MINDBEBOP — 철학</title>
+<link rel="canonical" href="https://www.mindbebop.com/philosophy">
+<meta name="robots" content="index, follow">
+<meta name="description" content="MINDBEBOP의 철학 — 일상의 생각 마찰을 줄이기 위한 차분한 접근법.">
+
+<style>
+/* =========================
+   VARIABLES
+   ========================= */
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --border: #333333;
+  --muted: rgba(0,0,0,0.75);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --fg: #f2f2f7;
+    --border: rgba(242,242,247,0.25);
+    --muted: rgba(242,242,247,0.75);
+  }
+}
+
+/* =========================
+   BASE
+   ========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  line-height: 1.6;
+  overflow-y: scroll; /* prevents layout jump */
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.6;
+}
+
+/* =========================
+   NAV
+   ========================= */
+.mb-nav {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 16px 20px 0;
+}
+
+.mb-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mb-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.15rem;
+}
+
+.mb-brand img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.mb-brand-name {
+  font-weight: 600;
+}
+
+.mb-brand-tagline {
+  opacity: 0.75;
+  font-weight: 400;
+}
+
+.mb-hamburger {
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.mb-hamburger .mb-close { display: none; }
+.mb-hamburger[aria-expanded="true"] .mb-open { display: none; }
+.mb-hamburger[aria-expanded="true"] .mb-close { display: inline; }
+
+.mb-hamburger {
+  position: relative;
+  z-index: 1100; /* must be higher than .mb-menu */
+}
+
+.mb-menu[aria-hidden="false"] + .mb-hamburger,
+.mb-hamburger[aria-expanded="true"] {
+  color: var(--fg);
+}
+
+/* Active menu item */
+.mb-menu a[aria-current="page"] {
+  opacity: 0.6;
+}
+
+/* =========================
+   MENU
+   ========================= */
+.mb-menu {
+  position: fixed;
+  inset: 0;
+  padding: 80px 24px;
+  display: none;
+  flex-direction: column;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+}
+
+.mb-menu[aria-hidden="false"] {
+  display: flex;
+}
+
+.mb-menu a {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+/* =========================
+   DESKTOP NAV
+   ========================= */
+@media (min-width: 900px) {
+  .mb-hamburger {
+    display: none;
+  }
+
+  .mb-menu {
+    margin-top: 14px; /* 👈 adds breathing room */
+    position: static;
+    display: flex !important;
+    flex-direction: row;
+    gap: 28px;
+    padding: 0;
+    background: none;
+    backdrop-filter: none;
+  }
+
+  .mb-menu a {
+    font-size: 0.8rem;
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* =========================
+   PAGE
+   ========================= */
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 24px;
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 44px;
+  margin-bottom: 12px;
+}
+
+p {
+  margin-bottom: 16px;
+}
+
+.subtle {
+  color: var(--muted);
+}
+
+.rule {
+  border: none;
+  border-bottom: 1px solid var(--border);
+  margin: 48px 0;
+}
+
+.lang-switch {
+  display: flex;
+  gap: 10px;
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.lang-switch a {
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.lang-switch a:hover {
+  opacity: 1;
+}
+
+.lang-switch a[aria-current="true"] {
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* Hide on small screens */
+@media (max-width: 900px) {
+  .lang-switch {
+    display: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="mb-nav">
+  <header class="mb-header">
+    <a class="mb-brand" href="index.html">
+      <img src="../image/MB_LOGO_V5_1024.png"
+           data-dark="../image/MB_LOGO_V5_1024_INV.png"
+           alt="MINDBEBOP logo">
+      <span class="mb-brand-name">MINDBEBOP</span>
+      <span class="mb-brand-tagline"> 지금, 여기의 생각을 위해</span>
+    </a>
+
+    <button class="mb-hamburger" aria-expanded="false" aria-controls="mb-menu">
+      <span class="mb-open">☰</span>
+      <span class="mb-close">×</span>
+    </button>
+</header>
+
+<div class="mb-lang">
+  <a href="/philosophy.html">EN</a>
+  <a href="/jp/philosophy.html">JP</a>
+  <a href="/de/philosophy.html">DE</a>
+  <a href="/ko/philosophy.html" aria-current="true">KO</a>
+  <a href="/fr/philosophy.html">FR</a>
+  <a href="/es/philosophy.html">ES</a>
+  <a href="/pt-br/philosophy.html">PT-BR</a>
+</div>
+
+<nav id="mb-menu" class="mb-menu" aria-hidden="true">
+    <a href="how-it-works.html">작동 원리</a>
+    <a href="everyday-thought-friction.html">생각의 마찰</a>
+    <a href="everyday-moments.html">일상의 순간들</a>
+    <a href="philosophy.html" aria-current="page">철학</a>
+  </nav>
+</div>
+
+<div class="page">
+  <h1>철학</h1>
+  <p class="subtle">MINDBEBOP이 존재하는 이유.</p>
+
+  <p>
+    MINDBEBOP은 하나의 단순한 관찰에서 시작되었습니다.
+    우리가 경험하는 현실은 우리가 품고 나아가는 생각들에 의해 형성된다는 점입니다.
+    방치된 생각들은 사라지지 않습니다.
+    그것들은 ‘생각의 잔여물’로 쌓여, 우리가 세상을 바라보고 느끼고
+    마주하는 방식에 조용히 영향을 미칩니다.
+  </p>
+
+  <p>
+    MINDBEBOP은 <strong>생각과 일상 사이의 경계</strong>에 존재하며,
+    생각이 계속 이어져 습관으로 굳어지거나
+    뒤따르는 순간들을 잠식하기 전에,
+    그 생각들을 부드럽게 내려놓을 수 있는 방법을 제안합니다.
+  </p>
+
+  <p><strong>정신적 위생은 프레임이며, 생각 돌봄은 매일의 실천입니다.</strong></p>
+
+  <p>
+    우리는 당신에게 무엇을 생각해야 할지,
+    무엇을 믿어야 할지,
+    혹은 어떤 사람이 되어야 할지 말하지 않습니다.
+    그저 생각을 내려놓을 장소, 일상의 생각 마찰을 줄여주는 순간들,
+    가볍게 사용하고 또 그만큼 쉽게 잊혀지도록
+    설계된 도구들을 제공할 뿐입니다.
+  </p>
+
+  <p>
+    MINDBEBOP은 세상으로부터 도망치거나
+    자아를 고치는 것에 대한 이야기가 아닙니다.
+    삶을 마주하는 당신의 렌즈를 조금 더 깨끗하게 유지하여,
+    당신의 순간들이 더 넓은 여유와 적은 잔여물,
+    그리고 덜 날카로운 모서리로 다가올 수 있게 하려는 것입니다.
+  </p>
+
+  <hr class="rule">
+
+  <p class="subtle">
+    <strong>MINDBEBOP은 현실을 바꾸지 않습니다.</strong><br>
+    현실로 끌어들이는 생각 잔여물의 양을 바꿀 뿐입니다.<br>
+    그 이후에 현실이 무엇이 될지는 온전히 당신의 몫입니다.
+  </p>
+
+  <div style="margin-top:60px; opacity:0.7; font-size:0.9rem;">
+    Copyright © 2026 MINDBEBOP — All rights reserved.
+  </div>
+</div>
+
+<script>
+(function () {
+  function applyDarkImages(isDark) {
+    document.querySelectorAll('img[data-dark]').forEach(img => {
+      img.src = isDark
+        ? img.getAttribute('data-dark')
+        : img.getAttribute('data-light') || img.src;
+    });
+  }
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  applyDarkImages(media.matches);
+  media.addEventListener('change', e => applyDarkImages(e.matches));
+})();
+</script>
+
+<script>
+(() => {
+  const btn = document.querySelector('.mb-hamburger');
+  const menu = document.querySelector('.mb-menu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    menu.setAttribute('aria-hidden', String(open));
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      btn.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
