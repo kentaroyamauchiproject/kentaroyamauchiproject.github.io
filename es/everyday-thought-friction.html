@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Available Languages -->
+<link rel="alternate" hreflang="en" href="https://www.mindbebop.com/everyday-thought-friction.html">
+<link rel="alternate" hreflang="ja" href="https://www.mindbebop.com/jp/everyday-thought-friction.html">
+<link rel="alternate" hreflang="de" href="https://www.mindbebop.com/de/everyday-thought-friction.html">
+<link rel="alternate" hreflang="ko" href="https://www.mindbebop.com/ko/everyday-thought-friction.html">
+<link rel="alternate" hreflang="fr" href="https://www.mindbebop.com/fr/everyday-thought-friction.html">
+<link rel="alternate" hreflang="es" href="https://www.mindbebop.com/es/everyday-thought-friction.html">
+<link rel="alternate" hreflang="pt-BR" href="https://www.mindbebop.com/pt-br/everyday-thought-friction.html">
+<link rel="alternate" hreflang="x-default" href="https://www.mindbebop.com/everyday-thought-friction.html">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<title>MINDBEBOP — Fricción mental cotidiana</title>
+
+<link rel="canonical" href="https://www.mindbebop.com/everyday-thought-friction">
+<meta property="og:url" content="https://www.mindbebop.com/everyday-thought-friction">
+
+<meta name="description" content="La fricción mental cotidiana es la sutil carga mental que se acumula cuando los pensamientos no tienen dónde aterrizar, y cómo MINDBEBOP les ofrece un lugar al que ir.">
+
+<meta property="og:title" content="Fricción mental cotidiana">
+<meta property="og:description" content="Diferentes pensamientos necesitan diferentes lugares donde aterrizar: transformarlos, apartarlos, calmarlos, recuperarlos, salir de roles o liberarlos con el tiempo.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.mindbebop.com/image/MXO_diagram_v1_web.png">
+
+<style>
+/* =========================
+   VARIABLES
+   ========================= */
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --border: #333333;
+  --muted: rgba(0,0,0,0.75);
+  --soft: #F2F2F7;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --fg: #f2f2f7;
+    --border: rgba(242,242,247,0.25);
+    --muted: rgba(242,242,247,0.75);
+    --soft: #2C2C2C;
+  }
+}
+
+/* =========================
+   RESET / BASE
+   ========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  overflow-y: scroll; /* 🔒 prevents horizontal jump */
+}
+
+a {
+  color: inherit;
+}
+
+/* =========================
+   NAV CONTAINER
+   ========================= */
+.mb-nav {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 16px 20px 0;
+}
+
+/* =========================
+   HEADER / MENU
+   ========================= */
+.mb-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mb-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-size: 1.15rem;
+}
+
+.mb-brand img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.mb-brand-name {
+  font-weight: 600;
+}
+
+.mb-brand-tagline {
+  opacity: 0.75;
+  font-weight: 400;
+}
+
+.mb-hamburger {
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.mb-hamburger .mb-close {
+  display: none;
+}
+
+.mb-hamburger[aria-expanded="true"] .mb-open {
+  display: none;
+}
+
+.mb-hamburger[aria-expanded="true"] .mb-close {
+  display: inline;
+}
+
+.mb-hamburger {
+  position: relative;
+  z-index: 1100; /* must be higher than .mb-menu */
+}
+
+.mb-menu[aria-hidden="false"] + .mb-hamburger,
+.mb-hamburger[aria-expanded="true"] {
+  color: var(--fg);
+}
+
+/* =========================
+   MENU (MOBILE)
+   ========================= */
+.mb-menu {
+  position: fixed;
+  inset: 0;
+  padding: 80px 24px;
+  display: none;
+  flex-direction: column;
+  background: rgba(0,0,0,0.04);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+}
+
+.mb-menu[aria-hidden="false"] {
+  display: flex;
+}
+
+.mb-menu a {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+/* =========================
+   DESKTOP NAV
+   ========================= */
+@media (min-width: 900px) {
+  .mb-hamburger {
+    display: none;
+  }
+
+  .mb-menu {
+    margin-top: 14px; /* 👈 adds breathing room */
+    position: static;
+    display: flex !important;
+    flex-direction: row;
+    gap: 28px;
+    padding: 0;
+    background: none;
+    backdrop-filter: none;
+  }
+
+  .mb-menu a {
+    font-size: 0.8rem;
+    margin: 0;
+    letter-spacing: 0.02em;
+    transition: opacity 0.15s ease;
+  }
+
+  .mb-menu a:hover {
+    opacity: 0.6;
+  }
+}
+
+/* Active menu item */
+.mb-menu a[aria-current="page"] {
+  opacity: 0.6;
+}
+
+/* =========================
+   PAGE
+   ========================= */
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0 0 24px;
+}
+
+.subtle {
+  color: var(--muted);
+}
+
+.kicker {
+  font-size: 1.05rem;
+  opacity: 0.75;
+  margin-top: -8px;
+}
+
+.rule {
+  border: none;
+  border-bottom: 1px solid var(--border);
+  margin: 48px 0;
+}
+
+ul.subtle {
+  padding-left: 18px;
+}
+
+/* =========================
+   MAP INTRO (TEXT / DIAGRAM / TEXT)
+   ========================= */
+.map-intro {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.map-text {
+  flex: 1 1 0;
+  max-width: 38ch;
+}
+
+.diagram {
+  flex: 0 0 300px;
+  max-width: 300px;
+}
+
+.diagram img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Mobile stack */
+@media (max-width: 760px) {
+  .map-intro {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .diagram {
+    max-width: 360px;
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .map-text {
+    max-width: 70ch;
+  }
+}
+
+/* =========================
+   TABLE
+   ========================= */
+.table-wrap {
+  margin-top: 18px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 860px;
+}
+
+thead th {
+  text-align: left;
+  font-weight: 600;
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--soft);
+  font-size: 0.95rem;
+}
+
+tbody td {
+  vertical-align: top;
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.98rem;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.icon-cell {
+  width: 56px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.lang-switch {
+  display: flex;
+  gap: 10px;
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.lang-switch a {
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.lang-switch a:hover {
+  opacity: 1;
+}
+
+.lang-switch a[aria-current="true"] {
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* Hide on small screens */
+@media (max-width: 900px) {
+  .lang-switch {
+    display: none;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="mb-nav">
+  <header class="mb-header">
+<a class="mb-brand" href="index.html">
+  <img
+    src="../image/MB_LOGO_V5_1024.png"
+    data-dark="../image/MB_LOGO_V5_1024_INV.png"
+    alt="Logo de MINDBEBOP">
+  <span class="mb-brand-name">MINDBEBOP</span>
+  <span class="mb-brand-tagline"> Pensamientos, tal como surgen</span>
+</a>
+
+    <button class="mb-hamburger" aria-expanded="false" aria-controls="mb-menu">
+      <span class="mb-open">☰</span>
+      <span class="mb-close">×</span>
+    </button>
+</header>
+
+<div class="mb-lang">
+  <a href="/everyday-thought-friction.html">EN</a>
+  <a href="/jp/everyday-thought-friction.html">JP</a>
+  <a href="/de/everyday-thought-friction.html">DE</a>
+  <a href="/ko/everyday-thought-friction.html">KO</a>
+  <a href="/fr/everyday-thought-friction.html">FR</a>
+  <a href="/es/everyday-thought-friction.html" aria-current="true">ES</a>
+  <a href="/pt-br/everyday-thought-friction.html">PT-BR</a>
+</div>
+
+<nav id="mb-menu" class="mb-menu" aria-hidden="true">
+  <a href="how-it-works.html">Funcionamiento</a>
+  <a href="everyday-thought-friction.html" aria-current="page">Fricción Mental</a>
+  <a href="philosophy.html">Filosofía</a>
+</nav>
+</div>
+
+<div class="page">
+
+<h1>Fricción mental cotidiana</h1>
+<p class="kicker">La pequeña carga mental que se acumula cuando los pensamientos no tienen a dónde ir.</p>
+
+<p>
+La fricción mental cotidiana no es un problema que deba resolverse.
+Es la sutil resistencia mental que se genera cuando los pensamientos no tienen un lugar donde aterrizar.
+</p>
+
+<hr class="rule">
+
+<p class="subtle">
+No son problemas. No son trastornos. Es solo ese pequeño lastre mental que aparece cuando los pensamientos no tienen dónde aterrizar.
+</p>
+
+<ul class="subtle">
+  <li>Repasar una conversación mucho después de que haya terminado, imaginando mejores respuestas.</li>
+  <li>Cargar con una tarea en la cabeza por miedo a olvidarla.</li>
+  <li>Sentir presión sin saber exactamente por qué.</li>
+  <li>Pensar en algo importante en el momento equivocado del día.</li>
+  <li>Recordar un mensaje sin responder cada vez que se ilumina la pantalla del móvil.</li>
+  <li>Aferrarse a una idea porque aún no se sabe qué hacer con ella.</li>
+  <li>Dar vueltas a una decisión que no tiene por qué tomarse ahora mismo.</li>
+  <li>Ensayar mentalmente explicaciones que nadie ha pedido.</li>
+  <li>Sentirse mentalmente "ocupado" incluso cuando no sucede nada urgente.</li>
+  <li>Preocuparse por el futuro mientras se intenta descansar.</li>
+  <li>Revisitar el pasado mientras se intenta enfocar en el presente.</li>
+  <li>Mantenerse alerta porque algo se siente inacabado.</li>
+</ul>
+
+<p class="subtle">
+Estos momentos no requieren solución — requieren un lugar donde aterrizar.
+</p>
+
+<hr class="rule">
+
+<h2>A dónde van los pensamientos</h2>
+<p class="kicker">Un mapa sereno del sistema MINDBEBOP.</p>
+
+<div class="map-intro">
+
+  <div class="map-text">
+    <p class="subtle"><strong>Cuando un pensamiento necesita una respuesta</strong></p>
+
+    <p>
+      Algunos pensamientos crean fricción porque no han sido contestados.
+      Se repiten hasta que la mente siente que han sido atendidos.
+    </p>
+
+    <p>
+      En estos momentos, un pensamiento puede transformarse en MindFlipOut,
+      reforzarse a través de MindShoutOut
+      y revisitarse suavemente en MindZoneOut —
+      hasta que ya no requiera atención.
+    </p>
+
+    <p>
+      Si algo persiste, su reflejo puede volver a MindFlipOut
+      y el ciclo puede continuar de forma natural.
+    </p>
+  </div>
+
+  <div class="diagram">
+    <picture>
+      <source
+        srcset="../image/MXO_diagram_v1_INV_web.png"
+        media="(prefers-color-scheme: dark)">
+      <img
+        src="../image/MXO_diagram_v1_web.png"
+        alt="Diagrama del sistema MINDBEBOP">
+    </picture>
+  </div>
+
+  <div class="map-text">
+    <p class="subtle"><strong>Cuando un pensamiento necesita ser descargado</strong></p>
+
+    <p>
+      Otros pensamientos no necesitan cambiar.
+      Permanecen activos porque existe el miedo a perderlos.
+    </p>
+
+    <p>
+      A veces un pensamiento es demasiado pesado para cargarlo,
+      pero aún no está listo para ser respondido.
+      En esos momentos, puede tocarse brevemente en MindFlipOut —
+      no para resolverlo, sino para reconocer qué es.
+    </p>
+
+    <p>
+      Desde ahí, MindShoutOut puede llevar el peso,
+      mientras que MindZoneOut permite ver el pensamiento sin aferrarse a él —
+      para que la mente descanse sin tener que soltarlo del todo.
+    </p>
+  </div>
+
+</div>
+
+<div class="table-wrap" role="region" aria-label="Tabla de destino de los pensamientos">
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th>App / Fase</th>
+  <th>Filosofía Central</th>
+  <th>Cuándo Usarla</th>
+  <th>Resultado</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+  <td class="icon-cell">
+    <img class="icon"
+      src="../image/MB_MFO_Icon_1024-rounded.png"
+      data-dark="../image/MB_MFO_Icon_1024_INV-rounded.png"
+      alt="Icono de MindFlipOut">
+  </td>
+  <td><span class="app-name">MindFlipOut</span><br><span class="subtle">Planificación</span></td>
+  <td>Dar a los pensamientos un lugar donde aterrizar y una respuesta.</td>
+  <td>Cuando un pensamiento se repite o da vueltas en tu cabeza.</td>
+  <td>Claridad: El pensamiento se anota y se reformula para que deje de generar residuo mental.</td>
+</tr>
+
+<tr>
+  <td class="icon-cell">
+    <img class="icon"
+      src="../image/MB_MSO_Icon_1024-rounded.png"
+      data-dark="../image/MB_MSO_Icon_1024_INV-rounded.png"
+      alt="Icono de MindShoutOut">
+  </td>
+  <td><span class="app-name">MindShoutOut</span><br><span class="subtle">Apartar</span></td>
+  <td>Confía en que el pensamiento volverá.</td>
+  <td>Cuando un pensamiento se siente importante, pero demasiado pesado para cargarlo ahora.</td>
+  <td>Alivio: El pensamiento se deposita fuera de tu cabeza sin miedo a perderlo.</td>
+</tr>
+
+<tr>
+  <td class="icon-cell">
+    <img class="icon"
+      src="../image/MB_MZO_Icon_1024-rounded.png"
+      data-dark="../image/MB_MZO_Icon_1024_INV-rounded.png"
+      alt="Icono de MindZoneOut">
+  </td>
+  <td><span class="app-name">MindZoneOut</span><br><span class="subtle">Calma</span></td>
+  <td>Ofrecer a la mente una pared de quietud.</td>
+  <td>Cuando tu cabeza necesita menos estímulos y una quietud intencionada.</td>
+  <td>Asentamiento: Los pensamientos suelen suavizarse o alcanzar su propio punto final.</td>
+</tr>
+
+<tr>
+  <td class="icon-cell">
+    <img class="icon"
+      src="../image/MB_MBO_Icon_1024-rounded.png"
+      data-dark="../image/MB_MBO_Icon_1024_INV-rounded.png"
+      alt="Icono de MindBackOut">
+  </td>
+  <td><span class="app-name">MindBackOut</span><br><span class="subtle">Cimientos</span></td>
+  <td>Quitarse el uniforme mental.</td>
+  <td>Cuando la presión proviene de los roles más que de un pensamiento específico.</td>
+  <td>Amortiguación: La presión basada en roles se suaviza antes de que los pensamientos requieran atención.</td>
+</tr>
+
+<tr>
+  <td class="icon-cell">
+    <img class="icon"
+      src="../image/MB_MEO_Icon_1024-rounded.png"
+      data-dark="../image/MB_MEO_Icon_1024_INV-rounded.png"
+      alt="Icono de MindEaseOut">
+  </td>
+  <td><span class="app-name">MindEaseOut</span><br><span class="subtle">Liberación temporal</span></td>
+  <td>Soltar en función del tiempo.</td>
+  <td>Cuando un pensamiento pertenece al pasado o al futuro, no al ahora.</td>
+  <td>Sosiego: El pensamiento se relaja al dejar de ser arrastrado al presente.</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<hr class="rule">
+
+<div style="margin-top:52px; opacity:0.72; font-size:0.92rem;">
+  Copyright © 2026 MINDBEBOP — Todos los derechos reservados.
+</div>
+
+</div>
+
+<script>
+(function () {
+  function applyDarkImages(isDark) {
+    document.querySelectorAll('img[data-dark]').forEach(img => {
+      img.src = isDark
+        ? img.getAttribute('data-dark')
+        : img.getAttribute('data-light') || img.src;
+    });
+  }
+
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  applyDarkImages(media.matches);
+  media.addEventListener('change', e => applyDarkImages(e.matches));
+})();
+</script>
+
+<script>
+(() => {
+  const btn = document.querySelector('.mb-hamburger');
+  const menu = document.querySelector('.mb-menu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    menu.setAttribute('aria-hidden', String(open));
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      btn.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+</body>
+</html>
