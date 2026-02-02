@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Available Languages -->
 <link rel="alternate" hreflang="en" href="https://www.mindbebop.com/">
 <link rel="alternate" hreflang="ja" href="https://www.mindbebop.com/jp/">
 <link rel="alternate" hreflang="de" href="https://www.mindbebop.com/de/">
@@ -19,27 +18,25 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="canonical" href="https://www.mindbebop.com/">
+<link rel="canonical" href="https://www.mindbebop.com/jp/">
 
-<title>MINDBEBOP — 日常のためのこころの衛生</title>
+<title>MINDBEBOP — 思考を「解決」せずに、ただ「置く」。</title>
 
-<meta name="description" content="MINDBEBOPは「マインドブラッシング」キット — 毎日のこころの衛生のための超軽量ツールです。思考が浮かんだその瞬間にケアすることで、思考を活性化させるのではなく、穏やかな終止符を打つための新しい方法を提案します。">
-<meta name="keywords" content="こころの衛生, マインドブラッシング, 思考の摩擦, ループ思考, メンタルメンテナンス, 静寂ツール">
+<meta name="description" content="MINDBEBOPは脳のバグを突く「マインドブラッシング」キット。ゼイガルニク効果などの心理学的知見を応用し、ループする思考に穏やかな終止符を打つための超軽量ツールです。">
+<meta name="keywords" content="こころの衛生, マインドブラッシング, 思考の摩擦, ゼイガルニク効果, メンタルメンテナンス, 静寂ツール">
 <meta name="author" content="MINDBEBOP">
 <meta name="robots" content="index, follow">
 
 <meta property="og:title" content="MINDBEBOP — 今、ここにある思考を">
-<meta property="og:description" content="毎日のこころの衛生のためのマインドブラッシングキット。ループする思考を活性化させるのではなく、穏やかな終止符を打つための超軽量ツール。">
+<meta property="og:description" content="脳の摩擦を消し、今に立ち返る。ループする思考を活性化させるのではなく、穏やかな終止符を打つための超軽量ツール。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.mindbebop.com/jp/">
 <meta property="og:image" content="https://www.mindbebop.com/image/MB_LOGO_V5_1024.png">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="MINDBEBOP — 今、ここにある思考を">
-<meta name="twitter:description" content="思考が浮かんだその瞬間にケアするという、全く新しい方法。毎日のこころの衛生のためのマインドブラッシングキット。">
+<meta name="twitter:description" content="思考が浮かんだその瞬間にケアするという、全く新しい方法。脳の仕組みを逆手に取ったマインドブラッシングキット。">
 <meta name="twitter:image" content="https://www.mindbebop.com/image/MB_LOGO_V5_1024.png">
-
-<title>MINDBEBOP — 今、ここにある思考を</title>
 
 <style>
 /* =========================
@@ -70,7 +67,7 @@ body {
   color: var(--fg);
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.6;
-  overflow-y: scroll; /* 🔒 prevents horizontal jump */
+  overflow-y: scroll;
 }
 
 a {
@@ -83,7 +80,7 @@ a:hover {
 }
 
 /* =========================
-   NAV WRAPPER (CRITICAL)
+   NAV WRAPPER
    ========================= */
 .mb-nav {
   max-width: 780px;
@@ -126,21 +123,13 @@ a:hover {
   border: none;
   color: var(--fg);
   cursor: pointer;
+  position: relative;
+  z-index: 1100;
 }
 
 .mb-hamburger .mb-close { display: none; }
 .mb-hamburger[aria-expanded="true"] .mb-open { display: none; }
 .mb-hamburger[aria-expanded="true"] .mb-close { display: inline; }
-
-.mb-hamburger {
-  position: relative;
-  z-index: 1100; /* must be higher than .mb-menu */
-}
-
-.mb-menu[aria-hidden="false"] + .mb-hamburger,
-.mb-hamburger[aria-expanded="true"] {
-  color: var(--fg);
-}
 
 /* =========================
    MENU
@@ -165,7 +154,11 @@ a:hover {
   margin-bottom: 20px;
 }
 
-.mb-menu a[aria-current="page"] {
+.mb-lang {
+  margin-top: 8px;
+  display: flex;
+  gap: 12px;
+  font-size: 0.85rem;
   opacity: 0.6;
 }
 
@@ -176,7 +169,7 @@ a:hover {
   .mb-hamburger { display: none; }
 
   .mb-menu {
-    margin-top: 14px; /* 👈 adds breathing room */
+    margin-top: 14px;
     position: static;
     display: flex !important;
     flex-direction: row;
@@ -194,7 +187,7 @@ a:hover {
 }
 
 /* =========================
-   PAGE (CANONICAL)
+   PAGE
    ========================= */
 .page {
   max-width: 780px;
@@ -206,88 +199,6 @@ a:hover {
   color: var(--muted);
 }
 
-.rule {
-  border: none;
-  border-bottom: 1px solid var(--border);
-  margin: 48px 0;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.lang-switch {
-  display: flex;
-  gap: 10px;
-  font-size: 0.75rem;
-  opacity: 0.6;
-}
-
-.lang-switch a {
-  text-decoration: none;
-  letter-spacing: 0.05em;
-}
-
-.lang-switch a:hover {
-  opacity: 1;
-}
-
-.lang-switch a[aria-current="true"] {
-  opacity: 1;
-  font-weight: 600;
-}
-
-/* Hide on small screens */
-@media (max-width: 900px) {
-  .lang-switch {
-    display: none;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<!-- MINDBEBOP MENU -->
-<div class="mb-nav">
-  <header class="mb-header">
-    <a class="mb-brand" href="index.html" aria-current="page">
-      <img
-        src="../image/MB_LOGO_V5_1024.png"
-        data-dark="../image/MB_LOGO_V5_1024_INV.png"
-        alt="MINDBEBOP logo">
-      <span class="mb-brand-name">MINDBEBOP</span>
-      <span class="mb-brand-tagline"> 今、ここにある思考を</span>
-    </a>
-
-    <button class="mb-hamburger" aria-expanded="false" aria-controls="mb-menu">
-      <span class="mb-open">☰</span>
-      <span class="mb-close">×</span>
-    </button>
-</header>
-
-<div class="mb-lang">
-  <a href="/">EN</a>
-  <a href="/jp/" aria-current="true">JP</a>
-  <a href="/de/">DE</a>
-  <a href="/ko/">KO</a>
-  <a href="/fr/">FR</a>
-  <a href="/es/">ES</a>
-  <a href="/pt-br/">PT-BR</a>
-</div>
-
-<nav id="mb-menu" class="mb-menu" aria-hidden="true">
-    <a href="how-it-works.html">アプリのしくみ</a>
-    <a href="everyday-thought-friction.html">思考の摩擦とは</a>
-    <a href="everyday-moments.html">日々のひとコマ</a>
-    <a href="philosophy.html">哲学</a>
-  </nav>
-</div>
-
-<!-- PAGE CONTENT -->
-<div class="page">
-
-<style>
 @media (max-width: 600px) {
   .app-header {
     flex-direction: column;
@@ -299,180 +210,169 @@ a:hover {
   }
 }
 </style>
+</head>
 
-<!-- Hero -->
+<body>
+
+<div class="mb-nav">
+  <header class="mb-header">
+    <a class="mb-brand" href="index.html">
+      <img src="../image/MB_LOGO_V5_1024.png" data-dark="../image/MB_LOGO_V5_1024_INV.png" alt="MINDBEBOP logo">
+      <span class="mb-brand-name">MINDBEBOP</span>
+      <span class="mb-brand-tagline">今、ここにある思考を</span>
+    </a>
+
+    <button class="mb-hamburger" aria-expanded="false" aria-controls="mb-menu">
+      <span class="mb-open">☰</span>
+      <span class="mb-close">×</span>
+    </button>
+  </header>
+
+  <div class="mb-lang">
+    <a href="/">EN</a>
+    <a href="/jp/" aria-current="true" style="font-weight: 600; opacity: 1;">JP</a>
+    <a href="/de/">DE</a>
+    <a href="/ko/">KO</a>
+    <a href="/fr/">FR</a>
+    <a href="/es/">ES</a>
+    <a href="/pt-br/">PT-BR</a>
+  </div>
+
+  <nav id="mb-menu" class="mb-menu" aria-hidden="true">
+    <a href="how-it-works.html">アプリのしくみ</a>
+    <a href="everyday-thought-friction.html">思考の摩擦とは</a>
+    <a href="everyday-moments.html">日々のひとコマ</a>
+    <a href="philosophy.html">哲学</a>
+  </nav>
+</div>
+
+<div class="page">
+
 <div style="padding:20px 0; border-bottom:1px solid var(--border);">
   <p style="font-size:1.25rem; font-weight:500; margin:0 0 10px 0;">
-    すべての思考を、次の瞬間まで引きずる必要はありません。
+    思考を「解決」せずに、ただ「置く」。
   </p>
-
   <p style="margin:0;">
-    MINDBEBOPは、ループする思考を「活性化」させるのではなく、穏やかな「終止符」を打つための場所です。
+    MINDBEBOPは、脳の仕組みを逆手に取り、絶え間ない思考のループに穏やかな「終止符」を打つための道具箱です。
   </p>
 </div>
 
 <p style="margin-top:14px;">
-  <strong>役目を終えた思考を、そっと手放すための場所。</strong>
+  <strong>「今」を占拠する不要な思考の摩擦を、その場で取り除く。</strong>
 </p>
 
 <p>
-  <strong>思考が浮かんだその瞬間にケアするという、全く新しい方法。</strong><br>
-  マインドブラッシングキット — 余計な思考が長引いてきた時に役立つ、毎日のこころの衛生のための超軽量ツールです。
+  <strong>思考が浮かんだその瞬間にケアするという、全く新しいアプローチ。</strong><br>
+  マインドブラッシングキット — 脳のバグを突く手法で、残留思考を払い落とし、こころの静寂を取り戻すための超軽量ツールです。
 </p>
 <p class="subtle">
-ガイダンスも、最適化も、記録すべき進捗もありません。<br>
+ガイダンスも、数値化も、あなたを追いかける通知もありません。<br>
 ただ、思考の摩擦を和らげる。それだけです。
 </p>
 
-<p><strong>毎日の思考の摩擦</strong></p>
-
+<p><strong>こころの歯ブラシ</strong></p>
 <p>
-意識が次の場面へ移ろうとしても、思考だけがそこに留まり続けることがあります。<br>
-終わりのない思考のループ、忘れてはならないリマインダー、そして背景で鳴り続ける不安。それらは静かに、あなたのエネルギーを消耗させていきます。
+わたしたちは毎日、身体を洗い歯を磨きます。しかし、一日の中で溜まった「思考の汚れ」はどうでしょうか？<br>
+終わりのない後悔、未来へのソワソワ感、脱げない役割の重圧。それらは「残留思考」となって脳にこびりつき、あなたのエネルギーを奪い続けます。
+</p>
+<p>
+MINDBEBOPが提供するのは、人生を劇的に変えるための「治療」ではありません。<br>
+溜まった思考に適切な「着地点」を与え、その日の汚れをその日のうちに払い落とす。あなたが本来持っている健やかな意識に戻るための、最もシンプルな衛生習慣です。
 </p>
 
-<p>
-MINDBEBOPは、摩擦が生じたその瞬間の思考をキャッチします。<br>
-思考に着地点を与え、静寂を添えることで、こころが自然にそれらを手放せる状態へと導きます。
-</p>
-
-<p><strong>こころの歯ブラシ。</strong></p>
-
-<p>
-これは「改善」ではなく、「手入れ」のための習慣です。<br>
-日々蓄積していく「残留思考」を払い落とし、どこにいても、あなたの意識がより軽やかであるようにします。
-</p>
-
-<!-- Our Apps -->
 <div style="margin-top:60px;">
-  <h2 style="font-size:1.6rem; font-weight:600;">アプリ — マインドブラッシングキット</h2>
-
+  <h2 style="font-size:1.6rem; font-weight:600;">アプリ — 脳の摩擦を消す道具箱（マインドブラッシングキット）</h2>
   <p style="margin-top:24px;">
-    それぞれのアプリは、その瞬間のシチュエーションに応じた「残留思考」を取り除きます。
+    それぞれのアプリは、あなたの「今」を占拠する不要な思考を取り除きます。
   </p>
 
-  <!-- MindFlipOut -->
   <div class="app-header" style="display:flex; align-items:flex-start; justify-content:space-between; margin-top:30px; gap:16px;">
     <div style="display:flex; align-items:center; gap:12px;">
-      <img
-        src="../image/MB_MFO_Icon_1024-rounded.png"
-        data-dark="../image/MB_MFO_Icon_1024_INV-rounded.png"
-        alt="MindFlipOut Icon"
-        style="width:40px; height:40px; object-fit:contain;">
+      <img src="../image/MB_MFO_Icon_1024-rounded.png" data-dark="../image/MB_MFO_Icon_1024_INV-rounded.png" alt="MindFlipOut Icon" style="width:40px; height:40px; object-fit:contain;">
       <div>
         <h3 style="font-size:1.3rem; margin:0;">MindFlipOut</h3>
-        <div style="font-size:0.85rem; opacity:0.65; margin-top:2px;">
-          アプリサイズ: 約1MB
-        </div>
+        <div style="font-size:0.85rem; opacity:0.65; margin-top:2px;">サイズ: 約1MB</div>
       </div>
     </div>
-
     <div class="app-badge" style="text-align:right;">
       <a href="https://apps.apple.com/app/id6752633008" target="_blank" rel="noopener noreferrer">
-        <img
-          src="../image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
-          data-light="../image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
-          data-dark="../image/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg"
-          alt="Download on the App Store"
-          style="height:40px;">
+        <img src="../image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" data-dark="../image/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg" alt="Download on the App Store" style="height:40px;">
       </a>
-      <div style="margin-top:6px; font-size:0.85rem; opacity:0.75;">App Store で入手可能（無料）</div>
+      <div style="margin-top:6px; font-size:0.85rem; opacity:0.75;">App Store（無料）</div>
     </div>
   </div>
-
-  <p><strong>ループするネガティブな思考に応答し、執着を手放すための超軽量ツール。</strong></p>
-  <p><em>ループ思考に応答する</em>。ネガティブな思考が現れた瞬間にキャッチして、よりフラット、あるいはポジティブな視点へと反転（<strong>flip</strong>）させて返答します。MindFlipOutは思考に確かな受け皿を与えることで、頭の中の堂々巡りをその場で終わらせます。</p>
+  <p><strong>脳の「空回り」を止める。一往復の対話でループを断つ超軽量ツール。</strong></p>
+  <p>脳は未完了の思考を鳴らし続けます。現れた思考をキャッチし、別の視点へと反転（<strong>flip</strong>）させて一度だけ「応答」を返す。それだけで脳は「対話が済んだ」と認識し、不快なループを強制終了させます。</p>
   <br>
 
-  <!-- MindShoutOut -->
   <div class="app-header" style="display:flex; align-items:flex-start; justify-content:space-between; margin-top:30px; gap:16px;">
     <div style="display:flex; align-items:center; gap:12px;">
-      <img
-        src="../image/MB_MSO_Icon_1024-rounded.png"
-        data-dark="../image/MB_MSO_Icon_1024_INV-rounded.png"
-        alt="MindShoutOut Icon"
-        style="width:40px; height:40px; object-fit:contain;">
+      <img src="../image/MB_MSO_Icon_1024-rounded.png" data-dark="../image/MB_MSO_Icon_1024_INV-rounded.png" alt="MindShoutOut Icon" style="width:40px; height:40px; object-fit:contain;">
       <div>
         <h3 style="font-size:1.3rem; margin:0;">MindShoutOut</h3>
-        <div style="font-size:0.85rem; opacity:0.65; margin-top:2px;">
-          アプリサイズ: 約1.3MB
-        </div>
+        <div style="font-size:0.85rem; opacity:0.65; margin-top:2px;">サイズ: 約1.3MB</div>
       </div>
     </div>
-
     <div class="app-badge" style="text-align:right;">
       <a href="https://apps.apple.com/app/id6752512145" target="_blank" rel="noopener noreferrer">
-        <img
-          src="../image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
-          data-light="../image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
-          data-dark="../image/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg"
-          alt="Download on the App Store"
-          style="height:40px;">
+        <img src="../image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" data-dark="../image/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg" alt="Download on the App Store" style="height:40px;">
       </a>
-      <div style="margin-top:6px; font-size:0.85rem; opacity:0.75;">App Store で入手可能（無料）</div>
+      <div style="margin-top:6px; font-size:0.85rem; opacity:0.75;">App Store（無料）</div>
     </div>
   </div>
-
-  <p><strong>このまま頭の中で保持したくない思考に対処するための、超軽量リマインダーツール</strong></p>
-
-  <p><em>思考をいったん脇に置く</em>。思考を外部へ放つ（<strong>shout</strong>）ことで、「忘れてはいけない」という重圧から脳を解放します。MindShoutOutは、また戻ってこれるという信頼をシステムに託し、こころのスペースを取り戻します。
-  </p>
+  <p><strong>思考の「クローク（預かり所）」。握りしめた記憶を手放すための超軽量リマインダー。</strong></p>
+  <p>「忘れてはいけない」という重圧は脳の大きな摩擦です。思考を外部へ放つ（<strong>shout</strong>）ことで、「自分が覚えていなくていい」という確信を脳に与えます。システムへ完全に託すことで、こころのスペースを即座に取り戻します。</p>
   <br>
 
-  <!-- MindZoneOut -->
   <div class="app-header" style="display:flex; align-items:flex-start; justify-content:space-between; margin-top:30px; gap:16px;">
     <div style="display:flex; align-items:center; gap:12px;">
-      <img
-        src="../image/MB_MZO_Icon_1024-rounded.png"
-        data-dark="../image/MB_MZO_Icon_1024_INV-rounded.png"
-        alt="MindZoneOut Icon"
-        style="width:40px; height:40px; object-fit:contain;">
+      <img src="../image/MB_MZO_Icon_1024-rounded.png" data-dark="../image/MB_MZO_Icon_1024_INV-rounded.png" alt="MindZoneOut Icon" style="width:40px; height:40px; object-fit:contain;">
       <div>
         <h3 style="font-size:1.3rem; margin:0;">MindZoneOut</h3>
-        <div style="font-size:0.85rem; opacity:0.65; margin-top:2px;">
-          アプリサイズ: 約1.2MB
-        </div>
+        <div style="font-size:0.85rem; opacity:0.65; margin-top:2px;">サイズ: 約1.2MB</div>
       </div>
     </div>
-
     <div class="app-badge" style="text-align:right;">
       <a href="https://apps.apple.com/app/id6753839181" target="_blank" rel="noopener noreferrer">
-        <img
-          src="../image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
-          data-light="../image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
-          data-dark="../image/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg"
-          alt="Download on the App Store"
-          style="height:40px;">
+        <img src="../image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" data-dark="../image/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg" alt="Download on the App Store" style="height:40px;">
       </a>
-      <div style="margin-top:6px; font-size:0.85rem; opacity:0.75;">App Store で入手可能（無料）</div>
+      <div style="margin-top:6px; font-size:0.85rem; opacity:0.75;">App Store（無料）</div>
     </div>
   </div>
+  <p><strong>デジタルで再現する禅の「面壁」。意味の生成を止める超軽量な静寂。</strong></p>
+  <p>常に情報を解釈しようとする脳には、情報の遮断が必要です。変化する「壁」をただ眺め、<strong>zone out</strong>（ぼーっと）することで、思考の熱を自律的に下げ、脳が「理解の義務」から解放される時間を設けます。</p>
+  <br>
 
-  <p><strong>こころが静かに寄りかかれる「壁」。超軽量の静寂ツール</strong></p>
-  <p><em>空間をクリアにする</em>。日常のノイズから離れ、こころを一時停止させるために設計された静かな画面と向き合うことができます。MindZoneOutは、意図的に「余白」を作り出し、思考の熱を自然に下げ、<strong>zone out（ぼーっとする）</strong> することで、不要な思考が自律的に静まっていくのを助ける静寂のツールです。
+  <div style="display:flex; align-items:center; gap:12px; margin-top:30px;">
+    <img src="../image/MB_MBO_Icon_1024-rounded.png" data-dark="../image/MB_MBO_Icon_1024_INV-rounded.png" alt="MindBackOut Icon" style="width:40px; height:40px; object-fit:contain;">
+    <h3 style="font-size:1.3rem; margin:0;">MindBackOut</h3>
+  </div>
+  <p><strong>「わたし」を一時ログアウトする。役割という重い服を脱ぐための超軽量な「こころの控室」。</strong></p>
+  <p>親、社員、責任ある大人。わたしたちは無数の役割を脱げずに疲弊しています。社会的役割から一歩身を引き（<strong>back out</strong>）、何者でもない自分に戻るための聖域。自己改善さえ必要のない、ただの「個」へ退く時間を確保します。</p>
+  <br>
+
+<div style="display:flex; align-items:center; gap:12px; margin-top:30px;">
+    <img
+      src="../image/MB_MEO_Icon_1024-rounded.png"
+      data-dark="../image/MB_MEO_Icon_1024_INV-rounded.png"
+      alt="MindEaseOut Icon"
+      style="width:40px; height:40px; object-fit:contain;">
+    <h3 style="font-size:1.3rem; margin:0;">MindEaseOut</h3>
+  </div>
+
+  <p><strong>「今」を占拠する不要な思考の摩擦を、その場で取り除く。</strong></p>
+  <p>過去の後悔も未来への不安やソワソワ感も、今のあなたにはコントロールできません。時計の刻み、心拍、そして「今この瞬間に呼吸をしている」という物理的事実に意識を繋ぎ止める（グラウンディング）ことで、脳の空回りを停止させます。過去や未来に囚われていた思考を本来の場所へと穏やかに戻してあげて（<strong>ease out</strong>）、自分を唯一の現実である「今」へと引き戻します。</p>
+  <p>
+    MindEaseOutは、MINDBEBOPの各アプリに内蔵された共通機能になります。
   </p>
   <br>
 
-  <!-- MindBackOut -->
-  <div style="display:flex; align-items:center; gap:12px; margin-top:30px;">
-    <img
-      src="../image/MB_MBO_Icon_1024-rounded.png"
-      data-dark="../image/MB_MBO_Icon_1024_INV-rounded.png"
-      alt="MindBackOut Icon"
-      style="width:40px; height:40px; object-fit:contain;">
-    <h3 style="font-size:1.3rem; margin:0;">MindBackOut</h3>
-  </div>
-
-  <p><strong>アイデンティティや他人の期待、義務から一時的に離れるための、超軽量な「控室」アプリ</strong></p>
-  <p><em>役割を脱ぎ、「何者でもない自分」に退く</em>。成果や責任から一歩退き、ユニフォームを脱ぐための「控室」です。MindBackOutは、特定のアプリをロックし、役割・プレッシャー・アイデンティティから<strong>Back Out（退避）</strong>することで、自己改善さえも必要のない静かな時間を提供します。
-</p>
-<br>
-  <!-- Closing Line -->
   <p style="margin-top:28px; font-size:1.15rem;">
 こころが静かに整えば、<br>
 あなたの世界もまた、穏やかにそれに追従していく。
   </p>
-<div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border);">
+
+  <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border);">
     <p style="margin: 0;">
       <a href="everyday-moments.html" style="text-decoration: none; font-weight: 600; font-size: 1.1rem;">
         日々のひとコマを見る
@@ -482,44 +382,31 @@ MINDBEBOPは、摩擦が生じたその瞬間の思考をキャッチします�
       </span>
     </p>
   </div>
+
   <hr style="border:none; border-bottom:1px solid var(--border); margin:60px 0;">
 
-  <!-- Footer -->
   <div style="margin-top:60px; opacity:0.7; font-size:0.9rem;">
-    <!-- <p style="margin-bottom:12px;">
-      <a href="everyday-moments.html" style="color:inherit; text-decoration:none;">
-        Read: Everyday moments
-      </a>
-    </p>
-    <p style="margin-bottom:12px;">
-      <a href="philosophy.html" style="color:inherit; text-decoration:none;">
-        Read: Philosophy
-      </a>
-    </p> -->
     Copyright © 2026 MINDBEBOP — All rights reserved.
   </div>
 
 </div>
 </div>
 
-<!-- DARK MODE IMAGE SWAP (REQUIRED) -->
 <script>
 (function () {
   function applyDarkImages(isDark) {
     document.querySelectorAll('img[data-dark]').forEach(img => {
-      img.src = isDark
-        ? img.getAttribute('data-dark')
-        : img.getAttribute('data-light') || img.src;
+      const darkSrc = img.getAttribute('data-dark');
+      const lightSrc = img.getAttribute('data-light') || img.src;
+      img.src = isDark ? darkSrc : lightSrc;
     });
   }
-
   const media = window.matchMedia('(prefers-color-scheme: dark)');
   applyDarkImages(media.matches);
   media.addEventListener('change', e => applyDarkImages(e.matches));
 })();
 </script>
 
-<!-- MENU TOGGLE (NO SHIFT) -->
 <script>
 (() => {
   const btn = document.querySelector('.mb-hamburger');
@@ -532,44 +419,22 @@ MINDBEBOPは、摩擦が生じたその瞬間の思考をキャッチします�
     scrollY = window.scrollY || 0;
     btn.setAttribute('aria-expanded', 'true');
     menu.setAttribute('aria-hidden', 'false');
-
-    // Lock the page without removing the scrollbar width.
     document.body.style.position = 'fixed';
     document.body.style.top = `-${scrollY}px`;
-    document.body.style.left = '0';
-    document.body.style.right = '0';
     document.body.style.width = '100%';
   }
 
   function closeMenu() {
     btn.setAttribute('aria-expanded', 'false');
     menu.setAttribute('aria-hidden', 'true');
-
-    // Restore scroll position.
     document.body.style.position = '';
     document.body.style.top = '';
-    document.body.style.left = '';
-    document.body.style.right = '';
-    document.body.style.width = '';
-
     window.scrollTo(0, scrollY);
   }
 
   btn.addEventListener('click', () => {
     const isOpen = btn.getAttribute('aria-expanded') === 'true';
-    if (isOpen) closeMenu();
-    else openMenu();
-  });
-
-  menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => closeMenu());
-  });
-
-  // Optional: close on Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
-      closeMenu();
-    }
+    if (isOpen) closeMenu(); else openMenu();
   });
 })();
 </script>
