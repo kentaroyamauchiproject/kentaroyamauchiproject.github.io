@@ -39,9 +39,6 @@
 <meta name="twitter:image" content="https://www.mindbebop.com/image/MB_LOGO_V5_1024.png">
 
 <style>
-/* =========================
-   VARIABLES
-   ========================= */
 :root {
   --bg: #ffffff;
   --fg: #000000;
@@ -58,9 +55,6 @@
   }
 }
 
-/* =========================
-   BASE
-   ========================= */
 * {
   box-sizing: border-box;
 }
@@ -83,12 +77,10 @@ a:hover {
   opacity: 0.6;
 }
 
-/* =========================
-   NAV WRAPPER
-   ========================= */
+/* NAV */
 .mb-nav {
   max-width: 780px;
-  margin: 0 auto;
+  margin: 0 auto 24px; /* ⬅ stabilizes vertical rhythm */
   padding: 16px 20px 0;
 }
 
@@ -102,7 +94,6 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 10px;
-  text-decoration: none;
   font-size: 1.15rem;
 }
 
@@ -118,7 +109,6 @@ a:hover {
 
 .mb-brand-tagline {
   opacity: 0.75;
-  font-weight: 400;
 }
 
 .mb-hamburger {
@@ -135,16 +125,33 @@ a:hover {
 .mb-hamburger[aria-expanded="true"] .mb-open { display: none; }
 .mb-hamburger[aria-expanded="true"] .mb-close { display: inline; }
 
-/* =========================
-   MENU
-   ========================= */
+/* LANGUAGE MENU — normalized */
+.mb-lang {
+  margin-top: 8px;
+  display: flex;
+  gap: 10px;
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.mb-lang a[aria-current="true"] {
+  opacity: 1;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .mb-lang {
+    display: none;
+  }
+}
+
+/* MENU */
 .mb-menu {
   position: fixed;
   inset: 0;
   padding: 80px 24px;
   display: none;
   flex-direction: column;
-  background: rgba(0,0,0,0.04);
   background: color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter: blur(6px);
   z-index: 1000;
@@ -159,17 +166,7 @@ a:hover {
   margin-bottom: 20px;
 }
 
-.mb-lang {
-  margin-top: 8px;
-  display: flex;
-  gap: 12px;
-  font-size: 0.85rem;
-  opacity: 0.6;
-}
-
-/* =========================
-   DESKTOP NAV
-   ========================= */
+/* DESKTOP NAV */
 @media (min-width: 900px) {
   .mb-hamburger { display: none; }
 
@@ -191,13 +188,11 @@ a:hover {
   }
 }
 
-/* =========================
-   PAGE
-   ========================= */
+/* PAGE */
 .page {
   max-width: 780px;
   margin: 0 auto;
-  padding: 40px 20px 80px;
+  padding: 24px 20px 80px; /* ⬅ matches other pages visually */
 }
 
 .subtle {
@@ -218,6 +213,9 @@ a:hover {
 </head>
 
 <body>
+
+<!-- BODY CONTENT UNCHANGED -->
+<!-- (everything below is exactly as you pasted) -->
 
 <div class="mb-nav">
   <header class="mb-header">
