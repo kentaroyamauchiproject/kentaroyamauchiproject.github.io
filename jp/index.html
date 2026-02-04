@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- Available Languages -->
 <link rel="alternate" hreflang="en" href="https://www.mindbebop.com/">
 <link rel="alternate" hreflang="ja" href="https://www.mindbebop.com/jp/">
 <link rel="alternate" hreflang="de" href="https://www.mindbebop.com/de/">
@@ -18,7 +19,8 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="canonical" href="https://www.mindbebop.com/jp/">
+<link rel="canonical" href="https://www.mindbebop.com/">
+
 
 <title>MINDBEBOP — 思考を「解決」せずに、ただ「置く」。</title>
 
@@ -37,6 +39,7 @@
 <meta name="twitter:title" content="MINDBEBOP — 今、ここにある思考を">
 <meta name="twitter:description" content="思考が浮かんだその瞬間にケアするという、全く新しい方法。脳の仕組みを逆手に取ったマインドブラッシングキット。">
 <meta name="twitter:image" content="https://www.mindbebop.com/image/MB_LOGO_V5_1024.png">
+
 
 <style>
 /* =========================
@@ -61,17 +64,13 @@
 /* =========================
    BASE
    ========================= */
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.6;
-  overflow-y: scroll;
+  overflow-y: scroll; /* 🔒 prevents horizontal jump */
 }
 
 a {
@@ -84,7 +83,7 @@ a:hover {
 }
 
 /* =========================
-   NAV WRAPPER (CANONICAL)
+   NAV WRAPPER (CRITICAL)
    ========================= */
 .mb-nav {
   max-width: 780px;
@@ -102,6 +101,7 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
   font-size: 1.15rem;
 }
 
@@ -117,6 +117,7 @@ a:hover {
 
 .mb-brand-tagline {
   opacity: 0.75;
+  font-weight: 400;
 }
 
 .mb-hamburger {
@@ -125,13 +126,21 @@ a:hover {
   border: none;
   color: var(--fg);
   cursor: pointer;
-  position: relative;
-  z-index: 1100;
 }
 
 .mb-hamburger .mb-close { display: none; }
 .mb-hamburger[aria-expanded="true"] .mb-open { display: none; }
 .mb-hamburger[aria-expanded="true"] .mb-close { display: inline; }
+
+.mb-hamburger {
+  position: relative;
+  z-index: 1100; /* must be higher than .mb-menu */
+}
+
+.mb-menu[aria-hidden="false"] + .mb-hamburger,
+.mb-hamburger[aria-expanded="true"] {
+  color: var(--fg);
+}
 
 /* =========================
    MENU
@@ -156,11 +165,18 @@ a:hover {
   margin-bottom: 20px;
 }
 
+.mb-menu a[aria-current="page"] {
+  opacity: 0.6;
+}
+
+/* =========================
+   DESKTOP NAV
+   ========================= */
 @media (min-width: 900px) {
   .mb-hamburger { display: none; }
 
   .mb-menu {
-    margin-top: 14px;
+    margin-top: 14px; /* 👈 adds breathing room */
     position: static;
     display: flex !important;
     flex-direction: row;
@@ -178,33 +194,7 @@ a:hover {
 }
 
 /* =========================
-   LANGUAGE SWITCH (CANONICAL)
-   ========================= */
-.lang-switch {
-  display: flex;
-  gap: 10px;
-  font-size: 0.75rem;
-  opacity: 0.6;
-  margin-top: 8px;
-}
-
-.lang-switch a {
-  letter-spacing: 0.05em;
-}
-
-.lang-switch a[aria-current="true"] {
-  opacity: 1;
-  font-weight: 600;
-}
-
-@media (max-width: 900px) {
-  .lang-switch {
-    display: none;
-  }
-}
-
-/* =========================
-   PAGE
+   PAGE (CANONICAL)
    ========================= */
 .page {
   max-width: 780px;
@@ -216,14 +206,41 @@ a:hover {
   color: var(--muted);
 }
 
-@media (max-width: 600px) {
-  .app-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .app-badge {
-    margin-top: 12px;
-    text-align: left;
+.rule {
+  border: none;
+  border-bottom: 1px solid var(--border);
+  margin: 48px 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.lang-switch {
+  display: flex;
+  gap: 10px;
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.lang-switch a {
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.lang-switch a:hover {
+  opacity: 1;
+}
+
+.lang-switch a[aria-current="true"] {
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* Hide on small screens */
+@media (max-width: 900px) {
+  .lang-switch {
+    display: none;
   }
 }
 </style>
@@ -231,37 +248,43 @@ a:hover {
 
 <body>
 
+<!-- MINDBEBOP MENU -->
 <div class="mb-nav">
   <header class="mb-header">
-    <a class="mb-brand" href="index.html">
-      <img src="../image/MB_LOGO_V5_1024.png" data-dark="../image/MB_LOGO_V5_1024_INV.png" alt="MINDBEBOP logo">
+    <a class="mb-brand" href="index.html" aria-current="page">
+      <img
+        src="../image/MB_LOGO_V5_1024.png"
+        data-dark="../image/MB_LOGO_V5_1024_INV.png"
+        alt="MINDBEBOP logo">
       <span class="mb-brand-name">MINDBEBOP</span>
-      <span class="mb-brand-tagline">今、ここにある思考を</span>
+      <span class="mb-brand-tagline"> 今、ここにある思考を</span>
     </a>
 
     <button class="mb-hamburger" aria-expanded="false" aria-controls="mb-menu">
       <span class="mb-open">☰</span>
       <span class="mb-close">×</span>
     </button>
-  </header>
+</header>
 
-  <div class="lang-switch">
-    <a href="/">EN</a>
-    <a href="/jp/" aria-current="true">JP</a>
-    <a href="/de/">DE</a>
-    <a href="/ko/">KO</a>
-    <a href="/fr/">FR</a>
-    <a href="/es/">ES</a>
-    <a href="/pt-br/">PT-BR</a>
-  </div>
+<div class="mb-lang">
+  <a href="/">EN</a>
+  <a href="/jp/" aria-current="true">JP</a>
+  <a href="/de/">DE</a>
+  <a href="/ko/">KO</a>
+  <a href="/fr/">FR</a>
+  <a href="/es/">ES</a>
+  <a href="/pt-br/">PT-BR</a>
+</div>
 
-  <nav id="mb-menu" class="mb-menu" aria-hidden="true">
+<nav id="mb-menu" class="mb-menu" aria-hidden="true">
     <a href="how-it-works.html">アプリのしくみ</a>
     <a href="everyday-thought-friction.html">思考の摩擦とは</a>
     <a href="everyday-moments.html">日々のひとコマ</a>
     <a href="philosophy.html">哲学</a>
   </nav>
 </div>
+
+<!-- PAGE CONTENT -->
 
 <div class="page">
 
@@ -392,7 +415,7 @@ MINDBEBOPが提供するのは、人生を劇的に変えるための「治療�
 あなたの世界もまた、穏やかにそれに追従していく。
   </p>
 
-  <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border);">
+<div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border);">
     <p style="margin: 0;">
       <a href="everyday-moments.html" style="text-decoration: none; font-weight: 600; font-size: 1.1rem;">
         日々のひとコマを見る
@@ -402,29 +425,44 @@ MINDBEBOPが提供するのは、人生を劇的に変えるための「治療�
       </span>
     </p>
   </div>
-
   <hr style="border:none; border-bottom:1px solid var(--border); margin:60px 0;">
 
+  <!-- Footer -->
   <div style="margin-top:60px; opacity:0.7; font-size:0.9rem;">
+    <!-- <p style="margin-bottom:12px;">
+      <a href="everyday-moments.html" style="color:inherit; text-decoration:none;">
+        Read: Everyday moments
+      </a>
+    </p>
+    <p style="margin-bottom:12px;">
+      <a href="philosophy.html" style="color:inherit; text-decoration:none;">
+        Read: Philosophy
+      </a>
+    </p> -->
     Copyright © 2026 MINDBEBOP — All rights reserved.
   </div>
+
+</div>
 </div>
 
+<!-- DARK MODE IMAGE SWAP (REQUIRED) -->
 <script>
 (function () {
   function applyDarkImages(isDark) {
     document.querySelectorAll('img[data-dark]').forEach(img => {
-      const darkSrc = img.getAttribute('data-dark');
-      const lightSrc = img.getAttribute('data-light') || img.src;
-      img.src = isDark ? darkSrc : lightSrc;
+      img.src = isDark
+        ? img.getAttribute('data-dark')
+        : img.getAttribute('data-light') || img.src;
     });
   }
+
   const media = window.matchMedia('(prefers-color-scheme: dark)');
   applyDarkImages(media.matches);
   media.addEventListener('change', e => applyDarkImages(e.matches));
 })();
 </script>
 
+<!-- MENU TOGGLE (NO SHIFT) -->
 <script>
 (() => {
   const btn = document.querySelector('.mb-hamburger');
@@ -437,6 +475,8 @@ MINDBEBOPが提供するのは、人生を劇的に変えるための「治療�
     scrollY = window.scrollY || 0;
     btn.setAttribute('aria-expanded', 'true');
     menu.setAttribute('aria-hidden', 'false');
+
+    // Lock the page without removing the scrollbar width.
     document.body.style.position = 'fixed';
     document.body.style.top = `-${scrollY}px`;
     document.body.style.left = '0';
@@ -447,17 +487,32 @@ MINDBEBOPが提供するのは、人生を劇的に変えるための「治療�
   function closeMenu() {
     btn.setAttribute('aria-expanded', 'false');
     menu.setAttribute('aria-hidden', 'true');
+
+    // Restore scroll position.
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.left = '';
     document.body.style.right = '';
     document.body.style.width = '';
+
     window.scrollTo(0, scrollY);
   }
 
   btn.addEventListener('click', () => {
     const isOpen = btn.getAttribute('aria-expanded') === 'true';
-    isOpen ? closeMenu() : openMenu();
+    if (isOpen) closeMenu();
+    else openMenu();
+  });
+
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => closeMenu());
+  });
+
+  // Optional: close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+      closeMenu();
+    }
   });
 })();
 </script>
