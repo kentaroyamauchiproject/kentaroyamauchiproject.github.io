@@ -262,6 +262,13 @@ p {
     display: none;
   }
 }
+
+/* LANGUAGE SWITCHER */
+.lang-switch { display: flex; gap: 10px; font-size: 0.75rem; opacity: 0.6; margin-top: 8px; }
+.lang-switch a:hover { opacity: 1; }
+.lang-switch a[aria-current="true"] { opacity: 1; font-weight: 600; }
+
+@media (max-width: 900px) { .lang-switch { display: none; } }
 </style>
 </head>
 
