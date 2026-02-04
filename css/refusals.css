@@ -1,0 +1,15 @@
+/* =========================
+   PAGE: refusals.html
+   ========================= */
+
+ul {
+  padding-left: 18px;
+}
+
+li {
+  margin-bottom: 12px;
+}
+
+li strong {
+  font-weight: 600;
+}

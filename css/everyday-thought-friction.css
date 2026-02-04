@@ -1,0 +1,62 @@
+/* =========================
+   PAGE: everyday-thought-friction.html
+   ========================= */
+
+.kicker {
+  font-size: 1.05rem;
+  opacity: 0.75;
+  margin-top: -8px;
+}
+
+.map-intro {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.map-text {
+  flex: 1 1 0;
+  max-width: 38ch;
+}
+
+.diagram {
+  flex: 0 0 300px;
+  max-width: 300px;
+}
+
+.diagram img {
+  width: 100%;
+  display: block;
+}
+
+@media (max-width: 760px) {
+  .map-intro {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .diagram {
+    width: 100%;
+    max-width: 360px;
+    margin: 20px 0;
+  }
+
+  .map-text {
+    max-width: 70ch;
+  }
+}
+
+/* Table */
+.table-wrap {
+  margin-top: 18px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 860px;
+}

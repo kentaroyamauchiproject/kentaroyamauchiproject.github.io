@@ -1,0 +1,20 @@
+/* =========================
+   PAGE: everyday-moments.html
+   ========================= */
+
+.section {
+  margin-top: 48px;
+}
+
+.section h2 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.section p {
+  max-width: 60ch;
+}
+
+.section + p {
+  margin-bottom: 0;
+}

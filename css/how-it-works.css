@@ -1,0 +1,31 @@
+/* =========================
+   PAGE: how-it-works.html
+   ========================= */
+
+h2 {
+  font-size: 1.4rem;
+  margin-top: 44px;
+  margin-bottom: 12px;
+}
+
+h3 {
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.app-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.app-title img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+p {
+  margin-bottom: 16px;
+}
