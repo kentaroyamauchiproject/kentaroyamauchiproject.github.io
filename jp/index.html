@@ -39,6 +39,9 @@
 <meta name="twitter:image" content="https://www.mindbebop.com/image/MB_LOGO_V5_1024.png">
 
 <style>
+/* =========================
+   VARIABLES
+   ========================= */
 :root {
   --bg: #ffffff;
   --fg: #000000;
@@ -55,6 +58,9 @@
   }
 }
 
+/* =========================
+   BASE
+   ========================= */
 * {
   box-sizing: border-box;
 }
@@ -77,10 +83,12 @@ a:hover {
   opacity: 0.6;
 }
 
-/* NAV */
+/* =========================
+   NAV WRAPPER (CANONICAL)
+   ========================= */
 .mb-nav {
   max-width: 780px;
-  margin: 0 auto 24px; /* ⬅ stabilizes vertical rhythm */
+  margin: 0 auto;
   padding: 16px 20px 0;
 }
 
@@ -125,27 +133,9 @@ a:hover {
 .mb-hamburger[aria-expanded="true"] .mb-open { display: none; }
 .mb-hamburger[aria-expanded="true"] .mb-close { display: inline; }
 
-/* LANGUAGE MENU — normalized */
-.mb-lang {
-  margin-top: 8px;
-  display: flex;
-  gap: 10px;
-  font-size: 0.75rem;
-  opacity: 0.6;
-}
-
-.mb-lang a[aria-current="true"] {
-  opacity: 1;
-  font-weight: 600;
-}
-
-@media (max-width: 900px) {
-  .mb-lang {
-    display: none;
-  }
-}
-
-/* MENU */
+/* =========================
+   MENU
+   ========================= */
 .mb-menu {
   position: fixed;
   inset: 0;
@@ -166,7 +156,6 @@ a:hover {
   margin-bottom: 20px;
 }
 
-/* DESKTOP NAV */
 @media (min-width: 900px) {
   .mb-hamburger { display: none; }
 
@@ -188,11 +177,39 @@ a:hover {
   }
 }
 
-/* PAGE */
+/* =========================
+   LANGUAGE SWITCH (CANONICAL)
+   ========================= */
+.lang-switch {
+  display: flex;
+  gap: 10px;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-top: 8px;
+}
+
+.lang-switch a {
+  letter-spacing: 0.05em;
+}
+
+.lang-switch a[aria-current="true"] {
+  opacity: 1;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .lang-switch {
+    display: none;
+  }
+}
+
+/* =========================
+   PAGE
+   ========================= */
 .page {
   max-width: 780px;
   margin: 0 auto;
-  padding: 24px 20px 80px; /* ⬅ matches other pages visually */
+  padding: 40px 20px 80px;
 }
 
 .subtle {
@@ -214,9 +231,6 @@ a:hover {
 
 <body>
 
-<!-- BODY CONTENT UNCHANGED -->
-<!-- (everything below is exactly as you pasted) -->
-
 <div class="mb-nav">
   <header class="mb-header">
     <a class="mb-brand" href="index.html">
@@ -231,9 +245,9 @@ a:hover {
     </button>
   </header>
 
-  <div class="mb-lang">
+  <div class="lang-switch">
     <a href="/">EN</a>
-    <a href="/jp/" aria-current="true" style="font-weight: 600; opacity: 1;">JP</a>
+    <a href="/jp/" aria-current="true">JP</a>
     <a href="/de/">DE</a>
     <a href="/ko/">KO</a>
     <a href="/fr/">FR</a>
@@ -251,7 +265,7 @@ a:hover {
 
 <div class="page">
 
-  <div style="padding:20px 0; border-bottom:1px solid var(--border);">
+<div style="padding:20px 0; border-bottom:1px solid var(--border);">
   <p style="font-size:1.25rem; font-weight:500; margin:0 0 10px 0;">
     思考を「解決」せずに、ただ「置く」。
   </p>
@@ -269,6 +283,7 @@ a:hover {
 </p>
 「メタコグ（Metacognitive = "Mind Noticing"）」の考え方を元にした、「マインドブラッシング」キット。脳のバグを突く手法で、残留思考を払い落とし、こころの静寂を取り戻すための超軽量アプリのセットです。
 </p>
+
 <p class="subtle">
 ガイダンスも、数値化も、あなたを追いかける通知もありません。<br>
 ただ、思考の摩擦を和らげる。それだけです。
