@@ -4,39 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Available Languages -->
 <link rel="alternate" hreflang="en" href="https://www.mindbebop.com/faq.html">
 <link rel="alternate" hreflang="x-default" href="https://www.mindbebop.com/faq.html">
 
-<!-- Favicons -->
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 <title>MINDBEBOP FAQ</title>
-
 <link rel="canonical" href="https://www.mindbebop.com/faq">
 <meta name="robots" content="index, follow">
+<meta name="description" content="Answers to common questions about MINDBEBOP, our everyday mental hygiene philosophy, and ultralight apps.">
 
-<meta name="description" content="Answers to common questions about MINDBEBOP, our everyday mental hygiene philosophy, thought care approach, privacy principles, and ultralight apps.">
-
-<!-- Open Graph -->
 <meta property="og:title" content="MINDBEBOP FAQ">
-<meta property="og:description" content="Learn more about MINDBEBOP, our mental hygiene philosophy, thought care approach, privacy principles, and ultralight tools for reducing thought friction.">
+<meta property="og:description" content="Learn more about MINDBEBOP mental hygiene and thought care tools.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.mindbebop.com/faq">
 <meta property="og:image" content="https://www.mindbebop.com/image/MB_LOGO_V4_1024.png">
 
 <style>
 /* =========================
-   VARIABLES (MUST COME FIRST)
+   CANONICAL CSS (SHARED)
    ========================= */
 :root {
   --bg: #ffffff;
   --fg: #000000;
   --border: #333333;
   --muted: rgba(0,0,0,0.75);
+  --soft: #F2F2F7;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,42 +41,31 @@
     --fg: #f2f2f7;
     --border: rgba(242,242,247,0.25);
     --muted: rgba(242,242,247,0.75);
+    --soft: #2C2C2C;
   }
 }
 
-/* =========================
-   BASE
-   ========================= */
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.6;
-  overflow-y: scroll; /* 🔒 prevents horizontal jump */
+  overflow-y: scroll;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+a { color: inherit; text-decoration: none; transition: opacity 0.15s ease; }
+a:hover { opacity: 0.6; }
 
-a:hover {
-  opacity: 0.6;
-}
-
-/* =========================
-   NAV CONTAINER
-   ========================= */
+/* NAV WRAPPER */
 .mb-nav {
   max-width: 780px;
   margin: 0 auto;
   padding: 16px 20px 0;
 }
 
-/* =========================
-   HEADER / MENU
-   ========================= */
 .mb-header {
   display: flex;
   justify-content: space-between;
@@ -91,235 +76,113 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 10px;
-  text-decoration: none;
   font-size: 1.15rem;
 }
 
-.mb-brand img {
-  width: 72px;
-  height: 72px;
-  object-fit: contain;
+.mb-brand img { width: 72px; height: 72px; object-fit: contain; }
+.mb-brand-name { font-weight: 600; }
+.mb-brand-tagline { opacity: 0.75; font-weight: 400; }
+
+/* LANG SWITCH */
+.lang-switch {
+  display: flex;
+  gap: 10px;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-top: 4px;
 }
 
-.mb-brand-name {
-  font-weight: 600;
-}
+.lang-switch a[aria-current="true"] { opacity: 1; font-weight: 600; }
+@media (max-width: 900px) { .lang-switch { display: none; } }
 
-.mb-brand-tagline {
-  opacity: 0.75;
-  font-weight: 400;
-}
-
+/* HAMBURGER & MENU */
 .mb-hamburger {
   font-size: 22px;
-  background: none;
-  border: none;
-  color: var(--fg);
-  cursor: pointer;
+  background: none; border: none;
+  color: var(--fg); cursor: pointer;
+  position: relative; z-index: 1100;
 }
 
-/* Hamburger icon swap */
-.mb-hamburger .mb-close {
-  display: none;
-}
+.mb-hamburger .mb-close { display: none; }
+.mb-hamburger[aria-expanded="true"] .mb-open { display: none; }
+.mb-hamburger[aria-expanded="true"] .mb-close { display: inline; }
 
-.mb-hamburger[aria-expanded="true"] .mb-open {
-  display: none;
-}
-
-.mb-hamburger[aria-expanded="true"] .mb-close {
-  display: inline;
-}
-
-.mb-hamburger {
-  position: relative;
-  z-index: 1100; /* must be higher than .mb-menu */
-}
-
-.mb-menu[aria-hidden="false"] + .mb-hamburger,
-.mb-hamburger[aria-expanded="true"] {
-  color: var(--fg);
-}
-
-/* =========================
-   OVERLAY MENU
-   ========================= */
 .mb-menu {
-  position: fixed;
-  inset: 0;
-  padding: 80px 24px;
-  display: none;
-  flex-direction: column;
+  position: fixed; inset: 0; padding: 80px 24px;
+  display: none; flex-direction: column;
   background: color-mix(in srgb, var(--bg) 92%, transparent);
-  backdrop-filter: blur(6px);
-  z-index: 1000;
+  backdrop-filter: blur(6px); z-index: 1000;
 }
 
-.mb-menu[aria-hidden="false"] {
-  display: flex;
-}
+.mb-menu[aria-hidden="false"] { display: flex; }
+.mb-menu a { font-size: 1.4rem; margin-bottom: 20px; }
+.mb-menu a[aria-current="page"] { opacity: 0.6; }
 
-.mb-menu a {
-  font-size: 1.4rem;
-  margin-bottom: 20px;
-  color: var(--fg);
-  text-decoration: none;
-}
-
-.mb-menu a[aria-current="page"] {
-  opacity: 0.6;
-}
-
-/* =========================
-   DESKTOP NAV
-   ========================= */
 @media (min-width: 900px) {
-  .mb-hamburger {
-    display: none;
-  }
-
+  .mb-hamburger { display: none; }
   .mb-menu {
-    margin-top: 14px; /* 👈 adds breathing room */
-    position: static;
-    display: flex !important;
-    flex-direction: row;
-    gap: 28px;
-    padding: 0;
-    backdrop-filter: none;
-    background: none;
+    margin-top: 14px;
+    position: static; display: flex !important;
+    flex-direction: row; gap: 28px; padding: 0;
+    background: none; backdrop-filter: none;
   }
-
-  .mb-menu a {
-    font-size: 0.8rem;
-    margin: 0;
-    letter-spacing: 0.02em;
-  }
+  .mb-menu a { font-size: 0.8rem; margin: 0; letter-spacing: 0.02em; }
 }
 
-/* =========================
-   PAGE
-   ========================= */
+/* BASE PAGE STRUCTURE */
 .page {
   max-width: 780px;
   margin: 0 auto;
   padding: 40px 20px 80px;
 }
 
-h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 0 0 24px;
-}
-
-h2 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-top: 44px;
-  margin-bottom: 12px;
-}
-
-h3 {
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin: 0;
-}
-
+h1 { font-size: 2rem; font-weight: 600; margin: 0 0 24px; }
 p { margin-bottom: 16px; }
+.subtle { color: var(--muted); }
+</style>
 
-.subtle {
-  color: var(--muted);
-}
-
-.rule {
-  border: none;
-  border-bottom: 1px solid var(--border);
-  margin: 48px 0;
-}
-
-.app-title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 28px;
-}
-
-.app-title img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
-
-.footer-link {
-  text-decoration: underline;
-}
-
-.section {
-  margin-bottom: 48px;
-}
-* {
-  box-sizing: border-box;
-}
-
-.lang-switch {
-  display: flex;
-  gap: 10px;
-  font-size: 0.75rem;
-  opacity: 0.6;
-}
-
-.lang-switch a {
-  text-decoration: none;
-  letter-spacing: 0.05em;
-}
-
-.lang-switch a:hover {
-  opacity: 1;
-}
-
-.lang-switch a[aria-current="true"] {
-  opacity: 1;
-  font-weight: 600;
-}
-
-/* Hide on small screens */
-@media (max-width: 900px) {
-  .lang-switch {
-    display: none;
-  }
-}
+<style>
+/* =========================
+   PAGE-SPECIFIC: FAQ
+   ========================= */
+.section { margin-bottom: 64px; }
+.section h2 { font-size: 1.4rem; font-weight: 600; margin-top: 0; margin-bottom: 16px; line-height: 1.3; }
+.section p { margin-bottom: 16px; }
+.section p strong { font-weight: 600; }
+.section a { text-decoration: underline; text-underline-offset: 2px; }
+.section .subtle a { opacity: 0.8; }
 </style>
 </head>
 
 <body>
 
-<!-- MINDBEBOP MENU -->
 <div class="mb-nav">
   <header class="mb-header">
-<a class="mb-brand" href="index.html">
-  <img
-    src="image/MB_LOGO_V5_1024.png"
-    data-dark="image/MB_LOGO_V5_1024_INV.png"
-    alt="MINDBEBOP logo">
-  <span class="mb-brand-name">MINDBEBOP</span>
-  <span class="mb-brand-tagline"> Thoughts, as they happen</span>
-</a>
+    <a class="mb-brand" href="index.html">
+      <img src="image/MB_LOGO_V5_1024.png"
+           data-dark="image/MB_LOGO_V5_1024_INV.png"
+           alt="MINDBEBOP logo">
+      <span class="mb-brand-name">MINDBEBOP</span>
+      <span class="mb-brand-tagline"> Thoughts, as they happen</span>
+    </a>
+
     <button class="mb-hamburger" aria-expanded="false" aria-controls="mb-menu">
       <span class="mb-open">☰</span>
       <span class="mb-close">×</span>
     </button>
-</header>
+  </header>
 
-<div class="lang-switch">
-  <a href="/faq.html" aria-current="true">EN</a>
-  <a href="/jp/">JP</a>
-  <a href="/de/">DE</a>
-  <a href="/ko/">KO</a>
-  <a href="/fr/">FR</a>
-  <a href="/es/">ES</a>
-  <a href="/pt-br/">PT-BR</a>
-</div>
+  <div class="lang-switch">
+    <a href="/faq.html" aria-current="true">EN</a>
+    <a href="/jp/">JP</a>
+    <a href="/de/">DE</a>
+    <a href="/ko/">KO</a>
+    <a href="/fr/">FR</a>
+    <a href="/es/">ES</a>
+    <a href="/pt-br/">PT-BR</a>
+  </div>
 
-<nav id="mb-menu" class="mb-menu" aria-hidden="true">
+  <nav id="mb-menu" class="mb-menu" aria-hidden="true">
     <a href="how-it-works.html">How it works</a>
     <a href="everyday-thought-friction.html">Thought Friction</a>
     <a href="refusals.html">Refusals</a>
@@ -334,235 +197,94 @@ p { margin-bottom: 16px; }
 
 <div class="page">
 
-<h1>MINDBEBOP FAQ</h1>
-<p><strong>Last Updated:</strong> 2026-1-14</p>
+  <h1>MINDBEBOP FAQ</h1>
+  <p class="subtle" style="margin-bottom: 48px;">Last Updated: January 14, 2026</p>
 
-<div class="section">
+  <div class="section">
     <h2>What is MINDBEBOP?</h2>
     <p>
-        MINDBEBOP is an independent project focused on everyday mental hygiene —
-        the ongoing care of the mind in daily life.
-        It addresses the quiet buildup of thought residue
-        that collects in your head throughout the day.
+      MINDBEBOP is an independent project focused on everyday mental hygiene — the ongoing care of the mind in daily life. It addresses the quiet buildup of thought residue that collects in your head throughout the day.
     </p>
+    <p><strong>Mental hygiene is the frame. Thought care is the daily action.</strong></p>
     <p>
-        <strong>Mental hygiene is the frame. Thought care is the daily action.</strong>
+      We use the term <em>mind-brushing kit</em> to describe the ultralight apps we’re building: simple tools designed to help you notice thoughts, put them down when needed, and move on.
     </p>
-    <p>
-        We use the term <em>mind-brushing kit</em> to describe the ultralight apps we’re building:
-        simple tools designed to help you notice thoughts,
-        put them down when needed,
-        and move on.
-    </p>
-    <p>
-        MINDBEBOP is not a program, course, or system to follow.
-        Each app is meant to be used lightly,
-        whenever it feels helpful.
-    </p>
-</div>
+  </div>
 
-<div class="section">
+  <div class="section">
     <h2>Is MINDBEBOP therapy or a medical product?</h2>
+    <p><strong>No. MINDBEBOP is not therapy, medical treatment, or a diagnostic tool.</strong></p>
     <p>
-        <strong>No. MINDBEBOP is not therapy, medical treatment, or a diagnostic tool.</strong>
+      MINDBEBOP is about mental hygiene — everyday practices that help keep the mind clear, lighter, and less cluttered.
     </p>
     <p>
-        MINDBEBOP is about mental hygiene —
-        everyday practices that help keep the mind clear,
-        lighter, and less cluttered.
+      Our apps are designed as everyday tools for thought care — similar to writing a thought down, taking a quiet pause, or setting a reminder so your head doesn’t have to keep holding it.
     </p>
-    <p>
-        Our apps are designed as everyday tools for thought care —
-        similar to writing a thought down,
-        taking a quiet pause,
-        or setting a reminder so your head doesn’t have to keep holding it.
-    </p>
-<p>
-    MINDBEBOP does not diagnose conditions,
-    provide treatment,
-    or replace professional mental health care.
-</p>
+  </div>
 
-<p>
-    MINDBEBOP works at the level of everyday thought activity,
-    not behavior change or treatment.
-</p>
-
-</div>
-
-<div class="section">
-    <h2>Do you have a psychology or medical background?</h2>
-    <p>
-        MINDBEBOP was created from lived experience,
-        observation,
-        and a desire to build simple,
-        human tools for everyday mental hygiene.
-    </p>
-    <p>
-        While we respect and value professional mental health disciplines,
-        MINDBEBOP is intentionally designed to be non-clinical
-        and non-therapeutic.
-    </p>
-</div>
-
-<div class="section">
+  <div class="section">
     <h2>Who are these apps for?</h2>
     <p>
-        MINDBEBOP is for people who want a lighter,
-        more intentional relationship with their thoughts —
-        without turning it into a performance,
-        diagnosis,
-        or long routine.
+      MINDBEBOP is for people who want a lighter, more intentional relationship with their thoughts — without turning it into a performance, diagnosis, or long routine.
     </p>
     <p>
-        You don’t need prior experience with meditation,
-        journaling,
-        or self-help.<br>
-        These tools aren’t about escaping thoughts
-        or fixing yourself —
-        they’re about noticing a thought,
-        responding if needed,
-        and then moving on.
+      You don’t need prior experience with meditation or journaling. These tools aren’t about escaping thoughts or fixing yourself — they’re about noticing a thought, responding if needed, and then moving on.
     </p>
-</div>
+  </div>
 
-<div class="section">
+  <div class="section">
     <h2>What do you mean by “everyday thought friction”?</h2>
     <p>
-        Everyday thought friction is the quiet strain
-        that builds up
-        when thoughts stay unacknowledged,
-        unfinished,
-        or keep interrupting your attention.
+      Everyday thought friction is the quiet strain that builds up when thoughts stay unacknowledged, unfinished, or keep interrupting your attention.
     </p>
     <p>
-        It’s not a diagnosis or a condition —
-        it’s a common,
-        everyday experience.<br>
-It’s something many people quietly live with, but rarely put into words.
+      When a thought is written down or given a clear endpoint, your head no longer has to keep it active in the background. MINDBEBOP apps give thoughts a place to land, reducing thought residue over time.
     </p>
-    <p>
-        When a thought is written down,
-        acknowledged,
-        or given a clear endpoint,
-        your head no longer has to keep it active
-        in the background.
+    <p class="subtle">
+      Explore concrete examples: <a href="everyday-thought-friction.html">Everyday thought friction</a>.
     </p>
-    <p>
-        MINDBEBOP apps reflect this idea
-        by giving thoughts a place to land,
-        a response when needed,
-        and space to naturally end —
-        reducing thought residue over time
-        as part of everyday mental hygiene.
-    </p>
-<p class="subtle">
-    If you’d like to see concrete, everyday examples of what this kind of friction looks like,
-    you can explore them here:
-    <a href="everyday-thought-friction.html">
-        Everyday thought friction
-    </a>.
-</p>
-</div>
+  </div>
 
-<div class="section">
-    <h2>How often should I use the apps?</h2>
-    <p>
-        There is no required frequency.
-    </p>
-    <p>
-        You can use the apps daily,
-        occasionally,
-        or only when a thought comes up.
-        Consistency can help —
-        but pressure doesn’t.
-    </p>
-</div>
-
-<div class="section">
-    <h2>How is MINDBEBOP different from journaling or wellness apps?</h2>
-    <p>
-        MINDBEBOP focuses on short,
-        everyday interactions
-        rather than long sessions,
-        streaks,
-        or goals.
-    </p>
-    <p>
-        Each app supports a simple action —
-        responding to a thought,
-        setting it aside,
-        or creating a brief moment of quiet —
-        much like brushing your teeth
-        rather than training for a marathon.
-    </p>
-    <p>
-        If you’re curious how people use the apps
-        in everyday situations,
-        you can see a few quiet examples here:
-        <a href="everyday-moments.html">Everyday moments</a>.
-    </p>
-</div>
-
-<div class="section">
+  <div class="section">
     <h2>Is my data private?</h2>
+    <p>Yes. MINDBEBOP apps operate entirely on your device.</p>
     <p>
-        Yes. MINDBEBOP apps operate entirely on your device.
+      We do not collect, store, transmit, or sell personal data. Anything you create stays on your device and is removed when you uninstall the app.
     </p>
     <p>
-        We do not collect,
-        store,
-        transmit,
-        or sell personal data.
-        Anything you create stays on your device
-        and is removed when you uninstall the app.
+      For full details, see our <a href="privacy-policy.html">Privacy Policy</a>.
     </p>
-    <p>
-        For full details,
-        please see our
-        <a href="privacy-policy.html">Privacy Policy</a>.
-    </p>
-</div>
+  </div>
 
-<div class="section">
+  <div class="section">
     <h2>What are the individual apps?</h2>
     <p>
-        <strong>MindFlipOut</strong> helps you respond to a thought that keeps repeating.<br>
-        <strong>MindShoutOut</strong> lets you set reminders so your head doesn’t have to keep holding a thought.<br>
-        <strong>MindZoneOut</strong> creates short moments of intentional quiet so thoughts can settle.
+      <strong>MindFlipOut</strong> helps you respond to a thought that keeps repeating.<br>
+      <strong>MindShoutOut</strong> lets you set reminders so your head doesn’t have to keep holding a thought.<br>
+      <strong>MindZoneOut</strong> creates short moments of intentional quiet so thoughts can settle.
     </p>
-    <p>
-        You can use one app on its own,
-        or combine them
-        in whatever way feels useful to you.
-    </p>
-</div>
+  </div>
 
-<div class="section">
+  <div class="section">
     <h2>How can I contact you?</h2>
     <p>
-        If you have questions or feedback,
-        you can reach us at:
+      If you have questions or feedback, you can reach us at:
     </p>
     <p>
-        <strong>Email:</strong>
-        <a href="mailto:support@mindbebop.com">support@mindbebop.com</a><br>
-        <strong>Website:</strong>
-        <a href="https://www.mindbebop.com">www.mindbebop.com</a>
+      <strong>Email:</strong> <a href="mailto:support@mindbebop.com">support@mindbebop.com</a><br>
+      <strong>Website:</strong> <a href="https://www.mindbebop.com">www.mindbebop.com</a>
     </p>
+  </div>
+
+  <div style="margin-top:80px; padding-top:40px; border-top: 1px solid var(--border); opacity:0.7; font-size:0.9rem;">
+    <p style="margin-bottom:12px;">
+      <a href="philosophy.html" style="text-decoration:underline;">Read: Philosophy</a>
+    </p>
+    Copyright © 2026 MINDBEBOP — All rights reserved.
+  </div>
+
 </div>
 
-<!-- Footer -->
-<div style="margin-top:60px; opacity:0.7; font-size:0.9rem;">
-<p style="margin-bottom:12px;">
-<a href="philosophy.html" class="footer-link">Read: Philosophy</a>
-</p>
-Copyright © 2026 MINDBEBOP — All rights reserved.
-</div>
-
-</div>
-
-<!-- DARK MODE IMAGE SWAP (REQUIRED) -->
 <script>
 (function () {
   function applyDarkImages(isDark) {
@@ -572,35 +294,48 @@ Copyright © 2026 MINDBEBOP — All rights reserved.
         : img.getAttribute('data-light') || img.src;
     });
   }
-
   const media = window.matchMedia('(prefers-color-scheme: dark)');
   applyDarkImages(media.matches);
   media.addEventListener('change', e => applyDarkImages(e.matches));
 })();
 </script>
 
-<!-- MENU TOGGLE -->
 <script>
 (() => {
   const btn = document.querySelector('.mb-hamburger');
   const menu = document.querySelector('.mb-menu');
   if (!btn || !menu) return;
 
+  let scrollY = 0;
+
+  function openMenu() {
+    scrollY = window.scrollY || 0;
+    btn.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+  }
+
+  function closeMenu() {
+    btn.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-hidden', 'true');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    window.scrollTo(0, scrollY);
+  }
+
   btn.addEventListener('click', () => {
-    const open = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!open));
-    menu.setAttribute('aria-hidden', String(open));
-    document.body.style.overflow = open ? '' : 'hidden';
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    if (isOpen) closeMenu();
+    else openMenu();
   });
 
   menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      btn.setAttribute('aria-expanded', 'false');
-      menu.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    });
+    link.addEventListener('click', () => closeMenu());
   });
 })();
 </script>
+
 </body>
 </html>
