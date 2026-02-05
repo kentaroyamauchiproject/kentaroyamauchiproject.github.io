@@ -17,13 +17,16 @@
 
 <style>
 /* =========================
-   VARIABLES
+   CANONICAL CSS — MINDBEBOP
    ========================= */
+
+/* ---- Variables ---- */
 :root {
   --bg: #ffffff;
   --fg: #000000;
   --border: #333333;
   --muted: rgba(0,0,0,0.75);
+  --soft: #F2F2F7;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,12 +35,13 @@
     --fg: #f2f2f7;
     --border: rgba(242,242,247,0.25);
     --muted: rgba(242,242,247,0.75);
+    --soft: #2C2C2C;
   }
 }
 
-/* =========================
-   BASE
-   ========================= */
+/* ---- Reset / Base ---- */
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   background: var(--bg);
@@ -47,76 +51,128 @@ body {
   overflow-y: scroll;
 }
 
-a { color: inherit; text-decoration: none; }
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
 a:hover { opacity: 0.6; }
-* { box-sizing: border-box; }
 
 /* =========================
-   NAV & MENU
+   NAVIGATION
    ========================= */
-.mb-nav { max-width: 780px; margin: 0 auto; padding: 16px 20px 0; }
-.mb-header { display: flex; justify-content: space-between; align-items: center; }
-.mb-brand { display: flex; align-items: center; gap: 10px; font-size: 1.15rem; }
-.mb-brand img { width: 72px; height: 72px; object-fit: contain; }
-.mb-brand-name { font-weight: 600; }
-.mb-brand-tagline { opacity: 0.75; font-weight: 400; }
 
-.mb-hamburger {
-  font-size: 22px; background: none; border: none; color: var(--fg); cursor: pointer;
-  position: relative; z-index: 1100;
+.mb-nav {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 16px 20px 0;
 }
+
+.mb-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ---- Brand ---- */
+.mb-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.05rem;
+}
+
+.mb-brand img {
+  width: 48px;          /* FIX: consistent icon size */
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.mb-brand-name {
+  font-weight: 600;
+}
+
+.mb-brand-tagline {
+  opacity: 0.7;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+/* =========================
+   LANGUAGE SWITCH (DESKTOP)
+   ========================= */
+.lang-switch {
+  display: flex;
+  gap: 10px;
+  font-size: 0.7rem;
+  opacity: 0.6;
+  margin-top: 6px;
+}
+
+.lang-switch a[aria-current="true"] {
+  opacity: 1;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .lang-switch { display: none; }
+}
+
+/* =========================
+   HAMBURGER
+   ========================= */
+.mb-hamburger {
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: var(--fg);
+  cursor: pointer;
+  z-index: 1100;
+}
+
 .mb-hamburger .mb-close { display: none; }
 .mb-hamburger[aria-expanded="true"] .mb-open { display: none; }
 .mb-hamburger[aria-expanded="true"] .mb-close { display: inline; }
 
+/* =========================
+   MOBILE MENU (OVERLAY)
+   ========================= */
 .mb-menu {
-  position: fixed; inset: 0; padding: 80px 24px; display: none; flex-direction: column;
+  position: fixed;
+  inset: 0;
+  padding: 80px 24px 32px;
+  display: none;
+  flex-direction: column;
   background: color-mix(in srgb, var(--bg) 92%, transparent);
-  backdrop-filter: blur(6px); z-index: 1000;
-}
-.mb-menu[aria-hidden="false"] { display: flex; }
-.mb-menu a { font-size: 1.4rem; margin-bottom: 20px; }
-.mb-menu a[aria-current="page"] { opacity: 0.6; }
-
-@media (min-width: 900px) {
-  .mb-hamburger { display: none; }
-  .mb-menu {
-    margin-top: 14px; position: static; display: flex !important;
-    flex-direction: row; gap: 28px; padding: 0; background: none; backdrop-filter: none;
-  }
-  .mb-menu a { font-size: 0.8rem; margin: 0; letter-spacing: 0.02em; }
+  backdrop-filter: blur(6px);
+  z-index: 1000;
 }
 
-/* =========================
-   PAGE & UTILITIES
-   ========================= */
-.page { max-width: 780px; margin: 0 auto; padding: 40px 20px 80px; }
-.subtle { color: var(--muted); }
-.rule { border: none; border-bottom: 1px solid var(--border); margin: 48px 0; }
-
-/* LANGUAGE SWITCHER */
-.lang-switch { display: flex; gap: 10px; font-size: 0.75rem; opacity: 0.6; margin-top: 8px; }
-.lang-switch a:hover { opacity: 1; }
-.lang-switch a[aria-current="true"] { opacity: 1; font-weight: 600; }
-
-@media (max-width: 900px) { .lang-switch { display: none; } }
-
-/* APP HEADERS RESPONSIVE */
-@media (max-width: 600px) {
-  .app-header { flex-direction: column !important; align-items: flex-start !important; }
-  .app-badge { margin-top: 12px; text-align: left !important; }
+.mb-menu[aria-hidden="false"] {
+  display: flex;
 }
 
-/* =========================
-   MOBILE LANGUAGE SWITCH (MENU)
-   ========================= */
+/* Main menu links */
+.mb-menu-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.mb-menu-main a {
+  font-size: 1.35rem;
+  margin-bottom: 18px;
+}
+
+/* Mobile language block */
 .mb-menu-lang {
   margin-top: auto;
-  padding-top: 32px;
+  padding-top: 28px;
   border-top: 1px solid var(--border);
 }
 
 .mb-menu-lang a {
+  display: block;
   font-size: 0.95rem;
   opacity: 0.75;
   margin-bottom: 12px;
@@ -125,6 +181,189 @@ a:hover { opacity: 0.6; }
 .mb-menu-lang a[aria-current="true"] {
   opacity: 1;
   font-weight: 600;
+}
+
+/* =========================
+   DESKTOP MENU (INLINE)
+   ========================= */
+@media (min-width: 900px) {
+  .mb-hamburger { display: none; }
+
+  .mb-menu {
+    position: static;
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    gap: 28px;
+    padding: 0;
+    background: none;
+    backdrop-filter: none;
+  }
+
+  .mb-menu-main {
+    display: flex;
+    flex-direction: row;
+    gap: 28px;
+  }
+
+  .mb-menu-main a {
+    font-size: 0.78rem;
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+
+  .mb-menu-lang { display: none; }
+}
+
+/* =========================
+   PAGE CONTAINER
+   ========================= */
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 24px;
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 44px;
+  margin-bottom: 12px;
+}
+
+p { margin-bottom: 16px; }
+
+.subtle { color: var(--muted); }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 48px 0;
+}
+
+ul {
+  padding-left: 20px;
+  margin-bottom: 24px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* =========================
+   META TEXT
+   ========================= */
+
+.last-updated {
+  margin-bottom: 48px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.last-updated strong {
+  font-weight: 600;
+}
+</style>
+<style>
+  /* =========================
+   INDEX / LANDING PAGE ONLY
+   ========================= */
+
+/* HERO */
+.hero-section {
+  margin-bottom: 40px;
+}
+
+.hero-lead {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* APP SECTION */
+.app-container {
+  margin-top: 56px;
+}
+
+.app-item {
+  margin-bottom: 72px;
+}
+
+/* APP HEADER */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+/* APP INFO */
+.app-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* APP ICON — index only */
+.app-icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* APP META */
+.app-meta {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-top: 2px;
+}
+
+/* APP STORE BADGE */
+.app-badge {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.app-badge img {
+  height: 40px;
+  width: auto;
+}
+
+.badge-caption {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-top: 6px;
+}
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 700px) {
+  .hero-lead {
+    font-size: 1.2rem;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .app-badge {
+    margin-top: 12px;
+    text-align: left;
+  }
+
+.app-meta {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
 }
 </style>
 </head>
