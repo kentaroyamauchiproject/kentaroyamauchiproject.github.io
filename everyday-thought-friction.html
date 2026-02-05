@@ -19,7 +19,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 <title>MINDBEBOP — Everyday thought friction</title>
-<link rel="canonical" href="https://www.mindbebop.com/everyday-thought-friction">
+<link rel="canonical" href="https://www.mindbebop.com/everyday-thought-friction.html">
 <meta name="robots" content="index, follow">
 <meta name="description" content="Everyday thought friction is the quiet mental drag that builds up when thoughts have nowhere to land — and how MINDBEBOP gives them a place to go.">
 
@@ -267,7 +267,24 @@ hr {
    PAGE-SPECIFIC: THOUGHT FRICTION
    ========================= */
 .kicker { font-size: 1.05rem; opacity: 0.75; margin-top: -8px; }
-ul.subtle { padding-left: 18px; }
+.page ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 24px 0;
+}
+
+.page ul li {
+  margin-bottom: 10px;
+  padding-left: 18px;
+  position: relative;
+}
+
+.page ul li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  opacity: 0.5;
+}
 
 .map-intro { display: flex; gap: 32px; align-items: center; margin-top: 16px; }
 .map-text { flex: 1 1 0; max-width: 38ch; }
@@ -284,6 +301,16 @@ table { width: 100%; border-collapse: collapse; min-width: 860px; }
 thead th { padding: 14px; border-bottom: 1px solid var(--border); background: var(--soft); }
 tbody td { padding: 14px; border-bottom: 1px solid var(--border); }
 .icon { width: 40px; height: 40px; object-fit: contain; }
+
+thead th {
+  font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+  thead th {
+    background: rgba(255,255,255,0.06);
+  }
+}
 </style>
 </head>
 
