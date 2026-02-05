@@ -359,6 +359,26 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+/* =========================
+   MOBILE LANGUAGE SWITCH (MENU)
+   ========================= */
+.mb-menu-lang {
+  margin-top: auto;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.mb-menu-lang a {
+  font-size: 0.95rem;
+  opacity: 0.75;
+  margin-bottom: 12px;
+}
+
+.mb-menu-lang a[aria-current="true"] {
+  opacity: 1;
+  font-weight: 600;
+}
 </style>
 
 </head>
@@ -397,6 +417,15 @@ a {
   <a href="everyday-thought-friction.html" aria-current="page">思考の摩擦とは</a>
   <a href="everyday-moments.html">日々のひとコマ</a>
   <a href="philosophy.html">哲学</a>
+    <div class="mb-menu-lang">
+    <a href="/" aria-current="true">English</a>
+    <a href="/jp/">日本語</a>
+    <a href="/de/">Deutsch</a>
+    <a href="/ko/">한국어</a>
+    <a href="/fr/">Français</a>
+    <a href="/es/">Español</a>
+    <a href="/pt-br/">Português (Brasil)</a>
+  </div>
 </nav>
 </div>
 
