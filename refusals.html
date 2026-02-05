@@ -4,11 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Available Languages -->
 <link rel="alternate" hreflang="en" href="https://www.mindbebop.com/refusals.html">
 <link rel="alternate" hreflang="x-default" href="https://www.mindbebop.com/refusals.html">
 
-<!-- Favicons -->
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -28,13 +26,14 @@
 
 <style>
 /* =========================
-   VARIABLES
+   CANONICAL CSS (SHARED)
    ========================= */
 :root {
   --bg: #ffffff;
   --fg: #000000;
   --border: #333333;
   --muted: rgba(0,0,0,0.75);
+  --soft: #F2F2F7;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -43,33 +42,25 @@
     --fg: #f2f2f7;
     --border: rgba(242,242,247,0.25);
     --muted: rgba(242,242,247,0.75);
+    --soft: #2C2C2C;
   }
 }
 
-/* =========================
-   BASE
-   ========================= */
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.6;
-  overflow-y: scroll; /* 🔒 prevents horizontal jump */
+  overflow-y: scroll;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+a { color: inherit; text-decoration: none; transition: opacity 0.15s ease; }
+a:hover { opacity: 0.6; }
 
-a:hover {
-  opacity: 0.6;
-}
-
-/* =========================
-   NAV WRAPPER (CRITICAL)
-   ========================= */
+/* NAV WRAPPER */
 .mb-nav {
   max-width: 780px;
   margin: 0 auto;
@@ -86,196 +77,158 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 10px;
-  text-decoration: none;
   font-size: 1.15rem;
 }
 
-.mb-brand img {
-  width: 72px;
-  height: 72px;
-  object-fit: contain;
+.mb-brand img { width: 72px; height: 72px; object-fit: contain; }
+.mb-brand-name { font-weight: 600; }
+.mb-brand-tagline { opacity: 0.75; font-weight: 400; }
+
+/* LANG SWITCH */
+.lang-switch {
+  display: flex;
+  gap: 10px;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-top: 4px;
 }
 
-.mb-brand-name {
-  font-weight: 600;
-}
+.lang-switch a[aria-current="true"] { opacity: 1; font-weight: 600; }
+@media (max-width: 900px) { .lang-switch { display: none; } }
 
-.mb-brand-tagline {
-  opacity: 0.75;
-  font-weight: 400;
-}
-
+/* HAMBURGER & MENU */
 .mb-hamburger {
   font-size: 22px;
-  background: none;
-  border: none;
-  color: var(--fg);
-  cursor: pointer;
+  background: none; border: none;
+  color: var(--fg); cursor: pointer;
+  position: relative; z-index: 1100;
 }
 
 .mb-hamburger .mb-close { display: none; }
 .mb-hamburger[aria-expanded="true"] .mb-open { display: none; }
 .mb-hamburger[aria-expanded="true"] .mb-close { display: inline; }
 
-.mb-hamburger {
-  position: relative;
-  z-index: 1100; /* must be higher than .mb-menu */
-}
-
-.mb-menu[aria-hidden="false"] + .mb-hamburger,
-.mb-hamburger[aria-expanded="true"] {
-  color: var(--fg);
-}
-
-/* =========================
-   MENU
-   ========================= */
 .mb-menu {
-  position: fixed;
-  inset: 0;
-  padding: 80px 24px;
-  display: none;
-  flex-direction: column;
+  position: fixed; inset: 0; padding: 80px 24px;
+  display: none; flex-direction: column;
   background: color-mix(in srgb, var(--bg) 92%, transparent);
-  backdrop-filter: blur(6px);
-  z-index: 1000;
+  backdrop-filter: blur(6px); z-index: 1000;
 }
 
-.mb-menu[aria-hidden="false"] {
-  display: flex;
-}
+.mb-menu[aria-hidden="false"] { display: flex; }
+.mb-menu a { font-size: 1.4rem; margin-bottom: 20px; }
+.mb-menu a[aria-current="page"] { opacity: 0.6; }
 
-.mb-menu a {
-  font-size: 1.4rem;
-  margin-bottom: 20px;
-}
-
-.mb-menu a[aria-current="page"] {
-  opacity: 0.6;
-}
-
-/* =========================
-   DESKTOP NAV
-   ========================= */
 @media (min-width: 900px) {
   .mb-hamburger { display: none; }
-
   .mb-menu {
-    margin-top: 14px; /* 👈 adds breathing room */
-    position: static;
-    display: flex !important;
-    flex-direction: row;
-    gap: 28px;
-    padding: 0;
-    background: none;
-    backdrop-filter: none;
+    margin-top: 14px;
+    position: static; display: flex !important;
+    flex-direction: row; gap: 28px; padding: 0;
+    background: none; backdrop-filter: none;
   }
-
-  .mb-menu a {
-    font-size: 0.8rem;
-    margin: 0;
-    letter-spacing: 0.02em;
-  }
+  .mb-menu a { font-size: 0.8rem; margin: 0; letter-spacing: 0.02em; }
 }
-/* =========================
-   PAGE (CANONICAL — MUST MATCH how-it-works.html)
-   ========================= */
+
+/* BASE PAGE STRUCTURE */
 .page {
   max-width: 780px;
   margin: 0 auto;
   padding: 40px 20px 80px;
 }
 
-h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 0 0 24px;
+h1 { font-size: 2rem; font-weight: 600; margin: 0 0 24px; }
+h2 { font-size: 1.4rem; font-weight: 600; margin-top: 44px; margin-bottom: 12px; }
+p { margin-bottom: 16px; }
+.subtle { color: var(--muted); }
+.rule { border: none; border-bottom: 1px solid var(--border); margin: 48px 0; }
+</style>
+
+<style>
+/* =========================
+   PAGE-SPECIFIC: REFUSALS
+   ========================= */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-h2 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-top: 44px;
+ul li {
+  margin-bottom: 24px;
+}
+
+ul li strong {
+  display: block;
+  font-size: 1.1rem;
+}
+
+ul li .subtle {
+  display: block;
+  font-size: 0.95rem;
+}
+
+footer {
+  margin-top: 60px;
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+footer p {
+  margin-bottom: 8px;
+}
+
+/* =========================
+   MOBILE LANGUAGE SWITCH (MENU)
+   ========================= */
+.mb-menu-lang {
+  margin-top: auto;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.mb-menu-lang a {
+  font-size: 0.95rem;
+  opacity: 0.75;
   margin-bottom: 12px;
 }
 
-p {
-  margin-bottom: 16px;
-}
-
-.subtle {
-  color: var(--muted);
-}
-
-.rule {
-  border: none;
-  border-bottom: 1px solid var(--border);
-  margin: 48px 0;
-}
-* {
-  box-sizing: border-box;
-}
-
-.lang-switch {
-  display: flex;
-  gap: 10px;
-  font-size: 0.75rem;
-  opacity: 0.6;
-}
-
-.lang-switch a {
-  text-decoration: none;
-  letter-spacing: 0.05em;
-}
-
-.lang-switch a:hover {
-  opacity: 1;
-}
-
-.lang-switch a[aria-current="true"] {
+.mb-menu-lang a[aria-current="true"] {
   opacity: 1;
   font-weight: 600;
-}
-
-/* Hide on small screens */
-@media (max-width: 900px) {
-  .lang-switch {
-    display: none;
-  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- MINDBEBOP MENU -->
 <div class="mb-nav">
   <header class="mb-header">
-<a class="mb-brand" href="index.html">
-  <img
-    src="image/MB_LOGO_V5_1024.png"
-    data-dark="image/MB_LOGO_V5_1024_INV.png"
-    alt="MINDBEBOP logo">
-  <span class="mb-brand-name">MINDBEBOP</span>
-  <span class="mb-brand-tagline"> Thoughts, as they happen</span>
-</a>
+    <a class="mb-brand" href="index.html">
+      <img
+        src="image/MB_LOGO_V5_1024.png"
+        data-dark="image/MB_LOGO_V5_1024_INV.png"
+        alt="MINDBEBOP logo">
+      <span class="mb-brand-name">MINDBEBOP</span>
+      <span class="mb-brand-tagline"> Thoughts, as they happen</span>
+    </a>
     <button class="mb-hamburger" aria-expanded="false" aria-controls="mb-menu">
       <span class="mb-open">☰</span>
       <span class="mb-close">×</span>
     </button>
-</header>
+  </header>
 
-<div class="lang-switch">
-  <a href="/refusals.html" aria-current="true">EN</a>
-  <a href="/jp/">JP</a>
-  <a href="/de/">DE</a>
-  <a href="/ko/">KO</a>
-  <a href="/fr/">FR</a>
-  <a href="/es/">ES</a>
-  <a href="/pt-br/">PT-BR</a>
-</div>
+  <div class="lang-switch">
+    <a href="/refusals.html" aria-current="true">EN</a>
+    <a href="/jp/refusals.html">JP</a>
+    <a href="/de/refusals.html">DE</a>
+    <a href="/ko/refusals.html">KO</a>
+    <a href="/fr/refusals.html">FR</a>
+    <a href="/es/refusals.html">ES</a>
+    <a href="/pt-br/refusals.html">PT-BR</a>
+  </div>
 
-<nav id="mb-menu" class="mb-menu" aria-hidden="true">
+  <nav id="mb-menu" class="mb-menu" aria-hidden="true">
     <a href="how-it-works.html">How it works</a>
     <a href="everyday-thought-friction.html">Thought Friction</a>
     <a href="refusals.html" aria-current="page">Refusals</a>
@@ -285,122 +238,106 @@ p {
     <a href="faq.html">FAQ</a>
     <a href="press-background.html">Press</a>
     <a href="founders-blog.html">Blog</a>
+      <div class="mb-menu-lang">
+    <a href="/" aria-current="true">English</a>
+    <a href="/jp/">日本語</a>
+    <a href="/de/">Deutsch</a>
+    <a href="/ko/">한국어</a>
+    <a href="/fr/">Français</a>
+    <a href="/es/">Español</a>
+    <a href="/pt-br/">Português (Brasil)</a>
+  </div>
   </nav>
 </div>
 
-<!-- PAGE CONTENT -->
 <div class="page">
-<h1>Refusals</h1>
+  <h1>Refusals</h1>
 
-<p class="subtle">
-What the MINDBEBOP system deliberately refuses to do.
-</p>
-
-<p>
-MINDBEBOP is defined as much by what it leaves out
-as by what it includes.
-</p>
-
-<p>
-These are not missing features.
-They are boundaries — placed on the system,
-not on the person using it.
-</p>
-
-<hr class="rule">
-
-<ul>
-  <li>
-    <strong>No goals, targets, or outcomes</strong>
-    <span class="subtle">The system does not push you toward improvement.</span>
-  </li>
-
-  <li>
-    <strong>No progress tracking, streaks, or scores</strong>
-    <span class="subtle">Nothing accumulates. Nothing compounds.</span>
-  </li>
-
-  <li>
-    <strong>No evaluation of thoughts, emotions, or usage</strong>
-    <span class="subtle">Nothing is judged, ranked, or interpreted.</span>
-  </li>
-
-  <li>
-    <strong>No coaching, instruction, or optimization</strong>
-    <span class="subtle">The system does not tell you what to do next.</span>
-  </li>
-
-  <li>
-    <strong>No identity shaping or self-improvement framing</strong>
-    <span class="subtle">You are not being trained into a better version.</span>
-  </li>
-
-  <li>
-    <strong>No emotional manipulation or reward loops</strong>
-    <span class="subtle">Nothing is designed to hook or retain you.</span>
-  </li>
-
-  <li>
-    <strong>No pressure to return, continue, or complete</strong>
-    <span class="subtle">Using it once is enough.</span>
-  </li>
-</ul>
-
-<hr class="rule">
-
-<ul>
-<li>
-  <strong>No large file size — around 1&nbsp;MB per app</strong>
-  <span class="subtle">
-    Quick to open. Easy to keep. Easy to leave.
-  </span>
-</li>
-
-  <li>
-    <strong>No cloud sync</strong>
-    <span class="subtle">Thoughts are handled locally and then allowed to end.</span>
-  </li>
-
-  <li>
-    <strong>No tracking or analytics</strong>
-    <span class="subtle">Nothing is measured in the background.</span>
-  </li>
-
-  <li>
-    <strong>No accounts or sign-ins</strong>
-    <span class="subtle">Nothing to maintain or manage.</span>
-  </li>
-
-  <li>
-    <strong>No reminders to come back</strong>
-    <span class="subtle">No nudges, check-ins, or prompts created by the system itself.</span>
-  </li>
-</ul>
-
-<hr class="rule">
-
-<p class="subtle">
-MINDBEBOP does not try to keep you engaged.<br>
-It exists to help thoughts end — and then get out of the way.
-</p>
-
-<footer>
-  <p>
-    <a href="philosophy.html" style="color:inherit; text-decoration:underline;">
-      Read: Philosophy
-    </a>
+  <p class="subtle">
+    What the MINDBEBOP system deliberately refuses to do.
   </p>
+
   <p>
-    <a href="mindbebop.html" style="color:inherit; text-decoration:underline;">
-      Read: MINDBEBOP
-    </a>
+    MINDBEBOP is defined as much by what it leaves out as by what it includes.
   </p>
-  Copyright © 2026 MINDBEBOP — All rights reserved.
-</footer>
+
+  <p>
+    These are not missing features. They are boundaries — placed on the system, not on the person using it.
+  </p>
+
+  <hr class="rule">
+
+  <ul>
+    <li>
+      <strong>No goals, targets, or outcomes</strong>
+      <span class="subtle">The system does not push you toward improvement.</span>
+    </li>
+    <li>
+      <strong>No progress tracking, streaks, or scores</strong>
+      <span class="subtle">Nothing accumulates. Nothing compounds.</span>
+    </li>
+    <li>
+      <strong>No evaluation of thoughts, emotions, or usage</strong>
+      <span class="subtle">Nothing is judged, ranked, or interpreted.</span>
+    </li>
+    <li>
+      <strong>No coaching, instruction, or optimization</strong>
+      <span class="subtle">The system does not tell you what to do next.</span>
+    </li>
+    <li>
+      <strong>No identity shaping or self-improvement framing</strong>
+      <span class="subtle">You are not being trained into a better version.</span>
+    </li>
+    <li>
+      <strong>No emotional manipulation or reward loops</strong>
+      <span class="subtle">Nothing is designed to hook or retain you.</span>
+    </li>
+    <li>
+      <strong>No pressure to return, continue, or complete</strong>
+      <span class="subtle">Using it once is enough.</span>
+    </li>
+  </ul>
+
+  <hr class="rule">
+
+  <ul>
+    <li>
+      <strong>No large file size — around 1&nbsp;MB per app</strong>
+      <span class="subtle">Quick to open. Easy to keep. Easy to leave.</span>
+    </li>
+    <li>
+      <strong>No cloud sync</strong>
+      <span class="subtle">Thoughts are handled locally and then allowed to end.</span>
+    </li>
+    <li>
+      <strong>No tracking or analytics</strong>
+      <span class="subtle">Nothing is measured in the background.</span>
+    </li>
+    <li>
+      <strong>No accounts or sign-ins</strong>
+      <span class="subtle">Nothing to maintain or manage.</span>
+    </li>
+    <li>
+      <strong>No reminders to come back</strong>
+      <span class="subtle">No nudges, check-ins, or prompts created by the system itself.</span>
+    </li>
+  </ul>
+
+  <hr class="rule">
+
+  <p class="subtle">
+    MINDBEBOP does not try to keep you engaged.<br>
+    It exists to help thoughts end — and then get out of the way.
+  </p>
+
+  <footer>
+    <p><a href="philosophy.html" style="text-decoration:underline;">Read: Philosophy</a></p>
+    <p><a href="index.html" style="text-decoration:underline;">Read: MINDBEBOP</a></p>
+    Copyright © 2026 MINDBEBOP — All rights reserved.
+  </footer>
 
 </div>
 
-<!-- DARK MODE IMAGE SWAP (REQUIRED) -->
 <script>
 (function () {
   function applyDarkImages(isDark) {
@@ -410,35 +347,62 @@ It exists to help thoughts end — and then get out of the way.
         : img.getAttribute('data-light') || img.src;
     });
   }
-
   const media = window.matchMedia('(prefers-color-scheme: dark)');
   applyDarkImages(media.matches);
   media.addEventListener('change', e => applyDarkImages(e.matches));
 })();
 </script>
 
-<!-- MENU TOGGLE -->
 <script>
 (() => {
   const btn = document.querySelector('.mb-hamburger');
   const menu = document.querySelector('.mb-menu');
   if (!btn || !menu) return;
 
+  let scrollY = 0;
+
+  function openMenu() {
+    scrollY = window.scrollY || 0;
+    btn.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+  }
+
+  function closeMenu() {
+    btn.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-hidden', 'true');
+
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+
+    window.scrollTo(0, scrollY);
+  }
+
   btn.addEventListener('click', () => {
-    const open = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!open));
-    menu.setAttribute('aria-hidden', String(open));
-    document.body.style.overflow = open ? '' : 'hidden';
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    if (isOpen) closeMenu();
+    else openMenu();
   });
 
   menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      btn.setAttribute('aria-expanded', 'false');
-      menu.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    });
+    link.addEventListener('click', () => closeMenu());
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+      closeMenu();
+    }
   });
 })();
 </script>
+
 </body>
 </html>
