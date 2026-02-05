@@ -358,6 +358,102 @@ hr {
 }
 }
 </style>
+<style>
+/* =========================
+   INDEX / LANDING PAGE ONLY
+   ========================= */
+
+/* HERO */
+.hero-section {
+  margin-bottom: 40px;
+}
+
+.hero-lead {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* APP SECTION */
+.app-container {
+  margin-top: 56px;
+}
+
+.app-item {
+  margin-bottom: 72px;
+}
+
+/* APP HEADER */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+/* APP INFO */
+.app-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* APP ICON — index only */
+.app-icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* APP META */
+.app-meta {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-top: 2px;
+}
+
+/* APP STORE BADGE */
+.app-badge {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.app-badge img {
+  height: 40px;
+  width: auto;
+}
+
+.badge-caption {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-top: 6px;
+}
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 700px) {
+  .hero-lead {
+    font-size: 1.2rem;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .app-badge {
+    margin-top: 12px;
+    text-align: left;
+  }
+
+.app-meta {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+}
+</style>
 </head>
 
 <body>
