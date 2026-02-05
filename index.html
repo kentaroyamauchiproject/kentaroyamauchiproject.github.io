@@ -603,7 +603,21 @@ hr {
 
   </div>
 </div>
-
+<script>
+(function () {
+  function applyDarkImages(isDark) {
+    document.querySelectorAll('img[data-dark]').forEach(img => {
+      // It looks for the data-dark attribute and swaps the src
+      img.src = isDark
+        ? img.getAttribute('data-dark')
+        : img.getAttribute('data-light') || img.src;
+    });
+  }
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  applyDarkImages(media.matches); // Runs on load
+  media.addEventListener('change', e => applyDarkImages(e.matches)); // Runs when theme toggles
+})();
+</script>
 <script>
 (() => {
   const btn = document.querySelector('.mb-hamburger');
