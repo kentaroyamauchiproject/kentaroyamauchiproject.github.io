@@ -212,6 +212,33 @@ a:hover { opacity: 0.6; }
 }
 
 /* =========================
+   DROPDOWN — BASE (Mobile)
+   ========================= */
+
+.mb-dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.mb-parent {
+  cursor: pointer;
+}
+
+.mb-submenu {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 16px;
+  margin-top: 6px;
+}
+
+.mb-dropdown.open .mb-submenu {
+  display: flex;
+}
+
+
+/* =========================
    DESKTOP MENU (INLINE)
    ========================= */
 @media (min-width: 900px) {
@@ -243,6 +270,34 @@ a:hover { opacity: 0.6; }
   .mb-menu-lang { display: none; }
 }
 
+@media (min-width: 900px) {
+
+  .mb-dropdown {
+    position: relative;
+  }
+
+  .mb-parent {
+    display: inline-block;
+    padding-bottom: 6px; /* extends hover zone downward */
+  }
+
+  .mb-submenu {
+    position: absolute;
+    top: calc(100% - 4px); /* overlap slightly */
+    left: 0;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    min-width: 200px;
+    display: none;
+    z-index: 1200;
+  }
+
+  .mb-dropdown:hover > .mb-submenu {
+    display: flex;
+  }
+}
 /* =========================
    PAGE CONTAINER
    ========================= */
@@ -423,7 +478,7 @@ hr {
     opacity: 1;
   }
 
-  .mb-dropdown:hover .mb-submenu {
+  .mb-dropdown:hover > .mb-submenu {
     display: flex;
   }
 }
