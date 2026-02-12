@@ -135,14 +135,6 @@ a:hover { opacity: 0.6; }
   .lang-switch { display: none; }
 }
 
-@media (min-width: 900px) {
-
-  .mb-dropdown {
-    flex-direction: row;
-    align-items: center;
-  }
-}
-
 .mb-submenu {
   z-index: 1200;
 }
@@ -214,29 +206,56 @@ a:hover { opacity: 0.6; }
 /* =========================
    DROPDOWN — BASE (Mobile)
    ========================= */
+@media (min-width: 900px) {
 
-.mb-dropdown {
+  .mb-dropdown {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: inline-block;
+  vertical-align: top;
 }
 
-.mb-parent {
-  cursor: pointer;
+.mb-dropdown:hover {
+  z-index: 3000;
 }
 
-.mb-submenu {
-  display: none;
-  flex-direction: column;
-  gap: 8px;
-  margin-left: 16px;
-  margin-top: 6px;
-}
+  .mb-parent {
+    display: inline-block;
+    padding-bottom: 8px;
+  }
 
-.mb-dropdown.open .mb-submenu {
-  display: flex;
-}
+  .mb-submenu {
+    position: absolute;
+    top: 100%;
+    margin-top: 0;
+    left: 0;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    min-width: 200px;
+    display: none;
+    z-index: 2000;
+  }
 
+  .mb-dropdown:hover > .mb-submenu {
+    display: block;
+  }
+
+  .mb-submenu a {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.85;
+    margin-bottom: 8px;
+  }
+
+  .mb-submenu a:last-child {
+    margin-bottom: 0;
+  }
+
+  .mb-submenu a:hover {
+    opacity: 1;
+  }
+}
 
 /* =========================
    DESKTOP MENU (INLINE)
@@ -268,35 +287,6 @@ a:hover { opacity: 0.6; }
   }
 
   .mb-menu-lang { display: none; }
-}
-
-@media (min-width: 900px) {
-
-  .mb-dropdown {
-    position: relative;
-  }
-
-  .mb-parent {
-    display: inline-block;
-    padding-bottom: 6px; /* extends hover zone downward */
-  }
-
-  .mb-submenu {
-    position: absolute;
-    top: calc(100% - 4px); /* overlap slightly */
-    left: 0;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 14px;
-    min-width: 200px;
-    display: none;
-    z-index: 1200;
-  }
-
-  .mb-dropdown:hover > .mb-submenu {
-    display: flex;
-  }
 }
 /* =========================
    PAGE CONTAINER
