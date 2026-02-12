@@ -1,0 +1,8 @@
+/* =========================
+   PAGE-SPECIFIC: EVERYDAY MOMENTS
+   ========================= */
+.section { margin-bottom: 80px; }
+.section h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 8px; opacity: 0.9; }
+.section p { margin-bottom: 12px; }
+.section strong { font-weight: 600; }
+.closing-vignette { margin-top: 100px; border-top: 1px solid var(--border); padding-top: 40px; }
