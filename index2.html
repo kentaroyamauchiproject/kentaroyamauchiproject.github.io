@@ -425,64 +425,6 @@ hr {
 }
 }
 </style>
-<style>
-/* =========================
-   DROPDOWN
-   ========================= */
-
-.mb-dropdown {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.mb-parent {
-  cursor: pointer;
-}
-
-.mb-submenu {
-  display: none;
-  flex-direction: column;
-  gap: 8px;
-  margin-left: 16px;
-  margin-top: 6px;
-}
-
-.mb-dropdown.open .mb-submenu {
-  display: flex;
-}
-
-/* Desktop behavior */
-@media (min-width: 900px) {
-
-  .mb-submenu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 14px;
-    min-width: 200px;
-    margin-left: 0;
-    gap: 10px;
-    display: none;
-  }
-
-  .mb-submenu a {
-    font-size: 0.75rem;
-    opacity: 0.85;
-  }
-
-  .mb-submenu a:hover {
-    opacity: 1;
-  }
-
-  .mb-dropdown:hover > .mb-submenu {
-    display: flex;
-  }
-}
-</style>
 </head>
 
 <body>
