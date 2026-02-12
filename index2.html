@@ -358,6 +358,56 @@ hr {
 }
 }
 </style>
+<style>
+  /* =========================
+   DROPDOWN
+   ========================= */
+
+.mb-dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.mb-submenu {
+  display: none;
+  flex-direction: column;
+  margin-left: 16px;
+}
+
+.mb-dropdown.open .mb-submenu {
+  display: flex;
+}
+
+/* Desktop hover support */
+@media (min-width: 900px) {
+  .mb-dropdown {
+    position: relative;
+  }
+
+  .mb-submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--bg);
+    padding: 12px 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    min-width: 160px;
+    margin-left: 0;
+    display: none;
+  }
+
+  .mb-submenu a {
+    padding: 6px 14px;
+    font-size: 0.75rem;
+  }
+
+  .mb-dropdown:hover .mb-submenu {
+    display: flex;
+  }
+}
+</style>
 </head>
 
 <body>
