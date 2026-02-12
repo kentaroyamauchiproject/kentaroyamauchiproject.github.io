@@ -277,7 +277,9 @@ a:hover { opacity: 0.6; }
   .mb-menu-main {
     display: flex;
     flex-direction: row;
-    gap: 28px;
+    align-items: center;
+    gap: 36px;           /* slightly more breathing room */
+    justify-content: flex-start; /* critical */
   }
 
   .mb-menu-main a {
