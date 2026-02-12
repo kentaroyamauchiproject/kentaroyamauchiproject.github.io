@@ -1,8 +1,3 @@
-body {
-  background: lime !important;
-}
-
-
 /* =====================================
    MINDBEBOP — SITE CSS (Shared)
    ===================================== */
@@ -257,8 +252,4 @@ hr {
   border: none;
   border-top: 1px solid var(--border);
   margin: 48px 0;
-}
-
-body {
-  background: lime !important;
 }
