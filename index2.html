@@ -208,34 +208,28 @@ a:hover { opacity: 0.6; }
    ========================= */
 @media (min-width: 900px) {
 
-  .mb-dropdown {
+.mb-dropdown {
   position: relative;
+  display: flex;           /* match flex context */
+  align-items: center;
+}
+
+.mb-parent {
   display: inline-block;
-  vertical-align: top;
+  padding: 4px 0;          /* creates stable hover area */
 }
 
-.mb-dropdown:hover {
-  z-index: 3000;
+.mb-submenu {
+  position: absolute;
+  top: calc(100% - 2px); /* slightly overlaps parent */
+  left: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  min-width: 200px;
+  display: none;
 }
-
-  .mb-parent {
-    display: inline-block;
-    padding-bottom: 1;
-  }
-
-  .mb-submenu {
-    position: absolute;
-    top: 100%;
-    margin-top: 0;
-    left: 0;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 14px;
-    min-width: 200px;
-    display: none;
-    z-index: 2000;
-  }
 
   .mb-dropdown:hover > .mb-submenu {
     display: block;
@@ -286,11 +280,24 @@ a:hover { opacity: 0.6; }
     justify-content: flex-start; /* prevents stretching */
   }
 
+  .mb-menu {
+  overflow-y: auto;
+}
+
   .mb-menu-main a {
     font-size: 0.78rem;
     margin: 0;
     letter-spacing: 0.02em;
   }
+
+.mb-menu-main a[aria-current="page"] {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.mb-highlight {
+  color: #C0392B; /* or whatever accent you want */
+}
 
   .mb-menu-lang { display: none; }
 }
@@ -325,7 +332,8 @@ hr {
   border-top: 1px solid var(--border);
   margin: 48px 0;
 }
-
+</style>
+<style>
 /* =========================
    INDEX / LANDING PAGE ONLY
    ========================= */
@@ -453,7 +461,7 @@ hr {
   <div class="mb-menu-main">
     <!-- START HERE -->
     <div class="mb-dropdown">
-        <a href="" class="mb-parent">Start Here</a>
+        <a href="#" class="mb-parent">Start Here</a>
       <div class="mb-submenu">
         <a href="how-it-works.html">How it works</a>
         <a href="everyday-thought-friction.html">Thought Friction</a>
@@ -461,7 +469,7 @@ hr {
     </div>
 <!-- APPS -->
 <div class="mb-dropdown">
-  <a href="apps.html" class="mb-parent">Apps</a>
+  <a href="#" class="mb-parent">Apps</a>
   <div class="mb-submenu">
     <a href="mindflipout.html">Mind<strong>Flip</strong>Out</a>
     <a href="mindshoutout.html">Mind<strong>Shout</strong>Out</a>
@@ -470,7 +478,7 @@ hr {
     <a href="mindbackout.html">Mind<strong>Back</strong>Out</a>
   </div>
 </div>
-  <a href="recipe.html">Recipe</a>
+  <a href="recipe.html" class="mb-highlight">Recipe</a>
   <!-- PHILOSOPHY -->
   <div class="mb-dropdown">
       <a href="philosophy.html" class="mb-parent">Philosophy</a>
@@ -484,6 +492,15 @@ hr {
   <a href="press-background.html">Press</a>
   <a href="founders-blog.html">Blog</a>
 </div>
+    <div class="mb-menu-lang">
+      <a href="/index.html" aria-current="true">English</a>
+      <a href="/jp/">日本語</a>
+      <a href="/de/">Deutsch</a>
+      <a href="/ko/">한국어</a>
+      <a href="/fr/">Français</a>
+      <a href="/es/">Español</a>
+      <a href="/pt-br/">Português (Brasil)</a>
+    </div>
 </nav>
 
 </div>
