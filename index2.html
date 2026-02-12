@@ -31,7 +31,12 @@
 
 <title>MINDBEBOP — Thoughts, as they happen</title>
 
-<style>
+<link rel="stylesheet" href="/css/site.css">
+
+<!-- =====================================
+     CANONICAL SITE CSS (Shared Across Site)
+     ===================================== -->
+<!-- <style>
 /* =========================
    CANONICAL CSS — MINDBEBOP
    ========================= */
@@ -55,7 +60,7 @@
   }
 }
 
-/* ---- Reset / Base ---- */
+/* ---- Base ---- */
 * { box-sizing: border-box; }
 
 body {
@@ -72,6 +77,7 @@ a {
   text-decoration: none;
   transition: opacity 0.15s ease;
 }
+
 a:hover { opacity: 0.6; }
 
 /* =========================
@@ -84,13 +90,14 @@ a:hover { opacity: 0.6; }
   padding: 16px 20px 0;
 }
 
+/* Header */
 .mb-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* ---- Brand ---- */
+/* Brand */
 .mb-brand {
   display: flex;
   align-items: center;
@@ -99,25 +106,22 @@ a:hover { opacity: 0.6; }
 }
 
 .mb-brand img {
-  width: 48px;          /* FIX: consistent icon size */
+  width: 48px;
   height: 48px;
   object-fit: contain;
-  flex-shrink: 0;
 }
 
-.mb-brand-name {
-  font-weight: 600;
-}
+.mb-brand-name { font-weight: 600; }
 
 .mb-brand-tagline {
   opacity: 0.7;
-  font-weight: 400;
   font-size: 0.9rem;
 }
 
 /* =========================
    LANGUAGE SWITCH (DESKTOP)
    ========================= */
+
 .lang-switch {
   display: flex;
   gap: 10px;
@@ -131,33 +135,31 @@ a:hover { opacity: 0.6; }
   font-weight: 600;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 899px) {
   .lang-switch { display: none; }
-}
-
-.mb-submenu {
-  z-index: 1200;
 }
 
 /* =========================
    HAMBURGER
    ========================= */
+
 .mb-hamburger {
   font-size: 22px;
   background: none;
   border: none;
   color: var(--fg);
   cursor: pointer;
-  z-index: 1100;
 }
 
 .mb-hamburger .mb-close { display: none; }
+
 .mb-hamburger[aria-expanded="true"] .mb-open { display: none; }
 .mb-hamburger[aria-expanded="true"] .mb-close { display: inline; }
 
 /* =========================
-   MOBILE MENU (OVERLAY)
+   MOBILE MENU
    ========================= */
+
 .mb-menu {
   position: fixed;
   inset: 0;
@@ -166,6 +168,8 @@ a:hover { opacity: 0.6; }
   flex-direction: column;
   background: color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter: blur(6px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   z-index: 1000;
 }
 
@@ -173,38 +177,33 @@ a:hover { opacity: 0.6; }
   display: flex;
 }
 
-.mb-menu {
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
 body.mb-menu-open {
   overflow: hidden;
 }
 
-/* Main menu links */
+/* Mobile layout */
 .mb-menu-main {
   display: flex;
   flex-direction: column;
 }
 
 .mb-menu-main a {
-  font-size: 1.35rem;
+  font-size: 1.1rem;
   margin-bottom: 14px;
 }
 
 /* Mobile language block */
 .mb-menu-lang {
   margin-top: auto;
-  padding-top: 28px;
+  padding-top: 24px;
   border-top: 1px solid var(--border);
 }
 
 .mb-menu-lang a {
   display: block;
   font-size: 0.95rem;
-  opacity: 0.75;
   margin-bottom: 12px;
+  opacity: 0.75;
 }
 
 .mb-menu-lang a[aria-current="true"] {
@@ -213,32 +212,73 @@ body.mb-menu-open {
 }
 
 /* =========================
-   DROPDOWN — BASE (Mobile)
+   DESKTOP NAVIGATION
    ========================= */
+
 @media (min-width: 900px) {
 
-.mb-dropdown {
-  position: relative;
-  display: flex;           /* match flex context */
-  align-items: center;
-}
+  .mb-hamburger { display: none; }
 
-.mb-parent {
-  display: inline-block;
-  padding: 4px 0;          /* creates stable hover area */
-}
+  .mb-nav {
+    position: relative;
+    z-index: 2000;
+  }
 
-.mb-submenu {
-  position: absolute;
-  top: calc(100% - 2px); /* slightly overlaps parent */
-  left: 0;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 12px 14px;
-  min-width: 200px;
-  display: none;
-}
+  .mb-menu {
+    position: static;
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    gap: 36px;
+    padding: 0;
+    background: none;
+    backdrop-filter: none;
+    overflow: visible !important;
+  }
+
+  .mb-menu-main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .mb-menu-main a {
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+  }
+
+  .mb-menu-main a.mb-highlight {
+    color: #C0392B !important;
+    font-weight: 600;
+  }
+
+  .mb-menu-lang { display: none; }
+
+  /* Dropdown */
+  .mb-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .mb-parent {
+    display: inline-block;
+    padding: 4px 0;
+    cursor: pointer;
+  }
+
+  .mb-submenu {
+    position: absolute;
+    top: calc(100% - 2px);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    min-width: 200px;
+    display: none;
+    z-index: 3000;
+  }
 
   .mb-dropdown:hover > .mb-submenu {
     display: block;
@@ -247,7 +287,6 @@ body.mb-menu-open {
   .mb-submenu a {
     display: block;
     font-size: 0.75rem;
-    opacity: 0.85;
     margin-bottom: 8px;
   }
 
@@ -255,64 +294,12 @@ body.mb-menu-open {
     margin-bottom: 0;
   }
 
-  .mb-submenu a:hover {
-    opacity: 1;
-  }
 }
 
-/* =========================
-   DESKTOP MENU (INLINE)
-   ========================= */
-@media (min-width: 900px) {
-  .mb-hamburger { display: none; }
-
-  .mb-menu {
-    position: static;
-    display: flex !important;
-    flex-direction: row;
-    align-items: center;
-    gap: 28px;
-    padding: 0;
-    background: none;
-    backdrop-filter: none;
-  }
-
-  .mb-menu-main {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 36px;           /* slightly more breathing room */
-    justify-content: flex-start; /* critical */
-  }
-
-  .mb-menu {
-    justify-content: flex-start; /* prevents stretching */
-  }
-
-  .mb-menu {
-  overflow-y: auto;
-}
-
-  .mb-menu-main a {
-    font-size: 0.78rem;
-    margin: 0;
-    letter-spacing: 0.02em;
-  }
-
-.mb-menu-main a[aria-current="page"] {
-  font-weight: 600;
-  color: var(--fg);
-}
-
-.mb-highlight {
-  color: #C0392B; /* or whatever accent you want */
-}
-
-  .mb-menu-lang { display: none; }
-}
 /* =========================
    PAGE CONTAINER
    ========================= */
+
 .page {
   max-width: 780px;
   margin: 0 auto;
@@ -321,18 +308,14 @@ body.mb-menu-open {
 
 h1 {
   font-size: 2rem;
-  font-weight: 600;
-  margin: 0 0 24px;
+  margin-bottom: 24px;
 }
 
 h2 {
   font-size: 1.4rem;
-  font-weight: 600;
   margin-top: 44px;
   margin-bottom: 12px;
 }
-
-p { margin-bottom: 16px; }
 
 .subtle { color: var(--muted); }
 
@@ -341,13 +324,18 @@ hr {
   border-top: 1px solid var(--border);
   margin: 48px 0;
 }
-</style>
+</style> -->
+
+
+<!-- =====================================
+     INDEX.HTML SPECIFIC CSS
+     (Only used on landing page)
+     ===================================== -->
 <style>
 /* =========================
-   INDEX / LANDING PAGE ONLY
+   INDEX PAGE ONLY
    ========================= */
 
-/* HERO */
 .hero-section {
   margin-bottom: 40px;
 }
@@ -359,7 +347,7 @@ hr {
   line-height: 1.4;
 }
 
-/* APP SECTION */
+/* App Section */
 .app-container {
   margin-top: 56px;
 }
@@ -368,7 +356,6 @@ hr {
   margin-bottom: 72px;
 }
 
-/* APP HEADER */
 .app-header {
   display: flex;
   justify-content: space-between;
@@ -377,37 +364,25 @@ hr {
   margin-bottom: 16px;
 }
 
-/* APP INFO */
 .app-info {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-/* APP ICON — index only */
 .app-icon {
   width: 64px;
   height: 64px;
   object-fit: contain;
-  flex-shrink: 0;
 }
 
-/* APP META */
 .app-meta {
   font-size: 0.8rem;
   opacity: 0.6;
-  margin-top: 2px;
-}
-
-/* APP STORE BADGE */
-.app-badge {
-  text-align: right;
-  flex-shrink: 0;
 }
 
 .app-badge img {
   height: 40px;
-  width: auto;
 }
 
 .badge-caption {
@@ -416,8 +391,9 @@ hr {
   margin-top: 6px;
 }
 
-/* MOBILE ADJUSTMENTS */
+/* Mobile adjustments */
 @media (max-width: 700px) {
+
   .hero-lead {
     font-size: 1.2rem;
   }
@@ -431,11 +407,6 @@ hr {
     margin-top: 12px;
     text-align: left;
   }
-
-.app-meta {
-  font-size: 0.8rem;
-  opacity: 0.6;
-}
 }
 </style>
 </head>
@@ -470,9 +441,7 @@ hr {
   <div class="mb-menu-main">
     <!-- START HERE -->
     <div class="mb-dropdown">
-        <div class="mb-item">
         <a href="#" class="mb-parent">Start Here</a>
-        </div>
       <div class="mb-submenu">
         <a href="how-it-works.html">How it works</a>
         <a href="everyday-thought-friction.html">Thought Friction</a>
@@ -480,9 +449,7 @@ hr {
     </div>
 <!-- APPS -->
 <div class="mb-dropdown">
-      <div class="mb-item">
   <a href="#" class="mb-parent">Apps</a>
-      </div>
   <div class="mb-submenu">
     <a href="mindflipout.html">Mind<strong>Flip</strong>Out</a>
     <a href="mindshoutout.html">Mind<strong>Shout</strong>Out</a>
@@ -494,28 +461,16 @@ hr {
   <a href="recipe.html" class="mb-highlight">Recipe</a>
   <!-- PHILOSOPHY -->
   <div class="mb-dropdown">
-        <div class="mb-item">
       <a href="philosophy.html" class="mb-parent">Philosophy</a>
-        </div>
     <div class="mb-submenu">
       <a href="refusals.html">Refusals</a>
     </div>
   </div>
-        <div class="mb-item">
   <a href="gallery.html">Gallery</a>
-        </div>
-        <div class="mb-item">
   <a href="privacy-policy.html">Privacy</a>
-        </div>
-        <div class="mb-item">
   <a href="faq.html">FAQ</a>
-        </div>
-        <div class="mb-item">
   <a href="press-background.html">Press</a>
-        </div>
-        <div class="mb-item">
   <a href="founders-blog.html">Blog</a>
-        </div>
 </div>
     <div class="mb-menu-lang">
       <a href="/index.html" aria-current="true">English</a>
