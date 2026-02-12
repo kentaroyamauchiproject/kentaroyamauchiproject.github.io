@@ -142,7 +142,7 @@ body.mb-menu-open {
 
 /* Mobile dropdown spacing */
 .mb-dropdown.open {
-  margin-bottom: 18px; /* creates one visual line break after child menu */
+  margin-bottom: 24px; /* creates one visual line break after child menu */
 }
 
 .mb-menu-lang {
