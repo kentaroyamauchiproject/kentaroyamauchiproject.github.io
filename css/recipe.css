@@ -5,6 +5,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helve
     .recipe h2 { margin-top: 0; color: #1a1a1a; border-left: 6px solid #1a1a1a; padding-left: 15px; font-size: 1.4em; }
     .step { margin-bottom: 12px; }
     .app-name { font-weight: 700; color: #000000; }
-    .why { background: #8E8E93; border-left: 3px solid #000000; padding: 15px; margin-top: 20px; font-size: 0.95em; color: #444; }
+    .why { background: #D3D3D3; border-left: 3px solid #000000; padding: 15px; margin-top: 20px; font-size: 0.95em; color: #444; }
     .why strong { color: #000000; }
     hr { border: 0; border-top: 1px solid #eee; margin: 50px 0; }
