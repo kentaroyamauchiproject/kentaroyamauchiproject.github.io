@@ -140,6 +140,11 @@ body.mb-menu-open {
   margin-bottom: 14px;
 }
 
+/* Mobile dropdown spacing */
+.mb-dropdown.open {
+  margin-bottom: 18px; /* creates one visual line break after child menu */
+}
+
 .mb-menu-lang {
   margin-top: auto;
   padding-top: 24px;
@@ -208,7 +213,7 @@ body.mb-menu-open {
 
   .mb-submenu {
     position: absolute;
-    top: 100%;
+    top: calc(100% - 8px); /* pulls it upward */
     left: 0;
     background: var(--bg);
     border: 1px solid var(--border);
