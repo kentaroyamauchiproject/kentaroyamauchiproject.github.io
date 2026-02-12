@@ -359,7 +359,7 @@ hr {
 }
 </style>
 <style>
-  /* =========================
+/* =========================
    DROPDOWN
    ========================= */
 
@@ -369,38 +369,46 @@ hr {
   flex-direction: column;
 }
 
+.mb-parent {
+  cursor: pointer;
+}
+
 .mb-submenu {
   display: none;
   flex-direction: column;
+  gap: 8px;
   margin-left: 16px;
+  margin-top: 6px;
 }
 
 .mb-dropdown.open .mb-submenu {
   display: flex;
 }
 
-/* Desktop hover support */
+/* Desktop behavior */
 @media (min-width: 900px) {
-  .mb-dropdown {
-    position: relative;
-  }
 
   .mb-submenu {
     position: absolute;
     top: 100%;
     left: 0;
     background: var(--bg);
-    padding: 12px 0;
     border: 1px solid var(--border);
-    border-radius: 8px;
-    min-width: 160px;
+    border-radius: 10px;
+    padding: 12px 14px;
+    min-width: 200px;
     margin-left: 0;
+    gap: 10px;
     display: none;
   }
 
   .mb-submenu a {
-    padding: 6px 14px;
     font-size: 0.75rem;
+    opacity: 0.85;
+  }
+
+  .mb-submenu a:hover {
+    opacity: 1;
   }
 
   .mb-dropdown:hover .mb-submenu {
@@ -438,7 +446,13 @@ hr {
 
 <nav id="mb-menu" class="mb-menu" aria-hidden="true">
   <div class="mb-menu-main">
-    <a href="how-it-works.html">How it works</a>
+    <div class="mb-dropdown"></div>
+    <a href="how-it-works.html" class="mb-parent">How it works</a>
+      <div class="mb-submenu">
+        <a href="mindflipout.html">MindFlipOut</a>
+        <a href="mindshoutout.html">MindShoutOut</a>
+        <a href="mindzoneout.html">MindZoneOut</a>
+      </div>
     <a href="everyday-thought-friction.html">Thought Friction</a>
     <a href="recipe.html">Recipe</a>
     <div class="mb-dropdown">
@@ -713,19 +727,20 @@ hr {
 })();
 </script>
 <script>
-  // Dropdown behavior (mobile tap logic)
-document.querySelectorAll('.mb-parent').forEach(parent => {
-  let tappedOnce = false;
+// Dropdown logic for mobile
+document.querySelectorAll('.mb-dropdown').forEach(dropdown => {
+  const parent = dropdown.querySelector('.mb-parent');
+  let tapped = false;
 
-  parent.addEventListener('click', function (e) {
-    const dropdown = this.parentElement;
+  parent.addEventListener('click', function(e) {
+    if (window.innerWidth >= 900) return; // Desktop uses hover
 
-    if (!tappedOnce) {
+    if (!tapped) {
       e.preventDefault();
       dropdown.classList.add('open');
-      tappedOnce = true;
+      tapped = true;
 
-      setTimeout(() => tappedOnce = false, 1500);
+      setTimeout(() => tapped = false, 1500);
     }
   });
 });
