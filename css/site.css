@@ -102,6 +102,8 @@ a:hover { opacity: 0.6; }
   border: none;
   color: var(--fg);
   cursor: pointer;
+  position: relative;
+  z-index: 1100;
 }
 
 .mb-hamburger .mb-close { display: none; }
@@ -119,7 +121,7 @@ a:hover { opacity: 0.6; }
   background: color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter: blur(6px);
   overflow-y: auto;
-  z-index: 1000;
+  z-index: 900; /* lower than hamburger */
 }
 
 .mb-menu[aria-hidden="false"] {
@@ -161,6 +163,29 @@ body.mb-menu-open {
 .mb-menu-lang a[aria-current="true"] {
   opacity: 1;
   font-weight: 600;
+}
+
+/* Mobile dropdown structure */
+.mb-submenu {
+  display: none;
+  flex-direction: column;
+  padding-left: 18px;
+  margin-top: 8px;
+}
+
+.mb-dropdown.open .mb-submenu {
+  display: flex;
+}
+
+.mb-submenu a {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  opacity: 0.85;
+}
+
+/* Adds clean separation AFTER dropdown group */
+.mb-dropdown.open {
+  margin-bottom: 20px;
 }
 
 /* ---------- DESKTOP NAV ---------- */
