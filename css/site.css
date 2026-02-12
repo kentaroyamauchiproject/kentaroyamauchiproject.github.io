@@ -1,0 +1,255 @@
+/* =====================================
+   MINDBEBOP — SITE CSS (Shared)
+   ===================================== */
+
+/* ---------- VARIABLES ---------- */
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --border: #333333;
+  --muted: rgba(0,0,0,0.75);
+  --soft: #F2F2F7;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --fg: #f2f2f7;
+    --border: rgba(242,242,247,0.25);
+    --muted: rgba(242,242,247,0.75);
+    --soft: #2C2C2C;
+  }
+}
+
+/* ---------- BASE ---------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+a:hover { opacity: 0.6; }
+
+/* ---------- NAV ---------- */
+
+.mb-nav {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 16px 20px 0;
+  position: relative;
+  z-index: 2000;
+}
+
+.mb-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mb-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.05rem;
+}
+
+.mb-brand img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.mb-brand-name { font-weight: 600; }
+
+.mb-brand-tagline {
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+/* ---------- LANGUAGE SWITCH ---------- */
+
+.lang-switch {
+  display: flex;
+  gap: 10px;
+  font-size: 0.7rem;
+  opacity: 0.6;
+  margin-top: 6px;
+}
+
+.lang-switch a[aria-current="true"] {
+  opacity: 1;
+  font-weight: 600;
+}
+
+@media (max-width: 899px) {
+  .lang-switch { display: none; }
+}
+
+/* ---------- HAMBURGER ---------- */
+
+.mb-hamburger {
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.mb-hamburger .mb-close { display: none; }
+.mb-hamburger[aria-expanded="true"] .mb-open { display: none; }
+.mb-hamburger[aria-expanded="true"] .mb-close { display: inline; }
+
+/* ---------- MOBILE MENU ---------- */
+
+.mb-menu {
+  position: fixed;
+  inset: 0;
+  padding: 80px 24px 32px;
+  display: none;
+  flex-direction: column;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(6px);
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.mb-menu[aria-hidden="false"] {
+  display: flex;
+}
+
+body.mb-menu-open {
+  overflow: hidden;
+}
+
+.mb-menu-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.mb-menu-main a {
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+}
+
+.mb-menu-lang {
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.mb-menu-lang a {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  opacity: 0.75;
+}
+
+.mb-menu-lang a[aria-current="true"] {
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* ---------- DESKTOP NAV ---------- */
+
+@media (min-width: 900px) {
+
+  .mb-hamburger { display: none; }
+
+  .mb-menu {
+    position: static;
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    gap: 36px;
+    padding: 0;
+    background: none;
+    backdrop-filter: none;
+    overflow: visible !important;
+  }
+
+  .mb-menu-main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .mb-menu-main a {
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+  }
+
+  .mb-menu-main a.mb-highlight {
+    color: #C0392B;
+    font-weight: 600;
+  }
+
+  .mb-menu-lang { display: none; }
+
+  /* Dropdown */
+  .mb-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .mb-parent {
+    padding: 4px 0;
+  }
+
+  .mb-submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    min-width: 200px;
+    display: none;
+    z-index: 3000;
+  }
+
+  .mb-dropdown:hover > .mb-submenu {
+    display: block;
+  }
+
+  .mb-submenu a {
+    display: block;
+    font-size: 0.75rem;
+    margin-bottom: 8px;
+  }
+
+  .mb-submenu a:last-child {
+    margin-bottom: 0;
+  }
+
+}
+
+/* ---------- PAGE ---------- */
+
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+h1 { font-size: 2rem; margin-bottom: 24px; }
+h2 { font-size: 1.4rem; margin-top: 44px; margin-bottom: 12px; }
+
+.subtle { color: var(--muted); }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 48px 0;
+}
