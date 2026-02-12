@@ -1,0 +1,9 @@
+/* =========================
+   PAGE-SPECIFIC: PHILOSOPHY
+   ========================= */
+.page h1 + .subtle { margin-top: -16px; margin-bottom: 40px; font-style: italic; }
+.philosophy-highlight { margin: 32px 0; font-size: 1.1rem; line-height: 1.4; }
+.philosophy-footer-links { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); }
+.philosophy-footer-links p { margin-bottom: 8px; }
+
+hr.rule { border-top: 1px solid var(--border); }
