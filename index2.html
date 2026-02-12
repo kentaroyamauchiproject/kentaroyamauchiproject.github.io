@@ -712,6 +712,23 @@ hr {
   });
 })();
 </script>
+<script>
+  // Dropdown behavior (mobile tap logic)
+document.querySelectorAll('.mb-parent').forEach(parent => {
+  let tappedOnce = false;
 
+  parent.addEventListener('click', function (e) {
+    const dropdown = this.parentElement;
+
+    if (!tappedOnce) {
+      e.preventDefault();
+      dropdown.classList.add('open');
+      tappedOnce = true;
+
+      setTimeout(() => tappedOnce = false, 1500);
+    }
+  });
+});
+</script>
 </body>
 </html>
