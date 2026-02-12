@@ -1,0 +1,38 @@
+/* =========================
+   PAGE-SPECIFIC: PRESS & BACKGROUND
+   ========================= */
+
+.section {
+  margin-top: 56px;
+}
+
+.quote {
+  margin: 40px 0;
+  padding-left: 24px;
+  border-left: 2px solid var(--border);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+ul {
+  padding-left: 20px;
+  margin-bottom: 24px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+.founder-block {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-top: 12px;
+}
+
+@media (max-width: 700px) {
+  .founder-block {
+    flex-direction: column;
+  }
+}
