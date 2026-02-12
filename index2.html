@@ -173,6 +173,15 @@ a:hover { opacity: 0.6; }
   display: flex;
 }
 
+.mb-menu {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.mb-menu-open {
+  overflow: hidden;
+}
+
 /* Main menu links */
 .mb-menu-main {
   display: flex;
@@ -461,7 +470,9 @@ hr {
   <div class="mb-menu-main">
     <!-- START HERE -->
     <div class="mb-dropdown">
+        <div class="mb-item">
         <a href="#" class="mb-parent">Start Here</a>
+        </div>
       <div class="mb-submenu">
         <a href="how-it-works.html">How it works</a>
         <a href="everyday-thought-friction.html">Thought Friction</a>
@@ -469,7 +480,9 @@ hr {
     </div>
 <!-- APPS -->
 <div class="mb-dropdown">
+      <div class="mb-item">
   <a href="#" class="mb-parent">Apps</a>
+      </div>
   <div class="mb-submenu">
     <a href="mindflipout.html">Mind<strong>Flip</strong>Out</a>
     <a href="mindshoutout.html">Mind<strong>Shout</strong>Out</a>
@@ -481,16 +494,28 @@ hr {
   <a href="recipe.html" class="mb-highlight">Recipe</a>
   <!-- PHILOSOPHY -->
   <div class="mb-dropdown">
+        <div class="mb-item">
       <a href="philosophy.html" class="mb-parent">Philosophy</a>
+        </div>
     <div class="mb-submenu">
       <a href="refusals.html">Refusals</a>
     </div>
   </div>
+        <div class="mb-item">
   <a href="gallery.html">Gallery</a>
+        </div>
+        <div class="mb-item">
   <a href="privacy-policy.html">Privacy</a>
+        </div>
+        <div class="mb-item">
   <a href="faq.html">FAQ</a>
+        </div>
+        <div class="mb-item">
   <a href="press-background.html">Press</a>
+        </div>
+        <div class="mb-item">
   <a href="founders-blog.html">Blog</a>
+        </div>
 </div>
     <div class="mb-menu-lang">
       <a href="/index.html" aria-current="true">English</a>
@@ -718,33 +743,27 @@ hr {
   const menu = document.querySelector('.mb-menu');
   if (!btn || !menu) return;
 
-  let scrollY = 0;
-
-function openMenu() {
-  btn.setAttribute('aria-expanded', 'true');
-  menu.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-}
+  function openMenu() {
+    btn.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('mb-menu-open');
+  }
 
   function closeMenu() {
     btn.setAttribute('aria-expanded', 'false');
     menu.setAttribute('aria-hidden', 'true');
-    document.body.style.position = '';
-    document.body.style.top = '';
-    window.scrollTo(0, scrollY);
+    document.body.classList.remove('mb-menu-open');
   }
 
   btn.addEventListener('click', () => {
-    btn.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeMenu() : openMenu();
   });
-
-  menu.querySelectorAll('a').forEach(link =>
-    link.addEventListener('click', closeMenu)
-  );
 
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeMenu();
   });
+
 })();
 </script>
 <script>
