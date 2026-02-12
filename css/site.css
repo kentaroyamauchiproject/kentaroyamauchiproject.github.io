@@ -165,16 +165,22 @@ body.mb-menu-open {
   font-weight: 600;
 }
 
-/* Mobile dropdown structure */
+/* =========================
+   MOBILE — ALWAYS VISIBLE SUBMENUS
+   ========================= */
+
 .mb-submenu {
-  display: none;
-  flex-direction: column;
+  display: block;
+  margin-top: 6px;
+  margin-bottom: 18px;
   padding-left: 18px;
-  margin-top: 8px;
 }
 
-.mb-dropdown.open .mb-submenu {
-  display: flex;
+.mb-submenu a {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  opacity: 0.8;
 }
 
 .mb-submenu a {
