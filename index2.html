@@ -720,14 +720,11 @@ hr {
 
   let scrollY = 0;
 
-  function openMenu() {
-    scrollY = window.scrollY || 0;
-    btn.setAttribute('aria-expanded', 'true');
-    menu.setAttribute('aria-hidden', 'false');
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
-  }
+function openMenu() {
+  btn.setAttribute('aria-expanded', 'true');
+  menu.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
 
   function closeMenu() {
     btn.setAttribute('aria-expanded', 'false');
