@@ -36,7 +36,6 @@
    CANONICAL CSS — MINDBEBOP
    ========================= */
 
-/* ---- Variables ---- */
 :root {
   --bg: #ffffff;
   --fg: #000000;
@@ -55,7 +54,6 @@
   }
 }
 
-/* ---- Reset / Base ---- */
 * { box-sizing: border-box; }
 
 body {
@@ -70,7 +68,6 @@ body {
 a { color: inherit; text-decoration: none; transition: opacity 0.2s; }
 a:hover { opacity: 0.7; }
 
-/* ---- Layout Containers ---- */
 .mb-page {
   max-width: 680px;
   margin: 0 auto;
@@ -86,9 +83,11 @@ a:hover { opacity: 0.7; }
   height: 44px;
 }
 
-.mb-logo img { height: 24px; width: auto; display: block; }
+.mb-brand { display: flex; align-items: center; gap: 10px; }
+.mb-brand img { height: 24px; width: auto; display: block; }
+.mb-brand-name { font-weight: 700; letter-spacing: 0.05em; }
+.mb-brand-tagline { font-size: 0.8rem; opacity: 0.6; margin-left: 8px; }
 
-/* Hamburger Icon */
 .mb-hamburger {
   background: none;
   border: none;
@@ -109,18 +108,10 @@ a:hover { opacity: 0.7; }
   transition: transform 0.3s, opacity 0.3s;
 }
 
-/* Menu State Transforms */
-.mb-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-.mb-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-.mb-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
-/* Full-screen Overlay Menu */
 .mb-menu {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background: var(--bg);
   z-index: 1500;
   display: flex;
@@ -134,89 +125,32 @@ a:hover { opacity: 0.7; }
 
 .mb-menu[aria-hidden="false"] { opacity: 1; pointer-events: auto; }
 
-.mb-menu-links {
-  list-style: none;
-  padding: 0;
-  text-align: center;
-}
-
+.mb-menu-links { list-style: none; padding: 0; text-align: center; }
 .mb-menu-links li { margin: 25px 0; }
 .mb-menu-links a { font-size: 1.8rem; font-weight: 300; }
 
-/* ---- Standard Components ---- */
-.mb-hr {
-  border: 0;
-  border-top: 1px solid var(--border);
-  margin: 60px 0;
-}
+/* =========================
+   PAGE SPECIFIC: HOME
+   ========================= */
 
-.mb-footer {
-  margin-top: 80px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-  font-size: 0.85rem;
-  opacity: 0.6;
-}
-<style>
-  
-</style>
-/* Page Specific: Home */
 .home-hero { margin-bottom: 80px; }
 .home-hero h1 { font-size: 2.2rem; line-height: 1.2; margin-bottom: 20px; font-weight: 600; }
 .home-hero p { font-size: 1.25rem; opacity: 0.8; max-width: 500px; }
 
-.home-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.home-card {
-  border: 1px solid var(--border);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s;
-}
-
-.home-card:hover { transform: translateY(-2px); }
-.home-card h2 { margin: 0 0 10px; font-size: 1.1rem; }
-.home-card p { margin: 0; font-size: 0.9rem; opacity: 0.7; }
+.app-item { margin-bottom: 60px; }
+.app-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+.app-info { display: flex; align-items: center; gap: 15px; }
+.app-icon { width: 64px; height: 64px; border-radius: 14px; }
+.app-meta { font-size: 0.8rem; opacity: 0.5; }
+.app-badge img { height: 40px; }
+.badge-caption { font-size: 0.7rem; opacity: 0.5; text-align: center; margin-top: 4px; }
 
 @media (max-width: 600px) {
-  .home-grid { grid-template-columns: 1fr; }
+  .app-header { flex-direction: column; gap: 20px; }
+  .mb-brand-tagline { display: none; }
 }
 </style>
-<style>
-/* Page Specific: Home */
-.home-hero { margin-bottom: 80px; }
-.home-hero h1 { font-size: 2.2rem; line-height: 1.2; margin-bottom: 20px; font-weight: 600; }
-.home-hero p { font-size: 1.25rem; opacity: 0.8; max-width: 500px; }
 
-.home-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.home-card {
-  border: 1px solid var(--border);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s;
-}
-
-.home-card:hover { transform: translateY(-2px); }
-.home-card h2 { margin: 0 0 10px; font-size: 1.1rem; }
-.home-card p { margin: 0; font-size: 0.9rem; opacity: 0.7; }
-
-@media (max-width: 600px) {
-  .home-grid { grid-template-columns: 1fr; }
-}
-</style>
 </head>
 
 <body>
@@ -246,7 +180,7 @@ a:hover { opacity: 0.7; }
   </div>
 
 <nav id="mb-menu" class="mb-menu" aria-hidden="true">
-  <div class="mb-menu-main">
+  <ul class="mb-menu-links">
     <a href="how-it-works.html">How it works</a>
     <a href="everyday-thought-friction.html">Thought Friction</a>
     <a href="refusals.html">Refusals</a>
@@ -256,7 +190,8 @@ a:hover { opacity: 0.7; }
     <a href="faq.html">FAQ</a>
     <a href="press-background.html">Press</a>
     <a href="founders-blog.html">Blog</a>
-  </div>
+  </ul>
+</nav>
 
   <div class="mb-menu-lang">
     <a href="/" aria-current="true">English</a>
@@ -423,7 +358,7 @@ a:hover { opacity: 0.7; }
           <div class="badge-caption">Available on the App Store — free</div>
         </div>
       </div>
-      <p><strong>An ultralight stillness tool that gives your mind a quiet wall to rest against.</strong></p>
+      <p><strong>An ultralight stillness tool where nothing is required — just a quiet wall to rest against.</strong></p>
       <p><em>Clear space</em>. Step away from noise and sit with a quiet screen designed to create a pause.
       MindZoneOut creates short moments of intentional stillness —
       a chance to <strong>zone out</strong> and give thoughts a natural endpoint.</p>
