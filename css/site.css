@@ -68,7 +68,10 @@ a:hover { opacity: 0.6; }
   object-fit: contain;
 }
 
-.mb-brand-name { font-weight: 600; }
+.mb-brand-name {
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
 
 .mb-brand-tagline {
   opacity: 0.7;
