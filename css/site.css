@@ -75,6 +75,11 @@ a:hover { opacity: 0.6; }
   font-size: 0.9rem;
 }
 
+.mb-menu-main a.mb-highlight {
+  color: #C0392B;
+  font-weight: 600;
+}
+
 /* ---------- LANGUAGE SWITCH ---------- */
 
 .lang-switch {
