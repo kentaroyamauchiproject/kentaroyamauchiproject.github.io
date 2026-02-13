@@ -252,7 +252,7 @@ body.mb-menu-open {
 
   .mb-submenu {
     position: absolute;
-    top: calc(100% - 8px); /* pulls it upward */
+    top: calc(100% - 16px); /* pulls it upward */
     left: 0;
     background: var(--bg);
     border: 1px solid var(--border);
