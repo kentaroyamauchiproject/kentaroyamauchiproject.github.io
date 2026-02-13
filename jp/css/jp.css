@@ -1,0 +1,20 @@
+ /* =========================
+   JP LANDING UTILITIES
+   ========================= */
+
+.jp-lead {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.jp-callout {
+  margin-top: 20px;
+  padding: 20px;
+  background: color-mix(in srgb, var(--border) 5%, transparent);
+  border-radius: 12px;
+}
+
+.jp-muted-note {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
