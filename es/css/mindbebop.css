@@ -1,0 +1,32 @@
+/* =========================
+   PAGE-SPECIFIC: MINDBEBOP (NOTE)
+   ========================= */
+.page h1 + .subtle {
+  margin-top: -16px;
+  margin-bottom: 40px;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.signature {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 60px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.signature img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--soft);
+  object-fit: cover;
+}
+
+.signature .name {
+  margin: 0;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
