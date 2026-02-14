@@ -99,7 +99,7 @@ a:hover { opacity: 0.6; }
   font-weight: 600;
 }
 
-@media (max-width: 899px) {
+@media (max-width: 900px) {
   .lang-switch { display: none; }
 }
 
@@ -280,10 +280,11 @@ body.mb-menu-open {
 
 }
 
-@media (min-width: 900px) {
-  .lang-switch {
-    margin-bottom: 24px;
-  }
+.lang-switch {
+  background: red;
+}
+.mb-menu {
+  background: blue;
 }
 
 /* ---------- PAGE ---------- */
