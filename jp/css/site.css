@@ -31,6 +31,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.6;
   overflow-y: scroll; /* ← ADD THIS */
+}
 
 a {
   color: inherit;
