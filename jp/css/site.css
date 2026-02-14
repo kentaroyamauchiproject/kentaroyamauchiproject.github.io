@@ -213,6 +213,7 @@ body.mb-menu-open {
     display: flex !important;
     flex-direction: row;
     align-items: center;
+    margin-top: 18px; /* breathing space under language selector */
     gap: 36px;
     padding: 0;
     background: none;
