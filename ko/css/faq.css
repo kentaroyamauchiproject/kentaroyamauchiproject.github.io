@@ -1,0 +1,5 @@
+/* Page Specific: FAQ */
+.faq-list { margin-top: 40px; }
+.faq-item { margin-bottom: 40px; }
+.faq-item h3 { font-size: 1.1rem; margin-bottom: 10px; font-weight: 600; }
+.faq-item p { margin: 0; opacity: 0.8; }

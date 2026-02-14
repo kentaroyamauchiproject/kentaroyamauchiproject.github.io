@@ -1,0 +1,17 @@
+/* =========================
+   PAGE-SPECIFIC: PRIVACY POLICY
+   ========================= */
+
+.section {
+  margin-top: 48px;
+}
+
+.section h2 {
+  margin-top: 0;
+}
+
+.app-section {
+  margin-top: 40px;
+  padding-left: 20px;
+  border-left: 2px solid var(--border);
+}
