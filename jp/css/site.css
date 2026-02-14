@@ -214,7 +214,6 @@ body.mb-menu-open {
     display: flex !important;
     flex-direction: row;
     align-items: center;
-    margin-top: 24px; /* breathing space under language selector */
     gap: 36px;
     padding: 0;
     background: none;
@@ -279,6 +278,12 @@ body.mb-menu-open {
     margin-bottom: 0;
   }
 
+}
+
+@media (min-width: 900px) {
+  .lang-switch {
+    margin-bottom: 24px;
+  }
 }
 
 /* ---------- PAGE ---------- */
