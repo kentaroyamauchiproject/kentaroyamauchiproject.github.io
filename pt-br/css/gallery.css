@@ -1,0 +1,30 @@
+/* =========================
+   PAGE-SPECIFIC: GALLERY
+   ========================= */
+.page h1 + .subtle { margin-top: -8px; margin-bottom: 48px; }
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--soft);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  .video-container { box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
+}
+
+.video-container iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-container {
+  margin-bottom: 56px;
+}
