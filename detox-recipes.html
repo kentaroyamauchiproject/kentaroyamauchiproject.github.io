@@ -113,7 +113,7 @@
 
 <div class="page">
 
- <h1>🧼　Mind Detox Recipes　🧼</h1>
+<h1>🧼　Mind Detox Recipes　🧼</h1>
 <p class="subtitle"><strong>Welcome to the world of 10-second Mind Detox!</strong></p>
 <p class="subtitle">Customize your personal "Mind Brushing Menu" with these 10-second detox recipes.</p>
 
@@ -121,8 +121,32 @@
   <strong>Last Updated:</strong> 2026-02-14
 </p>
 
+Gemini said
+Subtitleの直後、レシピセクションが始まる前に「Table of Contents」を追加しました。
+各レシピのタイトル（<h2>）に id を振り、目次からページ内リンクでジャンプできるように構成しています。
+
+以下のコードをコピーして、Subtitleの直下にペーストしてください。
+
+HTML
+<nav class="toc" style="margin: 40px 0; padding: 20px; border: 1px dashed rgba(128,128,128,0.3); border-radius: 8px;">
+  <h3 style="margin-top: 0; font-size: 1.1rem;">Table of Contents</h3>
+  <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+    <li><a href="#recipe-0" style="text-decoration: none; color: inherit;">0. Don’t Know Where to Start?</a></li>
+    <li><a href="#recipe-1" style="text-decoration: none; color: inherit;">1. The Morning "Inner Argument" Kill-Switch</a></li>
+    <li><a href="#recipe-2" style="text-decoration: none; color: inherit;">2. Midnight Cravings & False Hunger</a></li>
+    <li><a href="#recipe-3" style="text-decoration: none; color: inherit;">3. The "Waiting for a Reply" Anxiety</a></li>
+    <li><a href="#recipe-4" style="text-decoration: none; color: inherit;">4. The Bedtime "Cringe Memory" Loop</a></li>
+    <li><a href="#recipe-5" style="text-decoration: none; color: inherit;">5. Post-Work Self-Criticism</a></li>
+    <li><a href="#recipe-6" style="text-decoration: none; color: inherit;">6. The Social Media Comparison Trap</a></li>
+    <li><a href="#recipe-7" style="text-decoration: none; color: inherit;">7. Pre-Presentation Panic</a></li>
+    <li><a href="#recipe-8" style="text-decoration: none; color: inherit;">8. Swallowing Your Anger (Post-Conflict)</a></li>
+    <li><a href="#recipe-9" style="text-decoration: none; color: inherit;">9. Overwhelming "Vague Future" Anxiety</a></li>
+    <li><a href="#recipe-10" style="text-decoration: none; color: inherit;">10. The "Unproductive Holiday" Guilt</a></li>
+  </ul>
+</nav>
+
 <div class="recipe">
-    <h2>0. Don’t Know Where to Start?</h2>
+    <h2 id="recipe-0">0. Don’t Know Where to Start?</h2>
     <p><strong>The Situation:</strong> Your thoughts are looping, you feel overwhelmed, and you’re not sure which app to use.</p>
 
     <div class="step">
@@ -151,7 +175,7 @@
 </div>
 
 <div class="recipe">
-    <h2>1. The Morning "Inner Argument" Kill-Switch</h2>
+    <h2 id="recipe-1">1. The Morning "Inner Argument" Kill-Switch</h2>
     <p><strong>The Situation:</strong> You’re simulating an argument with a difficult person before even getting to work, leaving you pre-exhausted.</p>
     <div class="step"><span class="app-name">MindFlipOut:</span> Take that heavy thought ("I’m going to get attacked") and flip it into a lighter, proactive one ("I am prepared to handle this calmly").</div>
     <div class="step"><span class="app-name">MindShoutOut:</span> Send that "Light Thought" to the app and schedule a notification for your start time—containing the thought until it’s actually needed.</div>
@@ -162,7 +186,7 @@
 </div>
 
 <div class="recipe">
-    <h2>2. Midnight Cravings & False Hunger</h2>
+    <h2 id="recipe-2">2. Midnight Cravings & False Hunger</h2>
     <p><strong>The Situation:</strong> You aren't actually hungry, but your brain is hunting for a dopamine hit via junk food.</p>
     <div class="step"><span class="app-name">MindFlipOut:</span> Flip the heavy thought ("I need this snack") to expose its reality ("This is just my brain craving a quick hit").</div>
     <div class="step"><strong>Action:</strong> Open your front-facing camera and look at yourself to shift from "subject" to "observer."</div>
@@ -173,7 +197,7 @@
 </div>
 
 <div class="recipe">
-    <h2>3. The "Waiting for a Reply" Anxiety</h2>
+    <h2 id="recipe-3">3. The "Waiting for a Reply" Anxiety</h2>
     <p><strong>The Situation:</strong> You’re obsessively checking your phone because a text or email hasn't been answered yet.</p>
     <div class="step"><span class="app-name">MindShoutOut:</span> Input "Check for reply at 6 PM" and enable the Acknowledge notification.</div>
     <div class="step"><span class="app-name">MindZoneOut:</span> Stare at the white screen for 60-120 seconds to reset your overstimulated nervous system.</div>
@@ -184,7 +208,7 @@
 </div>
 
 <div class="recipe">
-    <h2>4. The Bedtime "Cringe Memory" Loop</h2>
+    <h2 id="recipe-4">4. The Bedtime "Cringe Memory" Loop</h2>
     <p><strong>The Situation:</strong> An old mistake or embarrassing moment pops up, making you want to scream under the covers.</p>
     <div class="step"><span class="app-name">MindFlipOut:</span> Flip "I am a loser" to "My brain is just processing data and attempting to extract a lesson."</div>
     <div class="step"><span class="app-name">MindEaseOut:</span> Select the heavy emotion and "Release" it into the dark void.</div>
@@ -195,7 +219,7 @@
 </div>
 
 <div class="recipe">
-    <h2>5. Post-Work Self-Criticism</h2>
+    <h2 id="recipe-5">5. Post-Work Self-Criticism</h2>
     <p><strong>The Situation:</strong> The day is over, you’re tired, and you feel like you haven't accomplished anything.</p>
     <div class="step"><span class="app-name">MindFlipOut:</span> Flip "I failed today" to "I’ve exhausted my cognitive fuel; this fatigue is proof of my effort."</div>
     <div class="step"><span class="app-name">MindZoneOut:</span> Spend 2 minutes in the white space, allowing your brain to "idle" without input.</div>
@@ -206,7 +230,7 @@
 </div>
 
 <div class="recipe">
-    <h2>6. The Social Media Comparison Trap</h2>
+    <h2 id="recipe-6">6. The Social Media Comparison Trap</h2>
     <p><strong>The Situation:</strong> You see someone else’s success on your feed and suddenly feel like your life is falling behind.</p>
     <div class="step"><span class="app-name">MindFlipOut:</span> Flip "I'm losing" to "I am comparing my 'behind-the-scenes' to their highlight reel."</div>
     <div class="step"><span class="app-name">MindEaseOut:</span> Select the "Heavy Envy" and release it while syncing with the pulse of the app.</div>
@@ -217,7 +241,7 @@
 </div>
 
 <div class="recipe">
-    <h2>7. Pre-Presentation Panic</h2>
+    <h2 id="recipe-7">7. Pre-Presentation Panic</h2>
     <p><strong>The Situation:</strong> Your heart is racing before a meeting or speech, and your mind keeps replaying worst-case scenarios.</p>
 
     <div class="step">
@@ -245,7 +269,7 @@
 </div>
 
 <div class="recipe">
-    <h2>8. Swallowing Your Anger (Post-Conflict)</h2>
+    <h2 id="recipe-8">8. Swallowing Your Anger (Post-Conflict)</h2>
     <p><strong>The Situation:</strong> You’re furious but can't speak your mind due to professional or social reasons, so the argument continues in your head.</p>
     <div class="step"><span class="app-name">MindShoutOut:</span> Record your raw, unfiltered voice. Label it "Temporary Storage."</div>
     <div class="step"><span class="app-name">MindFlipOut:</span> Once calm, flip the focus from "their ignorance" to "how I will protect my boundaries."</div>
@@ -256,7 +280,7 @@
 </div>
 
 <div class="recipe">
-    <h2>9. Overwhelming "Vague Future" Anxiety</h2>
+    <h2 id="recipe-9">9. Overwhelming "Vague Future" Anxiety</h2>
     <p><strong>The Situation:</strong> Worrying about money, aging, or health—things you can't solve right this second.</p>
     <div class="step"><span class="app-name">MindShoutOut:</span> List the worries and "bottle them up" with a notification set for a specific "review time" next week.</div>
     <div class="step"><span class="app-name">MindFlipOut:</span> Flip "This is hopeless" to "I am currently in the preparation and observation phase."</div>
@@ -267,7 +291,7 @@
 </div>
 
 <div class="recipe">
-    <h2>10. The "Unproductive Holiday" Guilt</h2>
+    <h2 id="recipe-10">10. The "Unproductive Holiday" Guilt</h2>
     <p><strong>The Situation:</strong> It’s your day off, but you can’t relax because you feel like you "should" be doing something useful.</p>
     <div class="step"><span class="app-name">MindShoutOut:</span> Toss every "should-do" task into the app and set the Acknowledge notification for Monday morning.</div>
     <div class="step"><span class="app-name">MindEaseOut:</span> Release the "guilt of resting" by focusing on the analog clock's "present moment."</div>
