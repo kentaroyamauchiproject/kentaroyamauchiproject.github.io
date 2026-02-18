@@ -149,6 +149,98 @@
   </p>
 </div>
 
+<h2 style="margin-top:40px;">なぜ思考はループするのか</h2>
+<p class="subtle" style="margin-top:-8px;">
+ループする思考の多くは、劇的なものではありません。ただ、まだ終わっていない感覚が残っているだけです。
+</p>
+
+<section class="mbb-diagram" aria-label="日常の思考摩擦の図解">
+  <div class="mbb-diagram-grid">
+    <!-- Panel 1: Smooth Flow -->
+    <figure class="mbb-panel">
+      <svg class="mbb-svg" viewBox="0 0 720 240" role="img" aria-label="スムーズな流れ：注意から思考へ、そして自然におさまる">
+        <defs>
+          <marker id="mbbArrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"></path>
+          </marker>
+        </defs>
+
+        <!-- Nodes -->
+        <g class="mbb-node">
+          <rect x="40" y="70" width="200" height="84" rx="18" ry="18"></rect>
+          <text x="140" y="116" text-anchor="middle">いま向いている注意</text>
+        </g>
+
+        <g class="mbb-node">
+          <rect x="260" y="70" width="200" height="84" rx="18" ry="18"></rect>
+          <text x="360" y="116" text-anchor="middle">いま浮かんでいる思考</text>
+        </g>
+
+        <g class="mbb-node mbb-node-soft">
+          <rect x="480" y="70" width="200" height="84" rx="18" ry="18"></rect>
+          <text x="580" y="116" text-anchor="middle">自然におさまる</text>
+        </g>
+
+        <!-- Arrows -->
+        <path class="mbb-line" d="M 240 112 L 260 112" marker-end="url(#mbbArrow)"></path>
+        <path class="mbb-line" d="M 460 112 L 480 112" marker-end="url(#mbbArrow)"></path>
+      </svg>
+
+      <figcaption class="mbb-caption">
+        注意と思考が重なっているとき、思考は自然に完了し、次へと移っていきます。
+      </figcaption>
+    </figure>
+
+    <!-- Panel 2: Why Thoughts Loop (Simple Version) -->
+    <figure class="mbb-panel">
+      <svg class="mbb-svg" viewBox="0 0 720 280" role="img" aria-label="なぜ思考がくり返されるのか">
+        <defs>
+          <marker id="mbbArrow3" viewBox="0 0 10 10" refX="8.5" refY="5"
+                  markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"></path>
+          </marker>
+        </defs>
+
+        <!-- Current Attention -->
+        <g class="mbb-node">
+          <rect x="40" y="80" width="200" height="84" rx="18"></rect>
+          <text x="140" y="122" text-anchor="middle">いま、何かに集中している</text>
+        </g>
+
+        <!-- Conflict bubble -->
+        <g class="mbb-node">
+          <rect x="300" y="60" width="300" height="124" rx="22"></rect>
+          <text x="450" y="95" text-anchor="middle">でもその思考は：</text>
+          <text x="450" y="120" text-anchor="middle">・感情が残っている</text>
+          <text x="450" y="142" text-anchor="middle">・まだ完了していない</text>
+          <text x="450" y="164" text-anchor="middle">・どこか重要に感じる</text>
+        </g>
+
+        <!-- Arrow into conflict -->
+        <path class="mbb-line" d="M 240 122 L 300 122" marker-end="url(#mbbArrow3)"></path>
+
+        <!-- Looping arrow -->
+        <path class="mbb-loop"
+              d="M 600 122
+                 C 660 110, 690 140, 660 180
+                 C 620 220, 540 210, 560 160"
+              marker-end="url(#mbbArrow3)"></path>
+
+        <!-- Loop label -->
+        <text x="590" y="210" text-anchor="middle"
+              style="font: 600 16px system-ui; fill: currentColor;">
+          何度も浮かんでくる
+        </text>
+      </svg>
+
+      <figcaption class="mbb-caption">
+        思考が感情をともなっていたり、まだ完了していなかったり、重要に感じられると、
+        納得するまで何度も浮かんできます。
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
 <div style="margin-top:48px;">
   <p style="font-size:1.2rem; font-weight:600;">
     浮かんだ瞬間に「置く」。<br>
