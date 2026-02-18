@@ -241,6 +241,131 @@
   </div>
 </section>
 
+
+<style>
+  /* === Layout === */
+  .mbb-diagram {
+    max-width: 1100px;
+    margin: 48px auto;
+    padding: 0 18px;
+  }
+
+  .mbb-diagram-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  @media (min-width: 860px) {
+    .mbb-diagram-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: start;
+    }
+  }
+
+  .mbb-panel {
+    margin: 0;
+    padding: 18px 18px 14px;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 18px;
+    background: #fff;
+  }
+
+  /* If you support dark mode, this keeps it tasteful */
+  @media (prefers-color-scheme: dark) {
+    .mbb-panel {
+      background: #000;
+      border-color: rgba(255,255,255,0.16);
+    }
+  }
+
+  .mbb-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    color: #000; /* used by currentColor in SVG */
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .mbb-svg { color: #fff; }
+  }
+
+  /* === Typography === */
+  .mbb-caption {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.45;
+    color: rgba(0,0,0,0.70);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .mbb-caption { color: rgba(255,255,255,0.72); }
+  }
+
+  /* === SVG styling === */
+  .mbb-node rect {
+    fill: transparent;
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+
+  .mbb-node-soft rect {
+    stroke-dasharray: 4 6;
+    opacity: 0.9;
+  }
+
+  .mbb-node text {
+    font: 600 18px system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    fill: currentColor;
+    dominant-baseline: middle;
+  }
+
+  .mbb-line {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .mbb-friction rect {
+    fill: transparent;
+    stroke: currentColor;
+    stroke-width: 2;
+    opacity: 0.95;
+  }
+
+  .mbb-friction-x {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    opacity: 0.65;
+  }
+
+  .mbb-friction-label {
+    font: 600 14px system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    fill: currentColor;
+    opacity: 0.8;
+    dominant-baseline: middle;
+  }
+
+  .mbb-loop {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.95;
+  }
+
+  .mbb-loop-soft {
+    opacity: 0.35;
+  }
+</style>
+
+
 <div style="margin-top:48px;">
   <p style="font-size:1.2rem; font-weight:600;">
     浮かんだ瞬間に「置く」。<br>
