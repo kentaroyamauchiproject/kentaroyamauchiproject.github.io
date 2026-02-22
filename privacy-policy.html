@@ -109,7 +109,7 @@
 
 <h1>MINDBEBOP Privacy Policy</h1>
 <p class="last-updated">
-  <strong>Last Updated:</strong> 2026-01-04
+  <strong>Last Updated:</strong> 2026-02-22
 </p>
 
 <div class="section">
@@ -193,16 +193,31 @@ including time-based thought release functionality.
     <p>
         Some MINDBEBOP apps can optionally communicate with each other
         using on-device iOS mechanisms
-        (such as custom URL schemes or shared system features).
+        (such as custom URL schemes, local system features,
+        or shared on-device storage).
     </p>
+
     <p>
-        This communication:
+        This may include:
     </p>
+
+<ul>
+    <li>Sending a thought from MindFlipOut to MindShoutOut</li>
+    <li>Sending text content from MindShoutOut to MindZoneOut for on-device display (including Shouts and related labels)</li>
+    <li>Sending reflection text from MindZoneOut to MindFlipOut when using Manual Flip or Auto Flip</li>
+    <li>Sending text from MindBackOut to MindShoutOut when using the “Leave at the Door” feature</li>
+    <li>Opening MindZoneOut automatically from MindBackOut when Zone Cooldown is enabled</li>
+</ul>
+
+    <p>
+        All such communication:
+    </p>
+
     <ul>
         <li>Occurs entirely on your device</li>
         <li>Does not use internet servers</li>
         <li>Does not transmit data outside your device</li>
-        <li>Shares only the minimum text content required to move a thought between apps</li>
+        <li>Shares only the minimum content required to perform the requested action</li>
     </ul>
 </div>
 
@@ -298,9 +313,9 @@ including time-based thought release functionality.
 </div>
 
 <div class="app-section">
-    <h2>Time-Based Thought Release (MindEaseOut mode)</h2>
+    <h2>Time-Based Thought Release (MindEaseOut function)</h2>
     <p>
-        Some MINDBEBOP apps include a time-based thought release feature
+        All MINDBEBOP apps include a time-based thought release feature
         that allows a thought to be acknowledged as relating to the past or future.
     </p>
     <p>
@@ -314,6 +329,50 @@ including time-based thought release functionality.
     </ul>
 </div>
 
+<div class="app-section">
+    <h2>MindBackOut</h2>
+
+    <p>
+        MindBackOut is a local session-based app that temporarily blocks
+        selected applications using Apple’s Screen Time system.
+        All configuration and session data are stored entirely on your device.
+    </p>
+
+    <p>
+        When you select apps to leave outside, this information is stored
+        locally and used only by Apple’s on-device Screen Time framework
+        to apply temporary restrictions.
+        MINDBEBOP does not receive or access this information.
+    </p>
+
+    <p>
+        If you enter text in the “Leave at the Door” field and choose
+        to send it to MindShoutOut, the text is transferred locally
+        between apps using on-device iOS mechanisms.
+        This transfer does not use external servers
+        and does not leave your device.
+    </p>
+
+    <p>
+        If the optional “Zone Cooldown” feature is enabled,
+        MindBackOut may automatically open MindZoneOut
+        after a session ends.
+        No data is transmitted externally during this process.
+        The interaction occurs entirely on your device.
+    </p>
+
+    <p>
+        MindBackOut does not collect:
+    </p>
+
+    <ul>
+        <li>App usage history</li>
+        <li>Screen Time statistics</li>
+        <li>Device activity reports</li>
+        <li>Blocked app names outside your device</li>
+        <li>Any personal or identifying information</li>
+    </ul>
+</div>
 <hr>
 
 <div class="section">
