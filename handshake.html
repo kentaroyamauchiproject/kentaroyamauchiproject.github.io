@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="alternate" hreflang="en" href="https://www.mindbebop.com/handshake.html">
+<link rel="alternate" hreflang="ja" href="https://www.mindbebop.com/jp/handshake.html">
+<link rel="alternate" hreflang="de" href="https://www.mindbebop.com/de/handshake.html">
+<link rel="alternate" hreflang="ko" href="https://www.mindbebop.com/ko/handshake.html">
+<link rel="alternate" hreflang="fr" href="https://www.mindbebop.com/fr/handshake.html">
+<link rel="alternate" hreflang="es" href="https://www.mindbebop.com/es/handshake.html">
+<link rel="alternate" hreflang="pt-BR" href="https://www.mindbebop.com/pt-br/handshake.html">
+<link rel="alternate" hreflang="x-default" href="https://www.mindbebop.com/handshake.html">
+
+<meta name="description" content="A technical overview of how MINDBEBOP apps connect via handshake: optional one-way transfers that let thoughts move across tools without forcing a single workflow.">
+<meta name="keywords" content="MINDBEBOP handshake, app connection, thought transfer, modular tools, MindFlipOut, MindShoutOut, MindZoneOut, MindEaseOut, MindBackOut">
+<meta name="author" content="MINDBEBOP">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="MINDBEBOP — App Handshake Architecture">
+<meta property="og:description" content="A birds-eye view of optional handshakes between MINDBEBOP apps: what can be sent, where it goes, and why it exists.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.mindbebop.com/handshake.html">
+<meta property="og:image" content="https://www.mindbebop.com/image/MB_LOGO_V5_1024.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MINDBEBOP — App Handshake Architecture">
+<meta name="twitter:description" content="Optional one-way transfers between MINDBEBOP tools. A system wiring overview — not a required workflow.">
+<meta name="twitter:image" content="https://www.mindbebop.com/image/MB_LOGO_V5_1024.png">
+
+<title>MINDBEBOP — Handshake</title>
+
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/index.css">
+
+<style>
+/* Minimal local styles for the diagram + tables; keeps site aesthetic */
+:root{
+  --mbb-border: rgba(0,0,0,0.12);
+  --mbb-border2: rgba(0,0,0,0.08);
+  --mbb-muted: rgba(0,0,0,0.65);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --mbb-border: rgba(255,255,255,0.14);
+    --mbb-border2: rgba(255,255,255,0.10);
+    --mbb-muted: rgba(255,255,255,0.70);
+  }
+}
+.mbb-diagram{
+  border:1px solid var(--mbb-border);
+  border-radius:16px;
+  padding:14px;
+  margin:18px 0 10px;
+}
+.mbb-diagram-title{
+  font-weight:700;
+  margin:0 0 10px;
+}
+.mbb-flow{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:10px;
+}
+@media (min-width: 860px){
+  .mbb-flow{
+    grid-template-columns: 1fr 1fr;
+    gap:12px;
+  }
+}
+.mbb-node{
+  border:1px solid var(--mbb-border2);
+  border-radius:14px;
+  padding:12px 12px;
+}
+.mbb-node h3{
+  margin:0 0 6px;
+  font-size:1rem;
+}
+.mbb-node p{
+  margin:0;
+  opacity:0.85;
+  font-size:0.95rem;
+  line-height:1.35;
+}
+.mbb-arrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-weight:600;
+  margin:10px 0 0;
+  opacity:0.9;
+}
+.mbb-arrow .a{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-weight:700;
+  letter-spacing:0.2px;
+}
+.mbb-note{
+  font-size:0.92rem;
+  opacity:0.75;
+  margin-top:8px;
+}
+.mbb-mini{
+  font-size:0.9rem;
+  opacity:0.75;
+}
+.mbb-table{
+  width:100%;
+  border-collapse:collapse;
+}
+.mbb-table th, .mbb-table td{
+  padding:10px;
+  border-bottom:1px solid var(--mbb-border2);
+  vertical-align:top;
+}
+.mbb-table th{
+  text-align:left;
+  font-weight:700;
+}
+.badge{
+  display:inline-block;
+  padding:2px 8px;
+  border:1px solid var(--mbb-border2);
+  border-radius:999px;
+  font-size:0.78rem;
+  opacity:0.8;
+  white-space:nowrap;
+}
+.badge.oneway{ opacity:0.9; }
+.badge.optional{ opacity:0.9; }
+</style>
+</head>
+
+<body>
+
+<div class="mb-nav">
+  <header class="mb-header">
+    <a class="mb-brand" href="index.html">
+      <img src="image/MB_LOGO_V5_1024.png" data-dark="image/MB_LOGO_V5_1024_INV.png" alt="MINDBEBOP logo">
+      <span class="mb-brand-name">MINDBEBOP</span>
+      <span class="mb-brand-tagline">Mental Background OS</span>
+    </a>
+
+    <button class="mb-hamburger" aria-expanded="false" aria-controls="mb-menu">
+      <span class="mb-open">☰</span>
+      <span class="mb-close">×</span>
+    </button>
+  </header>
+
+  <div class="lang-switch">
+    <a href="/handshake.html" aria-current="true">English</a>
+    <a href="/jp/handshake.html">日本語</a>
+    <a href="/de/handshake.html">Deutsch</a>
+    <a href="/ko/handshake.html">한국어</a>
+    <a href="/fr/handshake.html">Français</a>
+    <a href="/es/handshake.html">Español</a>
+    <a href="/pt-br/handshake.html">Português (Brasil)</a>
+  </div>
+</nav>
+
+<nav id="mb-menu" class="mb-menu" aria-hidden="true">
+  <div class="mb-menu-main">
+    <!-- START HERE -->
+    <div class="mb-dropdown">
+      <a href="#" class="mb-parent">Start Here</a>
+      <div class="mb-submenu">
+        <a href="how-it-works.html">How it works</a>
+        <a href="everyday-thought-friction.html">Thought Friction</a>
+        <a href="mental-background-os.html">Mental Background OS</a>
+        <a href="handshake.html" aria-current="page">Handshake</a>
+      </div>
+    </div>
+
+    <!-- APPS -->
+    <div class="mb-dropdown">
+      <a href="#" class="mb-parent">Apps</a>
+      <div class="mb-submenu">
+        <a href="mindflipout.html">Mind<strong>Flip</strong>Out</a>
+        <a href="mindshoutout.html">Mind<strong>Shout</strong>Out</a>
+        <a href="mindzoneout.html">Mind<strong>Zone</strong>Out</a>
+        <a href="mindeaseout.html">Mind<strong>Ease</strong>Out</a>
+        <a href="mindbackout.html">Mind<strong>Back</strong>Out</a>
+      </div>
+    </div>
+
+    <a href="detox-recipes.html" class="mb-highlight">Detox Recipes</a>
+
+    <!-- PHILOSOPHY -->
+    <div class="mb-dropdown">
+      <a href="#" class="mb-parent">Philosophy</a>
+      <div class="mb-submenu">
+        <a href="philosophy.html">Philosophy</a>
+        <a href="refusals.html">Refusals</a>
+      </div>
+    </div>
+
+    <a href="gallery.html">Gallery</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="faq.html">FAQ</a>
+    <a href="press-background.html">Press</a>
+    <a href="founders-blog.html">Blog</a>
+  </div>
+
+  <div class="mb-menu-lang">
+    <a href="/handshake.html" aria-current="true">English</a>
+    <a href="/jp/handshake.html">日本語</a>
+    <a href="/de/handshake.html">Deutsch</a>
+    <a href="/ko/handshake.html">한국어</a>
+    <a href="/fr/handshake.html">Français</a>
+    <a href="/es/handshake.html">Español</a>
+    <a href="/pt-br/handshake.html">Português (Brasil)</a>
+  </div>
+</nav>
+
+</div>
+
+<div class="page">
+
+  <h1>Handshake</h1>
+
+  <p>
+    MINDBEBOP apps are designed to work independently. Some apps can optionally pass a note (or a small piece of session output)
+    to another app. This controlled transfer is called a <strong>handshake</strong>.
+  </p>
+
+  <p>
+    Handshakes are not a required workflow. They exist so a thought can change “state” without your mind carrying it:
+    from looping → scheduled, from active → released, from locked context → attention reset, and so on.
+  </p>
+
+  <div class="divider"></div>
+
+  <h2>Handshake Map</h2>
+
+  <div class="mbb-diagram" aria-label="Handshake map diagram">
+    <div class="mbb-diagram-title">Current Handshake Paths (birds-eye)</div>
+
+    <div class="mbb-flow">
+
+      <div class="mbb-node">
+        <h3><a href="mindflipout.html">MindFlipOut</a> → <a href="mindshoutout.html">MindShoutOut</a></h3>
+        <p>Send Heavy, Light, or Remix as a scheduled echo or storage.</p>
+        <div class="mbb-arrow"><span class="a">MFO → MSO</span> <span class="badge oneway">one-way</span> <span class="badge optional">optional</span></div>
+      </div>
+
+      <div class="mbb-node">
+        <h3><a href="mindflipout.html">MindFlipOut</a> → <a href="mindeaseout.html">MindEaseOut</a></h3>
+        <p>Release a note cleanly (without deletion or analysis).</p>
+        <div class="mbb-arrow"><span class="a">MFO → MEO</span> <span class="badge oneway">one-way</span> <span class="badge optional">optional</span></div>
+      </div>
+
+      <div class="mbb-node">
+        <h3><a href="mindshoutout.html">MindShoutOut</a> → <a href="mindeaseout.html">MindEaseOut</a></h3>
+        <p>After a shout returns, release residual charge by easing it out.</p>
+        <div class="mbb-arrow"><span class="a">MSO → MEO</span> <span class="badge oneway">one-way</span> <span class="badge optional">optional</span></div>
+      </div>
+
+      <div class="mbb-node">
+        <h3><a href="mindbackout.html">MindBackOut</a> → <a href="mindzoneout.html">MindZoneOut</a></h3>
+        <p>Optional cooldown: exit Backroom into a Zone session (attention reset).</p>
+        <div class="mbb-arrow"><span class="a">MBO → MZO</span> <span class="badge oneway">one-way</span> <span class="badge optional">optional</span></div>
+      </div>
+
+      <div class="mbb-node">
+        <h3><a href="mindzoneout.html">MindZoneOut</a> → <a href="mindflipout.html">MindFlipOut</a></h3>
+        <p>Send a whisper/reflection into a structured Heavy/Light space.</p>
+        <div class="mbb-arrow"><span class="a">MZO → MFO</span> <span class="badge oneway">one-way</span> <span class="badge optional">optional</span></div>
+      </div>
+
+      <div class="mbb-node">
+        <h3>Notes</h3>
+        <p class="mbb-mini">
+          Handshakes may expand over time. The purpose stays the same: keep tools independent while allowing optional
+          state transfer.
+        </p>
+        <p class="mbb-note">
+          “One-way” means a note is handed off as a copy into the destination tool. This avoids forced dependency and keeps each app usable on its own.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2>Handshake Details</h2>
+
+  <p>
+    Below is a technical summary of what can move between apps today. This is documentation — not a recommendation to use all apps.
+  </p>
+
+  <div style="overflow-x:auto;">
+    <table class="mbb-table" aria-label="Handshake details table">
+      <thead>
+        <tr>
+          <th>From → To</th>
+          <th>What Transfers</th>
+          <th>What It Changes</th>
+          <th>Typical Use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>MFO → MSO</strong></td>
+          <td>Heavy, Light, or Remix note</td>
+          <td><strong>Time / storage</strong> (schedule, repeat, acknowledge)</td>
+          <td>Turn a looping thought into a scheduled echo or offload it as an open loop.</td>
+        </tr>
+        <tr>
+          <td><strong>MFO → MEO</strong></td>
+          <td>Selected note</td>
+          <td><strong>Activation</strong> (release without deletion)</td>
+          <td>Drop residual charge once the note no longer needs to stay active.</td>
+        </tr>
+        <tr>
+          <td><strong>MSO → MEO</strong></td>
+          <td>Selected shout/note</td>
+          <td><strong>Closure</strong> after return</td>
+          <td>After a scheduled return, release the note cleanly instead of carrying it again.</td>
+        </tr>
+        <tr>
+          <td><strong>MBO → MZO</strong></td>
+          <td>Session transition (cooldown)</td>
+          <td><strong>Attention</strong> (reset after role pressure)</td>
+          <td>Exit Backroom into a short Zone session to reduce “snap-back” friction.</td>
+        </tr>
+        <tr>
+          <td><strong>MZO → MFO</strong></td>
+          <td>Whisper/reflection</td>
+          <td><strong>Structure</strong> (Heavy/Light containment)</td>
+          <td>Turn a vague drift or “pre-verbal” feeling into a simple, contained note.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2>Why Handshakes Exist</h2>
+
+  <p>
+    Each MINDBEBOP tool primarily targets a different background process. Handshakes allow a thought to change “category”
+    without forcing a unified app or a single required workflow.
+  </p>
+
+  <ul>
+    <li><strong>Looping → Scheduled:</strong> convert repetition into time-based storage.</li>
+    <li><strong>Active → Released:</strong> reduce residual activation without deleting or analyzing.</li>
+    <li><strong>Role Pressure → Attention Reset:</strong> reduce friction during context shifts.</li>
+    <li><strong>Drift → Structured Note:</strong> convert vague noise into a minimal container.</li>
+  </ul>
+
+  <div class="divider"></div>
+
+  <h2>One-Way by Design</h2>
+
+  <p>
+    Many handshakes are currently one-way. This keeps each app independent, lightweight, and usable on its own — without requiring
+    synchronization, accounts, or complex cross-app dependencies.
+  </p>
+
+  <p class="muted">
+    In other words: handshakes are optional bridges, not a single ecosystem workflow.
+  </p>
+
+  <hr class="rule">
+
+  <div style="margin-top:60px; opacity:0.7; font-size:0.9rem;">
+    Copyright © 2026 MINDBEBOP — All rights reserved.
+  </div>
+
+</div>
+
+<script>
+(function () {
+  function applyDarkImages(isDark) {
+    document.querySelectorAll('img[data-dark]').forEach(img => {
+      img.src = isDark
+        ? img.getAttribute('data-dark')
+        : img.getAttribute('data-light') || img.src;
+    });
+  }
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  applyDarkImages(media.matches);
+  media.addEventListener('change', e => applyDarkImages(e.matches));
+})();
+</script>
+
+<script>
+(() => {
+  const btn = document.querySelector('.mb-hamburger');
+  const menu = document.querySelector('.mb-menu');
+  if (!btn || !menu) return;
+
+  function openMenu() {
+    btn.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('mb-menu-open');
+  }
+
+  function closeMenu() {
+    btn.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('mb-menu-open');
+  }
+
+  btn.addEventListener('click', () => {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeMenu() : openMenu();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeMenu();
+  });
+})();
+</script>
+
+<script>
+// Dropdown logic for mobile
+document.querySelectorAll('.mb-dropdown').forEach(dropdown => {
+  const parent = dropdown.querySelector('.mb-parent');
+
+  parent.addEventListener('click', function(e) {
+    if (window.innerWidth >= 900) return;
+
+    const alreadyOpen = dropdown.classList.contains('open');
+
+    document.querySelectorAll('.mb-dropdown').forEach(d =>
+      d.classList.remove('open')
+    );
+
+    if (!alreadyOpen) {
+      e.preventDefault();
+      dropdown.classList.add('open');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
