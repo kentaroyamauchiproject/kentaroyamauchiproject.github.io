@@ -63,19 +63,20 @@
 
 <nav id="mb-menu" class="mb-menu" aria-hidden="true">
   <div class="mb-menu-main">
-    <!-- START HERE -->
+<!-- START HERE -->
     <div class="mb-dropdown">
         <a href="#" class="mb-parent">Start Here</a>
       <div class="mb-submenu">
+        <a href="welcome.html">Welcome</a>
         <a href="how-it-works.html">How it works</a>
         <a href="everyday-thought-friction.html">Thought Friction</a>
-        <a href="mental-background-os.html">Mental Background OS</a>
       </div>
     </div>
 <!-- APPS -->
 <div class="mb-dropdown">
   <a href="#" class="mb-parent">Apps</a>
   <div class="mb-submenu">
+    <a href="mental-background-os.html">Mental Background OS</a>
     <a href="mindflipout.html">Mind<strong>Flip</strong>Out</a>
     <a href="mindshoutout.html">Mind<strong>Shout</strong>Out</a>
     <a href="mindzoneout.html">Mind<strong>Zone</strong>Out</a>
@@ -115,290 +116,60 @@
 <div class="page">
 
   <!-- HERO -->
-<div class="hero-section">
-  <p class="hero-lead">The Mental Background OS</p>
-  <p style="margin:0;">
-    End overthinking.<br>
-    Reduce mental load.<br>
-    Lower overstimulation.<br>
-    Step out of role pressure.
+<div style="padding:40px 0 20px 0; border-bottom:1px solid var(--border);">
+  <h1 style="font-size:1.8rem; font-weight:700; line-height:1.4; margin:0 0 16px 0; letter-spacing:-0.02em;">
+    That annoying thought?<br>
+    End it in 3 seconds.
+  </h1>
+  <p style="font-size:1.1rem; line-height:1.6; margin:0; opacity:0.9;">
+    Late-night cringe loops. Mental arguments. Social media anxiety.<br>
+    We use your brain’s own wiring against it<br>
+    to put a stop to endless overthinking.
   </p>
 </div>
 
-<p style="margin-top:14px;">
-  <strong>A system of ultralight apps for clearing mental background activity.</strong>
-</p>
-<p>
-  MINDBEBOP defines the first modular system for regulating the Mental Background layer.
-</p>
-<p>
-  <strong>The Mental Background</strong> is the part of the mind where unfinished thoughts,
-  reminders, roles, and stimulation keep running behind attention.
-</p>
-<p>
-  <strong>The Mental Background OS</strong> gives structure to that background —
-  small modules that allow thoughts to land, pause, or complete.
-</p>
-<p>
-  Each ultralight module reduces a different kind of background activity —
-  so attention can move freely again.
-</p>
-<p class="subtle">
-  No feeds. No streaks. No tracking.<br>
-  Just less mental friction.
-</p>
+<div style="margin-top:40px; padding:30px 20px; border:1px solid var(--border); border-radius:16px;">
+  <p style="font-weight:600; font-size:1.1rem; margin-bottom:20px;">Does your mind ever do this?</p>
+  <ul style="list-style:none; padding:0; margin:0; display:grid; gap:16px;">
+    <li style="display:flex; gap:12px;">
+      <span style="font-size:1.2rem;">🕒</span>
+      <span><strong>Midnight replay</strong><br><span style="font-size:0.9rem; opacity:0.8;">“Why did I say that?” — on repeat.</span></span>
+    </li>
+    <li style="display:flex; gap:12px;">
+      <span style="font-size:1.2rem;">⚖️</span>
+      <span><strong>Imaginary arguments</strong><br><span style="font-size:0.9rem; opacity:0.8;">Rehearsing a comeback for an hour.</span></span>
+    </li>
+    <li style="display:flex; gap:12px;">
+      <span style="font-size:1.2rem;">📱</span>
+      <span><strong>Waiting on a reply</strong><br><span style="font-size:0.9rem; opacity:0.8;">Checking your phone every five minutes.</span></span>
+    </li>
+  </ul>
+  <p style="margin-top:24px; font-size:0.95rem; line-height:1.6; border-top: 1px solid var(--border); padding-top:20px;">
+    This isn’t your personality. It’s how the brain handles unfinished loops.
+    <strong>MINDBEBOP gives you the shortcut to close them.</strong>
+  </p>
+</div>
 
-<h2 style="margin-top:40px;">Why thoughts stay active</h2>
-<p class="subtle" style="margin-top:-8px;">
-Most mental friction is not dramatic. It simply feels unfinished.
-</p>
-<!-- MINDBEBOP — Everyday Thought Friction Diagram (HTML + inline SVG)
-     Drop this anywhere in your landing page. No dependencies. -->
-
-<section class="mbb-diagram" aria-label="Everyday Thought Friction diagram">
-  <div class="mbb-diagram-grid">
-    <!-- Panel 1: Smooth Flow -->
-    <figure class="mbb-panel">
-      <svg class="mbb-svg" viewBox="0 0 720 240" role="img" aria-label="Smooth flow: attention to thought to dissolves">
-        <defs>
-          <marker id="mbbArrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"></path>
-          </marker>
-        </defs>
-
-        <!-- Nodes -->
-        <g class="mbb-node">
-          <rect x="40" y="70" width="200" height="84" rx="18" ry="18"></rect>
-          <text x="140" y="116" text-anchor="middle">Current Attention</text>
-        </g>
-
-        <g class="mbb-node">
-          <rect x="260" y="70" width="200" height="84" rx="18" ry="18"></rect>
-          <text x="360" y="116" text-anchor="middle">Current Thought</text>
-        </g>
-
-        <g class="mbb-node mbb-node-soft">
-          <rect x="480" y="70" width="200" height="84" rx="18" ry="18"></rect>
-          <text x="580" y="116" text-anchor="middle">Dissolves</text>
-        </g>
-
-        <!-- Arrows -->
-        <path class="mbb-line" d="M 240 112 L 260 112" marker-end="url(#mbbArrow)"></path>
-        <path class="mbb-line" d="M 460 112 L 480 112" marker-end="url(#mbbArrow)"></path>
-      </svg>
-
-      <figcaption class="mbb-caption">
-        When attention and thought align, thinking completes and moves on.
-      </figcaption>
-    </figure>
-
-    <!-- Panel 2: Why Thoughts Loop (Simple Version) -->
-<figure class="mbb-panel">
-  <svg class="mbb-svg" viewBox="0 0 720 280" role="img" aria-label="Why thoughts loop">
-    <defs>
-      <marker id="mbbArrow3" viewBox="0 0 10 10" refX="8.5" refY="5"
-              markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"></path>
-      </marker>
-    </defs>
-
-    <!-- Current Attention -->
-    <g class="mbb-node">
-      <rect x="40" y="80" width="200" height="84" rx="18"></rect>
-      <text x="140" y="122" text-anchor="middle">You are focusing</text>
-    </g>
-
-    <!-- Conflict bubble -->
-    <g class="mbb-node">
-      <rect x="300" y="60" width="300" height="124" rx="22"></rect>
-      <text x="450" y="95" text-anchor="middle">But the thought feels:</text>
-      <text x="450" y="120" text-anchor="middle">• Emotional</text>
-      <text x="450" y="142" text-anchor="middle">• Unfinished</text>
-      <text x="450" y="164" text-anchor="middle">• Important</text>
-    </g>
-
-    <!-- Arrow into conflict -->
-    <path class="mbb-line" d="M 240 122 L 300 122" marker-end="url(#mbbArrow3)"></path>
-
-    <!-- Looping arrow -->
-    <path class="mbb-loop"
-          d="M 600 122
-             C 660 110, 690 140, 660 180
-             C 620 220, 540 210, 560 160"
-          marker-end="url(#mbbArrow3)"></path>
-
-    <!-- Loop label -->
-    <text x="590" y="210" text-anchor="middle"
-          style="font: 600 16px system-ui; fill: currentColor;">
-      It keeps coming back
-    </text>
-  </svg>
-
-  <figcaption class="mbb-caption">
-    When a thought feels emotional, unfinished, or important,
-    your brain brings it back again and again.
-  </figcaption>
-</figure>
-  </div>
-</section>
-
-<style>
-  /* === Layout === */
-  .mbb-diagram {
-    max-width: 1100px;
-    margin: 48px auto;
-    padding: 0 18px;
-  }
-
-  .mbb-diagram-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 22px;
-  }
-
-  @media (min-width: 860px) {
-    .mbb-diagram-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 26px;
-      align-items: start;
-    }
-  }
-
-  .mbb-panel {
-    margin: 0;
-    padding: 18px 18px 14px;
-    border: 1px solid rgba(0,0,0,0.12);
-    border-radius: 18px;
-    background: #fff;
-  }
-
-  /* If you support dark mode, this keeps it tasteful */
-  @media (prefers-color-scheme: dark) {
-    .mbb-panel {
-      background: #000;
-      border-color: rgba(255,255,255,0.16);
-    }
-  }
-
-  .mbb-svg {
-    width: 100%;
-    height: auto;
-    display: block;
-    color: #000; /* used by currentColor in SVG */
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .mbb-svg { color: #fff; }
-  }
-
-  /* === Typography === */
-  .mbb-caption {
-    margin-top: 12px;
-    font-size: 14px;
-    line-height: 1.45;
-    color: rgba(0,0,0,0.70);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .mbb-caption { color: rgba(255,255,255,0.72); }
-  }
-
-  /* === SVG styling === */
-  .mbb-node rect {
-    fill: transparent;
-    stroke: currentColor;
-    stroke-width: 2;
-  }
-
-  .mbb-node-soft rect {
-    stroke-dasharray: 4 6;
-    opacity: 0.9;
-  }
-
-  .mbb-node text {
-    font: 600 18px system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    fill: currentColor;
-    dominant-baseline: middle;
-  }
-
-  .mbb-line {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2.4;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .mbb-friction rect {
-    fill: transparent;
-    stroke: currentColor;
-    stroke-width: 2;
-    opacity: 0.95;
-  }
-
-  .mbb-friction-x {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    opacity: 0.65;
-  }
-
-  .mbb-friction-label {
-    font: 600 14px system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    fill: currentColor;
-    opacity: 0.8;
-    dominant-baseline: middle;
-  }
-
-  .mbb-loop {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2.2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    opacity: 0.95;
-  }
-
-  .mbb-loop-soft {
-    opacity: 0.35;
-  }
-</style>
-
-  
-<!-- THOUGHT FRICTION -->
-<p><strong>Mental friction happens when something stays active in the background.</strong></p>
-
-<p>
-A thought feels unfinished.
-A reminder feels important.
-Input feels constant.
-A role feels demanding.
+<p style="margin-top:24px; font-size:1rem; opacity:0.85;">
+MINDBEBOP<br>
+helps regulate the noise in your mind.<br>
+<strong>We call it a new category:<br>
+the Mental Background OS.</strong>
 </p>
 
-<p>
-MINDBEBOP does not analyze thoughts.
-It helps them complete, land, cool, or pause —
-so your attention can move freely again.
-</p>
-
-  <!-- METAPHOR -->
-<p><strong>Not self-improvement. System maintenance.</strong></p>
-
-<p>
-Just as your phone runs background processes,
-your mind does too.
-MINDBEBOP offers a way to reduce unnecessary mental background activity.
+<p style="margin-top:16px;">
+<a href="https://apps.apple.com/app/id6752633008" target="_blank" style="display:inline-block; padding:10px 18px; 
+border:1px solid var(--fg); border-radius:24px; 
+text-decoration:none; font-weight:600;">
+Try it in 3 seconds — Free</a><br>
 </p>
 
 <!-- APPS -->
 <div class="app-container">
-<h2>The Modules — Mental Background OS</h2>
-
-    <p style="margin-top:24px;">
-      Each module reduces a different type of mental background activity,
-      depending on what the moment needs.
-    </p>
+<h2 style="font-size:1.6rem; font-weight:600;">Apps that reduce mental friction</h2>
+  <p style="margin-top:24px;">
+    Each app helps ease the unnecessary mental drag that pulls you away from the present moment.
+  </p>
 
     <div class="app-item">
       <div class="app-header">
@@ -425,10 +196,8 @@ MINDBEBOP offers a way to reduce unnecessary mental background activity.
           <div class="badge-caption">Available on the App Store — free</div>
         </div>
       </div>
-      <p><strong>End overthinking in seconds.</strong></p>
-      <p><em>Respond to looping thoughts</em>. Catch negative thoughts the moment they appear and respond (<strong>flip</strong>)
-      with a calmer or kinder reply. MindFlipOut helps each thought feel handled — so it doesn’t keep circling for your attention.</p>
-    </div>
+<p><strong>Flip a thought the moment it appears — a quick back-and-forth to break the loop.</strong></p>
+    </div><br>
 
     <div class="app-item">
       <div class="app-header">
@@ -455,16 +224,8 @@ MINDBEBOP offers a way to reduce unnecessary mental background activity.
           <div class="badge-caption">Available on the App Store — free</div>
         </div>
       </div>
-      <p><strong>Reduce mental load instantly.</strong></p>
-      <p><em>Set it aside</em>. Some thoughts feel important — but holding them in your head creates friction.
-      MindShoutOut lets you schedule those thoughts to return (<strong>shout</strong>) later,
-      so your mind doesn’t have to keep carrying them.
-      </p>
-<p>
-You’re not losing the thought.<br>
-You’re moving it out of the background.
-</p>
-    </div>
+ <p><strong>A mental drop-off point. Offload what matters with a Shout.</strong></p>
+    </div><br>
 
     <div class="app-item">
       <div class="app-header">
@@ -491,11 +252,8 @@ You’re moving it out of the background.
           <div class="badge-caption">Available on the App Store — free</div>
         </div>
       </div>
-      <p><strong>Reduce overstimulation fast.</strong></p>
-      <p><em>Clear space</em>. Step away from noise and sit with a quiet screen designed to create a pause.
-      MindZoneOut creates short moments of intentional stillness —
-      a chance to <strong>zone out</strong> and give thoughts a natural endpoint.</p>
-    </div>
+<p><strong>A digital space to disconnect. Cut the input and simply zone out.</strong></p>
+    </div><br>
 
     <div style="display:flex; align-items:center; gap:12px; margin-top:30px;">
     <img src="image/MB_MEO_Icon_1024-rounded.png" data-dark="image/MB_MEO_Icon_1024_INV-rounded.png" alt="MindEaseOut Icon" class="app-icon">
@@ -506,8 +264,7 @@ You’re moving it out of the background.
      </p>
   </div>
 </div>
-<p><strong>A gentle "Return to Now." Immediate relief from thought friction.</strong></p>
-<p>Regret about the past or worry about the future cannot be controlled in the present. MindEaseOut grounds you in physical reality through the rhythm of time and breath. It gently guides you (<strong>ease out</strong>) away from the fiction of anxiety and back to the only reality: this moment.</p>
+<p><strong>Return to the present — leaving regrets and worries behind.</strong></p>
 <br>
 
     <div class="app-item">
@@ -519,26 +276,22 @@ You’re moving it out of the background.
           class="app-icon">
         <h3 style="font-size:1.3rem; margin:0;">MindBackOut</h3>
       </div>
-      <p style="margin-top:16px;"><strong>Step out of a role instantly.</strong></p>
-      <p><em>Step out of the front of your life</em>. Some moments don’t need performance, productivity, or self-control.
-      MindBackOut gives you a quiet backroom — a place to temporarily lock away selected apps and <strong>back out</strong>
-      of roles, pressure, and identity — without fixing, tracking, or improving yourself.</p>
+<p><strong>A private mental space to log out of heavy roles, even just for a while.</strong></p>
     </div>
 
     
-    <p style="margin-top:28px; font-size:1.15rem;">
-      Because when your mind shifts,<br>
-      your world follows.
-    </p>
+<p style="margin-top:28px; font-size:1.15rem;">
+Because when your mental background becomes quiet,<br>
+your world becomes clearer.
+</p>
 
     <hr class="rule">
 
     <div style="margin-top:60px; opacity:0.7; font-size:0.9rem;">
       <p style="margin-bottom:12px;">
-        <a href="everyday-moments.html">Read: Everyday moments</a>
-      </p>
-      <p style="margin-bottom:12px;">
-        <a href="philosophy.html">Read: Philosophy</a>
+        <a href="detox-recipes.html" style="text-decoration: none; font-weight: 600; font-size: 1.1rem;">
+[Starting today, give your mind an off switch]
+        </a>
       </p>
       Copyright © 2026 MINDBEBOP — All rights reserved.
     </div>
