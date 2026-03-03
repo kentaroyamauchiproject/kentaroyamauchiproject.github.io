@@ -165,6 +165,203 @@
   not philosophical interpretation and not therapeutic guidance.
 </p>
 
+<section class="mbb-mb-layer" aria-label="Mental Background Layer diagrams">
+
+<style>
+.mbb-mb-layer{
+  --bg:#ffffff;
+  --panel:#f3f4f6;
+  --border:#d1d5db;
+  --text:#111827;
+  --muted:#6b7280;
+  --arrow:#374151;
+  --bg-accent:#e5e7eb;
+}
+
+@media (prefers-color-scheme: dark){
+  .mbb-mb-layer{
+    --bg:#0f0f13;
+    --panel:#1c1c22;
+    --border:#3a3a48;
+    --text:#f3f4f6;
+    --muted:#9ca3af;
+    --arrow:#e5e7eb;
+    --bg-accent:#273142;
+  }
+}
+
+.mbb-mb-layer{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  color:var(--text);
+}
+
+.mbb-grid{
+  display:grid;
+  gap:28px;
+}
+@media(min-width:900px){
+  .mbb-grid{grid-template-columns:1fr 1fr;}
+}
+
+.mbb-card{
+  border:1px solid var(--border);
+  background:var(--panel);
+  border-radius:20px;
+  padding:20px;
+}
+
+.mbb-title{
+  font-weight:700;
+  margin-bottom:14px;
+}
+
+.mbb-caption{
+  margin-top:12px;
+  font-size:0.9rem;
+  color:var(--muted);
+}
+
+.mbb-svg{
+  width:100%;
+  height:auto;
+}
+
+.box{
+  fill:var(--panel);
+  stroke:var(--border);
+  stroke-width:2.4;
+}
+
+.text{
+  fill:var(--text);
+  font-weight:700;
+}
+
+.sub{
+  fill:var(--muted);
+  font-size:13px;
+}
+
+.arrow{
+  stroke:var(--arrow);
+  stroke-width:3;
+  fill:none;
+  marker-end:url(#arrowHead);
+}
+
+.turbulence{
+  stroke:var(--muted);
+  stroke-width:1.8;
+  fill:none;
+  opacity:0.35;
+}
+
+</style>
+
+<div class="mbb-grid">
+
+<!-- WITHOUT -->
+<div class="mbb-card">
+<div class="mbb-title">Without structure</div>
+
+<svg class="mbb-svg" viewBox="0 0 640 520">
+
+<defs>
+  <marker id="arrowHead" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+    <path d="M0,0 L8,4 L0,8 Z" fill="currentColor"/>
+  </marker>
+  <filter id="blur">
+    <feGaussianBlur stdDeviation="2"/>
+  </filter>
+</defs>
+
+<!-- Boxes -->
+<rect x="120" y="20" width="400" height="70" rx="16" class="box"/>
+<text x="320" y="65" text-anchor="middle" class="text">OUTER WORLD</text>
+
+<rect x="120" y="130" width="400" height="70" rx="16" class="box"/>
+<text x="320" y="175" text-anchor="middle" class="text">PERCEPTION</text>
+
+<rect x="120" y="240" width="400" height="70" rx="16" class="box"/>
+<text x="320" y="285" text-anchor="middle" class="text">ATTENTION</text>
+
+<rect x="120" y="350" width="400" height="120" rx="16" fill="var(--bg-accent)" stroke="var(--border)" stroke-width="2.6"/>
+<text x="320" y="395" text-anchor="middle" class="text">MENTAL BACKGROUND</text>
+<text x="320" y="420" text-anchor="middle" class="sub">unmanaged activity</text>
+
+<!-- Down arrows -->
+<line x1="320" y1="90" x2="320" y2="130" class="arrow"/>
+<line x1="320" y1="200" x2="320" y2="240" class="arrow"/>
+
+<!-- Upward chaotic arrows -->
+<g filter="url(#blur)">
+  <line x1="220" y1="350" x2="260" y2="310" class="arrow"/>
+  <line x1="320" y1="350" x2="320" y2="310" class="arrow"/>
+  <line x1="420" y1="350" x2="380" y2="310" class="arrow"/>
+</g>
+
+<!-- Turbulence lines -->
+<g clip-path="url(#bgClip)"><path d="M80 380 C240 360 280 400 360 380 C440 360 480 400 560 380" class="turbulence"/>
+<path d="M80 420 C240 440 280 390 360 420 C440 450 480 390 560 420" class="turbulence"/>
+
+
+</svg>
+
+<div class="mbb-caption">
+Unfinished activity keeps resurfacing and pulling attention upward.
+</div>
+</div>
+
+
+<!-- WITH -->
+<div class="mbb-card">
+<div class="mbb-title">With structure</div>
+
+<svg class="mbb-svg" viewBox="0 0 640 520">
+
+<defs>
+  <marker id="arrowHead2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+    <path d="M0,0 L8,4 L0,8 Z" fill="currentColor"/>
+  </marker>
+</defs>
+
+<!-- Boxes -->
+<rect x="120" y="20" width="400" height="70" rx="16" class="box"/>
+<text x="320" y="65" text-anchor="middle" class="text">OUTER WORLD</text>
+
+<rect x="120" y="130" width="400" height="70" rx="16" class="box"/>
+<text x="320" y="175" text-anchor="middle" class="text">PERCEPTION</text>
+
+<rect x="120" y="240" width="400" height="70" rx="16" class="box"/>
+<text x="320" y="285" text-anchor="middle" class="text">ATTENTION</text>
+
+<rect x="120" y="350" width="400" height="120" rx="16" fill="var(--bg-accent)" stroke="var(--border)" stroke-width="2"/>
+<text x="320" y="385" text-anchor="middle" class="text">MENTAL BACKGROUND</text>
+<text x="320" y="410" text-anchor="middle" class="sub">structured pathways</text>
+
+<!-- perfectly centered modules -->
+<rect x="170" y="430" width="90" height="28" rx="8" class="box"/>
+<rect x="280" y="430" width="90" height="28" rx="8" class="box"/>
+<rect x="390" y="430" width="90" height="28" rx="8" class="box"/>
+
+<!-- Down arrows -->
+<line x1="320" y1="90" x2="320" y2="130" class="arrow"/>
+<line x1="320" y1="200" x2="320" y2="240" class="arrow"/>
+
+<!-- Reduced upward arrow -->
+<line x1="320" y1="350" x2="320" y2="310" stroke="var(--arrow)" stroke-width="2" marker-end="url(#arrowHead2)"/>
+
+</svg>
+
+<div class="mbb-caption">
+Background activity has defined destinations. Competition for attention decreases.
+</div>
+</div>
+
+</div>
+</section>
+
+
   <div class="divider"></div>
 
   <h2>Core Friction Types</h2>
