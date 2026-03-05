@@ -297,3 +297,17 @@ hr {
   border-top: 1px solid var(--border);
   margin: 48px 0;
 }
+
+/* MINDBEBOP App Name Styling */
+
+.app-name{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-weight:300;
+  letter-spacing:-0.02em;
+  display:inline-block;
+}
+
+.app-name strong{
+  font-weight:800;
+  letter-spacing:-0.015em;
+}
