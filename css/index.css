@@ -74,3 +74,42 @@
     text-align: left;
   }
 }
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* top-align both sides */
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.app-info {
+  display: flex;
+  align-items: flex-start; /* icon and app text align at top */
+  gap: 12px;
+}
+
+.app-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* left-align badge + caption */
+  justify-content: flex-start;
+  align-self: flex-start;    /* pin badge block to top */
+  text-align: left;
+  margin-left: 0;
+}
+
+.app-badge a {
+  display: block;
+  line-height: 0;            /* removes extra inline-image whitespace */
+}
+
+.app-badge img {
+  display: block;
+  height: auto;
+}
+
+.badge-caption {
+  margin-top: 6px;
+  text-align: left;
+}
