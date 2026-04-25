@@ -1,5 +1,5 @@
 /* =====================================
-   MINDBEBOP — SITE CSS (Shared)
+   MINDBEBOP — SITE CSS (Clean)
    ===================================== */
 
 /* ---------- VARIABLES ---------- */
@@ -30,7 +30,8 @@ body {
   color: var(--fg);
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.6;
-  overflow-y: scroll; /* ← ADD THIS */
+  overflow-y: scroll;
+}
 
 a {
   color: inherit;
@@ -129,7 +130,7 @@ a:hover { opacity: 0.6; }
   background: color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter: blur(6px);
   overflow-y: auto;
-  z-index: 900; /* lower than hamburger */
+  z-index: 900;
 }
 
 .mb-menu[aria-hidden="false"] {
@@ -150,9 +151,8 @@ body.mb-menu-open {
   margin-bottom: 14px;
 }
 
-/* Mobile dropdown spacing */
 .mb-dropdown.open {
-  margin-bottom: 24px; /* creates one visual line break after child menu */
+  margin-bottom: 20px;
 }
 
 .mb-menu-lang {
@@ -173,35 +173,6 @@ body.mb-menu-open {
   font-weight: 600;
 }
 
-/* =========================
-   MOBILE — ALWAYS VISIBLE SUBMENUS
-   ========================= */
-
-.mb-submenu {
-  display: block;
-  margin-top: 6px;
-  margin-bottom: 18px;
-  padding-left: 18px;
-}
-
-.mb-submenu a {
-  display: block;
-  font-size: 0.95rem;
-  margin-bottom: 10px;
-  opacity: 0.8;
-}
-
-.mb-submenu a {
-  font-size: 1rem;
-  margin-bottom: 10px;
-  opacity: 0.85;
-}
-
-/* Adds clean separation AFTER dropdown group */
-.mb-dropdown.open {
-  margin-bottom: 20px;
-}
-
 /* ---------- DESKTOP NAV ---------- */
 
 @media (min-width: 900px) {
@@ -217,11 +188,9 @@ body.mb-menu-open {
     padding: 0;
     background: none;
     backdrop-filter: none;
-    overflow: visible !important;
   }
 
   .mb-menu-main {
-    display: flex;
     flex-direction: row;
     align-items: center;
     gap: 36px;
@@ -232,27 +201,17 @@ body.mb-menu-open {
     letter-spacing: 0.02em;
   }
 
-  .mb-menu-main a.mb-highlight {
-    color: #C0392B;
-    font-weight: 600;
-  }
-
   .mb-menu-lang { display: none; }
 
-  /* Dropdown */
   .mb-dropdown {
     position: relative;
     display: flex;
     align-items: center;
   }
 
-  .mb-parent {
-    padding: 4px 0;
-  }
-
   .mb-submenu {
     position: absolute;
-    top: calc(100% - 16px); /* pulls it upward */
+    top: calc(100% - 16px);
     left: 0;
     background: var(--bg);
     border: 1px solid var(--border);
@@ -265,16 +224,6 @@ body.mb-menu-open {
 
   .mb-dropdown:hover > .mb-submenu {
     display: block;
-  }
-
-  .mb-submenu a {
-    display: block;
-    font-size: 0.75rem;
-    margin-bottom: 8px;
-  }
-
-  .mb-submenu a:last-child {
-    margin-bottom: 0;
   }
 
 }
@@ -298,16 +247,102 @@ hr {
   margin: 48px 0;
 }
 
-/* MINDBEBOP App Name Styling */
+/* ---------- APP NAMES ---------- */
 
-.app-name{
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-weight:300;
-  letter-spacing:-0.02em;
-  display:inline-block;
+.app-name {
+  font-weight: 300;
+  letter-spacing: -0.02em;
 }
 
-.app-name strong{
-  font-weight:800;
-  letter-spacing:-0.015em;
+.app-name strong {
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+
+/* ---------- HERO ---------- */
+
+.hero-section {
+  margin-bottom: 40px;
+}
+
+.hero-lead {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+/* ---------- APPS ---------- */
+
+.app-container {
+  margin-top: 56px;
+}
+
+.app-item {
+  margin-bottom: 72px;
+}
+
+/* ✅ FIXED LAYOUT */
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.app-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.app-icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.app-meta {
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.app-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.app-badge img {
+  display: block;
+  height: 40px;
+  width: auto;
+}
+
+.badge-caption {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-top: 6px;
+  text-align: left;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 700px) {
+
+  .hero-lead {
+    font-size: 1.2rem;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .app-badge {
+    margin-top: 12px;
+  }
 }
