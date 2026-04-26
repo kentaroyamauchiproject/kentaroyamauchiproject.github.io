@@ -48,6 +48,7 @@ a:hover { opacity: 0.6; }
   padding: 16px 20px 0;
   position: relative;
   z-index: 2000;
+  overflow: visible; /* ✅ important */
 }
 
 .mb-header {
@@ -188,12 +189,14 @@ body.mb-menu-open {
     padding: 0;
     background: none;
     backdrop-filter: none;
+    overflow: visible; /* ✅ important */
   }
 
   .mb-menu-main {
     flex-direction: row;
     align-items: center;
     gap: 36px;
+    overflow: visible; /* ✅ important */
   }
 
   .mb-menu-main a {
@@ -207,12 +210,15 @@ body.mb-menu-open {
     position: relative;
     display: flex;
     align-items: center;
+    overflow: visible; /* ✅ important */
   }
 
+  /* ✅ FIXED SUBMENU */
   .mb-submenu {
     position: absolute;
-    top: calc(100% - 16px);
+    top: 100%;
     left: 0;
+    margin-top: 6px;
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 10px;
@@ -281,7 +287,7 @@ hr {
   margin-bottom: 72px;
 }
 
-/* ✅ FIXED LAYOUT */
+/* ---------- APP LAYOUT ---------- */
 
 .app-header {
   display: flex;
