@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- Available Languages -->
 <link rel="alternate" hreflang="en" href="https://www.mindbebop.com/mindblank.html">
 <link rel="alternate" hreflang="ja" href="https://www.mindbebop.com/jp/mindblank.html">
 <link rel="alternate" hreflang="de" href="https://www.mindbebop.com/de/mindblank.html">
@@ -18,23 +19,28 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<title>MINDBEBOP — MindBlank</title>
-<link rel="canonical" href="https://www.mindbebop.com/mindblank.html">
+<link rel="canonical" href="https://www.mindbebop.com/es/mindblank.html">
+<meta name="description" content="MINDBEBOP es el Mental Background OS — un sistema modular que reduce la fricción mental cotidiana y crea espacio mental.">
+<meta name="keywords" content="dejar de rumiar, carga mental, pensamientos repetitivos, sobreestimulación, bloqueo de apps, reinicio mental">
+<meta name="author" content="MINDBEBOP">
 <meta name="robots" content="index, follow">
-<meta name="description" content="MindBlank is not a score. It is a quiet signal of the time you spent away from unresolved mental loops after using MINDBEBOP.">
-<meta property="og:title" content="MindBlank">
-<meta property="og:description" content="MindBlank is not a score. It is a quiet signal of time spent away from unresolved mental loops.">
+
+<meta property="og:title" content="MINDBEBOP — Mental Background OS">
+<meta property="og:description" content="El Mental Background OS. Un sistema modular para pensamientos que siguen activos detrás de la atención — y la única fuente del mundo de espacio mental.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.mindbebop.com/mindblank.html">
+<meta property="og:url" content="https://www.mindbebop.com/es/mindblank.html">
 <meta property="og:image" content="https://www.mindbebop.com/image/MB_LOGO_V5_1024.png">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MindBlank">
-<meta name="twitter:description" content="MindBlank is not a score. It is a quiet signal of mental space after using MINDBEBOP.">
+<meta name="twitter:title" content="MINDBEBOP — Mental Background OS">
+<meta name="twitter:description" content="El Mental Background OS. Estructura la cognición en segundo plano. Crea espacio mental.">
 <meta name="twitter:image" content="https://www.mindbebop.com/image/MB_LOGO_V5_1024.png">
 
-<link rel="stylesheet" href="/css/site.css">
-<link rel="stylesheet" href="/css/everyday-thought-friction.css">
+<title>MINDBEBOP — Mental Background OS</title>
+
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/index.css">
+
 
 </head>
 
@@ -42,8 +48,11 @@
 
 <div class="mb-nav">
   <header class="mb-header">
-    <a class="mb-brand" href="index.html">
-      <img src="image/MB_LOGO_V5_1024.png" data-dark="image/MB_LOGO_V5_1024_INV.png" alt="MINDBEBOP logo">
+    <a class="mb-brand" href="index.html" aria-current="page">
+      <img
+        src="../image/MB_LOGO_V5_1024.png"
+        data-dark="../image/MB_LOGO_V5_1024_INV.png"
+        alt="Logo de MINDBEBOP">
       <span class="mb-brand-name">MINDBEBOP</span>
       <span class="mb-brand-tagline">Mental Background OS</span>
     </a>
@@ -52,79 +61,57 @@
       <span class="mb-open">☰</span>
       <span class="mb-close">×</span>
     </button>
-  </header>
+</header>
 
-  <div class="lang-switch">
-      <a href="/mindblank.html" aria-current="true">English</a>
-      <a href="/jp/mindblank.html">日本語</a>
-      <a href="/de/mindblank.html">Deutsch</a>
-      <a href="/ko/mindblank.html">한국어</a>
-      <a href="/fr/mindblank.html">Français</a>
-      <a href="/es/mindblank.html">Español</a>
-      <a href="/pt-br/mindblank.html">Português (Brasil)</a>
+<div class="lang-switch">
+    <a href="/mindblank.html">English</a>
+    <a href="/jp/mindblank.html">日本語</a>
+    <a href="/de/mindblank.html">Deutsch</a>
+    <a href="/ko/mindblank.html">한국어</a>
+    <a href="/fr/mindblank.html">Français</a>
+    <a href="/es/mindblank.html" aria-current="true">Español</a>
+    <a href="/pt-br/mindblank.html">Português (Brasil)</a>
   </div>
 
-  <nav id="mb-menu" class="mb-menu" aria-hidden="true">
-    <div class="mb-menu-main">
-
-      <!-- START HERE -->
-      <div class="mb-dropdown">
-        <a href="#" class="mb-parent">Start Here</a>
-        <div class="mb-submenu">
-          <a href="welcome.html">Welcome</a>
-          <a href="how-it-works.html">How it works</a>
-          <a href="everyday-thought-friction.html">Thought Friction</a>
-          <a href="mindblank.html">MindBlank</a>
-        </div>
+<nav id="mb-menu" class="mb-menu" aria-hidden="true">
+  <div class="mb-menu-main">
+    <!-- START HERE -->
+    <div class="mb-dropdown">
+        <a href="#" class="mb-parent">Empieza aquí</a>
+      <div class="mb-submenu">
+<a href="welcome.html">Bienvenido/a</a>
+<a href="how-it-works.html">Funcionamiento</a>
+<a href="everyday-thought-friction.html">Fricción mental</a>
+<a href="mindblank.html" aria-current="true">MindBlank</a>
       </div>
-
-      <!-- APPS -->
-      <div class="mb-dropdown">
-        <a href="#" class="mb-parent">Apps</a>
-        <div class="mb-submenu">
-          <a href="mental-background-os.html">Mental Background OS</a>
-          <a href="mindentry.html" class="app-name">Mind<strong>Entry</strong></a>
-          <a href="mindentrybiz.html" class="app-name">Mind<strong>Entry</strong>Biz</a>
-          <a href="mindbackyard.html" class="app-name">Mind<strong>Backyard</strong></a>
-          <a href="mindflipout.html" class="app-name">Mind<strong>Flip</strong>Out</a>
-          <a href="mindshoutout.html" class="app-name">Mind<strong>Shout</strong>Out</a>
-          <a href="mindzoneout.html" class="app-name">Mind<strong>Zone</strong>Out</a>
-          <a href="mindeaseout.html" class="app-name">Mind<strong>Ease</strong>Out</a>
-          <a href="mindbackout.html" class="app-name">Mind<strong>Back</strong>Out</a>
-        </div>
-      </div>
-
-      <a href="detox-recipes.html" class="mb-highlight">Detox Recipes</a>
-
-      <!-- PHILOSOPHY -->
-      <div class="mb-dropdown">
-        <a href="#" class="mb-parent">Philosophy</a>
-        <div class="mb-submenu">
-          <a href="philosophy.html">Philosophy</a>
-          <a href="refusals.html">Refusals</a>
-          <a href="mindbebop.html">MINDBEBOP</a>
-        </div>
-      </div>
-
-      <a href="gallery.html">Gallery</a>
-      <a href="privacy-policy.html">Privacy</a>
-      <a href="faq.html">FAQ</a>
-      <a href="press-background.html">Press</a>
-      <a href="founders-blog.html">Blog</a>
     </div>
-
-    <div class="mb-menu-lang">
-      <a href="/mindblank.html" aria-current="true">English</a>
-      <a href="/jp/mindblank.html">日本語</a>
-      <a href="/de/mindblank.html">Deutsch</a>
-      <a href="/ko/mindblank.html">한국어</a>
-      <a href="/fr/mindblank.html">Français</a>
-      <a href="/es/mindblank.html">Español</a>
-      <a href="/pt-br/mindblank.html">Português (Brasil)</a>
+    <div class="mb-dropdown">
+    <a href="detox-recipes.html" class="mb-highlight" class="mb-parent">Recetas Detox</a>
     </div>
+    <div class="mb-dropdown">
+    <a href="everyday-moments.html" class="mb-parent">Momentos cotidianos</a>
+    </div>
+    <div class="mb-dropdown">
+    <a href="faq.html" class="mb-parent">Preguntas frecuentes</a>
+    </div>
+    <div class="mb-dropdown">
+      <a href="philosophy.html" class="mb-parent">Filosofía</a>
+    </div>
+  </div>
+
+  <div class="mb-menu-lang">
+    <a href="/mindblank.html">English</a>
+    <a href="/jp/mindblank.html">日本語</a>
+    <a href="/de/mindblank.html">Deutsch</a>
+    <a href="/ko/mindblank.html">한국어</a>
+    <a href="/fr/mindblank.html">Français</a>
+    <a href="/es/mindblank.html" aria-current="true">Español</a>
+    <a href="/pt-br/mindblank.html">Português (Brasil)</a>
+    </div>
+  </div>
   </nav>
-</div>
 
+</div>
 <div class="page">
 
   <h1>MindBlank</h1>
@@ -259,9 +246,9 @@ It is about noticing when your mind no longer needs to return to the loop.
   <hr class="rule">
 
   <div style="margin-top:52px; opacity:0.72; font-size:0.92rem;">
-    <p style="margin-bottom:12px;"><a href="mindentry.html" style="text-decoration:underline;">Read: MindEntry</a></p>
-    <p style="margin-bottom:12px;"><a href="how-it-works.html" style="text-decoration:underline;">Read: How it works</a></p>
-    <p style="margin-bottom:12px;"><a href="philosophy.html" style="text-decoration:underline;">Read: Philosophy</a></p>
+    <p style="margin-bottom:12px;"><a href="mindentry.html" style="text-decoration:underline;">Read: MindEntry (English)</a></p>
+    <p style="margin-bottom:12px;"><a href="how-it-works.html" style="text-decoration:underline;">Read: Funcionamiento</a></p>
+    <p style="margin-bottom:12px;"><a href="philosophy.html" style="text-decoration:underline;">Read: Filosofía</a></p>
     Copyright © 2026 MINDBEBOP — All rights reserved.
   </div>
 
