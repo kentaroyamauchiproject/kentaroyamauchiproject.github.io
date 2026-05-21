@@ -20,19 +20,22 @@
 .app-title h3 {
   margin: 0;
   font-size: 1.15rem;
+  font-weight: 600;
 }
 
 h3 {
   font-size: 1.15rem;
-
+  font-weight: 600;
   margin-top: 32px;
   margin-bottom: 8px;
 }
 
 .app-title h3.app-name {
   font-weight: 300;
+  letter-spacing: -0.02em;
 }
 
 .app-title h3.app-name strong {
   font-weight: 800;
+  letter-spacing: -0.015em;
 }
