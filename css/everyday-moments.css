@@ -10,10 +10,10 @@
 
 /* Triple the vertical space between sections */
 .section {
-  margin-top: 320px;
+  margin-top: 180px;
 }
 
 /* Optional: keep the first section slightly closer */
 .section:first-of-type {
-  margin-top: 240px;
+  margin-top: 120px;
 }
