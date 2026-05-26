@@ -230,7 +230,7 @@ Others become structured runtimes through MindEntry and the MINDBEBOP system.
       
       <div style="flex: 1; min-width: 250px;">
         <p style="margin-top: 0; margin-bottom: 10px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.6;">Method 1: Scan to Import</p>
-        <img src="54321.png" alt="MindEntry Recipe QR Code" style="width: 100%; max-width: 280px; height: auto; border-radius: 12px; display: block;">
+        <img src="image/recipe-qr-54321.png" alt="MindEntry Recipe QR Code" style="width: 100%; max-width: 280px; height: auto; border-radius: 12px; display: block;">
       </div>
 
       <div style="flex: 1.5; min-width: 280px; width: 100%;">
@@ -336,6 +336,22 @@ document.querySelectorAll('.mb-dropdown').forEach(dropdown => {
   });
 });
 </script>
-
+<script>
+function copyMER1Code() {
+  const copyText = document.getElementById("mer1Code");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+  navigator.clipboard.writeText(copyText.value);
+  
+  const btn = document.getElementById("copyBtn");
+  btn.innerText = "Copied!";
+  btn.style.background = "rgba(0, 128, 0, 0.2)";
+  
+  setTimeout(() => {
+    btn.innerText = "Copy Code";
+    btn.style.background = "rgba(128,128,128,0.15)";
+  }, 2000);
+}
+</script>
 </body>
 </html>
