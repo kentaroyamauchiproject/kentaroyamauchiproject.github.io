@@ -166,7 +166,7 @@
 
 <p>Write a thought, run a Recipe, run a CogniHack, share a Recipe, schedule a Recipe, or move directly into the right MINDBEBOP tool.</p>
 
-<p>Version 1.8 adds Your Step, Blank Map, and improved focus while running Recipes and CogniHacks.</p>
+<p>Version 1.9 introduces Stateful Recipes, The First Move, MindShoutOut and MindBackOut integration, and more flexible Recipe flows that adapt to the current moment.</p>
 
       <div class="divider"></div>
 
@@ -276,6 +276,32 @@
 
       <div class="divider"></div>
 
+<h2>Returned Thoughts</h2>
+
+<p>
+When a thought returns from MindShoutOut, MindEntry can help decide what happens next.
+</p>
+
+<ul>
+<li>Handle Now</li>
+<li>Take the First Step</li>
+<li>Flip it in MindFlipOut</li>
+<li>Schedule Again</li>
+<li>Release it in MindEaseOut</li>
+</ul>
+
+<p>
+Take the First Step can send the returned task directly into The First Move.
+</p>
+
+<p class="muted">
+This creates a path from remembering a task to beginning a task without turning MindEntry into a task manager.
+</p>
+
+      <div class="divider"></div>
+
+
+
       <h2>Multi-Run</h2>
 
       <p>Some recipes work better when repeated.</p>
@@ -330,29 +356,94 @@ The goal is reducing cognitive friction so the mind can move again.
 
 <div class="divider"></div>
 
-<h2>Your Step</h2>
+<h2>Stateful Recipes</h2>
 
 <p>
-Some Recipes and CogniHacks can ask for a <strong>Your Step</strong>.
+Some Recipes and CogniHacks can adapt while they run.
 </p>
 
 <p>
-A Your Step is the task, thought, situation, conversation, or action that matters right now.
+Instead of requiring every detail in advance, a Stateful Recipe can ask what matters right now.
 </p>
 
 <p>
-You provide the current target.
-<span class="app-name">Mind<strong>Entry</strong></span> holds the structure and carries it through the sequence.
+A recipe might ask:
+</p>
+
+<blockquote>
+What are you avoiding right now?
+</blockquote>
+
+<p>
+or:
+</p>
+
+<blockquote>
+What is the smallest visible action you can take right now?
+</blockquote>
+
+<p>
+Your answer becomes part of the active sequence.
+</p>
+
+<p>
+The structure stays the same.
+The current situation changes.
+</p>
+
+<p>
+This allows a single recipe to work across many different moments without becoming a different recipe.
 </p>
 
 <ul>
-  <li>Ask before starting</li>
-  <li>Ask when reached</li>
-  <li>Use the answer later in the same flow</li>
+<li>Ask before starting</li>
+<li>Ask when reached</li>
+<li>Reuse answers later in the sequence</li>
+<li>Adapt to the current situation</li>
 </ul>
 
 <p class="muted">
-Your Step answers stay in the active run session only. They are not saved into the Recipe, MER1 export, or history.
+Runtime answers stay on your device and are not written back into the recipe itself.
+</p>
+
+<div class="divider"></div>
+
+<h2>The First Move</h2>
+
+<p>
+The First Move is a bundled CogniHack designed for moments when you know what needs to be done but cannot begin.
+</p>
+
+<p>
+Instead of asking you to finish a task, it helps narrow attention until only the next visible step remains.
+</p>
+
+<p>
+The sequence can ask:
+</p>
+
+<blockquote>
+What are you avoiding right now?
+</blockquote>
+
+<p>
+and later:
+</p>
+
+<blockquote>
+What is the smallest visible action you can take right now?
+</blockquote>
+
+<p>
+The goal is not task completion.
+</p>
+
+<p>
+The goal is movement.
+</p>
+
+<p class="muted">
+The First Move is used throughout the MINDBEBOP ecosystem, including MindShoutOut returned thoughts and MindBackOut First Move Unlock sessions.
 </p>
 
 <h2>MindBlank</h2>
@@ -434,6 +525,19 @@ Your Step answers stay in the active run session only. They are not saved into t
       <div class="divider"></div>
 <div class="divider"></div>
 
+<h2>Version 1.9</h2>
+
+<ul>
+  <li>Added Stateful Recipes that can adapt to the current moment while running</li>
+  <li>Added Ask & Store runtime variables for reusable answers within a recipe</li>
+  <li>Added bundled CogniHack: The First Move</li>
+  <li>Added Take the First Step workflow for returned thoughts</li>
+  <li>Added MindShoutOut integration with The First Move</li>
+  <li>Added MindBackOut integration with First Move Unlock</li>
+  <li>Improved Recipe flexibility and runtime flows</li>
+  <li>Stability improvements and fixes</li>
+</ul>
+
 <h2>Version 1.8</h2>
 
 <ul>
@@ -476,32 +580,11 @@ Your Step answers stay in the active run session only. They are not saved into t
   <li>Improved About screen appearance and localization across six languages</li>
   <li>Fixed Weekly MindPreCog scrolling and improved overall stability</li>
 </ul>
-      <h2>Version 1.6</h2>
 
-<ul>
-  <li>Added MindBlank, a passive reflection of the time your mind stayed quiet</li>
-  <li>Added MindPreCog with morning, bedtime and weekly prompts</li>
-  <li>Added event-based actions that can open MindEntry or other MINDBEBOP tools</li>
-  <li>Improved Recipe flow and added rescue buttons</li>
-  <li>Added MindBackyard as a Recipe step</li>
-  <li>Removed MindEntry as a Recipe step</li>
-  <li>Added support for French, German, Japanese, Korean, Portuguese (Brazil), and Spanish (Spain)</li>
-  <li>Stability improvements and minor fixes</li>
-</ul>
 
-<div class="divider"></div>
-
-<h2>Version 1.4</h2>
-
-<ul>
-  <li>Added scheduled recipe runs</li>
-  <li>Added recipe auto-run from <span class="app-name">Mind<strong>Shout</strong>Out</span> notifications</li>
-  <li>Added multi-run support for recipes</li>
-</ul>
-<p>
-  MINDBEBOP introduces a modular architecture for structuring the Mental Background layer, helping you reclaim attention quietly consumed by unresolved thoughts.
-</p>
 <hr class="rule">
+
+
 <div class="quiet-note">
   <p><strong>What brought you here?</strong></p>
   <p>Just a note is enough.</p>
