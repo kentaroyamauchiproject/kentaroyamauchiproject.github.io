@@ -563,16 +563,16 @@ CogniHack läuft über <span class="app-name">Mind<strong>Entry</strong></span>,
 })();
 </script>
 <script>
-function copyMER1Code() {
-  const copyText = document.getElementById("mer1Code");
+function copyMER1Code(textareaId, btn) {
+  const copyText = document.getElementById(textareaId);
   copyText.select();
-  copyText.setSelectionRange(0, 99999); // For mobile devices
+  copyText.setSelectionRange(0, 99999);
+
   navigator.clipboard.writeText(copyText.value);
-  
-  const btn = document.getElementById("copyBtn");
+
   btn.innerText = "Copied!";
   btn.style.background = "rgba(0, 128, 0, 0.2)";
-  
+
   setTimeout(() => {
     btn.innerText = "Copy Code";
     btn.style.background = "rgba(128,128,128,0.15)";
