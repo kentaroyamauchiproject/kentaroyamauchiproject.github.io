@@ -121,7 +121,7 @@ CogniHack は <span class="app-name">Mind<strong>Entry</strong></span> 上で動
 </p>
 
 <p class="last-updated">
-  <strong>最終更新:</strong> 2026-05-25
+  <strong>最終更新:</strong> 2026-06-01
 </p>
 
 <hr class="rule">
@@ -164,32 +164,54 @@ CogniHack は <span class="app-name">Mind<strong>Entry</strong></span> 上で動
 </div>
 
 <div class="recipe">
-  <h2>Your Step</h2>
+  <h2>Stateful Recipes</h2>
+
   <p>
-    一部のCogniHackでは <strong>Your Step</strong> が使われます。
+    一部のCogniHackは<strong>Stateful Recipes</strong>です。
   </p>
+
   <p>
-    Your Stepとは、その瞬間に重要な対象のことです。
-    CogniHackが扱うタスク、考えごと、会話、状況、行動などが含まれます。
+    Stateful Recipesは、あらかじめすべての詳細を必要とする代わりに、実行中に「今大切なこと」を尋ねることができます。
   </p>
+
   <p>
-    リセット手順と現在の状況の両方を頭の中で保持する代わりに、
-    <span class="app-name">Mind<strong>Entry</strong></span>
-    が実行中にYour Stepを尋ね、その後の手順全体で保持します。
+    レシピが構造を保持します。
+    現在の状況を提供するのはあなたです。
   </p>
+
   <p>
-    あなたは現在の対象を入力するだけ。
-    MindEntryが構造を保持します。
+    その答えは、残りのシーケンス全体で利用されます。
   </p>
+
   <div class="why">
-    <strong>例:</strong><br>
+    <strong>シンプルに言うと：</strong><br>
+    手順は変わりません。<br>
+    その瞬間が内容を決めます。
+  </div>
+
+  <p>
+    Stateful CogniHackは次のようなことを尋ねる場合があります。
+  </p>
+
+  <ul>
+    <li><strong>Your Situation：</strong> 今、何を避けていますか？</li>
+    <li><strong>Your Step：</strong> 今できる最も小さな目に見える行動は何ですか？</li>
+  </ul>
+
+  <p>
+    これにより、リセットの手順を頭の中で保持する必要がなくなり、同時にその時々の状況にも適応できます。
+  </p>
+
+  <div class="why">
+    <strong>例：</strong><br>
+    レポートを書く<br>
     鈴木さんに返信する<br>
     PDFを開く<br>
-    最初の段落を書き始める<br>
-    明日の会議<br>
-    何度も頭の中で繰り返してしまう考え
+    部屋を片付ける<br>
+    どうしても繰り返し考えてしまうこと
   </div>
 </div>
+
 
 <nav class="toc" style="margin: 40px 0; padding: 20px; border: 1px dashed rgba(128,128,128,0.3); border-radius: 8px;">
   <h3 style="margin-top: 0; font-size: 1.1rem;">目次</h3>
@@ -236,6 +258,162 @@ CogniHack は <span class="app-name">Mind<strong>Entry</strong></span> 上で動
   </div>
 
   <div class="app-trigger" style="margin-top: 20px; padding: 15px; background: rgba(128,128,128,0.05); border-radius: 6px; font-size: 0.95rem;">
+
+    <p style="margin-top: 0;">
+      <strong>CogniHackとして実行する:</strong>
+    </p>
+
+    <p style="margin-bottom: 15px;">
+      このレシピを <strong>MindEntry Recipe Runner</strong> にインポートしてください。
+      一画面、一ステップ。順番を覚える必要はありません。
+    </p>
+
+    <div style="margin-bottom: 25px;">
+      <a href="https://apps.apple.com/app/id6760157253" target="_blank" style="display: inline-block; text-decoration: none;">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store" style="height: 40px; vertical-align: middle;">
+      </a>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: flex-start;">
+
+      <div style="flex: 1; min-width: 250px;">
+        <p style="margin-top: 0; margin-bottom: 10px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.6;">
+          方法1: QRコードを読み込む
+        </p>
+        <img src="image/recipe-qr-54321.png" alt="MindEntry Recipe QR Code" style="width: 100%; max-width: 280px; height: auto; border-radius: 12px; display: block;">
+      </div>
+
+      <div style="flex: 1.5; min-width: 280px; width: 100%;">
+        <p style="margin-top: 0; margin-bottom: 10px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.6;">
+          方法2: コードをコピーして MindEntry にペースト
+        </p>
+
+        <div style="position: relative;">
+          <textarea readonly id="mer1Code" style="width: 100%; height: 120px; font-family: monospace; font-size: 0.8rem; padding: 10px; background: rgba(0,0,0,0.05); color: inherit; border: 1px solid rgba(128,128,128,0.2); border-radius: 6px; resize: none; box-sizing: border-box; word-break: break-all;">MER1:YnZ4bswGAADBAgAA6Xsic3QiOlt7IgAG6yJTdGVwIDEiLCJpAA3gF0Fja25vd2xlZGdlIDUgdGhpbmdzIHlvdSBjYW4gc2VlIGFyb3VuZAgTyBUuIFMACuAIciBwaHlzaWNhbCBlbnZpcm9ubWVudCBhACjIImxldPLgB2V5ZXMgcmVzdCBvbiBlYWNoIG9iamVjCA_kZSBieQgHQIQuRmHnYWN0aW9uOjiL8GSZHn0s9W4y-240-Ch57mx5IHRvdWNoLiBGZWVsACbsZSB0ZXh0dXJlIG9mGILIPWNsb_FQHizmc3VyZmFj-uRkZXNrGBrgAmNvbGQgZmxvb3IgYmVuZWF0aBgi6GZlZXQsIG9yECUgvWEAaUDsaDlK8AE4t_CEOXbzbjP7bjP47GhlYXIuIExpc3RlbgihkMlzZRBj5WJhY2tnGiXtbm9pc2Ug4oCUIGEgZAAtQhVhyLBjYXLyyMZodW0AToDmYWnkb25kaQk4kK1lchCf5m93biBicgjLOVzwATid8Go5QvNuNPtuMvjrc21lbGwuIE5vdGkBzsHaYW55weFidGxDO2NJonMIiJhyYWnpZGVsaWJlcmF0CMzI2WxlYfMI1xCNEiXAq2VzLEHxZhA0Cd1pOXPwAziU8GE5MPNuNfteMTCbgc50YTCbCIbkY3VycgxlQCdsiCxlchAkMtvlbW91dGgQdMC1dGFrgCQgcwjMidppcEC3d2kdcvADOIHwTuV9XSwicwj-SDRZwD9icmHnaXMgYnVmZhBV6y4gQW54aWV0eSwgA9tAenDmb3VnaHRzEFkAmOpBREhEIGZyZWV6ArWD4mF26XZlcmxvYWRlZBiH5HdvcmsIneVtZW1vcghGyNllYXbzAKRDCWnlc3R1Y2sAt8C-c2lkQy90SRlmRm5A6FTrNS00LTMtMi0xIEcTOeVpbmcifQYAAAAAAAAAYnZ4JA</textarea>
+
+          <button onclick="copyMER1Code()" id="copyBtn" style="margin-top: 8px; padding: 6px 12px; font-size: 0.8rem; background: rgba(128,128,128,0.15); border: none; border-radius: 4px; color: inherit; cursor: pointer; transition: background 0.2s;">
+            コードをコピー
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="recipe">
+  <h2 id="hack-2">The First Move</h2>
+
+  <p>
+    <strong>状況：</strong>
+    やるべきことは分かっているのに、始められない。
+    タスクが大きすぎたり、複雑すぎたり、重たく感じたりする。
+    始める代わりに、気づけばスクロールしたり、整理したり、調べたり、やることについて考え続けたりしている。
+  </p>
+
+  <p>
+    先延ばしを断ち切る方法として、2分ルールがよく使われます。
+    しかし、完全に固まってしまっているときは、タスクを小さく分解すること自体が新たなタスクになってしまうことがあります。
+  </p>
+
+  <p>
+    これを<span class="app-name">Mind<strong>Entry</strong></span>で実行すると、
+    Stateful CogniHackになります。
+    構造は同じままですが、その時のタスクは実行中に与えられます。
+  </p>
+
+  <div class="step">
+    <strong>Tiny Start：</strong>
+    両足をしっかり床につけてください。
+    これはタスクではありません。
+    ただ動き始める最初のサインです。
+  </div>
+
+  <div class="step">
+    <strong>Tiny Start：</strong>
+    一番近くにある実物に触れてください。
+    机、テーブル、壁、ノート、床――何でも構いません。
+  </div>
+
+  <div class="user-input-prompt" data-prompt-id="target-task" data-prompt-type="ask-store">
+    <strong>[Ask &amp; Store]</strong>
+    今、何を避けていますか？
+  </div>
+
+  <div class="step example-answer">
+    <strong>回答例：</strong>
+    レポートを書く
+  </div>
+
+  <div class="step">
+    <strong>Step 1：</strong>
+    他のタスク、プロジェクト、義務、気を散らすものはすべて脇に置いてください。
+    この先しばらくの間、大切なのはこれだけです：
+    <span class="user-step">レポートを書く</span>。
+  </div>
+
+  <div class="step">
+    <strong>Step 2：</strong>
+    次のことに一歩近づいてください：
+    <span class="user-step">レポートを書く</span>。
+    まだタスク全体を始める必要はありません。
+    ただ始めやすくするだけです。
+    <br><br>
+    <strong>例：</strong><br>
+    • 関連するファイルを開く<br>
+    • 関連するアプリを開く<br>
+    • その作業を行う場所まで行く<br>
+    • 必要な物を目の前に置く
+  </div>
+
+  <div class="user-input-prompt" data-prompt-id="first-move" data-prompt-type="ask-store">
+    <strong>[Ask &amp; Store]</strong>
+    今できる、最も小さな目に見える行動は何ですか？
+  </div>
+
+  <div class="step example-answer">
+    <strong>回答例：</strong>
+    ドキュメントを開く
+  </div>
+
+  <div class="step">
+    <strong>Step 3：</strong>
+    これだけを行ってください：
+    <span class="user-step">ドキュメントを開く</span>
+  </div>
+
+  <div class="step">
+    <strong>Step 4：</strong>
+    終わったら止まってください。
+    あなたはすでに始めています。
+  </div>
+
+  <div class="step">
+    <strong>Step 5：</strong>
+    続けるのが簡単に感じるなら、そのまま続けてください。
+    そうでなければ止まってください。
+    CogniHackはすでに完了しています。
+  </div>
+
+  <div class="why">
+    <strong>仕組み：</strong>
+    固まってしまった心は、最初の一歩を踏み出す前に山全体を解決しようとすることがあります。
+    このCogniHackは、その必要を取り除きます。
+    Tiny Startが動きを生みます。
+    最初の質問が焦点を作ります。
+    二つ目の質問が具体的な入口を作ります。
+    やる気が言い訳を始める前に、動きが始まります。
+  </div>
+
+  <div class="why">
+    <strong>なぜStatefulなのか：</strong>
+    同じ構造を、さまざまな行き詰まったタスクに使うことができます。
+    今日は「レポートを書く」かもしれません。
+    明日は「部屋を片付ける」かもしれません。
+    レシピは同じです。
+    変わるのは、その時の状況です。
+  </div>
+ <div class="app-trigger" style="margin-top: 20px; padding: 15px; background: rgba(128,128,128,0.05); border-radius: 6px; font-size: 0.95rem;">
 
     <p style="margin-top: 0;">
       <strong>CogniHackとして実行する:</strong>
