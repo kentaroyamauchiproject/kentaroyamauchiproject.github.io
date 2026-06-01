@@ -159,7 +159,10 @@
   <p class="kicker">A shared structure that adapts to the current moment.</p>
 
   <p>
-    Stateful Recipes are MindEntry recipes that can ask what matters right now.
+    Stateful Recipes are MindEntry recipes that can wait for the moment.
+  </p>
+  <p>
+    Instead of requiring every detail in advance, they can ask for the current situation and the next visible step while the recipe is running.
   </p>
   <p>
   A recipe cannot know whether today’s problem is a report, a difficult conversation, an email, a meeting, or a thought that keeps replaying.</p>
@@ -315,37 +318,63 @@
 
   <hr class="rule">
 
-  <h2>Your Step</h2>
-  <p class="kicker">The part of the recipe that waits for the moment.</p>
+  <h2>Your Situation and Your Step</h2>
+<p class="kicker">Stateful Recipes can ask for both.</p>
 
-  <p>
-    Stateful Recipes use a MindEntry step type called <strong>Your Step</strong>.
-  </p>
+<p>
+  Some Stateful Recipes need to know what the current situation is.
+</p>
 
-  <p>
-    A Your Step lets the recipe ask for a task, thought, situation, conversation, or action while the recipe is running.
-  </p>
+<p>
+  Others need to know the next visible step.
+</p>
 
-  <p>
-    It can ask before the recipe starts.
-    It can also ask when that step is reached.
-  </p>
+<p>
+  MindEntry can ask for either one while the recipe is running.
+</p>
 
-  <p>
-    Your answer stays inside the active run.
-    It is not saved into the recipe itself.
-  </p>
+<blockquote style="margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid currentColor; opacity: 0.85;">
+  Your Situation<br>
+  What are you avoiding right now?
+</blockquote>
 
-  <ul>
-    <li>Before Starting: answer first, then run the sequence</li>
-    <li>When Reached: answer when the recipe arrives at that step</li>
-    <li>Reusable: the same recipe can work with different situations</li>
-    <li>Local: runtime answers stay on your device</li>
-  </ul>
+<p>
+  You answer:
+</p>
+
+<blockquote style="margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid currentColor; opacity: 0.85;">
+  Write the report
+</blockquote>
+
+<p>
+  Later, the recipe may ask:
+</p>
+
+<blockquote style="margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid currentColor; opacity: 0.85;">
+  Your Step<br>
+  What is the smallest visible action you can take right now?
+</blockquote>
+
+<p>
+  You answer:
+</p>
+
+<blockquote style="margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid currentColor; opacity: 0.85;">
+  Open the document
+</blockquote>
+
+<p>
+  The recipe continues using both answers.
+</p>
+
+<p>
+  The structure stays the same.
+  The moment supplies the details.
+</p>
 
   <hr class="rule">
 
-  <h2>Example: The First Two Minutes</h2>
+  <h2>Example: The First Move</h2>
 
   <p>
     A Stateful CogniHack can turn a large, stuck task into a first visible movement.
