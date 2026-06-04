@@ -166,7 +166,7 @@
 
 <p>Write a thought, run a Recipe, run a CogniHack, share a Recipe, schedule a Recipe, or move directly into the right MINDBEBOP tool.</p>
 
-<p>Version 1.9 introduces Stateful Recipes, The First Move, MindShoutOut and MindBackOut integration, and more flexible Recipe flows that adapt to the current moment.</p>
+<p>Version 2.0 introduces Recipe Protection with MindBackOut, allowing compatible recipes to keep selected apps locked while the recipe is running and unlock automatically when completed.</p>
 
       <div class="divider"></div>
 
@@ -482,6 +482,28 @@ The goal is movement.
 The First Move is used throughout the MINDBEBOP ecosystem, including MindShoutOut returned thoughts and MindBackOut First Move Unlock sessions.
 </p>
 
+<div class="divider"></div>
+
+<h2>Recipe Protection</h2>
+
+<p>
+Compatible recipes can be protected with
+<span class="app-name">Mind<strong>Back</strong>Out</span>.
+</p>
+
+<p>
+When a protected recipe starts, selected apps can be locked while the recipe is running.
+When the recipe is completed, those apps unlock automatically.
+</p>
+
+<p>
+Recipe Protection is configured at the recipe level, so each compatible recipe can have its own protection setting.
+</p>
+
+<p class="muted">
+Recipe Protection requires MindBackOut. It is designed to protect the sequence, not to turn MindEntry into a productivity or task management app.
+</p>
+
 <h2>MindBlank</h2>
 
 <p><span class="app-name">Mind<strong>Blank</strong></span> is a passive reflection of the time your mind stayed quiet after using MINDBEBOP.</p>
@@ -558,14 +580,26 @@ The First Move is used throughout the MINDBEBOP ecosystem, including MindShoutOu
         <li>AI-assisted routing and explanations when available</li>
       </ul>
 
-      <div class="divider"></div>
+<div class="divider"></div>
+
+<h2>Version 2.0</h2>
+
+<ul>
+  <li>Added Recipe Protection support with <span class="app-name">Mind<strong>Back</strong>Out</span></li>
+  <li>Compatible recipes can keep selected apps locked while running</li>
+  <li>Protected recipes automatically unlock selected apps when completed</li>
+  <li>Added recipe-level protection settings and MindBackOut configuration flow</li>
+  <li>Added support for protected recipe sharing and imports</li>
+  <li>Interface refinements, stability improvements, and fixes</li>
+</ul>
+
 <div class="divider"></div>
 
 <h2>Version 1.9</h2>
 
 <ul>
   <li>Added Stateful Recipes that can adapt to the current moment while running</li>
-  <li>Added Ask & Store runtime variables for reusable answers within a recipe</li>
+  <li>Added Your Question &amp; Answer runtime variables for reusable answers within a recipe</li>
   <li>Added bundled CogniHack: The First Move</li>
   <li>Added Take the First Step workflow for returned thoughts</li>
   <li>Added MindShoutOut integration with The First Move</li>
