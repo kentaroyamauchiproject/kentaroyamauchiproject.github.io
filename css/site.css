@@ -55,7 +55,8 @@ a:hover {
 /* ---------- NAV ---------- */
 
 .mb-nav {
-  max-width: 780px;
+  width: 100%;
+  max-width: 1080px;
   margin: 0 auto;
   padding: 16px 20px 0;
   position: relative;
