@@ -22,15 +22,24 @@
 }
 
 /* ---------- BASE ---------- */
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
 
 body {
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: var(--bg);
   color: var(--fg);
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.6;
-  overflow-y: scroll; /* ← ADD THIS */
+  overflow-y: scroll;
 }
 
 a {
@@ -38,12 +47,16 @@ a {
   text-decoration: none;
   transition: opacity 0.15s ease;
 }
-a:hover { opacity: 0.6; }
+
+a:hover {
+  opacity: 0.6;
+}
 
 /* ---------- NAV ---------- */
 
 .mb-nav {
-  max-width: 780px;
+  width: 100%;
+  max-width: 1080px;
   margin: 0 auto;
   padding: 16px 20px 0;
   position: relative;
@@ -84,6 +97,11 @@ a:hover { opacity: 0.6; }
   font-weight: 600;
 }
 
+.mb-menu-main a.mb-highlight-blue {
+  color: #3A6EA5;
+  font-weight: 600;
+}
+
 /* ---------- LANGUAGE SWITCH ---------- */
 
 .lang-switch {
@@ -99,8 +117,10 @@ a:hover { opacity: 0.6; }
   font-weight: 600;
 }
 
-@media (max-width: 900px) {
-  .lang-switch { display: none; }
+@media (max-width: 899px) {
+  .lang-switch {
+    display: none;
+  }
 }
 
 /* ---------- HAMBURGER ---------- */
@@ -115,9 +135,17 @@ a:hover { opacity: 0.6; }
   z-index: 1100;
 }
 
-.mb-hamburger .mb-close { display: none; }
-.mb-hamburger[aria-expanded="true"] .mb-open { display: none; }
-.mb-hamburger[aria-expanded="true"] .mb-close { display: inline; }
+.mb-hamburger .mb-close {
+  display: none;
+}
+
+.mb-hamburger[aria-expanded="true"] .mb-open {
+  display: none;
+}
+
+.mb-hamburger[aria-expanded="true"] .mb-close {
+  display: inline;
+}
 
 /* ---------- MOBILE MENU ---------- */
 
@@ -130,7 +158,7 @@ a:hover { opacity: 0.6; }
   background: color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter: blur(6px);
   overflow-y: auto;
-  z-index: 900; /* lower than hamburger */
+  z-index: 900;
 }
 
 .mb-menu[aria-hidden="false"] {
@@ -151,9 +179,8 @@ body.mb-menu-open {
   margin-bottom: 14px;
 }
 
-/* Mobile dropdown spacing */
 .mb-dropdown.open {
-  margin-bottom: 24px; /* creates one visual line break after child menu */
+  margin-bottom: 20px;
 }
 
 .mb-menu-lang {
@@ -187,27 +214,17 @@ body.mb-menu-open {
 
 .mb-submenu a {
   display: block;
-  font-size: 0.95rem;
-  margin-bottom: 10px;
-  opacity: 0.8;
-}
-
-.mb-submenu a {
   font-size: 1rem;
   margin-bottom: 10px;
   opacity: 0.85;
 }
 
-/* Adds clean separation AFTER dropdown group */
-.mb-dropdown.open {
-  margin-bottom: 20px;
-}
-
 /* ---------- DESKTOP NAV ---------- */
 
 @media (min-width: 900px) {
-
-  .mb-hamburger { display: none; }
+  .mb-hamburger {
+    display: none;
+  }
 
   .mb-menu {
     position: static;
@@ -238,9 +255,15 @@ body.mb-menu-open {
     font-weight: 600;
   }
 
-  .mb-menu-lang { display: none; }
+  .mb-menu-main a.mb-highlight-blue {
+    color: #3A6EA5;
+    font-weight: 600;
+  }
 
-  /* Dropdown */
+  .mb-menu-lang {
+    display: none;
+  }
+
   .mb-dropdown {
     position: relative;
     display: flex;
@@ -253,7 +276,7 @@ body.mb-menu-open {
 
   .mb-submenu {
     position: absolute;
-    top: calc(100% - 16px); /* pulls it upward */
+    top: calc(100% - 16px);
     left: 0;
     background: var(--bg);
     border: 1px solid var(--border);
@@ -277,25 +300,32 @@ body.mb-menu-open {
   .mb-submenu a:last-child {
     margin-bottom: 0;
   }
-
 }
-
-.lang-switch {
-    margin-bottom: 10px;
-  }
 
 /* ---------- PAGE ---------- */
 
 .page {
   max-width: 780px;
+  width: 100%;
   margin: 0 auto;
   padding: 40px 20px 80px;
+  flex: 1;
 }
 
-h1 { font-size: 2rem; margin-bottom: 24px; }
-h2 { font-size: 1.4rem; margin-top: 44px; margin-bottom: 12px; }
+h1 {
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
 
-.subtle { color: var(--muted); }
+h2 {
+  font-size: 1.4rem;
+  margin-top: 44px;
+  margin-bottom: 12px;
+}
+
+.subtle {
+  color: var(--muted);
+}
 
 hr {
   border: none;
@@ -303,16 +333,48 @@ hr {
   margin: 48px 0;
 }
 
-/* MINDBEBOP App Name Styling */
+/* ---------- FOOTER ---------- */
 
-.app-name{
+.page-footer {
+  max-width: 780px;
+  width: 100%;
+  margin: 60px auto 0;
+  padding: 0 20px 40px;
+  text-align: center;
+}
+
+.page-footer .quiet-note {
+  margin-bottom: 60px;
+}
+
+.page-footer .copyright {
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+/* ---------- MINDBEBOP APP NAME STYLING ---------- */
+
+.app-name {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-weight:300;
-  letter-spacing:-0.02em;
-  display:inline-block;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  display: inline-block;
 }
 
-.app-name strong{
-  font-weight:800;
-  letter-spacing:-0.015em;
+.app-name strong {
+  font-weight: 800;
+  letter-spacing: -0.015em;
 }
+
+/* ---------- IMAGES ---------- */
+
+.start-card-image {
+  width: 100%;
+  max-width: 280px;
+  display: block;
+  margin: 16px auto;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+
