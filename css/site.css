@@ -332,3 +332,23 @@ hr {
   border:1px solid var(--border);
   box-shadow:0 8px 24px rgba(0,0,0,.08);
 }
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  flex: 1;
+}
+
+.footer {
+  margin-top: auto;
+}
