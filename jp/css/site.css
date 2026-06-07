@@ -322,3 +322,13 @@ hr {
   font-weight:800;
   letter-spacing:-0.015em;
 }
+
+.start-card-image{
+  width:100%;
+  max-width:280px;
+  display:block;
+  margin:16px auto;
+  border-radius:16px;
+  border:1px solid var(--border);
+  box-shadow:0 8px 24px rgba(0,0,0,.08);
+}
