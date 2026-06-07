@@ -295,25 +295,25 @@ before it becomes anything.
   </article>
 </main>
 
-<footer class="footer">
   <hr class="rule">
+ 
+  <div class="quiet-note">
+    <p><strong>What brought you here?</strong></p>
+    <p>Just a note is enough.</p>
+    <p>
+      <a href="mailto:support@mindbebop.com?subject=What%20brought%20me%20here">
+        support@mindbebop.com
+      </a>
+    </p>
+  </div>
 
-  <div class="footer-inner">
-    <div class="quiet-note">
-      <p><strong>What brought you here?</strong></p>
-      <p>Just a note is enough.</p>
-      <p>
-        <a href="mailto:support@mindbebop.com?subject=What%20brought%20me%20here">
-          support@mindbebop.com
-        </a>
-      </p>
-    </div>
-
+  <div style="margin-top:60px; opacity:0.7; font-size:0.9rem;">
     <p class="copyright">
       Copyright © 2026 MINDBEBOP — All rights reserved.
     </p>
   </div>
-</footer>
+
+</div>
 
 <script>
 (function () {
@@ -339,7 +339,7 @@ before it becomes anything.
   let scrollY = 0;
 
   function openMenu() {
-    scrollY = window.scrollY || 0;
+    scrollY = window.scrollY;
     btn.setAttribute('aria-expanded', 'true');
     menu.setAttribute('aria-hidden', 'false');
     document.body.style.position = 'fixed';
