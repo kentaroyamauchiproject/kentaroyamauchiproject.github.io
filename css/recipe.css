@@ -84,10 +84,10 @@ h1 {
     margin-bottom: 12px; 
 }
 
-.app-name { 
+/* .app-name { 
     font-weight: 700; 
     color: var(--app-accent); 
-}
+} */
 
 .why { 
     background: var(--why-bg); 
