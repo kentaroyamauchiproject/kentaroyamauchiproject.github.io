@@ -84,6 +84,12 @@ a:hover { opacity: 0.6; }
   font-weight: 600;
 }
 
+  .mb-menu-main a.mb-highlight-blue {
+    color: #3A6EA5;
+    font-weight: 600;
+  }
+
+
 /* ---------- LANGUAGE SWITCH ---------- */
 
 .lang-switch {
@@ -237,6 +243,12 @@ body.mb-menu-open {
     color: #C0392B;
     font-weight: 600;
   }
+
+    .mb-menu-main a.mb-highlight-blue {
+    color: #3A6EA5;
+    font-weight: 600;
+  }
+
 
   .mb-menu-lang { display: none; }
 
