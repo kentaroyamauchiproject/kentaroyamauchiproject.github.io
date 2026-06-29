@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="alternate" hreflang="en" href="https://www.mindbebop.com/mindevent-api.html">
+<link rel="alternate" hreflang="x-default" href="https://www.mindbebop.com/mindevent-api.html">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<title>MINDBEBOP — MindEvent API</title>
+<link rel="canonical" href="https://www.mindbebop.com/mindevent-api.html">
+<meta name="robots" content="index, follow">
+
+<meta
+  name="description"
+  content="MindEvent API v1 is the standard interface for sending real-world events into MindEntry through authenticated webhooks and Universal Links."
+>
+
+<meta property="og:title" content="MindEvent API">
+<meta
+  property="og:description"
+  content="Send real-world events into the Mental Background OS through a secure MindEvent interface."
+>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.mindbebop.com/mindevent-api.html">
+<meta property="og:image" content="https://www.mindbebop.com/image/MB_LOGO_V5_1024.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MindEvent API">
+<meta
+  name="twitter:description"
+  content="The standard interface for sending real-world events into MindEntry."
+>
+<meta name="twitter:image" content="https://www.mindbebop.com/image/MB_LOGO_V5_1024.png">
+
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/everyday-thought-friction.css">
+
+</head>
+
+<body>
+
+<div class="mb-nav">
+<header class="mb-header">
+  <a class="mb-brand" href="index.html">
+    <img src="image/MB_LOGO_V5_1024.png"
+         data-light="image/MB_LOGO_V5_1024.png"
+         data-dark="image/MB_LOGO_V5_1024_INV.png"
+         alt="MINDBEBOP logo">
+    <span class="mb-brand-name">MINDBEBOP</span>
+    <span class="mb-brand-tagline">Mental Background OS</span>
+  </a>
+
+  <button class="mb-hamburger"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mb-menu">
+    <span class="mb-open">☰</span>
+    <span class="mb-close">×</span>
+  </button>
+</header>
+
+  <div class="lang-switch">
+      <a href="/mindevent-api.html" aria-current="true">English</a>
+  </div>
+
+  <nav id="mb-menu" class="mb-menu" aria-hidden="true">
+    <div class="mb-menu-main">
+
+      <div class="mb-dropdown">
+        <a href="#" class="mb-parent">Start Here</a>
+        <div class="mb-submenu">
+          <a href="welcome.html">Welcome</a>
+          <a href="where-do-i-start.html">Where do I start?</a>
+          <a href="how-it-works.html">How it works</a>
+          <a href="everyday-thought-friction.html">Thought Friction</a>
+          <a href="mindeaseout.html">MindEaseOut</a>
+          <a href="mindblank.html">MindBlank</a>
+          <a href="mindprecog.html">MindPreCog</a>
+          <a href="stateful-recipes.html">Stateful Recipes</a>
+          <a href="hallway-mode.html">Hallway Mode</a>
+          <a href="cross-dimensional-handshake.html">Cross-Dimensional Handshake</a>
+          <a href="mindevent-api.html" aria-current="true">MindEvent API</a>
+          <a href="everyday-moments.html">Everyday Moments</a>
+        </div>
+      </div>
+
+      <div class="mb-dropdown">
+        <a href="#" class="mb-parent">Apps</a>
+        <div class="mb-submenu">
+
+          <a href="mental-background-os.html">Mental Background OS</a>
+
+          <div class="submenu-group-label">— Entry & Routing —</div>
+          <a href="mindentry.html" class="app-name">Mind<strong>Entry</strong></a>
+          <a href="mindentrybiz.html" class="app-name">Mind<strong>Entry</strong>Biz</a>
+
+          <div class="submenu-group-label">— Thought Tools —</div>
+          <a href="mindflipout.html" class="app-name">Mind<strong>Flip</strong>Out</a>
+          <a href="mindshoutout.html" class="app-name">Mind<strong>Shout</strong>Out</a>
+
+          <div class="submenu-group-label">— Reset Tools —</div>
+          <a href="mindzoneout.html" class="app-name">Mind<strong>Zone</strong>Out</a>
+          <a href="mindbackyard.html" class="app-name">Mind<strong>Backyard</strong></a>
+
+          <div class="submenu-group-label">— Boundary Tools —</div>
+          <a href="mindbackout.html" class="app-name">Mind<strong>Back</strong>Out</a>
+
+        </div>
+      </div>
+
+      <a href="recipes.html" class="mb-highlight">Recipes</a>
+      <a href="cognihack.html" class="mb-highlight-blue">CogniHack</a>
+
+      <div class="mb-dropdown">
+        <a href="#" class="mb-parent">Philosophy</a>
+        <div class="mb-submenu">
+          <a href="philosophy.html">Philosophy</a>
+          <a href="refusals.html">Refusals</a>
+          <a href="mindbebop.html">MINDBEBOP</a>
+        </div>
+      </div>
+
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="faq.html">FAQ</a>
+
+      <div class="mb-dropdown">
+        <a href="#" class="mb-parent">Press</a>
+        <div class="mb-submenu">
+          <a href="press-background.html">Press & Background</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="founders-blog.html">Blog</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mb-menu-lang">
+      <a href="/mindevent-api.html" aria-current="true">English</a>
+    </div>
+  </nav>
+</div>
+
+<div class="page">
+
+<h1>MindEvent API</h1>
+
+<p class="kicker">
+The standard interface for sending real-world events into MindEntry.
+</p>
+
+<p>
+MindEvent API v1 allows external systems to send meaningful real-world events into the Mental Background OS.
+</p>
+
+<p>
+A meeting can finish. A focus session can start. A commute can end. A webhook can fire.
+</p>
+
+<p>
+Those events can enter MindEntry as MindEvents, where they may surface as a Recipe or CogniHack suggestion. Nothing runs automatically. The user remains in control.
+</p>
+
+<hr class="rule">
+
+<h2>What Is a MindEvent?</h2>
+
+<p>
+A MindEvent is a structured description of something that happened outside the user’s immediate thought input.
+</p>
+
+<p>
+Unlike typing into MindEntry or sharing selected text through the Share Sheet, a MindEvent begins from reality: a calendar event, automation, shortcut, webhook, NFC tag, or external system.
+</p>
+
+<p>
+MindEntry receives the event, interprets it locally, and may suggest a mental state transition.
+</p>
+
+<blockquote>
+Reality<br><br>
+↓<br><br>
+MindEvent API<br><br>
+↓<br><br>
+MindEntry<br><br>
+↓<br><br>
+Mental State Movement
+</blockquote>
+
+<hr class="rule">
+
+<h2>Endpoint</h2>
+
+<p>
+Use the following endpoint to send a MindEvent:
+</p>
+
+<pre><code>POST https://mindbebop-webhook.kentaro-yamauchi99.workers.dev/mindevent</code></pre>
+
+<p>
+The endpoint accepts JSON and returns a normalized MindEvent plus a Universal Link that can open MindEntry.
+</p>
+
+<hr class="rule">
+
+<h2>Authentication</h2>
+
+<p>
+MindEvent API requires an API key.
+</p>
+
+<p>
+Send the key using either authorization method:
+</p>
+
+<pre><code>Authorization: Bearer &lt;API_KEY&gt;</code></pre>
+
+<p>
+or:
+</p>
+
+<pre><code>X-MindEvent-Key: &lt;API_KEY&gt;</code></pre>
+
+<p>
+Requests without a valid API key are rejected.
+</p>
+
+<hr class="rule">
+
+<h2>Request Headers</h2>
+
+<pre><code>Authorization: Bearer &lt;API_KEY&gt;
+Content-Type: application/json</code></pre>
+
+<hr class="rule">
+
+<h2>Request Body</h2>
+
+<p>
+The <code>event</code> field is required.
+</p>
+
+<p>
+The <code>title</code>, <code>source</code>, <code>context</code>, and <code>payload</code> fields are optional.
+</p>
+
+<pre><code>{
+  "event": "meeting_finished",
+  "title": "Weekly Team Sync",
+  "source": "webhook",
+  "context": "team",
+  "payload": {
+    "duration": "65",
+    "location": "office"
+  }
+}</code></pre>
+
+<hr class="rule">
+
+<h2>Fields</h2>
+
+<ul>
+<li><strong>event</strong> — The MindEvent identifier. Required.</li>
+<li><strong>title</strong> — Human-readable title shown in MindEntry when available.</li>
+<li><strong>source</strong> — The external source that sent the event.</li>
+<li><strong>context</strong> — Optional context such as team, home, sales, commute, or focus.</li>
+<li><strong>payload</strong> — Optional key-value metadata for future use.</li>
+</ul>
+
+<hr class="rule">
+
+<h2>Supported Event Vocabulary</h2>
+
+<p>
+MindEvent API v1 currently defines the following standard events.
+</p>
+
+<p>
+Additional standardized events may be introduced in future versions while preserving compatibility with existing integrations.
+</p>
+
+<p><strong>Work</strong></p>
+
+<ul>
+<li><code>meeting_finished</code></li>
+<li><code>presentation_finished</code></li>
+<li><code>workday_started</code></li>
+<li><code>workday_finished</code></li>
+<li><code>task_started</code></li>
+<li><code>task_finished</code></li>
+<li><code>deep_work_started</code></li>
+<li><code>deep_work_interrupted</code></li>
+<li><code>break_finished</code></li>
+</ul>
+
+<p><strong>Calendar</strong></p>
+
+<ul>
+<li><code>calendar_reminder</code></li>
+</ul>
+
+<p><strong>Location</strong></p>
+
+<ul>
+<li><code>arrived_home</code></li>
+<li><code>left_home</code></li>
+<li><code>commute_started</code></li>
+<li><code>commute_finished</code></li>
+</ul>
+
+<p><strong>Personal</strong></p>
+
+<ul>
+<li><code>focus_started</code></li>
+<li><code>focus_ended</code></li>
+<li><code>waiting_for_reply</code></li>
+<li><code>bedtime</code></li>
+<li><code>woke_up</code></li>
+<li><code>feeling_stuck</code></li>
+</ul>
+
+<hr class="rule">
+
+<h2>Successful Response</h2>
+
+<p>
+A successful request returns the normalized MindEvent, a Universal Link, and a custom URL fallback.
+</p>
+
+<pre><code>{
+  "success": true,
+  "version": 1,
+  "mindEvent": {
+    "version": 1,
+    "event": "meeting_finished",
+    "title": "Weekly Team Sync",
+    "source": "webhook",
+    "context": "team",
+    "payload": {
+      "duration": "65",
+      "location": "office"
+    },
+    "known": true,
+    "receivedAt": "2026-06-29T02:12:34.520Z"
+  },
+  "universalLink": "https://mindbebop.com/mindevent?event=meeting_finished&amp;source=webhook&amp;title=Weekly+Team+Sync&amp;context=team",
+  "mindEntryURL": "mindentry://mindevent?event=meeting_finished&amp;source=webhook&amp;title=Weekly+Team+Sync&amp;context=team"
+}</code></pre>
+
+<hr class="rule">
+
+<h2>Universal Link</h2>
+
+<p>
+The <code>universalLink</code> field is the preferred way to open MindEntry.
+</p>
+
+<p>
+On iPhone, opening the link can launch MindEntry directly and deliver the MindEvent to the app.
+</p>
+
+<p>
+If MindEntry is not installed, the link falls back to a web page.
+</p>
+
+<pre><code>https://mindbebop.com/mindevent?event=meeting_finished&amp;source=webhook&amp;title=Weekly+Team+Sync</code></pre>
+
+<hr class="rule">
+
+<h2>Fallback URL</h2>
+
+<p>
+The <code>mindEntryURL</code> field is provided as a fallback and for debugging.
+</p>
+
+<p>
+New integrations should prefer the Universal Link.
+</p>
+
+<pre><code>mindentry://mindevent?event=meeting_finished&amp;source=webhook&amp;title=Weekly+Team+Sync</code></pre>
+
+<hr class="rule">
+
+<h2>HTTP Status Codes</h2>
+
+<ul>
+<li><strong>200</strong> — MindEvent accepted.</li>
+<li><strong>400</strong> — Invalid JSON or missing event.</li>
+<li><strong>401</strong> — Unauthorized. Missing or invalid API key.</li>
+<li><strong>404</strong> — Endpoint not found.</li>
+<li><strong>405</strong> — Method not allowed.</li>
+</ul>
+
+<hr class="rule">
+
+<h2>curl Example</h2>
+
+<pre><code>curl -X POST \
+https://mindbebop-webhook.kentaro-yamauchi99.workers.dev/mindevent \
+-H "Authorization: Bearer &lt;API_KEY&gt;" \
+-H "Content-Type: application/json" \
+-d '{
+  "event": "meeting_finished",
+  "title": "Weekly Team Sync",
+  "source": "webhook",
+  "context": "team",
+  "payload": {
+    "duration": "65",
+    "location": "office"
+  }
+}'</code></pre>
+
+<hr class="rule">
+
+<h2>Health Check</h2>
+
+<p>
+The root endpoint returns API status and usage information.
+</p>
+
+<pre><code>GET https://mindbebop-webhook.kentaro-yamauchi99.workers.dev/</code></pre>
+
+<p>
+Example response:
+</p>
+
+<pre><code>{
+  "service": "MINDBEBOP",
+  "version": 1,
+  "endpoint": "MindEvent webhook receiver",
+  "status": "alive",
+  "preferredDelivery": "universalLink"
+}</code></pre>
+
+<hr class="rule">
+
+<h2>What It Does Not Do</h2>
+
+<ul>
+<li>It does not auto-run Recipes.</li>
+<li>It does not bypass user confirmation.</li>
+<li>It does not read private thoughts.</li>
+<li>It does not expose internal Recipe data.</li>
+<li>It does not require third parties to understand MindEntry internals.</li>
+</ul>
+
+<p>
+The API sends a structured event into MindEntry. What happens next remains under the user’s control.
+</p>
+
+<hr class="rule">
+
+<h2>Versioning</h2>
+
+<p>
+This page describes MindEvent API v1.
+</p>
+
+<p>
+The top-level <code>version</code> field describes the API contract. The nested <code>mindEvent.version</code> field describes the MindEvent payload version.
+</p>
+
+<p>
+Future versions may add fields while preserving the core contract.
+</p>
+
+<hr class="rule">
+
+<h2>Access</h2>
+
+<p>
+API key access is currently limited.
+</p>
+
+<p>
+For access or integration questions, contact:
+</p>
+
+<p>
+<a href="mailto:support@mindbebop.com?subject=MindEvent%20API%20Access">
+support@mindbebop.com
+</a>
+</p>
+
+<hr class="rule">
+
+<blockquote>
+MindEvent API is not automation itself.<br><br>
+It is the event language that lets reality speak to the Mental Background OS.
+</blockquote>
+
+<div style="margin-top:60px; opacity:0.7; font-size:0.9rem;">
+<p class="copyright">
+Copyright © 2026 MINDBEBOP — All rights reserved.
+</p>
+</div>
+
+</div>
+
+<script>
+(function () {
+  function applyDarkImages(isDark) {
+    document.querySelectorAll('img[data-dark]').forEach(img => {
+      img.src = isDark
+        ? img.getAttribute('data-dark')
+        : img.getAttribute('data-light') || img.src;
+    });
+  }
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  applyDarkImages(media.matches);
+  media.addEventListener('change', e => applyDarkImages(e.matches));
+})();
+</script>
+
+<script>
+(() => {
+  const btn = document.querySelector('.mb-hamburger');
+  const menu = document.querySelector('.mb-menu');
+  if (!btn || !menu) return;
+
+  let scrollY = 0;
+
+  function openMenu() {
+    scrollY = window.scrollY;
+    btn.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+  }
+
+  function closeMenu() {
+    btn.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-hidden', 'true');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    window.scrollTo(0, scrollY);
+  }
+
+  btn.addEventListener('click', () =>
+    btn.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu()
+  );
+
+  menu.querySelectorAll('a').forEach(link =>
+    link.addEventListener('click', closeMenu)
+  );
+})();
+</script>
+
+</body>
+</html>
