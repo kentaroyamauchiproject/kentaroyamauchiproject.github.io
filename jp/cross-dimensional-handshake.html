@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Available Languages -->
+<link rel="alternate" hreflang="en" href="https://www.mindbebop.com/cross-dimensional-handshake.html">
+<link rel="alternate" hreflang="ja" href="https://www.mindbebop.com/jp/cross-dimensional-handshake.html">
+<link rel="alternate" hreflang="de" href="https://www.mindbebop.com/de/cross-dimensional-handshake.html">
+<link rel="alternate" hreflang="ko" href="https://www.mindbebop.com/ko/cross-dimensional-handshake.html">
+<link rel="alternate" hreflang="fr" href="https://www.mindbebop.com/fr/cross-dimensional-handshake.html">
+<link rel="alternate" hreflang="es" href="https://www.mindbebop.com/es/cross-dimensional-handshake.html">
+<link rel="alternate" hreflang="pt-BR" href="https://www.mindbebop.com/pt-br/cross-dimensional-handshake.html">
+<link rel="alternate" hreflang="x-default" href="https://www.mindbebop.com/cross-dimensional-handshake.html">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<link rel="canonical" href="https://www.mindbebop.com/jp/cross-dimensional-handshake.html">
+
+
+<meta name="description" content="Cross-Dimensional Handshakeは、現実世界とMental Background Layerを双方向につなぐMindEntryの機能です。現実の出来事をMindEventとして受け取り、完了したメンタルステートの変化を外部へ安全に通知できます。">
+<meta name="keywords" content="Cross-Dimensional Handshake, MindEntry, MindEvent, Webhook, MindEvent API, Apple Shortcuts, App Intents, URLスキーム, Share Extension, Mental Background OS, Mental Background Layer, メンタルステート, 思考整理, MINDBEBOP">
+<meta name="author" content="MINDBEBOP">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Cross-Dimensional Handshake — MindEntry">
+<meta property="og:description" content="現実世界とMental Background Layerを双方向につなぐ。Cross-Dimensional Handshakeは、MindEntryのMindEvent接続機能です。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.mindbebop.com/jp/cross-dimensional-handshake.html">
+<meta property="og:image" content="https://www.mindbebop.com/image/MB_LOGO_V5_1024.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cross-Dimensional Handshake — MindEntry">
+<meta name="twitter:description" content="現実世界とMental Background Layerを双方向につなぐ。MindEntryがMindEventを受け取り、完了した変化を外部へ通知します。">
+<meta name="twitter:image" content="https://www.mindbebop.com/image/MB_LOGO_V5_1024.png">
+<title>MINDBEBOP — Cross-Dimensional Handshake</title>
+
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/jp.css">
+<link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+
+<!-- MINDBEBOP MENU -->
+<div class="mb-nav">
+<header class="mb-header">
+  <a class="mb-brand" href="index.html">
+    <img src="../image/MB_LOGO_V5_1024.png"
+         data-light="../image/MB_LOGO_V5_1024.png"
+         data-dark="../image/MB_LOGO_V5_1024_INV.png"
+         alt="MINDBEBOP logo">
+    <span class="mb-brand-name">MINDBEBOP</span>
+    <span class="mb-brand-tagline">Mental Background OS</span>
+  </a>
+
+  <button class="mb-hamburger"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mb-menu">
+    <span class="mb-open">☰</span>
+    <span class="mb-close">×</span>
+  </button>
+</header>
+
+<div class="lang-switch">
+    <a href="/cross-dimensional-handshake.html">English</a>
+    <a href="/jp/cross-dimensional-handshake.html" aria-current="true">日本語</a>
+    <a href="/de/cross-dimensional-handshake.html">Deutsch</a>
+    <a href="/ko/cross-dimensional-handshake.html">한국어</a>
+    <a href="/fr/cross-dimensional-handshake.html">Français</a>
+    <a href="/es/cross-dimensional-handshake.html">Español</a>
+    <a href="/pt-br/cross-dimensional-handshake.html">Português (Brasil)</a>
+  </div>
+
+<nav id="mb-menu" class="mb-menu" aria-hidden="true">
+  <div class="mb-menu-main">
+    <div class="mb-dropdown">
+    <a href="#" class="mb-parent">まずはここから</a>
+      <div class="mb-submenu">
+<a href="welcome.html">ようこそ</a>
+<a href="where-do-i-start.html">どこから始めればいいの？</a>
+<a href="how-it-works.html">アプリのしくみ</a>
+<a href="everyday-thought-friction.html">思考の摩擦とは</a>
+<a href="mindeaseout.html">MindEaseOut</a>
+<a href="mindblank.html">MindBlank</a>
+<a href="mindprecog.html">MindPreCog</a>
+<a href="stateful-recipes.html">Stateful Recipes</a>
+<a href="hallway-mode.html">Hallway Mode</a>
+<a href="cross-dimensional-handshake.html" aria-current="true">Cross-Dimensional Handshake</a>
+      </div>
+    </div>
+    
+    <div class="mb-dropdown">
+    <a href="recipes.html" class="mb-highlight" class="mb-parent">レシピ</a>
+    </div>
+    <div class="mb-dropdown">
+    <a href="cognihack.html" class="mb-highlight-blue" class="mb-parent">CogniHack</a>
+    </div>
+    <div class="mb-dropdown">
+    <a href="everyday-moments.html" class="mb-parent">日々のひとコマ</a>
+    </div>
+    <div class="mb-dropdown">
+    <a href="faq.html" class="mb-parent">よくある質問</a>
+    </div>
+    <div class="mb-dropdown">
+    <a href="philosophy.html" class="mb-parent">哲学</a>
+    </div>
+  </div>
+
+  <div class="mb-menu-lang">
+    <a href="/cross-dimensional-handshake.html">English</a>
+    <a href="/jp/cross-dimensional-handshake.html" aria-current="true">日本語</a>
+    <a href="/de/cross-dimensional-handshake.html">Deutsch</a>
+    <a href="/ko/cross-dimensional-handshake.html">한국어</a>
+    <a href="/fr/cross-dimensional-handshake.html">Français</a>
+    <a href="/es/cross-dimensional-handshake.html">Español</a>
+    <a href="/pt-br/cross-dimensional-handshake.html">Português (Brasil)</a>
+  </div>
+</nav>
+</div>
+<div class="page">
+
+<h1>クロスディメンショナル・ハンドシェイク</h1>
+
+<p class="kicker">
+現実世界とメンタル・バックグラウンド・レイヤーを双方向につなぐ接続。
+</p>
+
+<p>
+ほとんどのMINDBEBOPツールは、メンタル・バックグラウンド・レイヤー内だけで完結します。思考はMindEntryへ直接入力したり、Share Sheetを使って他のアプリから意図的に共有したりできます。
+</p>
+
+<p>
+クロスディメンショナル・ハンドシェイクは、それとは異なります。
+</p>
+
+<p>
+これは、意味のある出来事が現実世界とメンタル・バックグラウンド・レイヤーの境界を、双方向に行き来できるようにします。
+</p>
+
+<p>
+現実世界はMINDBEBOP内でメンタルステートの移動を開始でき、完了したメンタルステートの変化は、静かに現実世界へ通知されます。
+</p>
+
+<hr class="rule">
+
+<h2>双方向のサークル</h2>
+
+<p>
+現実で起きた出来事はMindEntry内でMindEventとなります。そして、完了したRecipeやCogniHackは、構造化されたイベントとして現実世界へ送り返すことができます。
+</p>
+
+<blockquote>
+
+現実世界
+
+<br><br>
+
+↓
+
+<br><br>
+
+クロスディメンショナル・ハンドシェイク
+
+<br><br>
+
+↓
+
+<br><br>
+
+<strong>MindEvent</strong>
+
+<br><br>
+
+↓
+
+<br><br>
+
+メンタル・バックグラウンド・レイヤー
+
+<br><br>
+
+↓
+
+<br><br>
+
+完了したメンタルステートの変化
+
+<br><br>
+
+↓
+
+<br><br>
+
+クロスディメンショナル・ハンドシェイク
+
+<br><br>
+
+↓
+
+<br><br>
+
+現実世界
+
+</blockquote>
+
+<hr class="rule">
+
+<h2>Incoming: 現実 → MindEntry</h2>
+
+<p>
+現実世界は、MindEntry内を手動で操作することなく、安全にメンタルステートの移動を開始できます。
+</p>
+
+<p>
+現在のクロスディメンショナル・ハンドシェイクは、意味のある出来事をメンタル・バックグラウンド・レイヤーへ取り込む複数の方法をサポートしています。
+</p>
+
+<ul>
+
+<li><strong>Share Extension</strong> — 選択したテキストや思考の残留物をMindEntryへ直接共有します。</li>
+
+<li><strong>URLスキーム</strong> — ディープリンクを通じてMindEntryを起動します。</li>
+
+<li><strong>App Intents</strong> — Appleの自動化フレームワークを通じてMindEntryを起動します。</li>
+
+<li><strong>Appleショートカット</strong> — カレンダー、集中モード、位置情報、NFCタグ、またはカスタムショートカットのワークフローからMindEventを送信します。</li>
+
+<li><strong>セキュアWebhook（MindEvent API）</strong> — Zapier、Make、n8n、Home Assistant、サーバー、またはカスタムソフトウェアなどの外部システムが、安全にMindEventをMindEntryへ送信できます。</li>
+
+</ul>
+
+<p>
+受信したすべてのイベントはMindEventになります。MindEntryは適切なRecipeやCogniHackを提案することがありますが、ユーザーの確認なしに自動実行されることはありません。
+</p>
+
+<hr class="rule">
+
+<h2>Outgoing: MindEntry → 現実</h2>
+
+<p>
+意味のあるメンタルステートの変化が完了すると、MindEntryは構造化されたイベントを安全に外の世界へ送信できます。
+</p>
+
+<p>
+アプリケーションは、変化が完了したことをただ知らせるだけです。次に何が起きるべきかは判断しません。
+</p>
+
+<ul>
+
+<li>スマートライトをオンにする</li>
+
+<li>プレイリストを開始する</li>
+
+<li>Appleショートカットを実行する</li>
+
+<li>Slackステータスを更新する</li>
+
+<li>Google Sheetsに記録する</li>
+
+<li>カスタムAPIを呼び出す</li>
+
+<li>Zapier、Make、n8n、Home Assistantをトリガーする</li>
+
+<li>利用している自動化プラットフォームが対応していることなら何でも</li>
+
+</ul>
+
+<hr class="rule">
+
+<h2>ファイアウォール原則</h2>
+
+<p>
+クロスディメンショナル・ハンドシェイクが交換するのは、構造化されたイベントであり、思考そのものではありません。
+</p>
+
+<p>
+Incomingのハンドシェイクは、現実で何かが起きたことを記述します。Outgoingのハンドシェイクは、意味のあるメンタルステートの変化が完了したことを知らせます。
+</p>
+
+<p>
+境界を越えるのはイベントのメタデータだけです。思考、振り返り、会話、内的なメンタルステートは、あなたが明示的に選ばない限り、Mental Background Layerの中に残ります。
+</p>
+
+<blockquote>
+現実がメンタルステートの移動に影響を与える。
+<br><br>
+メンタルステートの移動が現実に影響を与える。
+</blockquote>
+
+<hr class="rule">
+
+<div class="quiet-note">
+  <p><strong>ここへたどり着いたきっかけは何でしたか？</strong></p>
+  <p>ひと言だけでも十分です。</p>
+  <p>
+    <a href="mailto:support@mindbebop.com?subject=What%20brought%20me%20here">
+      support@mindbebop.com
+    </a>
+  </p>
+</div>
+
+  <div style="margin-top:60px; opacity:0.7; font-size:0.9rem;">
+    <p class="copyright">
+      Copyright © 2026 MINDBEBOP — All rights reserved.
+    </p>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  function applyDarkImages(isDark) {
+    document.querySelectorAll('img[data-dark]').forEach(img => {
+      img.src = isDark
+        ? img.getAttribute('data-dark')
+        : img.getAttribute('data-light') || img.src;
+    });
+  }
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  applyDarkImages(media.matches);
+  media.addEventListener('change', e => applyDarkImages(e.matches));
+})();
+</script>
+
+<script>
+(() => {
+  const btn = document.querySelector('.mb-hamburger');
+  const menu = document.querySelector('.mb-menu');
+  if (!btn || !menu) return;
+
+  let scrollY = 0;
+
+  function openMenu() {
+    scrollY = window.scrollY;
+    btn.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+  }
+
+  function closeMenu() {
+    btn.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-hidden', 'true');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    window.scrollTo(0, scrollY);
+  }
+
+  btn.addEventListener('click', () =>
+    btn.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu()
+  );
+
+  menu.querySelectorAll('a').forEach(link =>
+    link.addEventListener('click', closeMenu)
+  );
+})();
+</script>
+
+</body>
+</html>
