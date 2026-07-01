@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MindBackOut Web</title>
+  <title>MindBackOut</title>
   <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="mbo-body">
-  <main class="mbo-app" aria-label="MindBackOut web implementation">
+  <main class="mbo-app" aria-label="MindBackOut">
     <header class="mbo-header">
       <button class="mbo-logo-btn" type="button" aria-label="MindBackOut logo">
         <img class="mbo-logo-light" src="../../assets/mindbackout/app-logo-light.png" alt="">
@@ -62,7 +62,23 @@
         <section class="mbo-block">
           <button id="selectionBtn" class="mbo-pill-btn" type="button">Apps to lock during your Backroom time</button>
           <p id="selectionSummary" class="mbo-hint">No selection</p>
-          <p class="mbo-note">Browser adaptation: this page cannot lock real apps or websites.</p>
+          <p class="mbo-note">App locking is available in MindBackOut.</p>
+        </section>
+
+        <section class="mbo-block">
+          <div class="mbo-zone-row">
+            <p class="mbo-label mbo-zone-title">Zone Cooldown</p>
+            <label class="mbo-switch">
+              <input id="zoneCooldownToggle" type="checkbox">
+              <span>Enable</span>
+            </label>
+          </div>
+          <p class="mbo-hint">If you feel pressure right after you exit the backroom, enable Zone Cooldown. MindBackOut will send you straight into a MindZoneOut Zone session (None mode) so you can cool down before returning. You choose when to exit.</p>
+        </section>
+
+        <section class="mbo-block">
+          <p class="mbo-label">Presets</p>
+          <div id="presetRow" class="mbo-preset-row"></div>
         </section>
 
         <section id="activeCard" class="mbo-block mbo-active-card" hidden>
@@ -81,7 +97,7 @@
     </section>
 
     <footer class="mbo-footer">
-      <a class="sim-home-link" href="../../index.html">Back to web home</a>
+      <a class="sim-home-link" href="../../index.html">← Try MINDBEBOP</a>
     </footer>
   </main>
 
@@ -95,15 +111,27 @@
       <p id="modeActiveTitle" class="mbo-top-title"></p>
       <p id="unlockConditionChip" class="mbo-chip"></p>
       <p id="countdownChip" class="mbo-chip" hidden></p>
-      <button id="firstMoveCompleteBtn" class="mbo-chip-btn mbo-chip-btn-light" type="button" hidden>Complete The First Move (web)</button>
+      <button id="firstMoveCompleteBtn" class="mbo-chip-btn mbo-chip-btn-light" type="button" hidden>Complete The First Move</button>
     </div>
     <button id="exitBtn" class="mbo-exit-btn" type="button" hidden>Exit</button>
+  </section>
+
+  <section id="passageScreen" class="mbo-backroom mbo-passage" hidden>
+    <div class="mbo-passage-card">
+      <p class="mbo-passage-title">Any thought to release before stepping inside?</p>
+      <textarea id="passageResidueInput" class="mbo-textarea" placeholder=""></textarea>
+      <div class="mbo-passage-actions">
+        <button id="passageReleaseBtn" class="mbo-primary-btn" type="button" disabled>Release Now</button>
+        <button id="passageEnterBtn" class="mbo-primary-btn" type="button">Enter Backroom Now</button>
+      </div>
+    </div>
+    <button id="passageExitBtn" class="mbo-exit-btn" type="button">Exit</button>
   </section>
 
   <dialog id="selectionDialog" class="mbo-dialog">
     <form method="dialog" class="mbo-dialog-card">
       <h2>Apps to lock during your Backroom time</h2>
-      <p class="mbo-note">Browser adaptation only. These selections represent intent and are not enforced by OS locks.</p>
+      <div id="mboSelectionContinuation" class="mbo-selection-dialog-note"></div>
       <div id="selectionList" class="mbo-selection-list"></div>
       <menu><button id="selectionDoneBtn" type="button">Done</button></menu>
     </form>
@@ -131,6 +159,38 @@
     </form>
   </dialog>
 
+  <dialog id="selectionGateDialog" class="mbo-dialog">
+    <form method="dialog" class="mbo-dialog-card">
+      <h2>Select apps first</h2>
+      <p>Choose at least one app to lock before entering Backroom.</p>
+      <menu>
+        <button id="selectionGateCloseBtn" type="button">Close</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <dialog id="lockBoundaryDialog" class="mbo-dialog">
+    <form method="dialog" class="mbo-dialog-card">
+      <div id="lockBoundaryBody"></div>
+      <menu>
+        <button id="lockBoundaryCancelBtn" type="button">Stay here</button>
+        <button id="lockBoundaryContinueBtn" type="button">Continue without real app locking</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <dialog id="partnerBoundaryDialog" class="mbo-dialog">
+    <form method="dialog" class="mbo-dialog-card">
+      <div id="partnerBoundaryBody"></div>
+      <menu>
+        <button id="partnerBoundaryCloseBtn" type="button">Close</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script src="../../js/boundary-notice.js"></script>
+  <script src="../../js/continuation-cards.js"></script>
+  <script src="../../js/about-links.js"></script>
   <script src="./mindbackout.js"></script>
 </body>
 </html>
