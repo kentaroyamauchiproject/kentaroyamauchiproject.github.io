@@ -148,6 +148,9 @@
               "</div>" +
               '<p class="mfo-item-time">' + formatCreatedAt(entry.createdAt) + "</p>"
             );
+            li.addEventListener("click", function () {
+              openFlipEditSheet(side, side, entry, false);
+            });
             listEl.appendChild(li);
           });
       }
@@ -186,8 +189,12 @@
         return target;
       }
 
-      function openFlipEditSheet(fromSide, toSide, target) {
-        pendingFlipEdit = { id: target.id, toSide: toSide };
+      function openFlipEditSheet(fromSide, toSide, target, clearComposerAfterSave) {
+        pendingFlipEdit = {
+          id: target.id,
+          toSide: toSide,
+          clearComposerAfterSave: !!clearComposerAfterSave
+        };
         flipDialogTitle.textContent = toSide === "light" ? "Edit Light" : "Edit Heavy";
         flipDialogInput.value = target[toSide] || target[fromSide] || "";
         flipDialog.showModal();
@@ -221,7 +228,7 @@
         const toSide = activeTab === "heavy" ? "light" : "heavy";
         const target = targetForEditing();
         target[fromSide] = text;
-        openFlipEditSheet(fromSide, toSide, target);
+        openFlipEditSheet(fromSide, toSide, target, true);
         renderList();
       });
 
@@ -243,8 +250,10 @@
           draftPairId = null;
         }
         setTab(pendingFlipEdit.toSide);
-        thoughts[pendingFlipEdit.toSide] = "";
-        syncComposer();
+        if (pendingFlipEdit.clearComposerAfterSave) {
+          thoughts[pendingFlipEdit.toSide] = "";
+          syncComposer();
+        }
         renderList();
         pendingFlipEdit = null;
         flipDialog.close();
