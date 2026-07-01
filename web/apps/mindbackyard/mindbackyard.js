@@ -101,6 +101,11 @@
       else advanceHallway(-1);
     });
 
+    ui.hallway.addEventListener("touchmove", function (event) {
+      if (state.currentSpace.type !== "hallway") return;
+      event.preventDefault();
+    }, { passive: false });
+
     let chamberStartX = 0;
     let chamberStartY = 0;
     ui.chamber.addEventListener("pointerdown", function (event) {
@@ -115,6 +120,11 @@
         exitChamberToHallway();
       }
     });
+
+    ui.chamber.addEventListener("touchmove", function (event) {
+      if (state.currentSpace.type !== "chamber") return;
+      event.preventDefault();
+    }, { passive: false });
   }
 
   function advanceHallway(delta) {
