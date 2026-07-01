@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MindEntry Web</title>
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body class="me-body">
+  <main class="me-app" aria-label="MindEntry web app">
+    <header class="me-header">
+      <button class="me-logo-btn" type="button" aria-label="About MindEntry">
+        <img src="../../assets/mindentry/app-logo-light.png" alt="" class="me-logo-light">
+        <img src="../../assets/mindentry/app-logo-dark.png" alt="" class="me-logo-dark">
+      </button>
+      <h1 class="me-wordmark" aria-label="MindEntry">
+        <span class="me-wordmark-thin">Mind</span><span class="me-wordmark-bold">Entry</span>
+      </h1>
+      <button class="me-company-btn" type="button" aria-label="About MINDBEBOP">
+        <img src="../../assets/company/company-logo-light.png" alt="" class="me-company-light">
+        <img src="../../assets/company/company-logo-dark.png" alt="" class="me-company-dark">
+      </button>
+    </header>
+
+    <section class="me-content">
+      <article class="me-card me-composer-card">
+        <h2 class="me-section-title">What’s on your mind?</h2>
+        <textarea id="meComposerInput" class="me-composer-input" placeholder="Type anything…"></textarea>
+        <p id="mePrefillHint" class="me-muted" hidden>Saved for later prefill is active.</p>
+      </article>
+
+      <article class="me-card">
+        <h2 class="me-section-title">Route</h2>
+        <div class="me-route-grid">
+          <button id="meSendToRecipeBtn" class="me-action-btn me-action-btn-primary" type="button">Send to Recipe</button>
+          <button id="meRunCogniHackBtn" class="me-action-btn" type="button">Run a CogniHack</button>
+          <button id="meSaveForLaterBtn" class="me-action-btn" type="button">Save for Later</button>
+        </div>
+      </article>
+
+      <article id="meRuntimeCard" class="me-card" hidden>
+        <div class="me-runtime-banner">
+          <p id="meRuntimeTitle" class="me-runtime-title"></p>
+          <p id="meRuntimeStepMeta" class="me-runtime-meta"></p>
+        </div>
+        <div id="meRuntimeBody"></div>
+      </article>
+    </section>
+
+    <footer class="me-footer">
+      <a class="sim-home-link" href="../../index.html">Back to simulator home</a>
+    </footer>
+  </main>
+
+  <dialog id="mePickerDialog" class="me-dialog">
+    <form method="dialog" class="me-dialog-card">
+      <h2 id="mePickerTitle">Choose a Recipe</h2>
+      <p id="mePickerEntryPreview" class="me-dialog-note"></p>
+      <div id="mePickerSections" class="me-picker-sections"></div>
+      <menu>
+        <button value="cancel" class="me-dialog-btn">Cancel</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script src="./mindentry.js"></script>
+</body>
+</html>
