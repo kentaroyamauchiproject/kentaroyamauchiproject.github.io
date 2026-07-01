@@ -39,7 +39,6 @@
 
     <section class="mfo-composer-wrap">
       <section class="mfo-composer">
-        <label id="composerLabel" class="mfo-label" for="composerInput">Heavy</label>
         <textarea
           id="composerInput"
           class="mfo-input"
@@ -58,7 +57,7 @@
     </section>
 
     <footer class="mfo-footer">
-      <a class="sim-home-link" href="../../index.html">Back to simulator home</a>
+      <a class="sim-home-link" href="../../index.html">Back to web home</a>
     </footer>
   </main>
 
@@ -68,7 +67,6 @@
     (function () {
       const tabHeavy = document.getElementById("tabHeavy");
       const tabLight = document.getElementById("tabLight");
-      const composerLabel = document.getElementById("composerLabel");
       const composerInput = document.getElementById("composerInput");
       const flipBtn = document.getElementById("flipBtn");
       const enterBtn = document.getElementById("enterBtn");
@@ -139,7 +137,6 @@
 
       function syncComposer() {
         composerInput.value = thoughts[activeTab];
-        composerLabel.textContent = activeTab === "heavy" ? "Heavy" : "Light";
         const hasText = composerInput.value.trim().length > 0;
         enterBtn.disabled = !hasText;
         flipBtn.hidden = !hasText;
