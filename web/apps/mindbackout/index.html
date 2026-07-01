@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MindBackOut Web</title>
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body class="mbo-body">
+  <main class="mbo-app" aria-label="MindBackOut web implementation">
+    <header class="mbo-header">
+      <button class="mbo-logo-btn" type="button" aria-label="MindBackOut logo">
+        <img class="mbo-logo-light" src="../../assets/mindbackout/app-logo-light.png" alt="">
+        <img class="mbo-logo-dark" src="../../assets/mindbackout/app-logo-dark.png" alt="">
+      </button>
+      <div class="mbo-wordmark" aria-label="MindBackOut">
+        <span class="mbo-wordmark-thin">Mind</span><span class="mbo-wordmark-bold">Back</span><span class="mbo-wordmark-thin">Out</span>
+      </div>
+      <button class="mbo-company-btn" type="button" aria-label="MINDBEBOP">
+        <img class="mbo-company-light" src="../../assets/company/company-logo-light.png" alt="">
+        <img class="mbo-company-dark" src="../../assets/company/company-logo-dark.png" alt="">
+      </button>
+    </header>
+
+    <section class="mbo-scroll">
+      <div class="mbo-surface">
+        <section class="mbo-block">
+          <p class="mbo-label">Backroom Mode</p>
+          <div class="mbo-segment" id="modeSegment">
+            <button class="mbo-segment-btn is-active" type="button" data-mode="standard">Standard</button>
+            <button class="mbo-segment-btn" type="button" data-mode="commitment">Commitment</button>
+            <button class="mbo-segment-btn" type="button" data-mode="firstMove">First Move</button>
+          </div>
+        </section>
+
+        <section class="mbo-block">
+          <p class="mbo-label">Why I’m here <span class="mbo-muted">(optional)</span></p>
+          <textarea id="whyInput" class="mbo-textarea" placeholder="What are you protecting right now?"></textarea>
+        </section>
+
+        <section class="mbo-block" id="durationBlock">
+          <p class="mbo-label">Backroom time</p>
+          <div class="mbo-segment mbo-duration-row" id="minuteRow">
+            <button class="mbo-segment-btn is-active" type="button" data-minutes="0">None</button>
+            <button class="mbo-segment-btn" type="button" data-minutes="5">5m</button>
+            <button class="mbo-segment-btn" type="button" data-minutes="10">10m</button>
+            <button class="mbo-segment-btn" type="button" data-minutes="15">15m</button>
+            <button class="mbo-segment-btn" type="button" data-minutes="20">20m</button>
+            <button class="mbo-segment-btn" type="button" data-minutes="30">30m</button>
+          </div>
+          <div class="mbo-segment mbo-duration-row" id="hourRow">
+            <button class="mbo-segment-btn" type="button" data-minutes="60">1h</button>
+            <button class="mbo-segment-btn" type="button" data-minutes="180">3h</button>
+            <button class="mbo-segment-btn" type="button" data-minutes="360">6h</button>
+            <button class="mbo-segment-btn" type="button" data-minutes="480">8h</button>
+            <button class="mbo-segment-btn" type="button" data-minutes="720">12h</button>
+            <button class="mbo-segment-btn" type="button" data-minutes="1440">24h</button>
+          </div>
+          <p id="firstMoveHint" class="mbo-hint" hidden>Duration is ignored in First Move mode.</p>
+        </section>
+
+        <section class="mbo-block">
+          <button id="selectionBtn" class="mbo-pill-btn" type="button">Apps to lock during your Backroom time</button>
+          <p id="selectionSummary" class="mbo-hint">No selection</p>
+          <p class="mbo-note">Browser adaptation: this page cannot lock real apps or websites.</p>
+        </section>
+
+        <section id="activeCard" class="mbo-block mbo-active-card" hidden>
+          <h2 id="activeTitle">Backroom protection active</h2>
+          <p id="activeReasonLabel" class="mbo-label" hidden>Why I’m here</p>
+          <p id="activeReasonText" class="mbo-reason" hidden></p>
+          <p id="activeHint" class="mbo-hint"></p>
+          <div class="mbo-card-actions">
+            <button id="resumeBtn" class="mbo-chip-btn" type="button">Enter Backroom</button>
+            <button id="unlockBtn" class="mbo-chip-btn" type="button">Unlock Apps</button>
+          </div>
+        </section>
+
+        <button id="enterBtn" class="mbo-primary-btn" type="button">Enter</button>
+      </div>
+    </section>
+
+    <footer class="mbo-footer">
+      <a class="sim-home-link" href="../../index.html">Back to web home</a>
+    </footer>
+  </main>
+
+  <section id="backroomScreen" class="mbo-backroom" hidden>
+    <div class="mbo-atmosphere" aria-hidden="true">
+      <div class="mbo-cloud mbo-cloud-a"></div>
+      <div class="mbo-cloud mbo-cloud-b"></div>
+      <div class="mbo-railing"></div>
+    </div>
+    <div class="mbo-backroom-top" id="backroomTop" hidden>
+      <p id="modeActiveTitle" class="mbo-top-title"></p>
+      <p id="unlockConditionChip" class="mbo-chip"></p>
+      <p id="countdownChip" class="mbo-chip" hidden></p>
+      <button id="firstMoveCompleteBtn" class="mbo-chip-btn mbo-chip-btn-light" type="button" hidden>Complete The First Move (web)</button>
+    </div>
+    <button id="exitBtn" class="mbo-exit-btn" type="button" hidden>Exit</button>
+  </section>
+
+  <dialog id="selectionDialog" class="mbo-dialog">
+    <form method="dialog" class="mbo-dialog-card">
+      <h2>Apps to lock during your Backroom time</h2>
+      <p class="mbo-note">Browser adaptation only. These selections represent intent and are not enforced by OS locks.</p>
+      <div id="selectionList" class="mbo-selection-list"></div>
+      <menu><button id="selectionDoneBtn" type="button">Done</button></menu>
+    </form>
+  </dialog>
+
+  <dialog id="commitmentDialog" class="mbo-dialog">
+    <form method="dialog" class="mbo-dialog-card">
+      <h2>Enter Commitment Backroom?</h2>
+      <p>Once entered, this Backroom cannot be exited early.</p>
+      <menu>
+        <button id="commitmentStayBtn" type="button">Stay</button>
+        <button id="commitmentEnterBtn" type="button">Enter Backroom</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <dialog id="standardExitDialog" class="mbo-dialog">
+    <form method="dialog" class="mbo-dialog-card">
+      <h2 id="standardExitTitle">Leave Backroom now?</h2>
+      <p id="standardExitMessage">You can return any time.</p>
+      <menu>
+        <button id="standardExitStayBtn" type="button">Stay</button>
+        <button id="standardExitLeaveBtn" type="button">Leave</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script src="./mindbackout.js"></script>
+</body>
+</html>
