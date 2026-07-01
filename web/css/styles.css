@@ -526,7 +526,7 @@ body {
 .mby-company-btn {
   border: 0;
   border-radius: 11px;
-  background: rgba(0, 0, 0, 0.06);
+  background: transparent;
   width: 46px;
   height: 46px;
   padding: 8px;
@@ -877,7 +877,7 @@ body {
 
   .mby-logo-btn,
   .mby-company-btn {
-    background: rgba(255, 255, 255, 0.1);
+    background: transparent;
   }
 
   .mby-stage-wrap {
@@ -1538,6 +1538,62 @@ body {
   padding-top: 10px;
 }
 
+.mfo-dialog {
+  border: 0;
+  border-radius: 14px;
+  padding: 0;
+  width: min(92vw, 28rem);
+}
+
+.mfo-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.42);
+}
+
+.mfo-dialog-card {
+  margin: 0;
+  padding: 14px;
+  background: #fff;
+  color: #111216;
+}
+
+.mfo-dialog-card h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.mfo-dialog-input {
+  width: 100%;
+  min-height: 94px;
+  border: 1px solid #dde2ef;
+  border-radius: 10px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  font-size: 17px;
+  line-height: 1.35;
+  padding: 10px;
+  resize: vertical;
+}
+
+.mfo-dialog-card menu {
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.mfo-dialog-card menu button {
+  border: 0;
+  border-radius: 8px;
+  min-height: 36px;
+  padding-inline: 12px;
+  background: #ececf1;
+  color: #20283b;
+  font: inherit;
+  font-weight: 600;
+}
+
 .mfo-list-wrap {
   margin: 10px 18px 0;
 }
@@ -1667,6 +1723,22 @@ body {
   }
 
   .mfo-btn-secondary {
+    background: #5a5a61;
+    color: #fff;
+  }
+
+  .mfo-dialog-card {
+    background: #1c1c1e;
+    color: #f4f6fb;
+  }
+
+  .mfo-dialog-input {
+    border-color: #343844;
+    background: #24242a;
+    color: #f4f6fb;
+  }
+
+  .mfo-dialog-card menu button {
     background: #5a5a61;
     color: #fff;
   }
@@ -3064,7 +3136,7 @@ body {
 .mbo-company-btn {
   border: 0;
   border-radius: 12px;
-  background: rgba(0, 0, 0, 0.06);
+  background: transparent;
   width: 48px;
   height: 48px;
   padding: 8px;
@@ -3420,7 +3492,7 @@ body {
 
   .mbo-logo-btn,
   .mbo-company-btn {
-    background: rgba(255, 255, 255, 0.08);
+    background: transparent;
   }
 
   .mbo-surface {
