@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MindZoneOut Web</title>
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body class="mzo-body">
+  <main class="mzo-app" aria-label="MindZoneOut web implementation">
+    <header class="mzo-header">
+      <button class="mzo-logo-btn" type="button" aria-label="MindZoneOut logo">
+        <img class="mzo-logo-light" src="../../assets/mindzoneout/app-logo-light.png" alt="">
+        <img class="mzo-logo-dark" src="../../assets/mindzoneout/app-logo-dark.png" alt="">
+      </button>
+      <button id="scrollTopBtn" class="mzo-wordmark-btn" type="button" aria-label="MindZoneOut">
+        <span class="mzo-wordmark-thin">Mind</span><span class="mzo-wordmark-bold">Zone</span><span class="mzo-wordmark-thin">Out</span>
+      </button>
+      <button class="mzo-company-btn" type="button" aria-label="MINDBEBOP">
+        <img class="mzo-company-light" src="../../assets/company/company-logo-light.png" alt="">
+        <img class="mzo-company-dark" src="../../assets/company/company-logo-dark.png" alt="">
+      </button>
+    </header>
+
+    <section class="mzo-search-wrap">
+      <label class="mzo-search" for="searchInput">
+        <span class="mzo-search-icon" aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" autocomplete="off" spellcheck="false" aria-label="Search entries">
+      </label>
+
+      <div class="mzo-segment" aria-label="View mode">
+        <button id="modeWhisperBtn" class="mzo-segment-btn is-active" type="button">Whispers</button>
+        <button id="modeReflectionBtn" class="mzo-segment-btn" type="button">Reflection</button>
+      </div>
+    </section>
+
+    <section class="mzo-content">
+      <div id="topAnchor"></div>
+      <section class="mzo-controls">
+        <div class="mzo-segment" aria-label="Zone mode">
+          <button id="overlayNoneBtn" class="mzo-segment-btn is-active" type="button">None</button>
+          <button id="overlayMindTouchBtn" class="mzo-segment-btn" type="button">MindTouch</button>
+          <button id="overlayWhispersBtn" class="mzo-segment-btn" type="button">Whispers</button>
+        </div>
+
+        <div class="mzo-duration">
+          <div class="mzo-segment" aria-label="Zone duration">
+            <button class="mzo-segment-btn is-active" type="button" data-duration="0">None</button>
+            <button class="mzo-segment-btn" type="button" data-duration="1">1 min</button>
+            <button class="mzo-segment-btn" type="button" data-duration="2">2 min</button>
+            <button class="mzo-segment-btn" type="button" data-duration="5">5 min</button>
+            <button class="mzo-segment-btn" type="button" data-duration="10">10 min</button>
+            <button class="mzo-segment-btn" type="button" data-duration="-1">Custom</button>
+          </div>
+
+          <div id="customDurationWrap" class="mzo-custom" hidden>
+            <span id="customDurationText">Custom: 3 min</span>
+            <div class="mzo-custom-stepper">
+              <button id="customMinusBtn" type="button" aria-label="Decrease custom minutes">−</button>
+              <button id="customPlusBtn" type="button" aria-label="Increase custom minutes">+</button>
+            </div>
+          </div>
+        </div>
+
+        <button id="zoneNowBtn" class="mzo-primary-btn" type="button">Zone Now</button>
+        <button id="newWhisperBtn" class="mzo-whisper-btn" type="button">Whisper</button>
+      </section>
+
+      <section class="mzo-list">
+        <div id="emptyState" class="mzo-empty">
+          <span class="mzo-empty-icon">✎</span>
+          <span id="emptyTitle">Whispers</span>
+          <span class="mzo-empty-sub">entries.empty_state</span>
+        </div>
+        <div id="groupsWrap" hidden></div>
+      </section>
+    </section>
+
+    <footer class="mzo-footer">
+      <a class="sim-home-link" href="../../index.html">Back to web home</a>
+    </footer>
+  </main>
+
+  <section id="sessionOverlay" class="mzo-session" hidden>
+    <div id="sessionFloatingShout" class="mzo-session-shout" hidden></div>
+    <div id="sessionMindTouchCard" class="mzo-mindtouch" hidden></div>
+    <button id="sessionExitBtn" class="mzo-exit-btn" type="button" hidden>Exit</button>
+  </section>
+
+  <dialog id="whisperDialog" class="mzo-dialog">
+    <form method="dialog" class="mzo-dialog-card">
+      <h2 id="whisperDialogTitle">New Whisper</h2>
+      <p id="whisperDialogHint">sheet.new_whisper.hint1</p>
+      <textarea id="whisperInput" placeholder=""></textarea>
+      <menu>
+        <button id="whisperCancelBtn" type="button">Cancel</button>
+        <button id="whisperSaveBtn" type="button">Save</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <dialog id="deleteDialog" class="mzo-dialog">
+    <form method="dialog" class="mzo-dialog-card">
+      <h2>Delete this pair?</h2>
+      <p id="deleteSnippet"></p>
+      <menu>
+        <button id="deleteCancelBtn" type="button">Cancel</button>
+        <button id="deleteConfirmBtn" type="button" class="danger">Delete</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script>
+    "use strict";
+
+    (function () {
+      const state = {
+        entries: [],
+        searchText: "",
+        viewMode: "whisper", // whisper | reflection
+        overlayMode: "none", // none | presenceCheck | shout
+        zoneDurationMinutes: 0, // 0 none, -1 custom, >0 fixed
+        customZoneMinutes: 3,
+        sessionActive: false,
+        sessionEndsAt: null,
+        entryMode: "normal", // normal | loop | single
+        loopEntryId: null,
+        singleEntryId: null,
+        showExit: false,
+        currentShout: "",
+        shoutVisible: false,
+        overlayText: "You with us?",
+        showMindTouch: false,
+        overlayHoldUntil: 0,
+        sessionRunId: 0,
+        deletePendingId: null,
+        editPendingId: null,
+        editType: "newWhisper"
+      };
+
+      const ui = {
+        scrollTopBtn: document.getElementById("scrollTopBtn"),
+        searchInput: document.getElementById("searchInput"),
+        modeWhisperBtn: document.getElementById("modeWhisperBtn"),
+        modeReflectionBtn: document.getElementById("modeReflectionBtn"),
+        overlayNoneBtn: document.getElementById("overlayNoneBtn"),
+        overlayMindTouchBtn: document.getElementById("overlayMindTouchBtn"),
+        overlayWhispersBtn: document.getElementById("overlayWhispersBtn"),
+        durationButtons: Array.from(document.querySelectorAll("[data-duration]")),
+        customDurationWrap: document.getElementById("customDurationWrap"),
+        customDurationText: document.getElementById("customDurationText"),
+        customMinusBtn: document.getElementById("customMinusBtn"),
+        customPlusBtn: document.getElementById("customPlusBtn"),
+        zoneNowBtn: document.getElementById("zoneNowBtn"),
+        newWhisperBtn: document.getElementById("newWhisperBtn"),
+        emptyState: document.getElementById("emptyState"),
+        emptyTitle: document.getElementById("emptyTitle"),
+        groupsWrap: document.getElementById("groupsWrap"),
+        sessionOverlay: document.getElementById("sessionOverlay"),
+        sessionFloatingShout: document.getElementById("sessionFloatingShout"),
+        sessionMindTouchCard: document.getElementById("sessionMindTouchCard"),
+        sessionExitBtn: document.getElementById("sessionExitBtn"),
+        whisperDialog: document.getElementById("whisperDialog"),
+        whisperDialogTitle: document.getElementById("whisperDialogTitle"),
+        whisperDialogHint: document.getElementById("whisperDialogHint"),
+        whisperInput: document.getElementById("whisperInput"),
+        whisperCancelBtn: document.getElementById("whisperCancelBtn"),
+        whisperSaveBtn: document.getElementById("whisperSaveBtn"),
+        deleteDialog: document.getElementById("deleteDialog"),
+        deleteSnippet: document.getElementById("deleteSnippet"),
+        deleteCancelBtn: document.getElementById("deleteCancelBtn"),
+        deleteConfirmBtn: document.getElementById("deleteConfirmBtn")
+      };
+
+      const mindTouchPhrases = [
+        "You with us?",
+        "Still here?",
+        "No decision needed right now.",
+        "Let the wall hold it.",
+        "You can pause here."
+      ];
+
+      let sessionEndTimer = null;
+      let tapLock = false;
+
+      function init() {
+        bindEvents();
+        render();
+      }
+
+      function bindEvents() {
+        ui.scrollTopBtn.addEventListener("click", function () {
+          document.getElementById("topAnchor").scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+
+        ui.searchInput.addEventListener("input", function () {
+          state.searchText = ui.searchInput.value;
+          renderList();
+        });
+
+        ui.modeWhisperBtn.addEventListener("click", function () {
+          state.viewMode = "whisper";
+          render();
+        });
+        ui.modeReflectionBtn.addEventListener("click", function () {
+          state.viewMode = "reflection";
+          render();
+        });
+
+        ui.overlayNoneBtn.addEventListener("click", function () {
+          state.overlayMode = "none";
+          renderControls();
+        });
+        ui.overlayMindTouchBtn.addEventListener("click", function () {
+          state.overlayMode = "presenceCheck";
+          renderControls();
+        });
+        ui.overlayWhispersBtn.addEventListener("click", function () {
+          state.overlayMode = "shout";
+          renderControls();
+        });
+
+        ui.durationButtons.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            state.zoneDurationMinutes = Number(btn.dataset.duration || "0");
+            renderControls();
+          });
+        });
+
+        ui.customMinusBtn.addEventListener("click", function () {
+          state.customZoneMinutes = Math.max(1, state.customZoneMinutes - 1);
+          renderControls();
+        });
+        ui.customPlusBtn.addEventListener("click", function () {
+          state.customZoneMinutes = Math.min(60, state.customZoneMinutes + 1);
+          renderControls();
+        });
+
+        ui.zoneNowBtn.addEventListener("click", function () {
+          startNormalSession();
+        });
+
+        ui.newWhisperBtn.addEventListener("click", function () {
+          openWhisperDialog("newWhisper", null);
+        });
+
+        ui.whisperCancelBtn.addEventListener("click", function () {
+          state.editPendingId = null;
+          ui.whisperDialog.close();
+        });
+
+        ui.whisperSaveBtn.addEventListener("click", function () {
+          saveWhisperDialog();
+        });
+
+        ui.deleteCancelBtn.addEventListener("click", function () {
+          state.deletePendingId = null;
+          ui.deleteDialog.close();
+        });
+
+        ui.deleteConfirmBtn.addEventListener("click", function () {
+          if (!state.deletePendingId) return;
+          state.entries = state.entries.filter(function (entry) { return entry.id !== state.deletePendingId; });
+          state.deletePendingId = null;
+          ui.deleteDialog.close();
+          renderList();
+        });
+
+        ui.sessionOverlay.addEventListener("click", function (event) {
+          if (event.target === ui.sessionExitBtn) return;
+          handleSessionTap(event);
+        });
+
+        ui.sessionMindTouchCard.addEventListener("click", function (event) {
+          event.stopPropagation();
+          handleMindTouchCardTap();
+        });
+
+        ui.sessionExitBtn.addEventListener("click", function (event) {
+          event.stopPropagation();
+          endSession();
+        });
+      }
+
+      function render() {
+        renderControls();
+        renderList();
+        renderSession();
+      }
+
+      function renderControls() {
+        ui.modeWhisperBtn.classList.toggle("is-active", state.viewMode === "whisper");
+        ui.modeReflectionBtn.classList.toggle("is-active", state.viewMode === "reflection");
+
+        ui.overlayNoneBtn.classList.toggle("is-active", state.overlayMode === "none");
+        ui.overlayMindTouchBtn.classList.toggle("is-active", state.overlayMode === "presenceCheck");
+        ui.overlayWhispersBtn.classList.toggle("is-active", state.overlayMode === "shout");
+
+        ui.durationButtons.forEach(function (btn) {
+          const value = Number(btn.dataset.duration || "0");
+          btn.classList.toggle("is-active", value === state.zoneDurationMinutes);
+        });
+        ui.customDurationWrap.hidden = state.zoneDurationMinutes !== -1;
+        ui.customDurationText.textContent = "Custom: " + state.customZoneMinutes + " min";
+      }
+
+      function renderList() {
+        const grouped = groupedEntries();
+        ui.emptyState.hidden = grouped.length > 0;
+        ui.groupsWrap.hidden = grouped.length === 0;
+
+        if (grouped.length === 0) {
+          ui.emptyTitle.textContent = state.searchText.trim() ? "No results" : (state.viewMode === "whisper" ? "Whispers" : "Reflections");
+          ui.groupsWrap.innerHTML = "";
+          return;
+        }
+
+        ui.groupsWrap.innerHTML = grouped.map(function (group) {
+          return (
+            '<section class="mzo-group">' +
+            '<h3 class="mzo-group-title">' + escapeHTML(group.title) + "</h3>" +
+            '<div class="mzo-group-list">' + group.items.map(renderRow).join("") + "</div>" +
+            "</section>"
+          );
+        }).join("");
+
+        bindRowEvents();
+      }
+
+      function renderRow(entry) {
+        const text = state.viewMode === "whisper"
+          ? ((entry.whisper && entry.whisper.text) || "")
+          : (((entry.reflection && entry.reflection.text) || ((entry.whisper && entry.whisper.text) || "")));
+
+        const editedAt = state.viewMode === "whisper"
+          ? (entry.whisper && entry.whisper.editedAt)
+          : (entry.reflection && entry.reflection.editedAt);
+
+        const dotClass = state.viewMode === "whisper" ? "whisper" : "reflection";
+        const created = formatDate(entry.createdAt);
+        const edited = editedAt ? (" · Edited " + formatDate(editedAt)) : "";
+
+        return (
+          '<article class="mzo-row" data-row-id="' + escapeHTML(entry.id) + '">' +
+          '<div class="mzo-row-top">' +
+          '<span class="mzo-row-dot ' + dotClass + '" aria-hidden="true"></span>' +
+          '<p class="mzo-row-text">' + escapeHTML(text) + "</p>" +
+          (entry.pinned ? '<span class="mzo-row-pin" aria-label="Pinned">📌</span>' : "") +
+          "</div>" +
+          '<p class="mzo-row-meta">' + escapeHTML(created + edited) + "</p>" +
+          '<div class="mzo-row-actions">' +
+          '<div class="mzo-action-group">' +
+          '<button type="button" data-action="pin" aria-label="' + (entry.pinned ? "Unpin" : "Pin") + '">' + (entry.pinned ? "📍" : "📌") + "</button>" +
+          '<button type="button" data-action="manualFlip" class="is-simulated" aria-label="Manual Flip simulated"><img src="../../assets/mindzoneout/row-mfo.png" alt=""></button>' +
+          '<button type="button" data-action="manualShout" class="is-simulated" aria-label="Manual Shout simulated"><img src="../../assets/mindzoneout/row-mso.png" alt=""></button>' +
+          '<button type="button" data-action="manualWhisper" aria-label="Manual Whisper"><img src="../../assets/mindzoneout/row-mzo.png" alt=""></button>' +
+          '<button type="button" data-action="sendRecipe" class="is-simulated" aria-label="Send to Recipe simulated"><img src="../../assets/mindzoneout/row-me.png" alt=""></button>' +
+          "</div>" +
+          '<div class="mzo-action-group">' +
+          '<button type="button" data-action="delete" aria-label="Delete">🗑</button>' +
+          '<button type="button" data-action="mindEaseOut" aria-label="MindEaseOut"><img src="../../assets/mindzoneout/row-meo.png" alt=""></button>' +
+          '<button type="button" data-action="manualMindTouch" aria-label="Manual MindTouch"><img src="../../assets/mindzoneout/row-mzo.png" alt=""></button>' +
+          '<button type="button" data-action="manualBackyard" class="is-simulated" aria-label="Manual MindBackyard simulated"><img src="../../assets/mindzoneout/row-mby.png" alt=""></button>' +
+          "</div>" +
+          "</div>" +
+          "</article>"
+        );
+      }
+
+      function bindRowEvents() {
+        ui.groupsWrap.querySelectorAll("[data-row-id]").forEach(function (rowEl) {
+          rowEl.addEventListener("click", function (event) {
+            const entryId = rowEl.dataset.rowId;
+            if (!entryId) return;
+            const actionBtn = event.target.closest("button[data-action]");
+
+            if (actionBtn) {
+              event.stopPropagation();
+              runRowAction(entryId, actionBtn.dataset.action || "");
+              return;
+            }
+
+            if (state.viewMode === "whisper") {
+              openWhisperDialog("editWhisper", entryId);
+            } else {
+              openWhisperDialog("editReflection", entryId);
+            }
+          });
+        });
+      }
+
+      function runRowAction(entryId, action) {
+        const entry = state.entries.find(function (item) { return item.id === entryId; });
+        if (!entry) return;
+
+        if (action === "pin") {
+          entry.pinned = !entry.pinned;
+          renderList();
+          return;
+        }
+
+        if (action === "delete") {
+          state.deletePendingId = entryId;
+          ui.deleteSnippet.textContent = quoteSnippet(entry);
+          ui.deleteDialog.showModal();
+          return;
+        }
+
+        if (action === "mindEaseOut") {
+          if (state.viewMode === "whisper") {
+            if (entry.whisper) {
+              entry.whisper.text = "";
+              entry.whisper.editedAt = new Date();
+            }
+          } else {
+            if (entry.reflection) {
+              entry.reflection.text = "";
+              entry.reflection.editedAt = new Date();
+            }
+          }
+          entry.updatedAt = new Date();
+          renderList();
+          return;
+        }
+
+        if (action === "manualWhisper") {
+          startLoopSession(entryId);
+          return;
+        }
+
+        if (action === "manualMindTouch") {
+          startSingleSession(entryId);
+          return;
+        }
+
+        // Simulated, non-launching actions by design (native requires URL schemes/native app presence).
+      }
+
+      function openWhisperDialog(type, entryId) {
+        state.editType = type;
+        state.editPendingId = entryId;
+
+        if (type === "newWhisper") {
+          ui.whisperDialogTitle.textContent = "New Whisper";
+          ui.whisperDialogHint.textContent = "sheet.new_whisper.hint1";
+          ui.whisperInput.value = "";
+        } else if (type === "editWhisper") {
+          ui.whisperDialogTitle.textContent = "Edit";
+          ui.whisperDialogHint.textContent = "sheet.edit_whisper.hint";
+          const entry = state.entries.find(function (item) { return item.id === entryId; });
+          ui.whisperInput.value = entry && entry.whisper ? entry.whisper.text : "";
+        } else {
+          ui.whisperDialogTitle.textContent = "Edit";
+          ui.whisperDialogHint.textContent = "sheet.reflection.hint";
+          const reflectionEntry = state.entries.find(function (item) { return item.id === entryId; });
+          ui.whisperInput.value = reflectionEntry && reflectionEntry.reflection ? reflectionEntry.reflection.text : "";
+        }
+
+        ui.whisperDialog.showModal();
+        requestAnimationFrame(function () { ui.whisperInput.focus(); });
+      }
+
+      function saveWhisperDialog() {
+        const text = ui.whisperInput.value.trim();
+        if (!text) return;
+        const now = new Date();
+
+        if (state.editType === "newWhisper") {
+          state.entries.unshift({
+            id: makeId(),
+            whisper: { text: text, createdAt: now, editedAt: null },
+            reflection: null,
+            createdAt: now,
+            updatedAt: null,
+            pinned: false
+          });
+        } else {
+          const entry = state.entries.find(function (item) { return item.id === state.editPendingId; });
+          if (!entry) return;
+
+          if (state.editType === "editWhisper") {
+            if (!entry.whisper) {
+              entry.whisper = { text: text, createdAt: now, editedAt: now };
+            } else {
+              entry.whisper.text = text;
+              entry.whisper.editedAt = now;
+            }
+          } else {
+            if (!entry.reflection) {
+              entry.reflection = { text: text, createdAt: now, editedAt: now };
+            } else {
+              entry.reflection.text = text;
+              entry.reflection.editedAt = now;
+            }
+          }
+
+          entry.updatedAt = now;
+        }
+
+        state.editPendingId = null;
+        ui.whisperDialog.close();
+        renderList();
+      }
+
+      function groupedEntries() {
+        const query = state.searchText.trim().toLowerCase();
+        const filtered = state.entries.filter(function (entry) {
+          const whisperText = entry.whisper ? entry.whisper.text : "";
+          const reflectionText = entry.reflection ? entry.reflection.text : "";
+          const created = formatDate(entry.createdAt).toLowerCase();
+          const edited = state.viewMode === "whisper"
+            ? (entry.whisper && entry.whisper.editedAt ? formatDate(entry.whisper.editedAt).toLowerCase() : "")
+            : (entry.reflection && entry.reflection.editedAt ? formatDate(entry.reflection.editedAt).toLowerCase() : "");
+
+          const groupLabel = dayTitle(startOfDay(entry.createdAt)).toLowerCase();
+          const searchable = [];
+          if (state.viewMode === "whisper") {
+            searchable.push(whisperText);
+          } else {
+            searchable.push(reflectionText, whisperText);
+          }
+          searchable.push(created, edited, groupLabel);
+
+          if (!query) return true;
+          return searchable.join(" ").toLowerCase().indexOf(query) >= 0;
+        });
+
+        filtered.sort(function (a, b) {
+          if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
+          if (a.createdAt.getTime() !== b.createdAt.getTime()) return b.createdAt.getTime() - a.createdAt.getTime();
+          return a.id > b.id ? -1 : 1;
+        });
+
+        const buckets = {};
+        filtered.forEach(function (entry) {
+          const key = startOfDay(entry.createdAt).toISOString();
+          if (!buckets[key]) buckets[key] = [];
+          buckets[key].push(entry);
+        });
+
+        return Object.keys(buckets).sort(function (a, b) { return b.localeCompare(a); }).map(function (key) {
+          const day = new Date(key);
+          return { title: dayTitle(day), items: buckets[key] };
+        });
+      }
+
+      function startNormalSession() {
+        const duration = configuredZoneDurationSeconds();
+        state.entryMode = "normal";
+        state.loopEntryId = null;
+        state.singleEntryId = null;
+        startSession(duration);
+      }
+
+      function startLoopSession(entryId) {
+        state.entryMode = "loop";
+        state.loopEntryId = entryId;
+        state.singleEntryId = null;
+        startSession(0);
+      }
+
+      function startSingleSession(entryId) {
+        state.entryMode = "single";
+        state.singleEntryId = entryId;
+        state.loopEntryId = null;
+        startSession(0);
+      }
+
+      function startSession(seconds) {
+        if (state.sessionActive) return;
+        state.sessionActive = true;
+        state.showExit = false;
+        state.currentShout = "";
+        state.shoutVisible = false;
+        state.showMindTouch = false;
+        state.overlayText = "You with us?";
+        state.overlayHoldUntil = 0;
+        state.sessionRunId += 1;
+
+        if (sessionEndTimer) {
+          clearTimeout(sessionEndTimer);
+          sessionEndTimer = null;
+        }
+        if (seconds > 0) {
+          state.sessionEndsAt = new Date(Date.now() + seconds * 1000);
+          sessionEndTimer = setTimeout(function () { endSession(); }, seconds * 1000);
+        } else {
+          state.sessionEndsAt = null;
+        }
+
+        renderSession();
+        runSessionLoop(state.sessionRunId);
+      }
+
+      function endSession() {
+        if (!state.sessionActive) return;
+        state.sessionActive = false;
+        state.entryMode = "normal";
+        state.loopEntryId = null;
+        state.singleEntryId = null;
+        state.showExit = false;
+        state.currentShout = "";
+        state.shoutVisible = false;
+        state.showMindTouch = false;
+        state.overlayText = "";
+        state.sessionRunId += 1;
+        state.sessionEndsAt = null;
+        if (sessionEndTimer) {
+          clearTimeout(sessionEndTimer);
+          sessionEndTimer = null;
+        }
+        renderSession();
+      }
+
+      async function runSessionLoop(runId) {
+        if (state.entryMode === "loop") {
+          await runLoopMode(runId);
+          return;
+        }
+        if (state.entryMode === "single") {
+          await runSingleMode(runId);
+          return;
+        }
+        await runNormalMode(runId);
+      }
+
+      async function runNormalMode(runId) {
+        if (state.overlayMode === "shout") {
+          await runWhisperCycle(runId);
+          return;
+        }
+        if (state.overlayMode === "presenceCheck") {
+          await runMindTouchCycle(runId);
+          return;
+        }
+      }
+
+      async function runWhisperCycle(runId) {
+        while (isSessionValid(runId) && state.entryMode === "normal" && state.overlayMode === "shout") {
+          await sleep(30000);
+          if (!isSessionValid(runId) || state.overlayMode !== "shout") return;
+
+          const next = randomWhisper();
+          if (!next) continue;
+
+          state.currentShout = next;
+          state.shoutVisible = false;
+          renderSession();
+
+          await sleep(5000);
+          if (!isSessionValid(runId)) return;
+          state.shoutVisible = true;
+          renderSession();
+
+          await sleep(15000);
+          if (!isSessionValid(runId)) return;
+          state.shoutVisible = false;
+          renderSession();
+
+          await sleep(20000);
+          if (!isSessionValid(runId)) return;
+          state.currentShout = "";
+          renderSession();
+        }
+      }
+
+      async function runMindTouchCycle(runId) {
+        while (isSessionValid(runId) && state.entryMode === "normal" && state.overlayMode === "presenceCheck") {
+          const interval = randomRange(180000, 420000);
+          await sleep(interval);
+          if (!isSessionValid(runId) || state.overlayMode !== "presenceCheck") return;
+
+          if (state.showMindTouch || Date.now() < state.overlayHoldUntil) continue;
+          state.overlayText = randomMindTouchPhrase();
+          state.overlayHoldUntil = Date.now() + 4000;
+          state.showMindTouch = true;
+          renderSession();
+        }
+      }
+
+      async function runLoopMode(runId) {
+        while (isSessionValid(runId) && state.entryMode === "loop") {
+          const entry = state.entries.find(function (item) { return item.id === state.loopEntryId; });
+          const text = entry && entry.whisper ? entry.whisper.text : "";
+          state.currentShout = text;
+          state.shoutVisible = false;
+          renderSession();
+
+          await sleep(50);
+          if (!isSessionValid(runId)) return;
+
+          state.shoutVisible = true;
+          renderSession();
+          await sleep(20000);
+          if (!isSessionValid(runId)) return;
+
+          state.shoutVisible = false;
+          renderSession();
+          await sleep(20000);
+          if (!isSessionValid(runId)) return;
+
+          state.currentShout = "";
+          renderSession();
+          await sleep(10000);
+        }
+      }
+
+      async function runSingleMode(runId) {
+        const entry = state.entries.find(function (item) { return item.id === state.singleEntryId; });
+        const text = entry && entry.whisper ? entry.whisper.text : "";
+        state.currentShout = "";
+        state.shoutVisible = false;
+        state.overlayText = text;
+        state.showMindTouch = false;
+        renderSession();
+
+        await sleep(1000);
+        if (!isSessionValid(runId) || state.entryMode !== "single") return;
+        state.showMindTouch = true;
+        renderSession();
+      }
+
+      function handleSessionTap() {
+        if (!state.sessionActive) return;
+        if (tapLock) return;
+        tapLock = true;
+        setTimeout(function () { tapLock = false; }, 350);
+
+        if (state.entryMode === "single") {
+          state.showExit = !state.showExit;
+          renderSession();
+          return;
+        }
+
+        if (state.showMindTouch) {
+          if (Date.now() > state.overlayHoldUntil) {
+            state.showMindTouch = false;
+            renderSession();
+          }
+          return;
+        }
+
+        state.showExit = !state.showExit;
+        renderSession();
+      }
+
+      function handleMindTouchCardTap() {
+        if (state.entryMode === "single") {
+          singleModeFadeAndExit();
+          return;
+        }
+        if (Date.now() <= state.overlayHoldUntil) return;
+        state.showMindTouch = false;
+        renderSession();
+      }
+
+      function singleModeFadeAndExit() {
+        state.showExit = false;
+        renderSession();
+        ui.sessionMindTouchCard.classList.add("is-fading");
+
+        setTimeout(function () {
+          if (!state.sessionActive || state.entryMode !== "single") return;
+          state.overlayText = "";
+          renderSession();
+
+          setTimeout(function () {
+            if (!state.sessionActive || state.entryMode !== "single") return;
+            ui.sessionMindTouchCard.classList.remove("is-fading");
+            endSession();
+          }, 10000);
+        }, 15300);
+      }
+
+      function renderSession() {
+        ui.sessionOverlay.hidden = !state.sessionActive;
+        if (!state.sessionActive) return;
+
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        ui.sessionOverlay.classList.toggle("is-dark", prefersDark);
+        ui.sessionOverlay.classList.toggle("is-light", !prefersDark);
+
+        const showWhisper = !!state.currentShout && !state.showMindTouch;
+        ui.sessionFloatingShout.hidden = !showWhisper;
+        ui.sessionFloatingShout.textContent = state.currentShout;
+        ui.sessionFloatingShout.classList.toggle("is-visible", state.shoutVisible);
+
+        ui.sessionMindTouchCard.hidden = !state.showMindTouch;
+        ui.sessionMindTouchCard.textContent = state.overlayText;
+        ui.sessionMindTouchCard.classList.toggle("is-visible", state.showMindTouch);
+
+        ui.sessionExitBtn.hidden = !state.showExit;
+      }
+
+      function isSessionValid(runId) {
+        return state.sessionActive && state.sessionRunId === runId;
+      }
+
+      function configuredZoneDurationSeconds() {
+        if (state.zoneDurationMinutes === 0) return 0;
+        if (state.zoneDurationMinutes === -1) return state.customZoneMinutes * 60;
+        return state.zoneDurationMinutes * 60;
+      }
+
+      function randomWhisper() {
+        const whispers = state.entries.map(function (entry) {
+          return entry.whisper ? entry.whisper.text.trim() : "";
+        }).filter(Boolean);
+        if (!whispers.length) return null;
+        return whispers[Math.floor(Math.random() * whispers.length)];
+      }
+
+      function randomMindTouchPhrase() {
+        return mindTouchPhrases[Math.floor(Math.random() * mindTouchPhrases.length)] || "You with us?";
+      }
+
+      function quoteSnippet(entry) {
+        const text = entry.reflection && entry.reflection.text.trim()
+          ? entry.reflection.text.trim()
+          : (entry.whisper && entry.whisper.text.trim() ? entry.whisper.text.trim() : "");
+        return "“" + text.slice(0, 60) + "”";
+      }
+
+      function startOfDay(date) {
+        const d = new Date(date);
+        d.setHours(0, 0, 0, 0);
+        return d;
+      }
+
+      function dayTitle(day) {
+        const today = startOfDay(new Date()).getTime();
+        const yesterday = today - 86400000;
+        const current = startOfDay(day).getTime();
+        if (current === today) return "TODAY";
+        if (current === yesterday) return "YESTERDAY";
+        return day.toLocaleDateString(undefined, { dateStyle: "medium" });
+      }
+
+      function formatDate(date) {
+        return new Date(date).toLocaleString(undefined, {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+          hour: "numeric",
+          minute: "2-digit"
+        });
+      }
+
+      function makeId() {
+        return "mzo-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 9);
+      }
+
+      function randomRange(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      function sleep(ms) {
+        return new Promise(function (resolve) { setTimeout(resolve, ms); });
+      }
+
+      function escapeHTML(input) {
+        return String(input)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      init();
+    }());
+  </script>
+</body>
+</html>
