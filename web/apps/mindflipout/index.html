@@ -61,6 +61,17 @@
     </footer>
   </main>
 
+  <dialog id="mfoFlipDialog" class="mfo-dialog">
+    <form method="dialog" class="mfo-dialog-card">
+      <h2 id="mfoFlipDialogTitle">Edit Light</h2>
+      <textarea id="mfoFlipDialogInput" class="mfo-dialog-input"></textarea>
+      <menu>
+        <button id="mfoFlipCancelBtn" type="button">Cancel</button>
+        <button id="mfoFlipSaveBtn" type="button">Save</button>
+      </menu>
+    </form>
+  </dialog>
+
   <script>
     "use strict";
 
@@ -72,6 +83,11 @@
       const enterBtn = document.getElementById("enterBtn");
       const listEl = document.getElementById("mfoList");
       const emptyEl = document.getElementById("mfoEmptyState");
+      const flipDialog = document.getElementById("mfoFlipDialog");
+      const flipDialogTitle = document.getElementById("mfoFlipDialogTitle");
+      const flipDialogInput = document.getElementById("mfoFlipDialogInput");
+      const flipCancelBtn = document.getElementById("mfoFlipCancelBtn");
+      const flipSaveBtn = document.getElementById("mfoFlipSaveBtn");
 
       const thoughts = {
         heavy: "",
@@ -81,6 +97,7 @@
       let entries = [];
       let nextEntryId = 1;
       let draftPairId = null;
+      let pendingFlipEdit = null;
 
       function focusAndSelectComposerText() {
         requestAnimationFrame(function () {
@@ -151,6 +168,38 @@
         renderList();
       }
 
+      function targetForEditing() {
+        let target = null;
+        if (draftPairId !== null) {
+          target = entries.find(function (e) { return e.id === draftPairId; }) || null;
+        }
+        if (!target) {
+          target = {
+            id: nextEntryId++,
+            createdAt: new Date(),
+            heavy: "",
+            light: ""
+          };
+          entries.push(target);
+          draftPairId = target.id;
+        }
+        return target;
+      }
+
+      function openFlipEditSheet(fromSide, toSide, target) {
+        pendingFlipEdit = { id: target.id, toSide: toSide };
+        flipDialogTitle.textContent = toSide === "light" ? "Edit Light" : "Edit Heavy";
+        flipDialogInput.value = target[toSide] || target[fromSide] || "";
+        flipDialog.showModal();
+        requestAnimationFrame(function () {
+          flipDialogInput.focus();
+          const len = flipDialogInput.value.length;
+          if (len > 0) {
+            flipDialogInput.setSelectionRange(0, len);
+          }
+        });
+      }
+
       composerInput.addEventListener("input", function () {
         thoughts[activeTab] = composerInput.value;
         syncComposer();
@@ -166,13 +215,39 @@
 
       flipBtn.addEventListener("click", function () {
         thoughts[activeTab] = composerInput.value;
-        if (activeTab === "heavy") {
-          thoughts.light = thoughts.heavy;
-          setTab("light");
-          focusAndSelectComposerText();
-        } else {
-          setTab("heavy");
+        const text = thoughts[activeTab].trim();
+        if (!text) return;
+        const fromSide = activeTab;
+        const toSide = activeTab === "heavy" ? "light" : "heavy";
+        const target = targetForEditing();
+        target[fromSide] = text;
+        openFlipEditSheet(fromSide, toSide, target);
+        renderList();
+      });
+
+      flipCancelBtn.addEventListener("click", function () {
+        pendingFlipEdit = null;
+        flipDialog.close();
+      });
+
+      flipSaveBtn.addEventListener("click", function () {
+        if (!pendingFlipEdit) return;
+        const target = entries.find(function (e) { return e.id === pendingFlipEdit.id; });
+        if (!target) {
+          pendingFlipEdit = null;
+          flipDialog.close();
+          return;
         }
+        target[pendingFlipEdit.toSide] = flipDialogInput.value.trim();
+        if (target.heavy.trim() && target.light.trim()) {
+          draftPairId = null;
+        }
+        setTab(pendingFlipEdit.toSide);
+        thoughts[pendingFlipEdit.toSide] = "";
+        syncComposer();
+        renderList();
+        pendingFlipEdit = null;
+        flipDialog.close();
       });
 
       enterBtn.addEventListener("click", function () {
