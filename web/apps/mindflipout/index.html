@@ -3,11 +3,48 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MindFlipOut Simulator</title>
+  <title>MindFlipOut</title>
   <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="mfo-body">
-  <main class="mfo-app" aria-label="MindFlipOut web simulator">
+  <div id="mfoDisclaimer" class="mfo-disclaimer" aria-label="Disclaimer">
+    <div class="mfo-disclaimer-scroll">
+      <h1 class="mfo-disclaimer-title">Disclaimer</h1>
+      <p class="mfo-disclaimer-body">
+        MINDBEBOP apps are designed for personal well-being and reflection, not as medical or psychological treatment.
+      </p>
+      <p class="mfo-disclaimer-body">
+        They do not provide diagnosis, therapy, or crisis guidance.
+      </p>
+      <p class="mfo-disclaimer-body">
+        By continuing, you acknowledge that you are responsible for how you use these tools.
+      </p>
+      <hr class="mfo-disclaimer-divider">
+      <h2 class="mfo-disclaimer-subhead">How this app works</h2>
+      <p class="mfo-disclaimer-lead">Move a looping thought out of active attention</p>
+      <ul class="mfo-disclaimer-list">
+        <li>Capture a Heavy thought as it appears</li>
+        <li>Add a Light response — or tap Flip to respond instantly</li>
+        <li>When you're done, you're back on the main screen</li>
+      </ul>
+      <h3 class="mfo-disclaimer-examples-title">Example responses</h3>
+      <div class="mfo-example-card">
+        <p class="mfo-example-heavy"><em>I always mess things up.</em></p>
+        <p class="mfo-example-arrow">→</p>
+        <p class="mfo-example-light"><em>I'm learning, even when things don't go perfectly.</em></p>
+      </div>
+      <div class="mfo-example-card">
+        <p class="mfo-example-heavy"><em>This probably won't help.</em></p>
+        <p class="mfo-example-arrow">→</p>
+        <p class="mfo-example-light"><em>I'll just try it and see.</em></p>
+      </div>
+    </div>
+    <div class="mfo-disclaimer-footer">
+      <button id="mfoDisclaimerBtn" class="mfo-btn mfo-btn-primary mfo-disclaimer-btn" type="button">Got it</button>
+    </div>
+  </div>
+
+  <main id="mfoMainApp" class="mfo-app" aria-label="MindFlipOut" hidden>
     <header class="mfo-header">
       <button class="mfo-logo-btn" type="button" aria-label="MindFlipOut logo">
         <img class="mfo-logo-light" src="../../assets/mindflipout/app-logo-light.png" alt="">
@@ -22,15 +59,31 @@
       </button>
     </header>
 
-    <section class="mfo-search-row" aria-hidden="true">
+    <section class="mfo-search-row" aria-label="Search">
       <div class="mfo-search-pill">
-        <span class="mfo-search-icon">⌕</span>
+        <span class="mfo-search-icon" aria-hidden="true">⌕</span>
+        <input
+          id="mfoSearchInput"
+          class="mfo-search-input"
+          type="search"
+          enterkeyhint="search"
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
+          aria-label="Search entries"
+        >
+        <button id="mfoSearchClear" class="mfo-search-clear" type="button" hidden aria-label="Clear search">×</button>
       </div>
     </section>
 
     <section class="mfo-toggle-wrap" aria-label="Polarity toggle">
       <button id="tabHeavy" class="mfo-tab is-active" type="button">Heavy</button>
       <button id="tabLight" class="mfo-tab" type="button">Light</button>
+    </section>
+
+    <section id="mfoShowRemixRow" class="mfo-show-remix" hidden>
+      <label class="mfo-show-remix-label" for="mfoShowRemixToggle">Show Remix</label>
+      <input id="mfoShowRemixToggle" class="mfo-show-remix-toggle" type="checkbox">
     </section>
 
     <section class="mfo-flip-panel">
@@ -43,6 +96,7 @@
           id="composerInput"
           class="mfo-input"
           placeholder="What's on your mind?"
+          rows="3"
         ></textarea>
       </section>
     </section>
@@ -52,249 +106,91 @@
     </section>
 
     <section class="mfo-list-wrap" aria-label="MindFlipOut list">
-      <p id="mfoEmptyState" class="mfo-empty">No entries yet</p>
+      <div id="mfoEmptyState" class="mfo-empty">
+        <span id="mfoEmptyIcon" class="mfo-empty-icon" aria-hidden="true">✎</span>
+        <p id="mfoEmptyText" class="mfo-empty-text">No entries yet</p>
+      </div>
       <ul id="mfoList" class="mfo-list" hidden></ul>
     </section>
 
     <footer class="mfo-footer">
-      <a class="sim-home-link" href="../../index.html">Back to web home</a>
+      <a class="sim-home-link" href="../../index.html">← Try MINDBEBOP</a>
     </footer>
   </main>
 
-  <dialog id="mfoFlipDialog" class="mfo-dialog">
+  <dialog id="mfoEditDialog" class="mfo-dialog mfo-edit-dialog">
+    <form method="dialog" class="mfo-dialog-card mfo-edit-card" onsubmit="return false;">
+      <header class="mfo-edit-toolbar">
+        <button id="mfoEditCancelBtn" class="mfo-edit-toolbar-btn" type="button">Cancel</button>
+        <span class="mfo-edit-toolbar-title">Edit</span>
+        <button id="mfoEditSaveBtn" class="mfo-edit-toolbar-btn mfo-edit-save" type="button">Save</button>
+      </header>
+      <div class="mfo-edit-header">
+        <span id="mfoEditHeaderDot" class="mfo-edit-dot heavy" aria-hidden="true"></span>
+        <span id="mfoEditHeaderLabel" class="mfo-edit-label heavy">Heavy</span>
+        <button id="mfoEditSwitchBtn" class="mfo-edit-switch heavy" type="button" hidden>→ Light</button>
+      </div>
+      <p id="mfoEditFlipGuidance" class="mfo-edit-guidance" hidden>
+        Add a Light response so this Heavy thought doesn't have to stay active.
+      </p>
+      <textarea id="mfoEditInput" class="mfo-dialog-input mfo-edit-input" rows="5"></textarea>
+      <button id="mfoEditRemixBtn" class="mfo-edit-remix-btn" type="button" hidden>Remix</button>
+    </form>
+  </dialog>
+
+  <dialog id="mfoRemixDialog" class="mfo-dialog mfo-remix-dialog">
+    <form method="dialog" class="mfo-dialog-card mfo-remix-card" onsubmit="return false;">
+      <header class="mfo-edit-toolbar">
+        <button id="mfoRemixCancelBtn" class="mfo-edit-toolbar-btn" type="button">Cancel</button>
+        <span class="mfo-edit-toolbar-title">Remix</span>
+        <button id="mfoRemixSaveBtn" class="mfo-edit-toolbar-btn mfo-edit-save" type="button">Save</button>
+      </header>
+      <div class="mfo-edit-header">
+        <span class="mfo-edit-dot light" aria-hidden="true"></span>
+        <span class="mfo-edit-label light">Remix</span>
+      </div>
+      <p class="mfo-edit-guidance">
+        Adjust this Light response if it still feels a bit active.
+      </p>
+      <textarea id="mfoRemixInput" class="mfo-dialog-input mfo-edit-input" rows="5"></textarea>
+    </form>
+  </dialog>
+
+  <dialog id="mfoDeleteDialog" class="mfo-dialog">
     <form method="dialog" class="mfo-dialog-card">
-      <h2 id="mfoFlipDialogTitle">Edit Light</h2>
-      <textarea id="mfoFlipDialogInput" class="mfo-dialog-input"></textarea>
+      <h2>Delete this pair?</h2>
+      <p class="mfo-delete-message">“<span id="mfoDeleteSnippet"></span>”</p>
       <menu>
-        <button id="mfoFlipCancelBtn" type="button">Cancel</button>
-        <button id="mfoFlipSaveBtn" type="button">Save</button>
+        <button id="mfoDeleteCancelBtn" type="button">Cancel</button>
+        <button id="mfoDeleteConfirmBtn" type="button" class="mfo-delete-confirm">Delete</button>
       </menu>
     </form>
   </dialog>
 
-  <script>
-    "use strict";
+  <dialog id="mfoSwitchDialog" class="mfo-dialog">
+    <form method="dialog" class="mfo-dialog-card">
+      <h2>Unsaved changes</h2>
+      <p>Do you want to save your changes before switching?</p>
+      <menu>
+        <button id="mfoSwitchCancelBtn" type="button">Cancel</button>
+        <button id="mfoSwitchDiscardBtn" type="button">Discard &amp; Switch</button>
+        <button id="mfoSwitchSaveBtn" type="button" class="mfo-edit-save">Save &amp; Switch</button>
+      </menu>
+    </form>
+  </dialog>
 
-    (function () {
-      const tabHeavy = document.getElementById("tabHeavy");
-      const tabLight = document.getElementById("tabLight");
-      const composerInput = document.getElementById("composerInput");
-      const flipBtn = document.getElementById("flipBtn");
-      const enterBtn = document.getElementById("enterBtn");
-      const listEl = document.getElementById("mfoList");
-      const emptyEl = document.getElementById("mfoEmptyState");
-      const flipDialog = document.getElementById("mfoFlipDialog");
-      const flipDialogTitle = document.getElementById("mfoFlipDialogTitle");
-      const flipDialogInput = document.getElementById("mfoFlipDialogInput");
-      const flipCancelBtn = document.getElementById("mfoFlipCancelBtn");
-      const flipSaveBtn = document.getElementById("mfoFlipSaveBtn");
+  <dialog id="mfoBoundaryDialog" class="mfo-dialog mfo-boundary-dialog">
+    <form method="dialog" class="mfo-dialog-card">
+      <div id="mfoBoundaryBody"></div>
+      <menu>
+        <button id="mfoBoundaryCloseBtn" type="button">Close</button>
+      </menu>
+    </form>
+  </dialog>
 
-      const thoughts = {
-        heavy: "",
-        light: ""
-      };
-      let activeTab = "heavy";
-      let entries = [];
-      let nextEntryId = 1;
-      let draftPairId = null;
-      let pendingFlipEdit = null;
-
-      function focusAndSelectComposerText() {
-        requestAnimationFrame(function () {
-          composerInput.focus();
-          const len = composerInput.value.length;
-          if (len > 0) {
-            composerInput.setSelectionRange(0, len);
-          }
-        });
-      }
-
-      function formatCreatedAt(date) {
-        return date.toLocaleString(undefined, {
-          year: "numeric",
-          month: "short",
-          day: "numeric",
-          hour: "numeric",
-          minute: "2-digit"
-        });
-      }
-
-      function renderList() {
-        listEl.innerHTML = "";
-        if (!entries.length) {
-          emptyEl.hidden = false;
-          listEl.hidden = true;
-          return;
-        }
-
-        emptyEl.hidden = true;
-        listEl.hidden = false;
-
-        const side = activeTab === "heavy" ? "heavy" : "light";
-        entries
-          .slice()
-          .sort(function (a, b) { return b.createdAt - a.createdAt; })
-          .forEach(function (entry) {
-            const li = document.createElement("li");
-            li.className = "mfo-list-item";
-
-            const text = (entry[side] || "").trim();
-            const contentText = text || (side === "heavy" ? "(No Heavy note yet)" : "(No Light note yet)");
-
-            li.innerHTML = (
-              '<div class="mfo-item-main">' +
-                '<span class="mfo-item-dot ' + (side === "heavy" ? "heavy" : "light") + '" aria-hidden="true"></span>' +
-                '<p class="mfo-item-text">' + contentText.replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</p>" +
-              "</div>" +
-              '<p class="mfo-item-time">' + formatCreatedAt(entry.createdAt) + "</p>"
-            );
-            li.addEventListener("click", function () {
-              openFlipEditSheet(side, side, entry, false);
-            });
-            listEl.appendChild(li);
-          });
-      }
-
-      function syncComposer() {
-        composerInput.value = thoughts[activeTab];
-        const hasText = composerInput.value.trim().length > 0;
-        enterBtn.disabled = !hasText;
-        flipBtn.hidden = !hasText;
-      }
-
-      function setTab(nextTab) {
-        thoughts[activeTab] = composerInput.value;
-        activeTab = nextTab;
-        tabHeavy.classList.toggle("is-active", activeTab === "heavy");
-        tabLight.classList.toggle("is-active", activeTab === "light");
-        syncComposer();
-        renderList();
-      }
-
-      function targetForEditing() {
-        let target = null;
-        if (draftPairId !== null) {
-          target = entries.find(function (e) { return e.id === draftPairId; }) || null;
-        }
-        if (!target) {
-          target = {
-            id: nextEntryId++,
-            createdAt: new Date(),
-            heavy: "",
-            light: ""
-          };
-          entries.push(target);
-          draftPairId = target.id;
-        }
-        return target;
-      }
-
-      function openFlipEditSheet(fromSide, toSide, target, clearComposerAfterSave) {
-        pendingFlipEdit = {
-          id: target.id,
-          toSide: toSide,
-          clearComposerAfterSave: !!clearComposerAfterSave
-        };
-        flipDialogTitle.textContent = toSide === "light" ? "Edit Light" : "Edit Heavy";
-        flipDialogInput.value = target[toSide] || target[fromSide] || "";
-        flipDialog.showModal();
-        requestAnimationFrame(function () {
-          flipDialogInput.focus();
-          const len = flipDialogInput.value.length;
-          if (len > 0) {
-            flipDialogInput.setSelectionRange(0, len);
-          }
-        });
-      }
-
-      composerInput.addEventListener("input", function () {
-        thoughts[activeTab] = composerInput.value;
-        syncComposer();
-      });
-
-      tabHeavy.addEventListener("click", function () {
-        setTab("heavy");
-      });
-
-      tabLight.addEventListener("click", function () {
-        setTab("light");
-      });
-
-      flipBtn.addEventListener("click", function () {
-        thoughts[activeTab] = composerInput.value;
-        const text = thoughts[activeTab].trim();
-        if (!text) return;
-        const fromSide = activeTab;
-        const toSide = activeTab === "heavy" ? "light" : "heavy";
-        const target = targetForEditing();
-        target[fromSide] = text;
-        openFlipEditSheet(fromSide, toSide, target, true);
-        renderList();
-      });
-
-      flipCancelBtn.addEventListener("click", function () {
-        pendingFlipEdit = null;
-        flipDialog.close();
-      });
-
-      flipSaveBtn.addEventListener("click", function () {
-        if (!pendingFlipEdit) return;
-        const target = entries.find(function (e) { return e.id === pendingFlipEdit.id; });
-        if (!target) {
-          pendingFlipEdit = null;
-          flipDialog.close();
-          return;
-        }
-        target[pendingFlipEdit.toSide] = flipDialogInput.value.trim();
-        if (target.heavy.trim() && target.light.trim()) {
-          draftPairId = null;
-        }
-        setTab(pendingFlipEdit.toSide);
-        if (pendingFlipEdit.clearComposerAfterSave) {
-          thoughts[pendingFlipEdit.toSide] = "";
-          syncComposer();
-        }
-        renderList();
-        pendingFlipEdit = null;
-        flipDialog.close();
-      });
-
-      enterBtn.addEventListener("click", function () {
-        thoughts[activeTab] = composerInput.value;
-        if (!thoughts[activeTab].trim()) return;
-
-        const side = activeTab === "heavy" ? "heavy" : "light";
-        let target = null;
-
-        if (draftPairId !== null) {
-          target = entries.find(function (e) { return e.id === draftPairId; }) || null;
-        }
-
-        if (!target) {
-          target = {
-            id: nextEntryId++,
-            createdAt: new Date(),
-            heavy: "",
-            light: ""
-          };
-          entries.push(target);
-          draftPairId = target.id;
-        }
-
-        target[side] = thoughts[activeTab].trim();
-
-        if (target.heavy.trim() && target.light.trim()) {
-          draftPairId = null;
-        }
-
-        thoughts[activeTab] = "";
-        syncComposer();
-        renderList();
-      });
-
-      syncComposer();
-      renderList();
-    }());
-  </script>
+  <script src="../../js/boundary-notice.js"></script>
+  <script src="../../js/continuation-cards.js"></script>
+  <script src="../../js/about-links.js"></script>
+  <script src="mindflipout.js"></script>
 </body>
 </html>
