@@ -1,0 +1,1164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MindShoutOut Web</title>
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body class="mso-body">
+  <main class="mso-app" aria-label="MindShoutOut web implementation">
+    <header class="mso-header">
+      <button class="mso-logo-btn" type="button" aria-label="MindShoutOut logo">
+        <img class="mso-logo-light" src="../../assets/mindshoutout/app-logo-light.png" alt="">
+        <img class="mso-logo-dark" src="../../assets/mindshoutout/app-logo-dark.png" alt="">
+      </button>
+      <button id="scrollToTopBtn" class="mso-wordmark-btn" type="button" aria-label="MindShoutOut">
+        <span class="mso-wordmark-thin">Mind</span><span class="mso-wordmark-bold">Shout</span><span class="mso-wordmark-thin">Out</span>
+      </button>
+      <button class="mso-company-btn" type="button" aria-label="MINDBEBOP">
+        <img class="mso-company-light" src="../../assets/company/company-logo-light.png" alt="">
+        <img class="mso-company-dark" src="../../assets/company/company-logo-dark.png" alt="">
+      </button>
+    </header>
+
+    <section class="mso-search-wrap">
+      <label class="mso-search" for="searchInput">
+        <span class="mso-search-icon" aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" autocomplete="off" spellcheck="false" aria-label="Search shouts">
+      </label>
+    </section>
+
+    <section class="mso-content">
+      <div id="composerTopAnchor"></div>
+      <section class="mso-creation-panel">
+        <section id="textComposer" class="mso-composer-wrap">
+          <div class="mso-composer-card">
+            <textarea id="messageInput" class="mso-message-input" placeholder="Write or paste your Shout here" aria-label="Shout"></textarea>
+          </div>
+          <p id="scheduleConfirmation" class="mso-composer-confirmation" hidden>Scheduled.<br>You don't have to carry this anymore.</p>
+        </section>
+
+        <section id="audioComposer" class="mso-composer-wrap" hidden>
+          <button id="recordBtn" class="mso-audio-card" type="button">
+            <div class="mso-audio-top">
+              <span id="recordIcon" class="mso-audio-icon" aria-hidden="true">●</span>
+              <div class="mso-audio-copy">
+                <p id="recordTitle" class="mso-audio-title">Tap to record</p>
+                <p id="recordHint" class="mso-audio-hint" hidden>Tap to stop and save</p>
+              </div>
+            </div>
+            <div id="waveform" class="mso-waveform" aria-hidden="true"></div>
+          </button>
+          <p id="audioScheduledHint" class="mso-audio-scheduled-hint" hidden>Recorded audio will deliver at the scheduled time.</p>
+          <p id="audioConfirmation" class="mso-composer-confirmation" hidden>Scheduled.<br>You don't have to carry this anymore.</p>
+        </section>
+
+        <section class="mso-segment-wrap" aria-label="Shout type">
+          <button id="typeTextBtn" class="mso-segment-btn is-active" type="button">Text</button>
+          <button id="typeAudioBtn" class="mso-segment-btn" type="button">Audio</button>
+        </section>
+
+        <section class="mso-destination">
+          <p class="mso-label">Destination</p>
+          <div class="mso-segment-wrap" id="destinationSegment" aria-label="Destination">
+            <button id="destTossBtn" class="mso-segment-btn" type="button" data-destination="toss">Toss</button>
+            <button id="destScheduleBtn" class="mso-segment-btn is-active" type="button" data-destination="schedule">Schedule</button>
+            <button id="destCalendarBtn" class="mso-segment-btn" type="button" data-destination="calendar">Calendar</button>
+          </div>
+        </section>
+
+        <section id="inputsSection" class="mso-parameters">
+          <label class="mso-row mso-row-stack" for="fireDateInput">
+            <span class="mso-row-title">Date &amp; Time</span>
+            <input id="fireDateInput" class="mso-datetime" type="datetime-local">
+          </label>
+
+          <section id="postCalendarAdjust" class="mso-row mso-row-stack" hidden>
+            <p class="mso-row-title">Reminder time</p>
+            <button id="sameAsEventBtn" class="mso-chip-btn" type="button">Same as event</button>
+            <p class="mso-muted">Quick adjust</p>
+            <div class="mso-chip-grid">
+              <button class="mso-chip-btn" type="button" data-offset="-900">-15m</button>
+              <button class="mso-chip-btn" type="button" data-offset="-1800">-30m</button>
+              <button class="mso-chip-btn" type="button" data-offset="-3600">-1h</button>
+            </div>
+          </section>
+
+          <section id="scheduleOnlyFields">
+            <div class="mso-row mso-row-repeat">
+              <span class="mso-row-title">Repeat</span>
+              <label class="mso-inline">
+                <span>Every</span>
+                <select id="repeatCountSelect"></select>
+                <select id="repeatModeSelect">
+                  <option value="minutely">Min</option>
+                  <option value="hourly">Hr</option>
+                  <option value="daily" selected>Day</option>
+                  <option value="weekly">Week</option>
+                </select>
+              </label>
+              <label class="mso-toggle">
+                <input id="repeatEnabledToggle" type="checkbox" checked>
+                <span class="mso-toggle-ui" aria-hidden="true"></span>
+              </label>
+            </div>
+
+            <div class="mso-row">
+              <span class="mso-row-title">Acknowledgement</span>
+              <label class="mso-toggle">
+                <input id="ackToggle" type="checkbox">
+                <span class="mso-toggle-ui" aria-hidden="true"></span>
+              </label>
+            </div>
+
+            <div class="mso-row mso-row-stack">
+              <div class="mso-row-top">
+                <span class="mso-row-title">When Tapped</span>
+                <select id="tapDestinationSelect" class="mso-menu">
+                  <option value="mindShoutOut">MindShoutOut</option>
+                  <option value="mindEntry">MindEntry</option>
+                  <option value="mindZoneOut">MindZoneOut</option>
+                </select>
+              </div>
+              <p id="tapHintText" class="mso-muted">Choose where this shout opens when its notification is tapped.</p>
+            </div>
+
+            <div class="mso-row">
+              <span class="mso-row-title">Speak</span>
+              <label class="mso-toggle">
+                <input id="speakToggle" type="checkbox">
+                <span class="mso-toggle-ui" aria-hidden="true"></span>
+              </label>
+            </div>
+
+            <div class="mso-row">
+              <span class="mso-row-title">Shout</span>
+              <label class="mso-toggle">
+                <input id="shoutToggle" type="checkbox" checked>
+                <span class="mso-toggle-ui" aria-hidden="true"></span>
+              </label>
+            </div>
+          </section>
+        </section>
+
+        <section class="mso-primary-panel">
+          <p id="actionExplanation" class="mso-action-explanation">This thought will return at the time you choose.</p>
+          <button id="primaryActionBtn" class="mso-primary-btn" type="button">Schedule</button>
+        </section>
+      </section>
+
+      <section class="mso-list-panel">
+        <p id="emptyState" class="mso-empty">
+          <span class="mso-empty-icon">✎</span>
+          <span id="emptyTitle">No shouts yet</span>
+        </p>
+        <div id="groupsWrap" hidden></div>
+      </section>
+    </section>
+
+    <footer class="mso-footer">
+      <a class="sim-home-link" href="../../index.html">Back to web home</a>
+    </footer>
+  </main>
+
+  <dialog id="calendarFollowUpDialog" class="mso-dialog">
+    <form method="dialog" class="mso-dialog-card">
+      <h2>Added to Calendar.</h2>
+      <p>Would you also like a reminder?</p>
+      <menu>
+        <button id="calendarNoBtn" type="button" value="cancel">No</button>
+        <button id="calendarYesBtn" type="button" value="default">Yes</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <dialog id="editDialog" class="mso-dialog">
+    <form method="dialog" class="mso-dialog-card mso-edit-dialog">
+      <h2>Edit</h2>
+      <label class="mso-dialog-stack">
+        <span>Shout</span>
+        <textarea id="editMessageInput"></textarea>
+      </label>
+      <label class="mso-dialog-stack">
+        <span>Date &amp; Time</span>
+        <input id="editDateInput" type="datetime-local">
+      </label>
+      <div class="mso-dialog-grid">
+        <label class="mso-dialog-toggle">
+          <span>Repeat</span>
+          <input id="editRepeatToggle" type="checkbox">
+        </label>
+        <label class="mso-dialog-toggle">
+          <span>Speak</span>
+          <input id="editSpeakToggle" type="checkbox">
+        </label>
+        <label class="mso-dialog-toggle">
+          <span>Acknowledge</span>
+          <input id="editAckToggle" type="checkbox">
+        </label>
+        <label class="mso-dialog-toggle">
+          <span>Shout</span>
+          <input id="editEnabledToggle" type="checkbox">
+        </label>
+      </div>
+      <label class="mso-dialog-stack">
+        <span>When Tapped</span>
+        <select id="editTapSelect">
+          <option value="mindShoutOut">MindShoutOut</option>
+          <option value="mindEntry">MindEntry</option>
+          <option value="mindZoneOut">MindZoneOut</option>
+        </select>
+      </label>
+      <menu>
+        <button id="editCancelBtn" type="button">Cancel</button>
+        <button id="editSaveBtn" type="button">Save</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script>
+    "use strict";
+
+    (function () {
+      const state = {
+        shoutType: "text",
+        creationDestinationRaw: "schedule",
+        message: "",
+        fireDate: nextMinuteFromNow(),
+        repeatEnabled: true,
+        repeatMode: "daily",
+        repeatCount: 1,
+        speak: false,
+        shoutEnabled: true,
+        requiresAcknowledgement: false,
+        defaultTapDestination: "mindShoutOut",
+        userModifiedFireDate: false,
+        lastInteractionDate: Date.now(),
+        autoResumeThresholdMs: 30000,
+        showScheduledConfirmation: false,
+        isTossScheduling: false,
+        isScheduleScheduling: false,
+        isCalendarAdding: false,
+        postCalendarFlowActive: false,
+        calendarEventStartDateForReminderAdjustment: null,
+        pendingRequests: [],
+        searchText: "",
+        audio: {
+          mediaRecorder: null,
+          stream: null,
+          chunks: [],
+          blob: null,
+          url: null,
+          isRecording: false
+        },
+        editTargetId: null
+      };
+
+      let waveformTimer = null;
+      let confirmationTimer = null;
+
+      const ui = {
+        scrollToTopBtn: document.getElementById("scrollToTopBtn"),
+        searchInput: document.getElementById("searchInput"),
+        textComposer: document.getElementById("textComposer"),
+        audioComposer: document.getElementById("audioComposer"),
+        messageInput: document.getElementById("messageInput"),
+        scheduleConfirmation: document.getElementById("scheduleConfirmation"),
+        audioConfirmation: document.getElementById("audioConfirmation"),
+        typeTextBtn: document.getElementById("typeTextBtn"),
+        typeAudioBtn: document.getElementById("typeAudioBtn"),
+        destTossBtn: document.getElementById("destTossBtn"),
+        destScheduleBtn: document.getElementById("destScheduleBtn"),
+        destCalendarBtn: document.getElementById("destCalendarBtn"),
+        inputsSection: document.getElementById("inputsSection"),
+        fireDateInput: document.getElementById("fireDateInput"),
+        postCalendarAdjust: document.getElementById("postCalendarAdjust"),
+        sameAsEventBtn: document.getElementById("sameAsEventBtn"),
+        quickAdjustButtons: Array.from(document.querySelectorAll("[data-offset]")),
+        scheduleOnlyFields: document.getElementById("scheduleOnlyFields"),
+        repeatEnabledToggle: document.getElementById("repeatEnabledToggle"),
+        repeatCountSelect: document.getElementById("repeatCountSelect"),
+        repeatModeSelect: document.getElementById("repeatModeSelect"),
+        ackToggle: document.getElementById("ackToggle"),
+        tapDestinationSelect: document.getElementById("tapDestinationSelect"),
+        tapHintText: document.getElementById("tapHintText"),
+        speakToggle: document.getElementById("speakToggle"),
+        shoutToggle: document.getElementById("shoutToggle"),
+        actionExplanation: document.getElementById("actionExplanation"),
+        primaryActionBtn: document.getElementById("primaryActionBtn"),
+        recordBtn: document.getElementById("recordBtn"),
+        recordIcon: document.getElementById("recordIcon"),
+        recordTitle: document.getElementById("recordTitle"),
+        recordHint: document.getElementById("recordHint"),
+        waveform: document.getElementById("waveform"),
+        audioScheduledHint: document.getElementById("audioScheduledHint"),
+        emptyState: document.getElementById("emptyState"),
+        emptyTitle: document.getElementById("emptyTitle"),
+        groupsWrap: document.getElementById("groupsWrap"),
+        calendarFollowUpDialog: document.getElementById("calendarFollowUpDialog"),
+        calendarNoBtn: document.getElementById("calendarNoBtn"),
+        calendarYesBtn: document.getElementById("calendarYesBtn"),
+        editDialog: document.getElementById("editDialog"),
+        editMessageInput: document.getElementById("editMessageInput"),
+        editDateInput: document.getElementById("editDateInput"),
+        editRepeatToggle: document.getElementById("editRepeatToggle"),
+        editSpeakToggle: document.getElementById("editSpeakToggle"),
+        editAckToggle: document.getElementById("editAckToggle"),
+        editEnabledToggle: document.getElementById("editEnabledToggle"),
+        editTapSelect: document.getElementById("editTapSelect"),
+        editCancelBtn: document.getElementById("editCancelBtn"),
+        editSaveBtn: document.getElementById("editSaveBtn")
+      };
+
+      function init() {
+        buildRepeatCountOptions();
+        buildWaveformBars();
+        syncDateInput();
+        syncDestinationSegment();
+        render();
+        bindEvents();
+        startAutoFireDateTick();
+      }
+
+      function bindEvents() {
+        ui.scrollToTopBtn.addEventListener("click", function () {
+          document.getElementById("composerTopAnchor").scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+
+        ui.searchInput.addEventListener("input", function () {
+          state.searchText = ui.searchInput.value;
+          renderList();
+        });
+
+        ui.messageInput.addEventListener("input", function () {
+          state.message = ui.messageInput.value;
+          clearPostCalendarReminderAdjustmentIfNeeded();
+          renderPrimarySection();
+        });
+
+        ui.typeTextBtn.addEventListener("click", function () {
+          setShoutType("text");
+        });
+
+        ui.typeAudioBtn.addEventListener("click", function () {
+          setShoutType("audio");
+        });
+
+        ui.destTossBtn.addEventListener("click", function () {
+          state.creationDestinationRaw = "toss";
+          clearPostCalendarReminderAdjustmentIfNeeded();
+          render();
+        });
+
+        ui.destScheduleBtn.addEventListener("click", function () {
+          state.creationDestinationRaw = "schedule";
+          render();
+        });
+
+        ui.destCalendarBtn.addEventListener("click", function () {
+          if (state.shoutType !== "text") return;
+          state.creationDestinationRaw = "calendar";
+          clearPostCalendarReminderAdjustmentIfNeeded();
+          render();
+        });
+
+        ui.fireDateInput.addEventListener("change", function () {
+          const nextDate = fromDateTimeLocal(ui.fireDateInput.value);
+          if (nextDate) {
+            state.fireDate = nextDate;
+            state.userModifiedFireDate = true;
+            state.lastInteractionDate = Date.now();
+          }
+        });
+
+        ui.sameAsEventBtn.addEventListener("click", function () {
+          if (!state.calendarEventStartDateForReminderAdjustment) return;
+          applyPostCalendarReminderOffset(0, true);
+        });
+
+        ui.quickAdjustButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            const offset = Number(button.dataset.offset || "0");
+            applyPostCalendarReminderOffset(offset, false);
+          });
+        });
+
+        ui.repeatEnabledToggle.addEventListener("change", function () {
+          state.repeatEnabled = ui.repeatEnabledToggle.checked;
+        });
+
+        ui.repeatCountSelect.addEventListener("change", function () {
+          state.repeatCount = Math.min(59, Math.max(1, Number(ui.repeatCountSelect.value || "1")));
+        });
+
+        ui.repeatModeSelect.addEventListener("change", function () {
+          state.repeatMode = ui.repeatModeSelect.value;
+        });
+
+        ui.ackToggle.addEventListener("change", function () {
+          state.requiresAcknowledgement = ui.ackToggle.checked;
+          if (state.requiresAcknowledgement) {
+            state.defaultTapDestination = "mindShoutOut";
+          }
+          renderScheduleFields();
+        });
+
+        ui.tapDestinationSelect.addEventListener("change", function () {
+          state.defaultTapDestination = ui.tapDestinationSelect.value;
+        });
+
+        ui.speakToggle.addEventListener("change", function () {
+          state.speak = ui.speakToggle.checked;
+        });
+
+        ui.shoutToggle.addEventListener("change", function () {
+          state.shoutEnabled = ui.shoutToggle.checked;
+        });
+
+        ui.primaryActionBtn.addEventListener("click", function () {
+          performPrimaryAction();
+        });
+
+        ui.recordBtn.addEventListener("click", function () {
+          toggleRecording();
+        });
+
+        ui.calendarNoBtn.addEventListener("click", function () {
+          finishCalendarSuccessCleanup();
+          ui.calendarFollowUpDialog.close();
+          render();
+        });
+
+        ui.calendarYesBtn.addEventListener("click", function () {
+          acceptCalendarReminderFollowUp();
+          ui.calendarFollowUpDialog.close();
+          render();
+        });
+
+        ui.editCancelBtn.addEventListener("click", function () {
+          state.editTargetId = null;
+          ui.editDialog.close();
+        });
+
+        ui.editSaveBtn.addEventListener("click", function () {
+          saveEdit();
+        });
+      }
+
+      function setShoutType(nextType) {
+        if (state.shoutType === nextType) return;
+        state.shoutType = nextType;
+        if (nextType === "audio") {
+          state.speak = false;
+          clearPostCalendarReminderAdjustment();
+        } else {
+          stopWaveform();
+        }
+        render();
+      }
+
+      function creationDestination() {
+        const options = creationOptionsForCurrentType();
+        return options.indexOf(state.creationDestinationRaw) >= 0 ? state.creationDestinationRaw : "schedule";
+      }
+
+      function creationOptionsForCurrentType() {
+        return state.shoutType === "text" ? ["toss", "schedule", "calendar"] : ["toss", "schedule"];
+      }
+
+      function canSchedule() {
+        if (state.shoutType === "text") return state.message.trim().length > 0;
+        return !!state.audio.blob && !state.audio.isRecording;
+      }
+
+      function canPerformPrimaryAction() {
+        const destination = creationDestination();
+        if (destination === "calendar") {
+          return state.shoutType === "text" && state.message.trim().length > 0;
+        }
+        return canSchedule();
+      }
+
+      function isPrimaryActionBusy() {
+        return state.isTossScheduling || state.isScheduleScheduling || state.isCalendarAdding;
+      }
+
+      function performPrimaryAction() {
+        const destination = creationDestination();
+        if (destination === "toss") {
+          tossTapped();
+          return;
+        }
+        if (destination === "schedule") {
+          scheduleTapped();
+          return;
+        }
+        addToCalendarTapped();
+      }
+
+      function tossTapped() {
+        if (state.isTossScheduling) return;
+        state.isTossScheduling = true;
+        renderPrimarySection();
+
+        const tossDate = new Date(Date.now() + 3600 * 1000);
+        const id = makeShoutID();
+        const now = new Date();
+        const row = {
+          id: id,
+          body: state.shoutType === "text" ? state.message.trim() : "Audio Shout",
+          shoutType: state.shoutType,
+          createdAt: now,
+          nextFireDate: tossDate,
+          repeatMode: "daily",
+          repeatCount: 1,
+          speak: false,
+          requiresAcknowledgement: false,
+          tapDestination: effectiveTapDestination(false, state.defaultTapDestination),
+          isDisabled: true,
+          isPinned: false,
+          scheduleFailed: false,
+          audioURL: state.audio.url || null
+        };
+        if (!row.body.trim()) {
+          state.isTossScheduling = false;
+          renderPrimarySection();
+          return;
+        }
+
+        state.pendingRequests.push(row);
+        showScheduledConfirmation();
+        state.fireDate = nextMinuteFromNow();
+        state.userModifiedFireDate = false;
+        if (state.shoutType === "text") {
+          state.message = "";
+        } else {
+          resetAudioState();
+        }
+        state.isTossScheduling = false;
+        render();
+      }
+
+      function scheduleTapped() {
+        if (state.isScheduleScheduling) return;
+        state.isScheduleScheduling = true;
+        renderPrimarySection();
+
+        if (!canSchedule()) {
+          state.isScheduleScheduling = false;
+          renderPrimarySection();
+          return;
+        }
+
+        const id = makeShoutID();
+        const safeDate = bumpedIfPast(state.fireDate, state.repeatEnabled);
+        const row = {
+          id: id,
+          body: state.shoutType === "text" ? state.message.trim() : "Audio Shout",
+          shoutType: state.shoutType,
+          createdAt: new Date(),
+          nextFireDate: safeDate,
+          repeatMode: state.repeatEnabled ? state.repeatMode : "none",
+          repeatCount: state.repeatEnabled ? Math.min(59, Math.max(1, state.repeatCount)) : 1,
+          speak: state.shoutType === "audio" ? false : state.speak,
+          requiresAcknowledgement: state.requiresAcknowledgement,
+          tapDestination: effectiveTapDestination(state.requiresAcknowledgement, state.defaultTapDestination),
+          isDisabled: !state.shoutEnabled,
+          isPinned: false,
+          scheduleFailed: false,
+          audioURL: state.audio.url || null
+        };
+
+        state.pendingRequests.push(row);
+        showScheduledConfirmation();
+        clearPostCalendarReminderAdjustment();
+        if (state.shoutType === "text") {
+          state.message = "";
+        } else {
+          resetAudioState();
+          stopWaveform();
+        }
+        state.shoutEnabled = true;
+        state.requiresAcknowledgement = false;
+        state.fireDate = nextMinuteFromNow();
+        state.userModifiedFireDate = false;
+        state.isScheduleScheduling = false;
+        render();
+      }
+
+      function addToCalendarTapped() {
+        if (state.isCalendarAdding || state.shoutType !== "text") return;
+        const trimmed = state.message.trim();
+        if (!trimmed) return;
+
+        state.isCalendarAdding = true;
+        renderPrimarySection();
+
+        const safeDate = bumpedIfPast(state.fireDate, false);
+        state.fireDate = safeDate;
+        state.userModifiedFireDate = true;
+        state.calendarEventStartDateForReminderAdjustment = safeDate;
+        state.isCalendarAdding = false;
+        render();
+        ui.calendarFollowUpDialog.showModal();
+      }
+
+      function finishCalendarSuccessCleanup() {
+        state.message = "";
+        state.fireDate = nextMinuteFromNow();
+        state.userModifiedFireDate = false;
+        clearPostCalendarReminderAdjustment();
+      }
+
+      function acceptCalendarReminderFollowUp() {
+        state.postCalendarFlowActive = true;
+        state.creationDestinationRaw = "schedule";
+      }
+
+      function applyPostCalendarReminderOffset(offset, sameAsEvent) {
+        if (!state.calendarEventStartDateForReminderAdjustment) return;
+        if (sameAsEvent) {
+          state.fireDate = new Date(state.calendarEventStartDateForReminderAdjustment);
+        } else {
+          state.fireDate = new Date(state.calendarEventStartDateForReminderAdjustment.getTime() + offset * 1000);
+        }
+        state.userModifiedFireDate = true;
+        state.lastInteractionDate = Date.now();
+        syncDateInput();
+      }
+
+      function clearPostCalendarReminderAdjustment() {
+        state.calendarEventStartDateForReminderAdjustment = null;
+        state.postCalendarFlowActive = false;
+      }
+
+      function clearPostCalendarReminderAdjustmentIfNeeded() {
+        if (!state.message.trim()) clearPostCalendarReminderAdjustment();
+      }
+
+      function effectiveTapDestination(requiresAcknowledgement, selected) {
+        return requiresAcknowledgement ? "mindShoutOut" : selected;
+      }
+
+      function showScheduledConfirmation() {
+        state.showScheduledConfirmation = true;
+        if (confirmationTimer) clearTimeout(confirmationTimer);
+        confirmationTimer = setTimeout(function () {
+          state.showScheduledConfirmation = false;
+          renderComposer();
+        }, 2000);
+      }
+
+      function render() {
+        syncDateInput();
+        syncDestinationSegment();
+        renderComposer();
+        renderScheduleFields();
+        renderPrimarySection();
+        renderList();
+      }
+
+      function renderComposer() {
+        const isText = state.shoutType === "text";
+        ui.textComposer.hidden = !isText;
+        ui.audioComposer.hidden = isText;
+
+        ui.typeTextBtn.classList.toggle("is-active", isText);
+        ui.typeAudioBtn.classList.toggle("is-active", !isText);
+
+        ui.messageInput.value = state.message;
+        ui.scheduleConfirmation.hidden = !state.showScheduledConfirmation;
+        ui.audioConfirmation.hidden = !state.showScheduledConfirmation;
+        ui.audioScheduledHint.hidden = !(state.audio.blob && !state.audio.isRecording);
+
+        const recording = state.audio.isRecording;
+        if (recording) {
+          ui.recordIcon.textContent = "■";
+          ui.recordTitle.textContent = "Recording...";
+          ui.recordHint.hidden = false;
+          ui.recordBtn.classList.add("is-recording");
+        } else if (state.audio.blob) {
+          ui.recordIcon.textContent = "●";
+          ui.recordTitle.textContent = "Audio ready";
+          ui.recordHint.hidden = false;
+          ui.recordBtn.classList.remove("is-recording");
+        } else {
+          ui.recordIcon.textContent = "●";
+          ui.recordTitle.textContent = "Tap to record";
+          ui.recordHint.hidden = true;
+          ui.recordBtn.classList.remove("is-recording");
+        }
+      }
+
+      function renderScheduleFields() {
+        const destination = creationDestination();
+        ui.inputsSection.hidden = destination === "toss";
+        ui.scheduleOnlyFields.hidden = destination !== "schedule";
+
+        const showPostCalendarQuickAdjust =
+          state.postCalendarFlowActive &&
+          destination === "schedule" &&
+          !!state.calendarEventStartDateForReminderAdjustment;
+        ui.postCalendarAdjust.hidden = !showPostCalendarQuickAdjust;
+
+        ui.repeatEnabledToggle.checked = state.repeatEnabled;
+        ui.repeatCountSelect.value = String(state.repeatCount);
+        ui.repeatModeSelect.value = state.repeatMode;
+        ui.repeatCountSelect.disabled = !state.repeatEnabled;
+        ui.repeatModeSelect.disabled = !state.repeatEnabled;
+
+        ui.ackToggle.checked = state.requiresAcknowledgement;
+        ui.tapDestinationSelect.value = effectiveTapDestination(state.requiresAcknowledgement, state.defaultTapDestination);
+        ui.tapDestinationSelect.disabled = state.requiresAcknowledgement;
+        ui.tapHintText.textContent = state.requiresAcknowledgement
+          ? "Acknowledgement shouts open in MindShoutOut so you can confirm them."
+          : "Choose where this shout opens when its notification is tapped.";
+
+        ui.speakToggle.checked = state.speak;
+        ui.speakToggle.disabled = state.shoutType === "audio";
+        if (state.shoutType === "audio") ui.speakToggle.checked = false;
+
+        ui.shoutToggle.checked = state.shoutEnabled;
+      }
+
+      function renderPrimarySection() {
+        const destination = creationDestination();
+        const explanationMap = {
+          toss: "This thought will be set aside without returning automatically.",
+          schedule: "This thought will return at the time you choose.",
+          calendar: "This thought will be placed on your calendar."
+        };
+        const buttonLabelMap = {
+          toss: "Toss",
+          schedule: "Schedule",
+          calendar: "Add to Calendar"
+        };
+
+        ui.actionExplanation.textContent = explanationMap[destination];
+        ui.primaryActionBtn.textContent = buttonLabelMap[destination];
+        ui.primaryActionBtn.disabled =
+          state.showScheduledConfirmation ||
+          isPrimaryActionBusy() ||
+          !canPerformPrimaryAction();
+        ui.primaryActionBtn.classList.toggle("is-busy", isPrimaryActionBusy());
+      }
+
+      function syncDestinationSegment() {
+        const destination = creationDestination();
+        ui.destTossBtn.classList.toggle("is-active", destination === "toss");
+        ui.destScheduleBtn.classList.toggle("is-active", destination === "schedule");
+        ui.destCalendarBtn.classList.toggle("is-active", destination === "calendar");
+        ui.destCalendarBtn.hidden = state.shoutType !== "text";
+      }
+
+      function renderList() {
+        const grouped = groupedRequests();
+        const hasItems = grouped.length > 0;
+        ui.emptyState.hidden = hasItems;
+        ui.groupsWrap.hidden = !hasItems;
+        ui.emptyTitle.textContent = state.searchText.trim() ? "No results" : "No shouts yet";
+
+        if (!hasItems) {
+          ui.groupsWrap.innerHTML = "";
+          return;
+        }
+
+        const html = grouped.map(function (group) {
+          const rows = group.items.map(renderRowHTML).join("");
+          return (
+            '<section class="mso-group">' +
+            '<h3 class="mso-group-title">' + escapeHTML(group.title) + "</h3>" +
+            '<div class="mso-group-list">' + rows + "</div>" +
+            "</section>"
+          );
+        }).join("");
+
+        ui.groupsWrap.innerHTML = html;
+        bindListEvents();
+      }
+
+      function bindListEvents() {
+        ui.groupsWrap.querySelectorAll("[data-row-id]").forEach(function (rowEl) {
+          rowEl.addEventListener("click", function (event) {
+            const actionBtn = event.target.closest("button[data-action]");
+            const id = rowEl.dataset.rowId;
+            if (!id) return;
+            if (actionBtn) {
+              event.stopPropagation();
+              const action = actionBtn.dataset.action;
+              if (action === "pin") togglePin(id);
+              if (action === "delete") deleteShout(id);
+              if (action === "edit") openEdit(id);
+              if (action === "handoff-mfo") simulateRowAction(id, "manualFlip");
+              if (action === "handoff-mzo") simulateRowAction(id, "manualZone");
+              if (action === "handoff-me") simulateRowAction(id, "sendToRecipe");
+              if (action === "handoff-meo") simulateRowAction(id, "mindEaseOut");
+              if (action === "handoff-mby") simulateRowAction(id, "manualBackyard");
+              return;
+            }
+            openEdit(id);
+          });
+        });
+      }
+
+      function renderRowHTML(item) {
+        const chips = [];
+        if (item.tapDestination === "mindEntry") chips.push('<span class="chip red">MindEntry</span>');
+        if (item.tapDestination === "mindZoneOut") chips.push('<span class="chip red">MindZoneOut</span>');
+        if (item.scheduleFailed) chips.push('<span class="chip orange">Scheduled But Not Active</span>');
+        if (item.isDisabled) chips.push('<span class="chip red">Silent</span>');
+        if (item.repeatMode !== "none") chips.push('<span class="chip red">' + escapeHTML(localizedRepeatStatus(item.repeatCount, item.repeatMode)) + "</span>");
+        if (item.speak) chips.push('<span class="chip red">Speak</span>');
+        if (item.requiresAcknowledgement) chips.push('<span class="chip red">Acknowledge</span>');
+        if (item.shoutType === "audio") chips.push('<span class="chip red">Audio</span>');
+
+        return (
+          '<article class="mso-row-card" data-row-id="' + escapeHTML(item.id) + '">' +
+          '<div class="mso-row-main">' +
+          '<p class="mso-row-body">' + escapeHTML(item.body) + "</p>" +
+          (item.isPinned ? '<span class="mso-pin" aria-label="Pinned">📌</span>' : "") +
+          "</div>" +
+          (chips.length ? '<p class="mso-row-meta">' + chips.join('<span class="dot">·</span>') + "</p>" : "") +
+          '<p class="mso-row-next">Next: ' + escapeHTML(formatDateTime(item.nextFireDate)) + "</p>" +
+          '<div class="mso-row-actions" aria-label="Row actions">' +
+          '<div class="mso-row-action-group">' +
+          '<button type="button" data-action="pin" title="' + (item.isPinned ? "Unpin" : "Pin") + '" aria-label="' + (item.isPinned ? "Unpin" : "Pin") + '"><span aria-hidden="true">📌</span></button>' +
+          '<button type="button" data-action="handoff-mfo" class="is-simulated" title="Manual Flip (simulated, non-launching)" aria-label="Manual Flip simulated">' +
+          '<img src="../../assets/mindshoutout/row-mfo.png" alt="">' +
+          "</button>" +
+          '<button type="button" data-action="handoff-mzo" class="is-simulated" title="Manual Zone (simulated, non-launching)" aria-label="Manual Zone simulated">' +
+          '<img src="../../assets/mindshoutout/row-mzo.png" alt="">' +
+          "</button>" +
+          '<button type="button" data-action="handoff-me" class="is-simulated" title="Send to Recipe (simulated, non-launching)" aria-label="Send to Recipe simulated">' +
+          '<img src="../../assets/mindshoutout/row-me.png" alt="">' +
+          "</button>" +
+          '<button type="button" data-action="edit" title="Edit" aria-label="Edit"><span aria-hidden="true">✎</span></button>' +
+          "</div>" +
+          '<div class="mso-row-action-group">' +
+          '<button type="button" data-action="delete" title="Delete" aria-label="Delete"><span aria-hidden="true">🗑</span></button>' +
+          '<button type="button" data-action="handoff-meo" class="is-simulated" title="MindEaseOut (simulated, non-launching)" aria-label="MindEaseOut simulated">' +
+          '<img src="../../assets/mindshoutout/row-meo.png" alt="">' +
+          "</button>" +
+          '<button type="button" data-action="handoff-mby" class="is-simulated" title="Manual MindBackyard (simulated, non-launching)" aria-label="Manual MindBackyard simulated">' +
+          '<img src="../../assets/mindshoutout/row-mby.png" alt="">' +
+          "</button>" +
+          "</div>" +
+          "</div>" +
+          "</article>"
+        );
+      }
+
+      function simulateRowAction(_id, _kind) {
+        // Intentionally non-launching in web: no URL schemes / cross-app handoffs.
+      }
+
+      function filteredRequests() {
+        const query = state.searchText.trim().toLowerCase();
+        const base = query
+          ? state.pendingRequests.filter(function (item) {
+            return searchableText(item).toLowerCase().indexOf(query) >= 0;
+          })
+          : state.pendingRequests.slice();
+        return base.sort(sortByNextFireDate);
+      }
+
+      function groupedRequests() {
+        const calendar = filteredRequests().reduce(function (acc, item) {
+          const next = item.nextFireDate || new Date(8640000000000000);
+          const key = startOfDay(next).toISOString();
+          if (!acc[key]) acc[key] = [];
+          acc[key].push(item);
+          return acc;
+        }, {});
+
+        return Object.keys(calendar)
+          .sort()
+          .map(function (isoKey) {
+            const day = new Date(isoKey);
+            return {
+              title: dayTitle(day),
+              items: sortedItems(calendar[isoKey])
+            };
+          });
+      }
+
+      function sortedItems(items) {
+        return items.slice().sort(function (a, b) {
+          if (a.isPinned !== b.isPinned) return a.isPinned ? -1 : 1;
+          return sortByNextFireDate(a, b);
+        });
+      }
+
+      function sortByNextFireDate(a, b) {
+        const left = a.nextFireDate ? a.nextFireDate.getTime() : Number.MAX_SAFE_INTEGER;
+        const right = b.nextFireDate ? b.nextFireDate.getTime() : Number.MAX_SAFE_INTEGER;
+        return left - right;
+      }
+
+      function searchableText(item) {
+        const parts = [item.body];
+        if (item.isPinned) parts.push("pinned");
+        if (item.repeatMode !== "none") parts.push("repeat", item.repeatMode, String(item.repeatCount));
+        if (item.speak) parts.push("speak");
+        if (item.shoutType === "audio") parts.push("audio");
+        if (item.nextFireDate) parts.push(item.nextFireDate.toLocaleString());
+        return parts.join(" ");
+      }
+
+      function togglePin(id) {
+        state.pendingRequests = state.pendingRequests.map(function (item) {
+          if (item.id !== id) return item;
+          return Object.assign({}, item, { isPinned: !item.isPinned });
+        });
+        renderList();
+      }
+
+      function deleteShout(id) {
+        state.pendingRequests = state.pendingRequests.filter(function (item) {
+          return item.id !== id;
+        });
+        renderList();
+      }
+
+      function openEdit(id) {
+        const target = state.pendingRequests.find(function (item) { return item.id === id; });
+        if (!target) return;
+        state.editTargetId = id;
+        ui.editMessageInput.value = target.body;
+        ui.editDateInput.value = toDateTimeLocal(target.nextFireDate);
+        ui.editRepeatToggle.checked = target.repeatMode !== "none";
+        ui.editSpeakToggle.checked = !!target.speak;
+        ui.editAckToggle.checked = !!target.requiresAcknowledgement;
+        ui.editEnabledToggle.checked = !target.isDisabled;
+        ui.editTapSelect.value = effectiveTapDestination(target.requiresAcknowledgement, target.tapDestination);
+        ui.editTapSelect.disabled = target.requiresAcknowledgement;
+        ui.editDialog.showModal();
+      }
+
+      function saveEdit() {
+        const id = state.editTargetId;
+        if (!id) return;
+        const nextDate = fromDateTimeLocal(ui.editDateInput.value) || nextMinuteFromNow();
+        const nextMessage = ui.editMessageInput.value.trim();
+        if (!nextMessage) return;
+        state.pendingRequests = state.pendingRequests.map(function (item) {
+          if (item.id !== id) return item;
+          const nextAck = ui.editAckToggle.checked;
+          return Object.assign({}, item, {
+            body: nextMessage,
+            nextFireDate: nextDate,
+            repeatMode: ui.editRepeatToggle.checked ? item.repeatMode : "none",
+            speak: item.shoutType === "audio" ? false : ui.editSpeakToggle.checked,
+            requiresAcknowledgement: nextAck,
+            tapDestination: effectiveTapDestination(nextAck, ui.editTapSelect.value),
+            isDisabled: !ui.editEnabledToggle.checked
+          });
+        });
+        state.editTargetId = null;
+        ui.editDialog.close();
+        renderList();
+      }
+
+      function buildRepeatCountOptions() {
+        let html = "";
+        for (let i = 1; i < 60; i += 1) {
+          html += '<option value="' + i + '">' + i + "</option>";
+        }
+        ui.repeatCountSelect.innerHTML = html;
+      }
+
+      function makeShoutID() {
+        return "MSO-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8);
+      }
+
+      function startAutoFireDateTick() {
+        setInterval(function () {
+          const now = Date.now();
+          if (now - state.lastInteractionDate > state.autoResumeThresholdMs) {
+            state.userModifiedFireDate = false;
+          }
+          if (!state.userModifiedFireDate) {
+            state.fireDate = new Date(Date.now() + 60000);
+            syncDateInput();
+          }
+        }, 1000);
+      }
+
+      function syncDateInput() {
+        ui.fireDateInput.value = toDateTimeLocal(state.fireDate);
+      }
+
+      function bumpedIfPast(date, repeatEnabled) {
+        if (repeatEnabled) return date;
+        const now = Date.now();
+        const source = new Date(date);
+        return source.getTime() < now ? new Date(now + 60000) : source;
+      }
+
+      function nextMinuteFromNow() {
+        const now = new Date();
+        now.setSeconds(0, 0);
+        return new Date(now.getTime() + 60000);
+      }
+
+      function toDateTimeLocal(date) {
+        const d = new Date(date);
+        const pad = function (n) { return String(n).padStart(2, "0"); };
+        return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()) +
+          "T" + pad(d.getHours()) + ":" + pad(d.getMinutes());
+      }
+
+      function fromDateTimeLocal(value) {
+        if (!value) return null;
+        const parsed = new Date(value);
+        return Number.isNaN(parsed.getTime()) ? null : parsed;
+      }
+
+      function formatDateTime(date) {
+        return new Date(date).toLocaleString(undefined, {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+          hour: "numeric",
+          minute: "2-digit"
+        });
+      }
+
+      function startOfDay(date) {
+        const d = new Date(date);
+        d.setHours(0, 0, 0, 0);
+        return d;
+      }
+
+      function dayTitle(day) {
+        const now = new Date();
+        const today = startOfDay(now).getTime();
+        const tomorrow = today + 86400000;
+        const current = startOfDay(day).getTime();
+        if (current === today) return "Today";
+        if (current === tomorrow) return "Tomorrow";
+        return day.toLocaleDateString(undefined, { dateStyle: "medium" });
+      }
+
+      function localizedRepeatStatus(count, mode) {
+        const unit = {
+          minutely: "Minute",
+          hourly: "Hour",
+          daily: "Daily",
+          weekly: "Week"
+        }[mode] || "";
+        return unit ? ("Repeat " + count + " " + unit) : "";
+      }
+
+      function escapeHTML(input) {
+        return String(input)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function buildWaveformBars() {
+        const bars = Array(24).fill(0).map(function () { return '<span class="mso-bar"></span>'; }).join("");
+        ui.waveform.innerHTML = bars;
+      }
+
+      function startWaveform() {
+        stopWaveform();
+        waveformTimer = setInterval(function () {
+          ui.waveform.querySelectorAll(".mso-bar").forEach(function (bar) {
+            const h = 20 + Math.round(Math.random() * 80);
+            bar.style.height = h + "%";
+          });
+        }, 80);
+      }
+
+      function stopWaveform() {
+        if (!waveformTimer) return;
+        clearInterval(waveformTimer);
+        waveformTimer = null;
+        ui.waveform.querySelectorAll(".mso-bar").forEach(function (bar) {
+          bar.style.height = "25%";
+        });
+      }
+
+      async function toggleRecording() {
+        if (state.audio.isRecording) {
+          stopRecording();
+          return;
+        }
+
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || typeof MediaRecorder === "undefined") {
+          return;
+        }
+
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          const recorder = new MediaRecorder(stream);
+          state.audio.stream = stream;
+          state.audio.mediaRecorder = recorder;
+          state.audio.chunks = [];
+          state.audio.blob = null;
+          if (state.audio.url) URL.revokeObjectURL(state.audio.url);
+          state.audio.url = null;
+
+          recorder.addEventListener("dataavailable", function (event) {
+            if (event.data && event.data.size > 0) {
+              state.audio.chunks.push(event.data);
+            }
+          });
+
+          recorder.addEventListener("stop", function () {
+            const blob = new Blob(state.audio.chunks, { type: recorder.mimeType || "audio/webm" });
+            state.audio.blob = blob;
+            state.audio.url = URL.createObjectURL(blob);
+            if (state.audio.stream) {
+              state.audio.stream.getTracks().forEach(function (track) { track.stop(); });
+            }
+            state.audio.stream = null;
+            state.audio.mediaRecorder = null;
+            state.audio.isRecording = false;
+            stopWaveform();
+            renderComposer();
+            renderPrimarySection();
+          });
+
+          recorder.start();
+          state.audio.isRecording = true;
+          startWaveform();
+          renderComposer();
+          renderPrimarySection();
+        } catch (_error) {
+          resetAudioState();
+          stopWaveform();
+          renderComposer();
+          renderPrimarySection();
+        }
+      }
+
+      function stopRecording() {
+        if (!state.audio.mediaRecorder) return;
+        state.audio.mediaRecorder.stop();
+      }
+
+      function resetAudioState() {
+        if (state.audio.stream) {
+          state.audio.stream.getTracks().forEach(function (track) { track.stop(); });
+        }
+        state.audio.stream = null;
+        state.audio.mediaRecorder = null;
+        state.audio.chunks = [];
+        state.audio.blob = null;
+        if (state.audio.url) URL.revokeObjectURL(state.audio.url);
+        state.audio.url = null;
+        state.audio.isRecording = false;
+        stopWaveform();
+      }
+
+      init();
+    }());
+  </script>
+</body>
+</html>
