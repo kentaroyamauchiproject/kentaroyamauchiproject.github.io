@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MindBackyard Web</title>
+  <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body class="mby-body">
+  <main class="mby-app" aria-label="MindBackyard web implementation">
+    <header class="mby-header">
+      <button class="mby-logo-btn" type="button" aria-label="MindBackyard logo">
+        <img class="mby-logo-light" src="../../assets/mindbackyard/app-logo-light.png" alt="">
+        <img class="mby-logo-dark" src="../../assets/mindbackyard/app-logo-dark.png" alt="">
+      </button>
+      <div class="mby-wordmark" aria-label="MindBackyard">
+        <span class="mby-wordmark-thin">Mind</span><span class="mby-wordmark-bold">Back</span><span class="mby-wordmark-thin">yard</span>
+      </div>
+      <button class="mby-company-btn" type="button" aria-label="MINDBEBOP">
+        <img class="mby-company-light" src="../../assets/company/company-logo-light.png" alt="">
+        <img class="mby-company-dark" src="../../assets/company/company-logo-dark.png" alt="">
+      </button>
+    </header>
+
+    <section class="mby-stage-wrap">
+      <section id="mbyHallway" class="mby-hallway-stage" aria-label="Infinite hallway">
+        <div class="mby-space-backdrop"></div>
+        <svg id="mbyHallwaySvg" class="mby-hallway-svg" viewBox="0 0 1000 1800" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <div id="mbyDoorLayer" class="mby-door-layer" aria-live="polite"></div>
+      </section>
+
+      <section id="mbyDoorFace" class="mby-door-face" hidden>
+        <div class="mby-door-face-inner">
+          <button id="mbyBackToHallBtn" class="mby-small-btn" type="button">Back to hallway</button>
+          <div id="mbyFaceDoorGlyph" class="mby-face-door-glyph" aria-hidden="true"></div>
+          <p id="mbyFaceDoorCaption" class="mby-face-door-caption">Door</p>
+          <button id="mbyOpenDoorBtn" class="mby-primary-btn" type="button">Open door</button>
+        </div>
+      </section>
+
+      <section id="mbyChamber" class="mby-chamber" hidden>
+        <div id="mbyChamberAtmosphere" class="mby-chamber-atmosphere"></div>
+        <div class="mby-chamber-top">
+          <h2 id="mbyChamberTitle">Zen pebble garden</h2>
+          <p id="mbyChamberSubtitle"></p>
+        </div>
+        <button id="mbyExitChamberBtn" class="mby-small-btn mby-exit-btn" type="button">Exit</button>
+      </section>
+    </section>
+
+    <section class="mby-hints">
+      <p id="mbySpaceLabel">hallway(segment: 0, palette: white)</p>
+      <p id="mbyHintLabel">Swipe up/down to move. Tap a door to face it.</p>
+      <p class="mby-note">Desktop support: Arrow Up/Down also moves. Native swipe flow remains primary.</p>
+    </section>
+
+    <footer class="mby-footer">
+      <a class="sim-home-link" href="../../index.html">Back to web home</a>
+    </footer>
+  </main>
+  <script src="./mindbackyard.js"></script>
+</body>
+</html>
