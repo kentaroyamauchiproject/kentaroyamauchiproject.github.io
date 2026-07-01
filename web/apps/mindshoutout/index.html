@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MindShoutOut Web</title>
+  <title>MindShoutOut</title>
   <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="mso-body">
-  <main class="mso-app" aria-label="MindShoutOut web implementation">
+  <main class="mso-app" aria-label="MindShoutOut">
     <header class="mso-header">
       <button class="mso-logo-btn" type="button" aria-label="MindShoutOut logo">
         <img class="mso-logo-light" src="../../assets/mindshoutout/app-logo-light.png" alt="">
@@ -158,7 +158,7 @@
     </section>
 
     <footer class="mso-footer">
-      <a class="sim-home-link" href="../../index.html">Back to web home</a>
+      <a class="sim-home-link" href="../../index.html">← Try MINDBEBOP</a>
     </footer>
   </main>
 
@@ -217,6 +217,9 @@
     </form>
   </dialog>
 
+  <script src="../../js/boundary-notice.js"></script>
+  <script src="../../js/continuation-cards.js"></script>
+  <script src="../../js/about-links.js"></script>
   <script>
     "use strict";
 
@@ -824,23 +827,23 @@
           '<div class="mso-row-actions" aria-label="Row actions">' +
           '<div class="mso-row-action-group">' +
           '<button type="button" data-action="pin" title="' + (item.isPinned ? "Unpin" : "Pin") + '" aria-label="' + (item.isPinned ? "Unpin" : "Pin") + '"><span aria-hidden="true">📌</span></button>' +
-          '<button type="button" data-action="handoff-mfo" class="is-simulated" title="Manual Flip (simulated, non-launching)" aria-label="Manual Flip simulated">' +
+          '<button type="button" data-action="handoff-mfo" class="is-preview-link" title="Continue in MindFlipOut" aria-label="Continue in MindFlipOut">' +
           '<img src="../../assets/mindshoutout/row-mfo.png" alt="">' +
           "</button>" +
-          '<button type="button" data-action="handoff-mzo" class="is-simulated" title="Manual Zone (simulated, non-launching)" aria-label="Manual Zone simulated">' +
+          '<button type="button" data-action="handoff-mzo" class="is-preview-link" title="Continue in MindZoneOut" aria-label="Continue in MindZoneOut">' +
           '<img src="../../assets/mindshoutout/row-mzo.png" alt="">' +
           "</button>" +
-          '<button type="button" data-action="handoff-me" class="is-simulated" title="Send to Recipe (simulated, non-launching)" aria-label="Send to Recipe simulated">' +
+          '<button type="button" data-action="handoff-me" class="is-preview-link" title="Continue in MindEntry" aria-label="Continue in MindEntry">' +
           '<img src="../../assets/mindshoutout/row-me.png" alt="">' +
           "</button>" +
           '<button type="button" data-action="edit" title="Edit" aria-label="Edit"><span aria-hidden="true">✎</span></button>' +
           "</div>" +
           '<div class="mso-row-action-group">' +
           '<button type="button" data-action="delete" title="Delete" aria-label="Delete"><span aria-hidden="true">🗑</span></button>' +
-          '<button type="button" data-action="handoff-meo" class="is-simulated" title="MindEaseOut (simulated, non-launching)" aria-label="MindEaseOut simulated">' +
+          '<button type="button" data-action="handoff-meo" class="is-preview-link" title="Continue in MindEaseOut" aria-label="Continue in MindEaseOut">' +
           '<img src="../../assets/mindshoutout/row-meo.png" alt="">' +
           "</button>" +
-          '<button type="button" data-action="handoff-mby" class="is-simulated" title="Manual MindBackyard (simulated, non-launching)" aria-label="Manual MindBackyard simulated">' +
+          '<button type="button" data-action="handoff-mby" class="is-preview-link" title="Continue in MindBackyard" aria-label="Continue in MindBackyard">' +
           '<img src="../../assets/mindshoutout/row-mby.png" alt="">' +
           "</button>" +
           "</div>" +
@@ -849,8 +852,18 @@
         );
       }
 
-      function simulateRowAction(_id, _kind) {
-        // Intentionally non-launching in web: no URL schemes / cross-app handoffs.
+      function simulateRowAction(_id, kind) {
+        var appByKind = {
+          manualFlip: "MindFlipOut",
+          manualZone: "MindZoneOut",
+          sendToRecipe: "MindEntry",
+          mindEaseOut: "MindEaseOut",
+          manualBackyard: "MindBackyard"
+        };
+        var appName = appByKind[kind];
+        if (appName && window.MindBebopContinuation) {
+          MindBebopContinuation.showDialog(appName);
+        }
       }
 
       function filteredRequests() {
