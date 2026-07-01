@@ -502,8 +502,8 @@ body {
 .mby-body {
   margin: 0;
   min-height: 100vh;
-  background: #020208;
-  color: #f1f3fa;
+  background: #f2f2f7;
+  color: #111216;
 }
 
 .mby-app {
@@ -526,7 +526,7 @@ body {
 .mby-company-btn {
   border: 0;
   border-radius: 11px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.06);
   width: 46px;
   height: 46px;
   padding: 8px;
@@ -562,7 +562,7 @@ body {
   margin: 0 14px;
   border-radius: 18px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.14);
   min-height: 62vh;
 }
 
@@ -843,7 +843,7 @@ body {
 .mby-hints {
   margin: 10px 16px 0;
   font-size: 12px;
-  color: #b4bed3;
+  color: #4e5872;
 }
 
 .mby-hints p {
@@ -851,7 +851,7 @@ body {
 }
 
 .mby-note {
-  color: #8e9aba;
+  color: #697594;
 }
 
 .mby-footer {
@@ -870,6 +870,28 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
+  .mby-body {
+    background: #020208;
+    color: #f1f3fa;
+  }
+
+  .mby-logo-btn,
+  .mby-company-btn {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .mby-stage-wrap {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .mby-hints {
+    color: #b4bed3;
+  }
+
+  .mby-note {
+    color: #8e9aba;
+  }
+
   .mby-logo-light,
   .mby-company-light {
     display: none;
@@ -1006,6 +1028,60 @@ body {
 .me-route-grid {
   display: grid;
   gap: 8px;
+}
+
+.me-routing-card {
+  display: grid;
+  gap: 8px;
+}
+
+.me-routing-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #7a8296;
+}
+
+.me-routing-list {
+  display: grid;
+  gap: 8px;
+}
+
+.me-routing-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid #e4e7f0;
+  border-radius: 10px;
+  background: #fafbff;
+  padding: 10px;
+}
+
+.me-routing-item-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.me-routing-item-sub {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #7f8698;
+}
+
+.me-routing-btn {
+  border: 0;
+  border-radius: 8px;
+  min-height: 34px;
+  padding: 0 12px;
+  background: #ececf1;
+  color: #20283b;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .me-action-btn {
@@ -1204,6 +1280,8 @@ body {
 
   .me-composer-input::placeholder,
   .me-muted,
+  .me-routing-title,
+  .me-routing-item-sub,
   .me-runtime-k,
   .me-runtime-meta,
   .me-picker-heading,
@@ -1212,6 +1290,7 @@ body {
   }
 
   .me-action-btn,
+  .me-routing-btn,
   .me-picker-item,
   .me-dialog-btn {
     background: #5a5a61;
@@ -1226,6 +1305,7 @@ body {
   .me-runtime-thought,
   .me-step-card,
   .me-handoff-card,
+  .me-routing-item,
   .me-inline-input {
     border-color: #343844;
     background: #24242a;
@@ -2864,7 +2944,7 @@ body {
   bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.14);
   color: #fff;
@@ -2872,6 +2952,12 @@ body {
   font-size: 17px;
   font-weight: 600;
   backdrop-filter: blur(8px);
+}
+
+.mzo-session.is-light .mzo-exit-btn {
+  border-color: rgba(0, 0, 0, 0.24);
+  background: rgba(0, 0, 0, 0.12);
+  color: #10131d;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -2954,8 +3040,8 @@ body {
 .mbo-body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(180deg, #171b2b 0%, #101426 55%, #0f111a 100%);
-  color: #eef1f7;
+  background: #f2f2f7;
+  color: #111216;
 }
 
 .mbo-app {
@@ -2978,7 +3064,7 @@ body {
 .mbo-company-btn {
   border: 0;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.06);
   width: 48px;
   height: 48px;
   padding: 8px;
@@ -3017,9 +3103,9 @@ body {
 
 .mbo-surface {
   border-radius: 22px;
-  background: linear-gradient(180deg, rgba(35, 41, 64, 0.88), rgba(20, 25, 40, 0.92));
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.35);
+  background: #fff;
+  border: 1px solid #e4e8f2;
+  box-shadow: 0 14px 30px rgba(15, 28, 57, 0.12);
   padding: 16px;
 }
 
@@ -3030,7 +3116,7 @@ body {
 .mbo-label {
   margin: 0 0 8px;
   font-size: 13px;
-  color: #c4ccdb;
+  color: #6f7890;
 }
 
 .mbo-muted {
@@ -3041,8 +3127,8 @@ body {
   width: 100%;
   min-height: 84px;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(12, 16, 28, 0.52);
+  border: 1px solid #dde3ef;
+  background: #fff;
   color: inherit;
   font: inherit;
   resize: vertical;
@@ -3060,18 +3146,18 @@ body {
 }
 
 .mbo-segment-btn {
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid #d6dce9;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.07);
-  color: #eef1f7;
+  background: #eceff6;
+  color: #1e2840;
   min-height: 34px;
   padding: 0 12px;
   font-weight: 600;
 }
 
 .mbo-segment-btn.is-active {
-  background: #eff2fa;
-  color: #1b2338;
+  background: #111216;
+  color: #fff;
 }
 
 .mbo-segment-btn:disabled {
@@ -3081,21 +3167,21 @@ body {
 .mbo-hint,
 .mbo-note {
   margin: 8px 0 0;
-  color: #b7bfd0;
+  color: #6f7890;
   font-size: 12px;
   line-height: 1.4;
 }
 
 .mbo-note {
-  color: #9ca8c3;
+  color: #6f7890;
 }
 
 .mbo-pill-btn {
   width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid #d6dce9;
   border-radius: 13px;
   min-height: 44px;
-  background: rgba(255, 255, 255, 0.06);
+  background: #f0f3f9;
   color: inherit;
   font: inherit;
   font-weight: 600;
@@ -3104,9 +3190,9 @@ body {
 }
 
 .mbo-active-card {
-  border: 1px solid rgba(150, 172, 228, 0.5);
+  border: 1px solid #cad7f4;
   border-radius: 14px;
-  background: rgba(66, 86, 130, 0.28);
+  background: #f3f6ff;
   padding: 13px;
 }
 
@@ -3118,7 +3204,7 @@ body {
 .mbo-reason {
   margin: 0;
   font-size: 13px;
-  color: #e8ecf7;
+  color: #2a3552;
 }
 
 .mbo-card-actions {
@@ -3128,11 +3214,11 @@ body {
 }
 
 .mbo-chip-btn {
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  border: 1px solid #cfd7e8;
   border-radius: 999px;
   min-height: 34px;
-  background: rgba(255, 255, 255, 0.1);
-  color: inherit;
+  background: #eff3fb;
+  color: #18243e;
   padding: 0 12px;
   font: inherit;
   font-weight: 600;
@@ -3148,8 +3234,8 @@ body {
   min-height: 48px;
   border: 0;
   border-radius: 14px;
-  background: linear-gradient(180deg, #f6f8fc, #dee4f3);
-  color: #1a2538;
+  background: #111216;
+  color: #fff;
   font: inherit;
   font-weight: 700;
 }
@@ -3325,6 +3411,76 @@ body {
   .mbo-logo-dark,
   .mbo-company-dark {
     display: inline;
+  }
+
+  .mbo-body {
+    background: linear-gradient(180deg, #171b2b 0%, #101426 55%, #0f111a 100%);
+    color: #eef1f7;
+  }
+
+  .mbo-logo-btn,
+  .mbo-company-btn {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .mbo-surface {
+    background: linear-gradient(180deg, rgba(35, 41, 64, 0.88), rgba(20, 25, 40, 0.92));
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 22px 44px rgba(0, 0, 0, 0.35);
+  }
+
+  .mbo-label {
+    color: #c4ccdb;
+  }
+
+  .mbo-textarea {
+    border-color: rgba(255, 255, 255, 0.18);
+    background: rgba(12, 16, 28, 0.52);
+  }
+
+  .mbo-segment-btn {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.07);
+    color: #eef1f7;
+  }
+
+  .mbo-segment-btn.is-active {
+    background: #eff2fa;
+    color: #1b2338;
+  }
+
+  .mbo-hint,
+  .mbo-note {
+    color: #b7bfd0;
+  }
+
+  .mbo-note {
+    color: #9ca8c3;
+  }
+
+  .mbo-pill-btn {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .mbo-active-card {
+    border-color: rgba(150, 172, 228, 0.5);
+    background: rgba(66, 86, 130, 0.28);
+  }
+
+  .mbo-reason {
+    color: #e8ecf7;
+  }
+
+  .mbo-chip-btn {
+    border-color: rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.1);
+    color: inherit;
+  }
+
+  .mbo-primary-btn {
+    background: linear-gradient(180deg, #f6f8fc, #dee4f3);
+    color: #1a2538;
   }
 }
 
