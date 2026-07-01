@@ -733,10 +733,9 @@
         }
 
         if (state.showMindTouch) {
-          if (Date.now() > state.overlayHoldUntil) {
-            state.showMindTouch = false;
-            renderSession();
-          }
+          state.showMindTouch = false;
+          state.showExit = true;
+          renderSession();
           return;
         }
 
@@ -749,8 +748,8 @@
           singleModeFadeAndExit();
           return;
         }
-        if (Date.now() <= state.overlayHoldUntil) return;
         state.showMindTouch = false;
+        state.showExit = true;
         renderSession();
       }
 
