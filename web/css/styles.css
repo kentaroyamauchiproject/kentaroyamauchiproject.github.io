@@ -547,6 +547,8 @@ body {
 
 .mby-wordmark {
   text-align: center;
+  font-size: clamp(30px, 7.2vw, 32px);
+  line-height: 1;
   letter-spacing: 0.22px;
 }
 
@@ -572,6 +574,11 @@ body {
 .mby-chamber {
   position: absolute;
   inset: 0;
+}
+
+.mby-hallway-stage,
+.mby-chamber {
+  touch-action: none;
 }
 
 .mby-space-backdrop {
@@ -3158,6 +3165,8 @@ body {
 
 .mbo-wordmark {
   text-align: center;
+  font-size: clamp(30px, 7.2vw, 32px);
+  line-height: 1;
   letter-spacing: 0.2px;
 }
 
