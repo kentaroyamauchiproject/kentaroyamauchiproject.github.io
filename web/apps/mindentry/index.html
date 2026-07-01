@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MindEntry Web</title>
+  <title>MindEntry</title>
   <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="me-body">
-  <main class="me-app" aria-label="MindEntry web app">
+  <main class="me-app" aria-label="MindEntry">
     <header class="me-header">
       <button class="me-logo-btn" type="button" aria-label="About MindEntry">
         <img src="../../assets/mindentry/app-logo-light.png" alt="" class="me-logo-light">
@@ -16,32 +16,27 @@
       <h1 class="me-wordmark" aria-label="MindEntry">
         <span class="me-wordmark-thin">Mind</span><span class="me-wordmark-bold">Entry</span>
       </h1>
-      <button class="me-company-btn" type="button" aria-label="About MINDBEBOP">
-        <img src="../../assets/company/company-logo-light.png" alt="" class="me-company-light">
-        <img src="../../assets/company/company-logo-dark.png" alt="" class="me-company-dark">
-      </button>
+      <div class="me-header-actions">
+        <button id="meRecipesBtn" class="me-header-recipes-btn" type="button">Recipes</button>
+        <button class="me-company-btn" type="button" aria-label="About MINDBEBOP">
+          <img src="../../assets/company/company-logo-light.png" alt="" class="me-company-light">
+          <img src="../../assets/company/company-logo-dark.png" alt="" class="me-company-dark">
+        </button>
+      </div>
     </header>
 
     <section class="me-content">
-      <article class="me-card me-composer-card">
-        <h2 class="me-section-title">What’s on your mind?</h2>
-        <textarea id="meComposerInput" class="me-composer-input" placeholder="Type anything…"></textarea>
-        <p id="mePrefillHint" class="me-muted" hidden>Saved for later prefill is active.</p>
-      </article>
+      <div id="meHomeStack">
+        <article class="me-card me-composer-card">
+          <label for="meComposerInput" class="me-section-title">What's on your mind?</label>
+          <textarea id="meComposerInput" class="me-composer-input" placeholder="Type anything…" aria-label="What's on your mind?"></textarea>
+          <div id="meComposerActions" class="me-composer-actions" hidden>
+            <button type="button" id="meRunCognihackBtn" class="me-action-btn">Run a CogniHack</button>
+          </div>
+        </article>
 
-      <article id="meRoutingCard" class="me-card me-routing-card" hidden>
-        <p class="me-routing-title">Routing Suggestions</p>
-        <div id="meRoutingList" class="me-routing-list"></div>
-      </article>
-
-      <article class="me-card">
-        <h2 class="me-section-title">Route</h2>
-        <div class="me-route-grid">
-          <button id="meSendToRecipeBtn" class="me-action-btn me-action-btn-primary" type="button">Send to Recipe</button>
-          <button id="meRunCogniHackBtn" class="me-action-btn" type="button">Run a CogniHack</button>
-          <button id="meSaveForLaterBtn" class="me-action-btn" type="button">Save for Later</button>
-        </div>
-      </article>
+        <article id="meRadarCard" class="me-radar-card" hidden aria-live="polite"></article>
+      </div>
 
       <article id="meRuntimeCard" class="me-card" hidden>
         <div class="me-runtime-banner">
@@ -52,8 +47,14 @@
       </article>
     </section>
 
+    <footer id="meSuggestionSheet" class="me-suggestion-sheet" aria-live="polite">
+      <div id="meSuggestionCard" class="me-suggestion-card">
+        <p class="me-suggestion-empty">Share what's on your mind and MindEntry will suggest where to go.</p>
+      </div>
+    </footer>
+
     <footer class="me-footer">
-      <a class="sim-home-link" href="../../index.html">Back to web home</a>
+      <a class="sim-home-link" href="../../index.html">← Try MINDBEBOP</a>
     </footer>
   </main>
 
@@ -68,6 +69,23 @@
     </form>
   </dialog>
 
+  <dialog id="meLibraryDialog" class="me-dialog">
+    <form method="dialog" class="me-dialog-card">
+      <h2>Recipe Library</h2>
+      <p class="me-dialog-note">Bundled starters included with MindEntry. Read-only in browser.</p>
+      <div id="meLibraryList" class="me-library-list"></div>
+      <menu>
+        <button value="cancel" class="me-dialog-btn">Close</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script src="../../js/boundary-notice.js"></script>
+  <script src="../../js/continuation-cards.js"></script>
+  <script src="../../js/about-links.js"></script>
+  <script src="../../js/keyword-store.js"></script>
+  <script src="../../js/realtime-router.js"></script>
+  <script src="../../js/bundled-recipes.js"></script>
   <script src="./mindentry.js"></script>
 </body>
 </html>
