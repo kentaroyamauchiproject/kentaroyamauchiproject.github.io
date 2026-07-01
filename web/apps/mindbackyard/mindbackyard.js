@@ -92,7 +92,7 @@
       const dy = event.clientY - startY;
       const distance = Math.hypot(dx, dy);
       if (distance < 12 && Date.now() - startAt < 260) {
-        ui.hintLabel.textContent = "Swipe up/down to walk the hall. Tap a door to explore another space.";
+        ui.hintLabel.textContent = "Swipe up or down to walk. Tap a door to open it.";
         return;
       }
       if (distance <= 40) return;
@@ -243,10 +243,11 @@
 
   function renderSpaceLabel() {
     if (state.currentSpace.type === "hallway") {
-      ui.spaceLabel.textContent = "hallway(segment: " + state.currentSpace.segment + ", palette: " + state.currentSpace.palette + ")";
+      ui.spaceLabel.textContent = "Hallway";
       return;
     }
-    ui.spaceLabel.textContent = "chamber(kind: " + state.currentSpace.kind + ")";
+    const meta = CHAMBER_META[state.currentSpace.kind];
+    ui.spaceLabel.textContent = meta && meta.title ? meta.title : "Chamber";
   }
 
   function renderHallway() {
