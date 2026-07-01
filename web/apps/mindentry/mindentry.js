@@ -60,12 +60,15 @@
     pendingPrefill: "",
     pickerMode: "recipe",
     launchContext: null,
-    run: null
+    run: null,
+    routingSuggestions: []
   };
 
   const ui = {
     composerInput: document.getElementById("meComposerInput"),
     prefillHint: document.getElementById("mePrefillHint"),
+    routingCard: document.getElementById("meRoutingCard"),
+    routingList: document.getElementById("meRoutingList"),
     sendToRecipeBtn: document.getElementById("meSendToRecipeBtn"),
     runCogniHackBtn: document.getElementById("meRunCogniHackBtn"),
     saveForLaterBtn: document.getElementById("meSaveForLaterBtn"),
@@ -79,6 +82,58 @@
     pickerSections: document.getElementById("mePickerSections")
   };
 
+  const ROUTING_RULES = [
+    {
+      id: "route-mfo",
+      title: "MindFlipOut route",
+      subtitle: "Heavy loop or reframing signal detected.",
+      action: "recipe",
+      keywords: ["rumination", "ruminate", "reframe", "reframing", "heavy", "loop", "overthink", "stuck thought"]
+    },
+    {
+      id: "route-mso",
+      title: "MindShoutOut route",
+      subtitle: "Reminder/schedule signal detected.",
+      action: "recipe",
+      keywords: ["reminder", "remind", "later", "schedule", "waiting", "don't forget", "follow up", "someday"]
+    },
+    {
+      id: "route-mzo",
+      title: "MindZoneOut route",
+      subtitle: "Quiet/reset signal detected.",
+      action: "recipe",
+      keywords: ["quiet", "overload", "reset", "zone", "noisy", "overwhelmed", "too much", "brain full"]
+    },
+    {
+      id: "route-mbo",
+      title: "MindBackOut route",
+      subtitle: "Distraction/app-lock signal detected.",
+      action: "recipe",
+      keywords: ["distraction", "distracted", "apps", "doomscroll", "doomscrolling", "lock", "can't stop scrolling", "scrolling"]
+    },
+    {
+      id: "route-mby",
+      title: "MindBackyard route",
+      subtitle: "Low-stimulation wander signal detected.",
+      action: "recipe",
+      keywords: ["fidget", "wander", "wandering", "low stimulation", "restless", "antsy", "bored"]
+    },
+    {
+      id: "route-recipe",
+      title: "Send to Recipe",
+      subtitle: "Task-start friction detected.",
+      action: "recipe",
+      keywords: ["can't start", "start task", "procrastinating", "stuck starting", "avoid starting", "first step", "initiate"]
+    },
+    {
+      id: "route-cognihack",
+      title: "Run a CogniHack",
+      subtitle: "Task-start friction detected.",
+      action: "cognihack",
+      keywords: ["can't start", "start task", "procrastinating", "stuck starting", "avoid starting", "first step", "initiate"]
+    }
+  ];
+
   function nowStamp() {
     return new Date().toLocaleString();
   }
@@ -89,6 +144,63 @@
 
   function composerText() {
     return normalizeText(ui.composerInput.value);
+  }
+
+  function countKeywordHits(lowerText, keywords) {
+    let hits = 0;
+    keywords.forEach(function (keyword) {
+      if (lowerText.indexOf(keyword) >= 0) hits += 1;
+    });
+    return hits;
+  }
+
+  function detectRoutingSuggestions(text) {
+    const trimmed = normalizeText(text);
+    if (!trimmed) return [];
+    const lower = trimmed.toLowerCase();
+
+    return ROUTING_RULES
+      .map(function (rule) {
+        return { rule: rule, score: countKeywordHits(lower, rule.keywords) };
+      })
+      .filter(function (item) { return item.score > 0; })
+      .sort(function (a, b) { return b.score - a.score; })
+      .map(function (item) { return item.rule; });
+  }
+
+  function applyRoutingSuggestion(rule) {
+    if (rule.action === "cognihack") {
+      openPicker("cognihack");
+      return;
+    }
+    openPicker("recipe");
+  }
+
+  function renderRoutingSuggestions() {
+    state.routingSuggestions = detectRoutingSuggestions(ui.composerInput.value);
+    if (!state.routingSuggestions.length) {
+      ui.routingCard.hidden = true;
+      ui.routingList.innerHTML = "";
+      return;
+    }
+
+    ui.routingCard.hidden = false;
+    ui.routingList.innerHTML = "";
+    state.routingSuggestions.forEach(function (rule) {
+      const row = document.createElement("div");
+      row.className = "me-routing-item";
+      row.innerHTML =
+        "<div class=\"me-routing-copy\">"
+        + "<p class=\"me-routing-item-title\">" + escapeHtml(rule.title) + "</p>"
+        + "<p class=\"me-routing-item-sub\">" + escapeHtml(rule.subtitle) + "</p>"
+        + "</div>"
+        + "<button type=\"button\" class=\"me-routing-btn\">" + (rule.action === "cognihack" ? "Run" : "Route") + "</button>";
+      const routeBtn = row.querySelector(".me-routing-btn");
+      routeBtn.addEventListener("click", function () {
+        applyRoutingSuggestion(rule);
+      });
+      ui.routingList.appendChild(row);
+    });
   }
 
   function buildLaunchContext() {
@@ -397,7 +509,9 @@
     if (normalizeText(ui.composerInput.value) !== state.pendingPrefill) {
       ui.prefillHint.hidden = true;
     }
+    renderRoutingSuggestions();
   });
 
   renderRun();
+  renderRoutingSuggestions();
 })();
