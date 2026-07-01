@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MindZoneOut Web</title>
+  <title>MindZoneOut</title>
   <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="mzo-body">
-  <main class="mzo-app" aria-label="MindZoneOut web implementation">
+  <main class="mzo-app" aria-label="MindZoneOut">
     <header class="mzo-header">
       <button class="mzo-logo-btn" type="button" aria-label="MindZoneOut logo">
         <img class="mzo-logo-light" src="../../assets/mindzoneout/app-logo-light.png" alt="">
@@ -70,14 +70,14 @@
         <div id="emptyState" class="mzo-empty">
           <span class="mzo-empty-icon">✎</span>
           <span id="emptyTitle">Whispers</span>
-          <span class="mzo-empty-sub">entries.empty_state</span>
+          <span class="mzo-empty-sub">Tap Whisper to add one.</span>
         </div>
         <div id="groupsWrap" hidden></div>
       </section>
     </section>
 
     <footer class="mzo-footer">
-      <a class="sim-home-link" href="../../index.html">Back to web home</a>
+      <a class="sim-home-link" href="../../index.html">← Try MINDBEBOP</a>
     </footer>
   </main>
 
@@ -90,7 +90,7 @@
   <dialog id="whisperDialog" class="mzo-dialog">
     <form method="dialog" class="mzo-dialog-card">
       <h2 id="whisperDialogTitle">New Whisper</h2>
-      <p id="whisperDialogHint">sheet.new_whisper.hint1</p>
+      <p id="whisperDialogHint">A short note for your zone sessions.</p>
       <textarea id="whisperInput" placeholder=""></textarea>
       <menu>
         <button id="whisperCancelBtn" type="button">Cancel</button>
@@ -110,6 +110,9 @@
     </form>
   </dialog>
 
+  <script src="../../js/boundary-notice.js"></script>
+  <script src="../../js/continuation-cards.js"></script>
+  <script src="../../js/about-links.js"></script>
   <script>
     "use strict";
 
@@ -351,16 +354,16 @@
           '<div class="mzo-row-actions">' +
           '<div class="mzo-action-group">' +
           '<button type="button" data-action="pin" aria-label="' + (entry.pinned ? "Unpin" : "Pin") + '">' + (entry.pinned ? "📍" : "📌") + "</button>" +
-          '<button type="button" data-action="manualFlip" class="is-simulated" aria-label="Manual Flip simulated"><img src="../../assets/mindzoneout/row-mfo.png" alt=""></button>' +
-          '<button type="button" data-action="manualShout" class="is-simulated" aria-label="Manual Shout simulated"><img src="../../assets/mindzoneout/row-mso.png" alt=""></button>' +
+          '<button type="button" data-action="manualFlip" class="is-preview-link" aria-label="Continue in MindFlipOut"><img src="../../assets/mindzoneout/row-mfo.png" alt=""></button>' +
+          '<button type="button" data-action="manualShout" class="is-preview-link" aria-label="Continue in MindShoutOut"><img src="../../assets/mindzoneout/row-mso.png" alt=""></button>' +
           '<button type="button" data-action="manualWhisper" aria-label="Manual Whisper"><img src="../../assets/mindzoneout/row-mzo.png" alt=""></button>' +
-          '<button type="button" data-action="sendRecipe" class="is-simulated" aria-label="Send to Recipe simulated"><img src="../../assets/mindzoneout/row-me.png" alt=""></button>' +
+          '<button type="button" data-action="sendRecipe" class="is-preview-link" aria-label="Continue in MindEntry"><img src="../../assets/mindzoneout/row-me.png" alt=""></button>' +
           "</div>" +
           '<div class="mzo-action-group">' +
           '<button type="button" data-action="delete" aria-label="Delete">🗑</button>' +
           '<button type="button" data-action="mindEaseOut" aria-label="MindEaseOut"><img src="../../assets/mindzoneout/row-meo.png" alt=""></button>' +
           '<button type="button" data-action="manualMindTouch" aria-label="Manual MindTouch"><img src="../../assets/mindzoneout/row-mzo.png" alt=""></button>' +
-          '<button type="button" data-action="manualBackyard" class="is-simulated" aria-label="Manual MindBackyard simulated"><img src="../../assets/mindzoneout/row-mby.png" alt=""></button>' +
+          '<button type="button" data-action="manualBackyard" class="is-preview-link" aria-label="Continue in MindBackyard"><img src="../../assets/mindzoneout/row-mby.png" alt=""></button>' +
           "</div>" +
           "</div>" +
           "</article>"
@@ -433,7 +436,25 @@
           return;
         }
 
-        // Simulated, non-launching actions by design (native requires URL schemes/native app presence).
+        if (action === "manualFlip") {
+          if (window.MindBebopContinuation) MindBebopContinuation.showDialog("MindFlipOut");
+          return;
+        }
+
+        if (action === "manualShout") {
+          if (window.MindBebopContinuation) MindBebopContinuation.showDialog("MindShoutOut");
+          return;
+        }
+
+        if (action === "sendRecipe") {
+          if (window.MindBebopContinuation) MindBebopContinuation.showDialog("MindEntry");
+          return;
+        }
+
+        if (action === "manualBackyard") {
+          if (window.MindBebopContinuation) MindBebopContinuation.showDialog("MindBackyard");
+          return;
+        }
       }
 
       function openWhisperDialog(type, entryId) {
@@ -442,16 +463,16 @@
 
         if (type === "newWhisper") {
           ui.whisperDialogTitle.textContent = "New Whisper";
-          ui.whisperDialogHint.textContent = "sheet.new_whisper.hint1";
+          ui.whisperDialogHint.textContent = "A short note for your zone sessions.";
           ui.whisperInput.value = "";
         } else if (type === "editWhisper") {
           ui.whisperDialogTitle.textContent = "Edit";
-          ui.whisperDialogHint.textContent = "sheet.edit_whisper.hint";
+          ui.whisperDialogHint.textContent = "Edit this whisper.";
           const entry = state.entries.find(function (item) { return item.id === entryId; });
           ui.whisperInput.value = entry && entry.whisper ? entry.whisper.text : "";
         } else {
           ui.whisperDialogTitle.textContent = "Edit";
-          ui.whisperDialogHint.textContent = "sheet.reflection.hint";
+          ui.whisperDialogHint.textContent = "A reflection on this whisper.";
           const reflectionEntry = state.entries.find(function (item) { return item.id === entryId; });
           ui.whisperInput.value = reflectionEntry && reflectionEntry.reflection ? reflectionEntry.reflection.text : "";
         }
