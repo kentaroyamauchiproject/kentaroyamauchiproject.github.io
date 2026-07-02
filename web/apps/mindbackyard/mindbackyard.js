@@ -26,12 +26,29 @@
   };
 
   const state = {
+    hasEntered: false,
+    hasExploredBefore: false,
+    lastSpace: null,
     currentSpace: { type: "hallway", segment: 0, palette: "white" },
     hallwayBeforeChamber: null,
     facingDoor: null
   };
 
   const ui = {
+    entry: document.getElementById("mbyEntry"),
+    exploration: document.getElementById("mbyExploration"),
+    enterBtn: document.getElementById("mbyEnterBtn"),
+    continueBtn: document.getElementById("mbyContinueBtn"),
+    homeBtn: document.getElementById("mbyHomeBtn"),
+    passageDialog: document.getElementById("mbyPassageDialog"),
+    passageInput: document.getElementById("mbyPassageInput"),
+    releaseNowBtn: document.getElementById("mbyReleaseNowBtn"),
+    enterBackyardBtn: document.getElementById("mbyEnterBackyardBtn"),
+    passageExitBtn: document.getElementById("mbyPassageExitBtn"),
+    meoDialog: document.getElementById("mbyMeoDialog"),
+    meoSnippet: document.getElementById("mbyMeoSnippet"),
+    meoEnterBtn: document.getElementById("mbyMeoEnterBtn"),
+    meoCancelBtn: document.getElementById("mbyMeoCancelBtn"),
     hallway: document.getElementById("mbyHallway"),
     hallwaySvg: document.getElementById("mbyHallwaySvg"),
     doorLayer: document.getElementById("mbyDoorLayer"),
@@ -50,8 +67,98 @@
   };
 
   function init() {
+    bindEntryFlow();
     bindGestures();
     bindActions();
+    syncShell();
+    render();
+  }
+
+  function syncShell() {
+    ui.entry.hidden = state.hasEntered;
+    ui.exploration.hidden = !state.hasEntered;
+    ui.continueBtn.disabled = !state.hasExploredBefore;
+  }
+
+  function bindEntryFlow() {
+    ui.enterBtn.addEventListener("click", function () {
+      ui.passageInput.value = "";
+      syncPassageButtons();
+      if (typeof ui.passageDialog.showModal === "function") {
+        ui.passageDialog.showModal();
+      }
+    });
+
+    ui.continueBtn.addEventListener("click", function () {
+      if (!state.hasExploredBefore || !state.lastSpace) return;
+      state.currentSpace = cloneSpace(state.lastSpace);
+      state.facingDoor = null;
+      enterExploration();
+    });
+
+    ui.homeBtn.addEventListener("click", function () {
+      state.lastSpace = cloneSpace(state.currentSpace);
+      state.hasEntered = false;
+      state.facingDoor = null;
+      syncShell();
+    });
+
+    ui.passageInput.addEventListener("input", syncPassageButtons);
+
+    ui.releaseNowBtn.addEventListener("click", function () {
+      var text = ui.passageInput.value.trim();
+      if (!text) return;
+      ui.meoSnippet.textContent = text;
+      if (typeof ui.meoDialog.showModal === "function") {
+        ui.meoDialog.showModal();
+      }
+    });
+
+    ui.enterBackyardBtn.addEventListener("click", function () {
+      ui.passageDialog.close();
+      enterFreshBackyard();
+    });
+
+    ui.passageExitBtn.addEventListener("click", function () {
+      ui.passageDialog.close();
+    });
+
+    ui.meoEnterBtn.addEventListener("click", function () {
+      ui.meoDialog.close();
+      ui.passageDialog.close();
+      enterFreshBackyard();
+    });
+
+    ui.meoCancelBtn.addEventListener("click", function () {
+      ui.meoDialog.close();
+    });
+  }
+
+  function syncPassageButtons() {
+    var hasText = ui.passageInput.value.trim().length > 0;
+    ui.releaseNowBtn.disabled = !hasText;
+  }
+
+  function cloneSpace(space) {
+    if (!space) return null;
+    if (space.type === "hallway") {
+      return { type: "hallway", segment: space.segment, palette: space.palette };
+    }
+    return { type: "chamber", kind: space.kind };
+  }
+
+  function enterFreshBackyard() {
+    var palette = HALLWAY_PALETTES[Math.floor(Math.random() * HALLWAY_PALETTES.length)];
+    state.currentSpace = { type: "hallway", segment: 0, palette: palette };
+    state.facingDoor = null;
+    enterExploration();
+  }
+
+  function enterExploration() {
+    state.hasEntered = true;
+    state.hasExploredBefore = true;
+    state.lastSpace = cloneSpace(state.currentSpace);
+    syncShell();
     render();
   }
 

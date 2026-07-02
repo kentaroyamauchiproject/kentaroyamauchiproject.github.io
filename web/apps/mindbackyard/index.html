@@ -22,41 +22,82 @@
       </button>
     </header>
 
-    <section class="mby-stage-wrap">
-      <section id="mbyHallway" class="mby-hallway-stage" aria-label="Infinite hallway">
-        <div class="mby-space-backdrop"></div>
-        <svg id="mbyHallwaySvg" class="mby-hallway-svg" viewBox="0 0 1000 1800" preserveAspectRatio="none" aria-hidden="true"></svg>
-        <div id="mbyDoorLayer" class="mby-door-layer" aria-live="polite"></div>
-      </section>
-
-      <section id="mbyDoorFace" class="mby-door-face" hidden>
-        <div class="mby-door-face-inner">
-          <button id="mbyBackToHallBtn" class="mby-small-btn" type="button">Back to hallway</button>
-          <div id="mbyFaceDoorGlyph" class="mby-face-door-glyph" aria-hidden="true"></div>
-          <p id="mbyFaceDoorCaption" class="mby-face-door-caption">Door</p>
-          <button id="mbyOpenDoorBtn" class="mby-primary-btn" type="button">Open door</button>
-        </div>
-      </section>
-
-      <section id="mbyChamber" class="mby-chamber" hidden>
-        <div id="mbyChamberAtmosphere" class="mby-chamber-atmosphere"></div>
-        <div class="mby-chamber-top">
-          <h2 id="mbyChamberTitle">Zen pebble garden</h2>
-          <p id="mbyChamberSubtitle"></p>
-        </div>
-        <button id="mbyExitChamberBtn" class="mby-small-btn mby-exit-btn" type="button">Exit</button>
-      </section>
+    <section id="mbyEntry" class="mby-entry">
+      <div class="mby-entry-main" aria-hidden="true"></div>
+      <div class="mby-entry-actions">
+        <button id="mbyEnterBtn" class="mby-entry-btn" type="button">Enter</button>
+        <button id="mbyContinueBtn" class="mby-entry-btn mby-entry-btn-secondary" type="button" disabled>
+          Continue Exploring
+          <span class="mby-entry-btn-subtitle">Return to your last space</span>
+        </button>
+      </div>
     </section>
 
-    <section class="mby-hints">
-      <p id="mbySpaceLabel">Hallway</p>
-      <p id="mbyHintLabel">Swipe up or down to walk. Tap a door to open it.</p>
-    </section>
+    <section id="mbyExploration" class="mby-exploration" hidden>
+      <div class="mby-explore-topbar">
+        <button id="mbyHomeBtn" class="mby-home-btn" type="button">Home</button>
+      </div>
 
-    <footer class="mby-footer">
-      <a class="sim-home-link" href="../../index.html">← Try MINDBEBOP</a>
-    </footer>
+      <section class="mby-stage-wrap">
+        <section id="mbyHallway" class="mby-hallway-stage" aria-label="Infinite hallway">
+          <div class="mby-space-backdrop"></div>
+          <svg id="mbyHallwaySvg" class="mby-hallway-svg" viewBox="0 0 1000 1800" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <div id="mbyDoorLayer" class="mby-door-layer" aria-live="polite"></div>
+        </section>
+
+        <section id="mbyDoorFace" class="mby-door-face" hidden>
+          <div class="mby-door-face-inner">
+            <button id="mbyBackToHallBtn" class="mby-small-btn" type="button">Back to hallway</button>
+            <div id="mbyFaceDoorGlyph" class="mby-face-door-glyph" aria-hidden="true"></div>
+            <p id="mbyFaceDoorCaption" class="mby-face-door-caption">Door</p>
+            <button id="mbyOpenDoorBtn" class="mby-primary-btn" type="button">Open door</button>
+          </div>
+        </section>
+
+        <section id="mbyChamber" class="mby-chamber" hidden>
+          <div id="mbyChamberAtmosphere" class="mby-chamber-atmosphere"></div>
+          <div class="mby-chamber-top">
+            <h2 id="mbyChamberTitle">Zen pebble garden</h2>
+            <p id="mbyChamberSubtitle"></p>
+          </div>
+          <button id="mbyExitChamberBtn" class="mby-small-btn mby-exit-btn" type="button">Exit</button>
+        </section>
+      </section>
+
+      <section class="mby-hints">
+        <p id="mbySpaceLabel">Hallway</p>
+        <p id="mbyHintLabel">Swipe up or down to walk. Tap a door to open it.</p>
+      </section>
+
+      <footer class="mby-footer">
+        <a class="sim-home-link" href="../../index.html">← Try MINDBEBOP</a>
+      </footer>
+    </section>
   </main>
+
+  <dialog id="mbyPassageDialog" class="mby-passage-dialog" aria-labelledby="mbyPassageTitle">
+    <form method="dialog" class="mby-passage-card">
+      <div class="mby-passage-scroll">
+        <p id="mbyPassageTitle" class="mby-passage-prompt">Any thought to release before stepping inside?</p>
+        <textarea id="mbyPassageInput" class="mby-passage-input" rows="4" aria-label="Thought to release"></textarea>
+        <button id="mbyReleaseNowBtn" class="mby-passage-primary" type="button" disabled>Release Now</button>
+        <button id="mbyEnterBackyardBtn" class="mby-passage-secondary" type="button">Enter Backyard</button>
+      </div>
+      <button id="mbyPassageExitBtn" class="mby-passage-exit" type="button">Exit</button>
+    </form>
+  </dialog>
+
+  <dialog id="mbyMeoDialog" class="mby-meo-dialog" aria-label="Release">
+    <form method="dialog" class="mby-passage-card">
+      <div class="mby-passage-scroll">
+        <p class="mby-passage-prompt">Let this thought go.</p>
+        <p id="mbyMeoSnippet" class="mby-passage-prompt"></p>
+        <button id="mbyMeoEnterBtn" class="mby-passage-secondary" type="button">Enter Backyard</button>
+      </div>
+      <button id="mbyMeoCancelBtn" class="mby-passage-exit" type="button">Back</button>
+    </form>
+  </dialog>
+
   <script src="../../js/boundary-notice.js"></script>
   <script src="../../js/continuation-cards.js"></script>
   <script src="../../js/about-links.js"></script>
