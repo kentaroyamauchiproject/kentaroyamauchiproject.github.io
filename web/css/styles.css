@@ -28,6 +28,26 @@ body {
   color: var(--text);
 }
 
+.mfo-body,
+.mso-body,
+.mzo-body,
+.mbo-body,
+.mby-body,
+.me-body {
+  font-family: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.me-wordmark,
+.mfo-wordmark,
+.mso-wordmark-btn,
+.mzo-wordmark-btn,
+.mbo-wordmark,
+.mby-wordmark,
+[class*="wordmark-thin"],
+[class*="wordmark-bold"] {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
 .site-header {
   padding: 2rem 1rem 1rem;
   text-align: center;
@@ -228,6 +248,55 @@ body {
   font-size: 0.88rem;
   color: var(--muted);
   text-decoration: none;
+}
+
+.mb-welcome-dialog {
+  border: 0;
+  border-radius: 16px;
+  padding: 0;
+  width: min(92vw, 30rem);
+}
+
+.mb-welcome-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.42);
+}
+
+.mb-welcome-card {
+  margin: 0;
+  padding: 20px;
+  background: #fff;
+  color: #111216;
+}
+
+.mb-welcome-title {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+}
+
+.mb-welcome-copy {
+  margin: 0 0 10px;
+  line-height: 1.45;
+  color: #4f5668;
+}
+
+.mb-welcome-actions {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mb-welcome-card {
+    background: #1c1c1e;
+    color: #f4f6fb;
+  }
+
+  .mb-welcome-copy {
+    color: #a0a7b7;
+  }
 }
 
 /* Red boundary notices (iPhone-only features) */
@@ -671,11 +740,10 @@ body {
 }
 
 .mby-header {
-  padding: calc(16px + env(safe-area-inset-top)) 16px 10px;
-  display: grid;
-  grid-template-columns: 32px 1fr 32px;
+  padding: calc(8px + env(safe-area-inset-top, 0px)) 20px 0;
+  display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .mby-logo-btn,
@@ -686,6 +754,10 @@ body {
   width: 32px;
   height: 32px;
   padding: 0;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mby-logo-btn img,
@@ -701,24 +773,31 @@ body {
   display: none;
 }
 
+.mby-company-btn {
+  margin-left: auto;
+}
+
 .mby-wordmark {
-  text-align: center;
-  font-size: clamp(30px, 7.2vw, 32px);
+  flex: 0 1 auto;
+  text-align: left;
+  font-size: 32px;
   line-height: 1;
-  letter-spacing: 0.22px;
+  white-space: nowrap;
 }
 
 .mby-wordmark-thin {
-  font-weight: 300;
+  font-weight: 100;
+  letter-spacing: -0.1px;
 }
 
 .mby-wordmark-bold {
   font-weight: 700;
+  letter-spacing: 0.6px;
 }
 
 .mby-stage-wrap {
   position: relative;
-  margin: 0 14px;
+  margin: 0 20px;
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.14);
@@ -1090,18 +1169,18 @@ body {
 }
 
 .me-header {
-  display: grid;
-  grid-template-columns: 32px 1fr auto;
+  display: flex;
   align-items: center;
   gap: 10px;
-  padding-top: 8px;
+  padding: calc(8px + env(safe-area-inset-top, 0px)) 18px 8px;
 }
 
 .me-header-actions {
   display: flex;
   align-items: center;
   gap: 10px;
-  justify-self: end;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .me-logo-btn,
@@ -1112,6 +1191,10 @@ body {
   border-radius: 6px;
   background: transparent;
   padding: 0;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .me-logo-btn img,
@@ -1120,6 +1203,7 @@ body {
   height: 32px;
   border-radius: 6px;
   display: block;
+  object-fit: contain;
 }
 
 .me-logo-dark,
@@ -1129,18 +1213,21 @@ body {
 
 .me-wordmark {
   margin: 0;
-  text-align: center;
-  font-size: clamp(30px, 7vw, 32px);
+  flex: 0 1 auto;
+  text-align: left;
+  font-size: 32px;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .me-wordmark-thin {
-  font-weight: 250;
+  font-weight: 100;
+  letter-spacing: -0.1px;
 }
 
 .me-wordmark-bold {
-  font-weight: 760;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  letter-spacing: 0.6px;
 }
 
 .me-content {
@@ -1262,13 +1349,14 @@ body {
 
 .me-action-btn {
   width: 100%;
-  min-height: 42px;
+  padding: 14px 16px;
   border: 0;
   border-radius: 10px;
   background: #ececf1;
   color: #20283b;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.2;
 }
 
 .me-action-btn-primary {
@@ -1716,7 +1804,6 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 0.5rem 0 1rem;
 }
 
 .mfo-header,
@@ -1729,12 +1816,11 @@ body {
 }
 
 .mfo-header {
-  display: grid;
-  grid-template-columns: 32px 1fr 32px;
+  display: flex;
   align-items: center;
   gap: 10px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: calc(8px + env(safe-area-inset-top, 0px));
+  padding-bottom: 0;
 }
 
 .mfo-logo-btn,
@@ -1748,6 +1834,12 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+}
+
+.mfo-company-btn {
+  margin-left: auto;
+  align-self: center;
 }
 
 .mfo-logo-btn img,
@@ -1755,7 +1847,7 @@ body {
   width: 32px;
   height: 32px;
   border-radius: 6px;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -1765,20 +1857,22 @@ body {
 }
 
 .mfo-wordmark {
-  text-align: center;
-  font-size: clamp(30px, 7.2vw, 32px);
+  flex: 0 1 auto;
+  text-align: left;
+  font-size: 32px;
   line-height: 1;
+  white-space: nowrap;
   color: #111216;
 }
 
 .mfo-wordmark .thin {
-  font-weight: 240;
-  letter-spacing: -0.002em;
+  font-weight: 100;
+  letter-spacing: -0.1px;
 }
 
 .mfo-wordmark .bold {
-  font-weight: 760;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  letter-spacing: 0.6px;
 }
 
 .mfo-search-row {
@@ -1786,24 +1880,84 @@ body {
 }
 
 .mfo-search-pill {
+  position: relative;
+  display: flex;
+  align-items: center;
   height: 36px;
   border-radius: 10px;
   background: #e3e3e8;
-  display: flex;
-  align-items: center;
-  padding-inline: 10px;
+}
+
+.mfo-search-input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  padding: 7px 28px 7px 38px;
+  font: inherit;
+  font-size: 17px;
+  line-height: 1.2;
+  color: #111216;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.mfo-search-input::-webkit-search-cancel-button,
+.mso-search input::-webkit-search-cancel-button,
+.mzo-search input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+.mfo-search-input::placeholder {
+  color: rgba(60, 60, 67, 0.6);
+}
+
+.mfo-search-input:focus {
+  outline: none;
 }
 
 .mfo-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
   opacity: 0.6;
-  font-size: 15px;
+  pointer-events: none;
+}
+
+.mfo-search-clear,
+.mb-search-clear {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  color: rgba(199, 199, 204, 0.7);
+  padding: 0;
+  width: 17px;
+  height: 17px;
+  line-height: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mb-sf-clear-icon {
+  display: block;
+  width: 17px;
+  height: 17px;
 }
 
 .mfo-toggle-wrap {
   margin-top: 8px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
+  gap: 2px;
   border-radius: 10px;
   background: #e3e3e8;
   padding: 2px;
@@ -1812,9 +1966,9 @@ body {
 .mfo-tab {
   border: none;
   border-radius: 8px;
-  min-height: 30px;
-  font-size: 14px;
-  font-weight: 560;
+  min-height: 32px;
+  font-size: 13px;
+  font-weight: 400;
   color: #6a7081;
   background: transparent;
 }
@@ -1882,11 +2036,12 @@ body {
 
 .mfo-btn {
   width: 100%;
-  min-height: 50px;
+  padding: 14px 16px;
   border-radius: 10px;
   border: none;
   font-size: 17px;
-  font-weight: 590;
+  font-weight: 400;
+  line-height: 1.2;
 }
 
 .mfo-btn-primary {
@@ -1895,13 +2050,14 @@ body {
 }
 
 .mfo-btn-primary:disabled {
-  background: #d7d7dd;
-  color: #7d8393;
+  background: #e0e0e5;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .mfo-btn-secondary {
   background: #e3e3e8;
   color: #111218;
+  padding: 14px 16px;
 }
 
 .mfo-btn-small {
@@ -2082,6 +2238,19 @@ body {
     background: #2c2c2e;
   }
 
+  .mfo-search-input {
+    color: #f3f5fb;
+  }
+
+  .mfo-search-input::placeholder {
+    color: rgba(235, 235, 245, 0.6);
+  }
+
+  .mfo-search-clear,
+  .mb-search-clear {
+    color: rgba(124, 124, 128, 0.7);
+  }
+
   .mfo-toggle-wrap {
     background: #2c2c2e;
   }
@@ -2119,8 +2288,8 @@ body {
   }
 
   .mfo-btn-primary:disabled {
-    background: #2c2c2e;
-    color: #7d8393;
+    background: #242426;
+    color: rgba(0, 0, 0, 0.5);
   }
 
   .mfo-btn-secondary {
@@ -2286,46 +2455,6 @@ body {
 
 .mfo-disclaimer-btn {
   width: 100%;
-}
-
-.mfo-search-pill {
-  position: relative;
-  display: flex;
-  align-items: center;
-  min-height: 36px;
-  border-radius: 10px;
-  background: #e3e3e8;
-}
-
-.mfo-search-input {
-  flex: 1;
-  border: 0;
-  background: transparent;
-  padding: 7px 28px 7px 38px;
-  font: inherit;
-  color: #111216;
-}
-
-.mfo-search-input:focus {
-  outline: none;
-}
-
-.mfo-search-icon {
-  position: absolute;
-  left: 10px;
-  opacity: 0.6;
-}
-
-.mfo-search-clear {
-  position: absolute;
-  right: 6px;
-  border: 0;
-  background: transparent;
-  color: #8e95a6;
-  font-size: 1.2rem;
-  line-height: 1;
-  padding: 4px 6px;
-  cursor: pointer;
 }
 
 .mfo-show-remix {
@@ -2602,11 +2731,11 @@ body {
 }
 
 .mso-header {
-  display: grid;
-  grid-template-columns: 32px 1fr 32px;
+  display: flex;
   align-items: center;
   gap: 10px;
-  padding-top: 8px;
+  padding-top: calc(8px + env(safe-area-inset-top, 0px));
+  padding-bottom: 0;
 }
 
 .mso-logo-btn,
@@ -2622,6 +2751,16 @@ body {
   width: 32px;
   height: 32px;
   border-radius: 6px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mso-company-btn {
+  margin-left: auto;
+  align-self: center;
+  transform: translateY(-3px);
 }
 
 .mso-logo-btn img,
@@ -2630,6 +2769,7 @@ body {
   height: 32px;
   border-radius: 6px;
   display: block;
+  object-fit: contain;
 }
 
 .mso-logo-dark,
@@ -2638,50 +2778,66 @@ body {
 }
 
 .mso-wordmark-btn {
-  display: block;
-  text-align: center;
-  font-size: clamp(30px, 7vw, 32px);
+  flex: 0 1 auto;
+  text-align: left;
+  font-size: 32px;
   line-height: 1;
+  white-space: nowrap;
   color: inherit;
 }
 
 .mso-wordmark-thin {
-  font-weight: 250;
+  font-weight: 100;
+  letter-spacing: -0.1px;
 }
 
 .mso-wordmark-bold {
-  font-weight: 760;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  letter-spacing: 0.6px;
 }
 
 .mso-search-wrap {
   padding-top: 4px;
-  padding-bottom: 12px;
+  padding-bottom: 20px;
 }
 
 .mso-search {
+  position: relative;
+  display: flex;
+  align-items: center;
   height: 36px;
   border-radius: 10px;
   background: #e3e3e8;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding-inline: 10px;
 }
 
 .mso-search input {
+  flex: 1;
   border: 0;
   background: transparent;
   width: 100%;
+  padding: 7px 28px 7px 38px;
   font: inherit;
-  font-size: 15px;
+  font-size: 17px;
+  line-height: 1.2;
   color: inherit;
   outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.mso-search input::placeholder {
+  color: rgba(60, 60, 67, 0.6);
 }
 
 .mso-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
   opacity: 0.6;
-  font-size: 15px;
+  pointer-events: none;
 }
 
 .mso-content {
@@ -2817,13 +2973,13 @@ body {
 }
 
 .mso-segment-btn {
-  min-height: 30px;
+  min-height: 32px;
   border: 0;
   border-radius: 8px;
   background: transparent;
   color: #747b89;
-  font-size: 14px;
-  font-weight: 570;
+  font-size: 13px;
+  font-weight: 400;
 }
 
 .mso-segment-btn.is-active {
@@ -2986,19 +3142,20 @@ body {
 }
 
 .mso-primary-btn {
-  min-height: 50px;
+  padding: 14px 16px;
   width: 100%;
   border: 0;
   border-radius: 10px;
   font-size: 17px;
-  font-weight: 590;
+  font-weight: 400;
+  line-height: 1.2;
   background: #000;
   color: #fff;
 }
 
 .mso-primary-btn:disabled {
-  background: #d7d7dd;
-  color: #7d8393;
+  background: #e0e0e5;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .mso-list-panel {
@@ -3241,7 +3398,18 @@ body {
     display: block !important;
   }
 
-  .mso-search,
+  .mso-search {
+    background: #2c2c2e;
+  }
+
+  .mso-search input::placeholder {
+    color: rgba(235, 235, 245, 0.6);
+  }
+
+  .mso-search .mb-search-clear {
+    color: rgba(124, 124, 128, 0.7);
+  }
+
   .mso-segment-wrap {
     background: #2c2c2e;
   }
@@ -3289,8 +3457,8 @@ body {
   }
 
   .mso-primary-btn:disabled {
-    background: #2c2c2e;
-    color: #81899b;
+    background: #242426;
+    color: rgba(0, 0, 0, 0.5);
   }
 
   .mso-toggle-ui {
@@ -3360,11 +3528,11 @@ body {
 }
 
 .mzo-header {
-  display: grid;
-  grid-template-columns: 32px 1fr 32px;
+  display: flex;
   align-items: center;
   gap: 10px;
-  padding-top: 8px;
+  padding-top: calc(8px + env(safe-area-inset-top, 0px));
+  padding-bottom: 0;
 }
 
 .mzo-logo-btn,
@@ -3380,6 +3548,16 @@ body {
   width: 32px;
   height: 32px;
   border-radius: 6px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mzo-company-btn {
+  margin-left: auto;
+  align-self: center;
+  transform: translateY(-3px);
 }
 
 .mzo-logo-btn img,
@@ -3388,6 +3566,7 @@ body {
   height: 32px;
   border-radius: 6px;
   display: block;
+  object-fit: contain;
 }
 
 .mzo-logo-dark,
@@ -3396,51 +3575,68 @@ body {
 }
 
 .mzo-wordmark-btn {
-  text-align: center;
-  font-size: clamp(30px, 7vw, 32px);
+  flex: 0 1 auto;
+  text-align: left;
+  font-size: 32px;
   line-height: 1;
+  white-space: nowrap;
   color: inherit;
 }
 
 .mzo-wordmark-thin {
-  font-weight: 250;
+  font-weight: 100;
+  letter-spacing: -0.1px;
 }
 
 .mzo-wordmark-bold {
-  font-weight: 760;
-  letter-spacing: 0.02em;
+  font-weight: 700;
+  letter-spacing: 0.6px;
 }
 
 .mzo-search-wrap {
   padding-top: 4px;
-  padding-bottom: 12px;
+  padding-bottom: 0;
   display: grid;
   gap: 8px;
 }
 
 .mzo-search {
+  position: relative;
+  display: flex;
+  align-items: center;
   height: 36px;
   border-radius: 10px;
   background: #e3e3e8;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding-inline: 10px;
 }
 
 .mzo-search input {
+  flex: 1;
   border: 0;
   background: transparent;
   width: 100%;
+  padding: 7px 28px 7px 38px;
   font: inherit;
-  font-size: 15px;
+  font-size: 17px;
+  line-height: 1.2;
   outline: none;
   color: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.mzo-search input::placeholder {
+  color: rgba(60, 60, 67, 0.6);
 }
 
 .mzo-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
   opacity: 0.6;
-  font-size: 15px;
+  pointer-events: none;
 }
 
 .mzo-content {
@@ -3477,13 +3673,13 @@ body {
 }
 
 .mzo-segment-btn {
-  min-height: 30px;
+  min-height: 32px;
   border: 0;
   border-radius: 8px;
   background: transparent;
   color: #747b89;
   font-size: 13px;
-  font-weight: 560;
+  font-weight: 400;
 }
 
 .mzo-segment-btn.is-active {
@@ -3520,13 +3716,14 @@ body {
 
 .mzo-primary-btn {
   width: 100%;
-  min-height: 50px;
+  padding: 14px 16px;
   border: 0;
   border-radius: 10px;
   background: #000;
   color: #fff;
   font-size: 17px;
-  font-weight: 590;
+  font-weight: 400;
+  line-height: 1.2;
 }
 
 .mzo-whisper-btn {
@@ -3864,6 +4061,14 @@ body {
     background: #2c2c2e;
   }
 
+  .mzo-search input::placeholder {
+    color: rgba(235, 235, 245, 0.6);
+  }
+
+  .mzo-search .mb-search-clear {
+    color: rgba(124, 124, 128, 0.7);
+  }
+
   .mzo-segment-btn {
     color: #b8becd;
   }
@@ -3936,11 +4141,10 @@ body {
 }
 
 .mbo-header {
-  padding: calc(16px + env(safe-area-inset-top)) 16px 10px;
-  display: grid;
-  grid-template-columns: 32px 1fr 32px;
+  padding: calc(8px + env(safe-area-inset-top, 0px)) 18px 20px;
+  display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .mbo-logo-btn,
@@ -3951,6 +4155,14 @@ body {
   width: 32px;
   height: 32px;
   padding: 0;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mbo-company-btn {
+  margin-left: auto;
 }
 
 .mbo-logo-btn img,
@@ -3967,18 +4179,21 @@ body {
 }
 
 .mbo-wordmark {
-  text-align: center;
-  font-size: clamp(30px, 7.2vw, 32px);
+  flex: 0 1 auto;
+  text-align: left;
+  font-size: 32px;
   line-height: 1;
-  letter-spacing: 0.2px;
+  white-space: nowrap;
 }
 
 .mbo-wordmark-thin {
-  font-weight: 300;
+  font-weight: 100;
+  letter-spacing: -0.1px;
 }
 
 .mbo-wordmark-bold {
   font-weight: 700;
+  letter-spacing: 0.6px;
 }
 
 .mbo-scroll {
@@ -4117,13 +4332,15 @@ body {
 
 .mbo-primary-btn {
   width: 100%;
-  min-height: 48px;
+  padding: 14px 16px;
   border: 0;
   border-radius: 14px;
   background: #111216;
   color: #fff;
   font: inherit;
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.2;
 }
 
 .mbo-footer {
