@@ -24,18 +24,27 @@
 <link rel="canonical" href="https://mindbebop.com/jp/cross-dimensional-handshake.html">
 
 
-<meta name="description" content="Cross-Dimensional Handshakeは、現実世界とMental Background Layerを双方向につなぐMindEntryの機能です。現実の出来事をMindEventとして受け取り、完了したメンタルステートの変化を外部へ安全に通知できます。">
-<meta name="keywords" content="Cross-Dimensional Handshake, MindEntry, MindEvent, Webhook, MindEvent API, Apple Shortcuts, App Intents, URLスキーム, Share Extension, Mental Background OS, Mental Background Layer, メンタルステート, 思考整理, MINDBEBOP">
+<meta name="description" content="Cross-Dimensional Handshakeは、現実世界とMental Background Layerを双方向につなぐMINDBEBOPの仕組みです。現実のイベントをMindEventとして受け取り、RecipeやCogniHackの完了をWebhook経由で外部へ安全に通知できます。">
+
+<meta name="keywords" content="Cross-Dimensional Handshake, MindEvent API, MindEvent, Webhook, MindEntry, Apple Shortcuts, App Intents, URLスキーム, Share Extension, Universal Links, Mental Background OS, Mental Background Layer, メンタルナビゲーション, メンタルステート, 思考整理, MINDBEBOP">
+
 <meta name="author" content="MINDBEBOP">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Cross-Dimensional Handshake — MindEntry">
-<meta property="og:description" content="現実世界とMental Background Layerを双方向につなぐ。Cross-Dimensional Handshakeは、MindEntryのMindEvent接続機能です。">
+
+<meta property="og:title" content="Cross-Dimensional Handshake | MINDBEBOP">
+
+<meta property="og:description" content="現実世界とMental Background Layerを双方向につなぐMINDBEBOPの仕組み。MindEventの受信とWebhookによる外部通知を安全に実現します。">
+
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mindbebop.com/jp/cross-dimensional-handshake.html">
 <meta property="og:image" content="https://mindbebop.com/image/MB_LOGO_V5_1024.png">
+
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Cross-Dimensional Handshake — MindEntry">
-<meta name="twitter:description" content="現実世界とMental Background Layerを双方向につなぐ。MindEntryがMindEventを受け取り、完了した変化を外部へ通知します。">
+
+<meta name="twitter:title" content="Cross-Dimensional Handshake | MINDBEBOP">
+
+<meta name="twitter:description" content="MindEventを受け取り、RecipeやCogniHackの完了をWebhookで外部へ通知。現実世界とMental Background Layerを双方向につなぎます。">
+
 <meta name="twitter:image" content="https://mindbebop.com/image/MB_LOGO_V5_1024.png">
 <title>MINDBEBOP — Cross-Dimensional Handshake</title>
 
@@ -126,223 +135,143 @@
 </nav>
 </div>
 <div class="page">
-
-<h1>次元間ハンドシェイク</h1>
+<h1>Mental Navigation</h1>
 
 <p class="kicker">
-現実世界とメンタル・バックグラウンド層を双方向に接続。
+現在地（Point A）から目的地（Point B）へ。
 </p>
 
 <p>
-ほとんどのMINDBEBOPツールは、メンタル・バックグラウンド層内だけで完結します。思考はMindEntryへ直接入力したり、Share Sheetを使って他のアプリから意図的に共有したりできます。
+MINDBEBOPは、生産性を高めるためのものではありません。
 </p>
 
 <p>
-次元間ハンドシェイクは、それとは異なります。
+今、自分の心がどこで立ち止まっているのかに気づき、その次に向かいたいメンタル状態へ進めるようサポートします。
 </p>
 
 <p>
-これは、意味のある「出来事（イベント）」が現実世界とメンタル・バックグラウンド層の境界を、双方向に行き来できるようにする仕組みです。
-</p>
-
-<p>
-現実世界で起きた出来事（イベント）は、MINDBEBOPでのRecipeやCogniHackを始めるきっかけになります。そして、意味のある変化が完了すると、その完了も出来事（イベント）として静かに現実世界へ通知できます。
+私たちはこれを <strong>Mental Navigation</strong> と呼んでいます。
 </p>
 
 <hr class="rule">
 
-<h2>双方向の循環</h2>
+<h2>Point A → Point B</h2>
 
 <p>
-現実で起きた出来事（イベント）はMindEntry内でMindEventとして扱われます。そして、完了したRecipeやCogniHackも、イベントとして現実世界へ送り返すことができます。
+Point A は、今のあなたのメンタル状態です。
+</p>
+
+<p>
+Point B は、次に向かいたいメンタル状態です。
+</p>
+
+<p>
+Recipe や CogniHack は、その間を移動するための道筋になります。
 </p>
 
 <blockquote>
-
-現実世界
-
+Point A
 <br><br>
-
 ↓
-
 <br><br>
-
-次元間ハンドシェイク
-
+Recipe / CogniHack
 <br><br>
-
 ↓
-
 <br><br>
-
-<strong>MindEvent</strong>
-
-<br><br>
-
-↓
-
-<br><br>
-
-メンタル・バックグラウンド層
-
-<br><br>
-
-↓
-
-<br><br>
-
-完了したRecipe・CogniHack
-
-<br><br>
-
-↓
-
-<br><br>
-
-次元間ハンドシェイク
-
-<br><br>
-
-↓
-
-<br><br>
-
-現実世界
-
+<strong>Point B</strong>
 </blockquote>
 
 <hr class="rule">
 
-<h2>受信側: 現実 → MindEntry</h2>
+<h2>Point B の例</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Point A</th>
+      <th>Point B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>返信待ちで気になっている</td>
+      <td>元の作業に戻る</td>
+    </tr>
+    <tr>
+      <td>始められない</td>
+      <td>最初の小さな一歩</td>
+    </tr>
+    <tr>
+      <td>プレゼン前で緊張している</td>
+      <td>始める準備ができている</td>
+    </tr>
+    <tr>
+      <td>考えすぎている</td>
+      <td>少し静かな心</td>
+    </tr>
+    <tr>
+      <td>延々とスクロールしてしまう</td>
+      <td>再び集中している</td>
+    </tr>
+    <tr>
+      <td>頭の中がいっぱい</td>
+      <td>次にやることが一つ明確になっている</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr class="rule">
+
+<h2>なぜ生産性ではないのか</h2>
 
 <p>
-現実世界で起きた出来事は、MindEntryを手動で操作することなく、安全にRecipeやCogniHackを始めるトリガーになります。
+多くの生産性ツールは、「何を終えたか」を問いかけます。
 </p>
 
 <p>
-現在の次元間ハンドシェイクは、意味のある出来事をメンタル・バックグラウンド層へ取り込む複数の方法をサポートしています。
+MINDBEBOPは、「心がどこで立ち止まっているのか」、そして「次にどこへ向かいたいのか」を問いかけます。
 </p>
 
-<ul>
-
-<li><strong>Share Extension</strong> — 選択したテキストや思考の残留物をMindEntryへ直接共有します。</li>
-
-<li><strong>URLスキーム</strong> — ディープリンクを通じてMindEntryを起動します。</li>
-
-<li><strong>App Intents</strong> — Appleの自動化フレームワークを通じてMindEntryを起動します。</li>
-
-<li><strong>Appleショートカット</strong> — カレンダー、集中モード、位置情報、NFCタグ、またはカスタムショートカットのワークフローからMindEventを送信します。</li>
-
-<li><strong>セキュアWebhook（MindEvent API）</strong> — Zapier、Make、n8n、Home Assistant、サーバー、またはカスタムソフトウェアなどの外部システムが、安全にMindEventをMindEntryへ送信できます。</li>
-
-</ul>
+<p>
+Point B は、目標でも、スコアでも、ストリークでも、成果指標でもありません。
+</p>
 
 <p>
-受信したすべてのイベントはMindEventになります。MindEntryは適切なRecipeやCogniHackを提案することがありますが、ユーザーの確認なしに自動実行されることはありません。
+集中かもしれません。落ち着きかもしれません。始めることかもしれません。止めることかもしれません。休むことかもしれません。
+</p>
+
+<p>
+Point B を決めるのは、あなた自身です。
 </p>
 
 <hr class="rule">
 
-<h2>送信側: MindEntry → 現実</h2>
+<h2>MINDBEBOP はどのように支えるのか</h2>
 
 <p>
-RecipeやCogniHackによる意味のある変化が完了すると、MindEntryは構造化されたイベントを安全に外の世界へ送信できます。
-</p>
-
-<p>
-アプリケーションは、変化が完了したことをただ知らせるだけです。次に何が起きるべきかは判断しません。
+MINDBEBOP の各ツールは、それぞれ異なる種類のメンタル状態の移動をサポートします。
 </p>
 
 <ul>
-
-<li>スマートライトをオンにする</li>
-
-<li>プレイリストを開始する</li>
-
-<li>Appleショートカットを実行する</li>
-
-<li>Slackステータスを更新する</li>
-
-<li>Google Sheetsに記録する</li>
-
-<li>カスタムAPIを呼び出す</li>
-
-<li>Zapier、Make、n8n、Home Assistantをトリガーする</li>
-
-<li>利用している自動化プラットフォームが対応していることなら何でも</li>
-
+  <li><strong>MindFlipOut</strong> は、行き詰まった捉え方を少しほぐします。</li>
+  <li><strong>MindShoutOut</strong> は、今この瞬間の思考を、自分で選んだ未来の時間へ移します。</li>
+  <li><strong>MindZoneOut</strong> は、心への刺激を減らしたいときの静かな空間を作ります。</li>
+  <li><strong>MindBackOut</strong> は、外からの誘惑や割り込みから注意を守ります。</li>
+  <li><strong>MindBackyard</strong> は、プレッシャーなく過ごせる低刺激な居場所を提供します。</li>
+  <li><strong>MindEntry</strong> は、Recipe や CogniHack を通して Point B へ導きます。</li>
 </ul>
 
 <hr class="rule">
 
-<h2>ファイアウォール原則</h2>
-
-<p>
-次元間ハンドシェイクが交換するのは、構造化されたイベントであり、思考そのものではありません。
-</p>
-
-<p>
-受信側のハンドシェイクは、現実で何かが起きたことを記述します。送信側のハンドシェイクは、RecipeやCogniHackによる意味のある変化が完了したことを知らせます。
-</p>
-
-<p>
-境界を越えるのはイベントのメタデータだけです。思考、振り返り、会話、内面的な変化そのものは、あなたが明示的に選ばない限り、メンタル・バックグラウンド層の中に残ります。
-</p>
+<h2>シンプルな考え方</h2>
 
 <blockquote>
-現実で起きた出来事が、MINDBEBOPを動かす。
+心が立ち止まったとき、
 <br><br>
-MINDBEBOPで生まれた変化が、現実へ戻っていく。
+MINDBEBOP は Point A から Point B への移動をサポートします。
 </blockquote>
 
 <hr class="rule">
-
-<h2>現在の実装</h2>
-
-<p>
-次元間ハンドシェイクは、特定の技術ではなく、アーキテクチャの概念です。
-</p>
-
-<p>
-現在の実装には、Share Extension、URLスキーム、App Intents、Appleショートカット、ユニバーサルリンク、そしてセキュアWebhookを利用したMindEvent APIが含まれます。
-</p>
-
-<p>
-将来的には、同じ基本原則を保ちながら、さらに多くの転送方式が追加される可能性があります。その原則とは、思考ではなく、意味のある出来事だけが現実世界とメンタル・バックグラウンド層の境界を越えられるようにすることです。
-</p>
-
-<p>
-<a href="../mindevent-api.html" target="_blank">MindEvent API ドキュメントを見る →</a>
-</p>
-
-<hr class="rule">
-
-<h2>なぜ重要なのか</h2>
-
-<p>
-MINDBEBOPは、人生を自動化しようとはしません。
-</p>
-
-<p>
-現実世界とメンタル・バックグラウンド層が、お互いを認識できる安全で構造化された境界を提供します。その際、プライベートな思考を外部へ公開することも、ユーザーの選択を奪うこともありません。
-</p>
-
-<blockquote>
-
-思考はメンタル・バックグラウンド層の中に留まる。
-
-<br><br>
-
-出来事（イベント）はその境界を越えられる。
-
-<br><br>
-
-その境界が、次元間ハンドシェイクなのです。
-
-</blockquote>
-
-<hr class="rule">
-
 
 <div class="quiet-note">
   <p><strong>ここへたどり着いたきっかけは何でしたか？</strong></p>
