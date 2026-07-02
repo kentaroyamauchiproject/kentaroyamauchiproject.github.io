@@ -443,33 +443,68 @@
   }
 
   function rowActionButtons(row) {
+    return "";
+  }
+
+  function swipeIconImg(src) {
+    return '<img src="' + src + '" alt="">';
+  }
+
+  function swipePinIcon(pinned) {
+    return '<span aria-hidden="true" style="transform:rotate(45deg);display:inline-block;font-size:18px">' +
+      (pinned ? "📍" : "📌") + "</span>";
+  }
+
+  function buildMfoSwipeActions(row) {
     var iconBase = "../../assets/mindshoutout/";
-    var shoutIcon = "../../assets/mindzoneout/row-mso.png";
-    return (
-      '<div class="mfo-row-actions" aria-label="Row actions">' +
-        '<div class="mfo-row-action-group">' +
-          '<button type="button" data-action="pin" title="' + (row.pinned ? "Unpin" : "Pin") + '" aria-label="' + (row.pinned ? "Unpin" : "Pin") + '"><span aria-hidden="true">📌</span></button>' +
-          '<button type="button" data-action="shout" class="is-handoff" title="Manual Shout" aria-label="Manual Shout">' +
-            '<img src="' + shoutIcon + '" alt="">' +
-          "</button>" +
-          '<button type="button" data-action="zone" class="is-handoff" title="Manual Zone" aria-label="Manual Zone">' +
-            '<img src="' + iconBase + 'row-mzo.png" alt="">' +
-          "</button>" +
-          '<button type="button" data-action="recipe" class="is-handoff" title="Send to Recipe" aria-label="Send to Recipe">' +
-            '<img src="' + iconBase + 'row-me.png" alt="">' +
-          "</button>" +
-        "</div>" +
-        '<div class="mfo-row-action-group">' +
-          '<button type="button" data-action="delete" title="Delete" aria-label="Delete"><span aria-hidden="true">🗑</span></button>' +
-          '<button type="button" data-action="letgo" class="is-handoff" title="MindEaseOut" aria-label="MindEaseOut">' +
-            '<img src="' + iconBase + 'row-meo.png" alt="">' +
-          "</button>" +
-          '<button type="button" data-action="backyard" class="is-handoff" title="Manual MindBackyard" aria-label="Manual MindBackyard">' +
-            '<img src="' + iconBase + 'row-mby.png" alt="">' +
-          "</button>" +
-        "</div>" +
-      "</div>"
-    );
+    return {
+      leading: [
+        {
+          ariaLabel: row.pinned ? "Unpin" : "Pin",
+          iconHtml: swipePinIcon(row.pinned),
+          tint: "black",
+          onActivate: function () { handleRowAction(row, "pin"); }
+        },
+        {
+          ariaLabel: "Manual Shout",
+          iconHtml: swipeIconImg("../../assets/mindzoneout/row-mso.png"),
+          tint: "black",
+          onActivate: function () { handleRowAction(row, "shout"); }
+        },
+        {
+          ariaLabel: "Manual Zone",
+          iconHtml: swipeIconImg(iconBase + "row-mzo.png"),
+          tint: "black",
+          onActivate: function () { handleRowAction(row, "zone"); }
+        },
+        {
+          ariaLabel: "Send to Recipe",
+          iconHtml: swipeIconImg(iconBase + "row-me.png"),
+          tint: "black",
+          onActivate: function () { handleRowAction(row, "recipe"); }
+        }
+      ],
+      trailing: [
+        {
+          ariaLabel: "Delete",
+          iconHtml: '<span aria-hidden="true" style="font-size:18px">🗑</span>',
+          tint: "red",
+          onActivate: function () { handleRowAction(row, "delete"); }
+        },
+        {
+          ariaLabel: "MindEaseOut",
+          iconHtml: swipeIconImg(iconBase + "row-meo.png"),
+          tint: "gray",
+          onActivate: function () { handleRowAction(row, "letgo"); }
+        },
+        {
+          ariaLabel: "Manual MindBackyard",
+          iconHtml: swipeIconImg(iconBase + "row-mby.png"),
+          tint: "black",
+          onActivate: function () { handleRowAction(row, "backyard"); }
+        }
+      ]
+    };
   }
 
   function renderRow(row) {
@@ -519,12 +554,9 @@
       }
     });
 
-    li.querySelectorAll(".mfo-row-actions button").forEach(function (btn) {
-      btn.addEventListener("click", function (event) {
-        event.stopPropagation();
-        handleRowAction(row, btn.getAttribute("data-action"));
-      });
-    });
+    if (window.MindBebopSwipeActions) {
+      MindBebopSwipeActions.attach(li, buildMfoSwipeActions(row));
+    }
 
     return li;
   }
@@ -860,8 +892,9 @@
       renderList();
     });
 
-    ui.showRemixToggle.addEventListener("change", function () {
-      state.showRemix = ui.showRemixToggle.checked;
+    ui.showRemixToggle.addEventListener("click", function () {
+      state.showRemix = !state.showRemix;
+      ui.showRemixToggle.setAttribute("aria-checked", state.showRemix ? "true" : "false");
       renderList();
     });
 

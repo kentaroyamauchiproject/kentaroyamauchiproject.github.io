@@ -48,8 +48,10 @@
     </section>
 
     <section id="mfoShowRemixRow" class="mfo-show-remix" hidden>
-      <label class="mfo-show-remix-label" for="mfoShowRemixToggle">Show Remix</label>
-      <input id="mfoShowRemixToggle" class="mfo-show-remix-toggle" type="checkbox">
+      <span class="mfo-show-remix-label">Show Remix</span>
+      <button id="mfoShowRemixToggle" class="mb-ios-toggle" type="button" role="switch" aria-checked="false" aria-label="Show Remix">
+        <span class="mb-ios-toggle-track"><span class="mb-ios-toggle-thumb"></span></span>
+      </button>
     </section>
 
     <section class="mfo-flip-panel">
@@ -154,6 +156,7 @@
     </form>
   </dialog>
 
+  <script src="../../js/swipe-actions.js"></script>
   <script src="../../js/native-parity.js"></script>
   <script src="../../js/boundary-notice.js"></script>
   <script src="../../js/continuation-cards.js"></script>
