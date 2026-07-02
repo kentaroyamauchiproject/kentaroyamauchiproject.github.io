@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<!-- ============================================================
+     HOMEPAGE + LOCALE HOMEPAGES
+     ============================================================ -->
+<url><loc>https://mindbebop.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+<url><loc>https://mindbebop.com/jp/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/de/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/ko/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/fr/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/es/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/pt-br/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+
+<!-- ============================================================
+     TRY MINDBEBOP (web trial) — English only, no download required
+     ============================================================ -->
+<url><loc>https://mindbebop.com/web/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/web/apps/mindentry/index.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/web/apps/mindflipout/index.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/web/apps/mindshoutout/index.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/web/apps/mindzoneout/index.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/web/apps/mindbackyard/index.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/web/apps/mindbackout/index.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+<!-- ============================================================
+     APP PAGES — English only (no translated versions exist)
+     ============================================================ -->
+<url><loc>https://mindbebop.com/mindentry.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/mindflipout.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/mindshoutout.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/mindzoneout.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/mindbackyard.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/mindbackout.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://mindbebop.com/mindentrybiz.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+<!-- ============================================================
+     START HERE / ONBOARDING — English (root)
+     ============================================================ -->
+<url><loc>https://mindbebop.com/welcome.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://mindbebop.com/where-do-i-start.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://mindbebop.com/how-it-works.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://mindbebop.com/everyday-thought-friction.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/everyday-moments.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+<!-- START HERE / ONBOARDING — 日本語 (jp) -->
+<url><loc>https://mindbebop.com/jp/welcome.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/jp/where-do-i-start.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/jp/how-it-works.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/jp/everyday-thought-friction.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/jp/everyday-moments.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+<!-- START HERE / ONBOARDING — Deutsch (de) -->
+<url><loc>https://mindbebop.com/de/welcome.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/de/where-do-i-start.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/de/how-it-works.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/de/everyday-thought-friction.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/de/everyday-moments.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+<!-- START HERE / ONBOARDING — 한국어 (ko) -->
+<url><loc>https://mindbebop.com/ko/welcome.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/ko/where-do-i-start.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/ko/how-it-works.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/ko/everyday-thought-friction.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/ko/everyday-moments.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+<!-- START HERE / ONBOARDING — Français (fr) -->
+<url><loc>https://mindbebop.com/fr/welcome.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/fr/where-do-i-start.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/fr/how-it-works.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/fr/everyday-thought-friction.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/fr/everyday-moments.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+<!-- START HERE / ONBOARDING — Español (es) -->
+<url><loc>https://mindbebop.com/es/welcome.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/es/where-do-i-start.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/es/how-it-works.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/es/everyday-thought-friction.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/es/everyday-moments.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+<!-- START HERE / ONBOARDING — Português (Brasil) (pt-br) -->
+<url><loc>https://mindbebop.com/pt-br/welcome.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/pt-br/where-do-i-start.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/pt-br/how-it-works.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/pt-br/everyday-thought-friction.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/pt-br/everyday-moments.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+<!-- ============================================================
+     OS / SYSTEM CONCEPT PAGES — English (root)
+     mental-background-os.html has no translated version
+     ============================================================ -->
+<url><loc>https://mindbebop.com/mental-background-os.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/mindeaseout.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/mindblank.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/mindprecog.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/mental-navigation.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/stateful-recipes.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/hallway-mode.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/cross-dimensional-handshake.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/mindevent-api.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+
+<!-- OS / SYSTEM CONCEPT PAGES — 日本語 (jp) -->
+<url><loc>https://mindbebop.com/jp/mindeaseout.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/jp/mindblank.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/jp/mindprecog.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/jp/mental-navigation.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/jp/stateful-recipes.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/jp/hallway-mode.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/jp/cross-dimensional-handshake.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+
+<!-- OS / SYSTEM CONCEPT PAGES — Deutsch (de) -->
+<url><loc>https://mindbebop.com/de/mindeaseout.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/de/mindblank.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/de/mindprecog.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/de/mental-navigation.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/de/stateful-recipes.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/de/hallway-mode.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/de/cross-dimensional-handshake.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+
+<!-- OS / SYSTEM CONCEPT PAGES — 한국어 (ko) -->
+<url><loc>https://mindbebop.com/ko/mindeaseout.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/ko/mindblank.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/ko/mindprecog.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/ko/mental-navigation.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/ko/stateful-recipes.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/ko/hallway-mode.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/ko/cross-dimensional-handshake.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+
+<!-- OS / SYSTEM CONCEPT PAGES — Français (fr) -->
+<url><loc>https://mindbebop.com/fr/mindeaseout.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/fr/mindblank.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/fr/mindprecog.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/fr/mental-navigation.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/fr/stateful-recipes.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/fr/hallway-mode.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/fr/cross-dimensional-handshake.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+
+<!-- OS / SYSTEM CONCEPT PAGES — Español (es) -->
+<url><loc>https://mindbebop.com/es/mindeaseout.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/es/mindblank.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/es/mindprecog.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/es/mental-navigation.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/es/stateful-recipes.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/es/hallway-mode.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/es/cross-dimensional-handshake.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+
+<!-- OS / SYSTEM CONCEPT PAGES — Português (Brasil) (pt-br) -->
+<url><loc>https://mindbebop.com/pt-br/mindeaseout.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/pt-br/mindblank.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/pt-br/mindprecog.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/pt-br/mental-navigation.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/pt-br/stateful-recipes.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/pt-br/hallway-mode.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/pt-br/cross-dimensional-handshake.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+
+<!-- ============================================================
+     RECIPES / COGNIHACK / FAQ / PHILOSOPHY — English (root)
+     ============================================================ -->
+<url><loc>https://mindbebop.com/recipes.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/cognihack.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/faq.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://mindbebop.com/philosophy.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+<!-- RECIPES / COGNIHACK / FAQ / PHILOSOPHY — 日本語 (jp) -->
+<url><loc>https://mindbebop.com/jp/recipes.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/jp/cognihack.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/jp/faq.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/jp/philosophy.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+<!-- RECIPES / COGNIHACK / FAQ / PHILOSOPHY — Deutsch (de) -->
+<url><loc>https://mindbebop.com/de/recipes.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/de/cognihack.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/de/faq.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/de/philosophy.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+<!-- RECIPES / COGNIHACK / FAQ / PHILOSOPHY — 한국어 (ko) -->
+<url><loc>https://mindbebop.com/ko/recipes.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/ko/cognihack.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/ko/faq.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/ko/philosophy.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+<!-- RECIPES / COGNIHACK / FAQ / PHILOSOPHY — Français (fr) -->
+<url><loc>https://mindbebop.com/fr/recipes.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/fr/cognihack.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/fr/faq.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/fr/philosophy.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+<!-- RECIPES / COGNIHACK / FAQ / PHILOSOPHY — Español (es) -->
+<url><loc>https://mindbebop.com/es/recipes.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/es/cognihack.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/es/faq.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/es/philosophy.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+<!-- RECIPES / COGNIHACK / FAQ / PHILOSOPHY — Português (Brasil) (pt-br) -->
+<url><loc>https://mindbebop.com/pt-br/recipes.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/pt-br/cognihack.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/pt-br/faq.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+<url><loc>https://mindbebop.com/pt-br/philosophy.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+<!-- ============================================================
+     ABOUT / TRUST / LEGAL / PRESS — English only, no translated versions
+     ============================================================ -->
+<url><loc>https://mindbebop.com/refusals.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/mindbebop.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/founders-blog.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+<url><loc>https://mindbebop.com/press-background.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+<url><loc>https://mindbebop.com/gallery.html</loc><changefreq>monthly</changefreq><priority>0.3</priority></url>
+<url><loc>https://mindbebop.com/privacy-policy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+</urlset>
