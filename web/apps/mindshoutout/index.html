@@ -220,6 +220,7 @@
     </form>
   </dialog>
 
+  <script src="../../js/swipe-actions.js"></script>
   <script src="../../js/native-parity.js"></script>
   <script src="../../js/boundary-notice.js"></script>
   <script src="../../js/continuation-cards.js"></script>
@@ -827,6 +828,68 @@
 
         ui.groupsWrap.innerHTML = html;
         bindListEvents();
+        attachRowSwipes();
+      }
+
+      function swipeIcon(src) {
+        return '<img src="' + src + '" alt="">';
+      }
+
+      function attachRowSwipes() {
+        if (!window.MindBebopSwipeActions) return;
+        ui.groupsWrap.querySelectorAll("[data-row-id]").forEach(function (rowEl) {
+          const id = rowEl.dataset.rowId;
+          const item = state.pendingRequests.find(function (entry) { return entry.id === id; });
+          if (!item) return;
+          MindBebopSwipeActions.attach(rowEl, {
+            leading: [
+              {
+                ariaLabel: item.isPinned ? "Unpin" : "Pin",
+                iconHtml: '<span aria-hidden="true" style="transform:rotate(45deg);display:inline-block;font-size:18px">' + (item.isPinned ? "📍" : "📌") + "</span>",
+                tint: "black",
+                onActivate: function () { togglePin(id); }
+              },
+              {
+                ariaLabel: "Manual Flip",
+                iconHtml: swipeIcon("../../assets/mindshoutout/row-mfo.png"),
+                tint: "black",
+                onActivate: function () { simulateRowAction(id, "manualFlip"); }
+              },
+              {
+                ariaLabel: "Manual Zone",
+                iconHtml: swipeIcon("../../assets/mindshoutout/row-mzo.png"),
+                tint: "black",
+                onActivate: function () { simulateRowAction(id, "manualZone"); }
+              },
+              {
+                ariaLabel: "Send to Recipe",
+                iconHtml: swipeIcon("../../assets/mindshoutout/row-me.png"),
+                tint: "black",
+                onActivate: function () { simulateRowAction(id, "sendToRecipe"); }
+              }
+            ],
+            trailing: [
+              {
+                ariaLabel: "Delete",
+                iconHtml: '<span aria-hidden="true" style="font-size:18px">🗑</span>',
+                tint: "red",
+                onActivate: function () { deleteShout(id); }
+              },
+              {
+                ariaLabel: "MindEaseOut",
+                iconHtml: swipeIcon("../../assets/mindshoutout/row-meo.png"),
+                tint: "gray",
+                onActivate: function () { simulateRowAction(id, "mindEaseOut"); }
+              },
+              {
+                ariaLabel: "Manual MindBackyard",
+                iconHtml: swipeIcon("../../assets/mindshoutout/row-mby.png"),
+                tint: "black",
+                onActivate: function () { simulateRowAction(id, "manualBackyard"); }
+              }
+            ]
+          });
+        });
       }
 
       function bindListEvents() {
@@ -837,15 +900,6 @@
             if (!id) return;
             if (actionBtn) {
               event.stopPropagation();
-              const action = actionBtn.dataset.action;
-              if (action === "pin") togglePin(id);
-              if (action === "delete") deleteShout(id);
-              if (action === "edit") openEdit(id);
-              if (action === "handoff-mfo") simulateRowAction(id, "manualFlip");
-              if (action === "handoff-mzo") simulateRowAction(id, "manualZone");
-              if (action === "handoff-me") simulateRowAction(id, "sendToRecipe");
-              if (action === "handoff-meo") simulateRowAction(id, "mindEaseOut");
-              if (action === "handoff-mby") simulateRowAction(id, "manualBackyard");
               return;
             }
             openEdit(id);
@@ -872,30 +926,6 @@
           "</div>" +
           (chips.length ? '<p class="mso-row-meta">' + chips.join('<span class="dot">·</span>') + "</p>" : "") +
           '<p class="mso-row-next">Next: ' + escapeHTML(formatDateTime(item.nextFireDate)) + "</p>" +
-          '<div class="mso-row-actions" aria-label="Row actions">' +
-          '<div class="mso-row-action-group">' +
-          '<button type="button" data-action="pin" title="' + (item.isPinned ? "Unpin" : "Pin") + '" aria-label="' + (item.isPinned ? "Unpin" : "Pin") + '"><span aria-hidden="true">📌</span></button>' +
-          '<button type="button" data-action="handoff-mfo" class="is-preview-link" title="Continue in MindFlipOut" aria-label="Continue in MindFlipOut">' +
-          '<img src="../../assets/mindshoutout/row-mfo.png" alt="">' +
-          "</button>" +
-          '<button type="button" data-action="handoff-mzo" class="is-preview-link" title="Continue in MindZoneOut" aria-label="Continue in MindZoneOut">' +
-          '<img src="../../assets/mindshoutout/row-mzo.png" alt="">' +
-          "</button>" +
-          '<button type="button" data-action="handoff-me" class="is-preview-link" title="Continue in MindEntry" aria-label="Continue in MindEntry">' +
-          '<img src="../../assets/mindshoutout/row-me.png" alt="">' +
-          "</button>" +
-          '<button type="button" data-action="edit" title="Edit" aria-label="Edit"><span aria-hidden="true">✎</span></button>' +
-          "</div>" +
-          '<div class="mso-row-action-group">' +
-          '<button type="button" data-action="delete" title="Delete" aria-label="Delete"><span aria-hidden="true">🗑</span></button>' +
-          '<button type="button" data-action="handoff-meo" class="is-preview-link" title="Continue in MindEaseOut" aria-label="Continue in MindEaseOut">' +
-          '<img src="../../assets/mindshoutout/row-meo.png" alt="">' +
-          "</button>" +
-          '<button type="button" data-action="handoff-mby" class="is-preview-link" title="Continue in MindBackyard" aria-label="Continue in MindBackyard">' +
-          '<img src="../../assets/mindshoutout/row-mby.png" alt="">' +
-          "</button>" +
-          "</div>" +
-          "</div>" +
           "</article>"
         );
       }
