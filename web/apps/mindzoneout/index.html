@@ -23,10 +23,13 @@
     </header>
 
     <section class="mzo-search-wrap">
-      <label class="mzo-search" for="searchInput">
-        <span class="mzo-search-icon" aria-hidden="true">⌕</span>
+      <div class="mzo-search">
+        <svg class="mzo-search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8.25" cy="8.25" r="5.25" stroke="currentColor" stroke-width="1.75"></circle>
+          <path d="M12.5 12.5L16.25 16.25" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path>
+        </svg>
         <input id="searchInput" type="search" autocomplete="off" spellcheck="false" aria-label="Search entries">
-      </label>
+      </div>
 
       <div class="mzo-segment" aria-label="View mode">
         <button id="modeWhisperBtn" class="mzo-segment-btn is-active" type="button">Whispers</button>
@@ -110,6 +113,7 @@
     </form>
   </dialog>
 
+  <script src="../../js/native-parity.js"></script>
   <script src="../../js/boundary-notice.js"></script>
   <script src="../../js/continuation-cards.js"></script>
   <script src="../../js/about-links.js"></script>
@@ -187,8 +191,49 @@
       let tapLock = false;
 
       function init() {
+        preloadSampleEntries();
         bindEvents();
         render();
+      }
+
+      function preloadSampleEntries() {
+        if (state.entries.length) return;
+
+        const now = new Date();
+        const whisperCreatedAt = new Date(now.getTime() - 80 * 60 * 1000);
+        const reflectionCreatedAt = new Date(now.getTime() - 42 * 60 * 1000);
+        const reflectionEditedAt = new Date(now.getTime() - 18 * 60 * 1000);
+
+        state.entries = [
+          {
+            id: makeId(),
+            whisper: {
+              text: "My chest tightens before team updates.",
+              createdAt: whisperCreatedAt,
+              editedAt: null
+            },
+            reflection: null,
+            createdAt: whisperCreatedAt,
+            updatedAt: null,
+            pinned: false
+          },
+          {
+            id: makeId(),
+            whisper: {
+              text: "I keep replaying that conversation from this morning.",
+              createdAt: reflectionCreatedAt,
+              editedAt: null
+            },
+            reflection: {
+              text: "It felt tense, but I stayed honest and clear.",
+              createdAt: reflectionCreatedAt,
+              editedAt: reflectionEditedAt
+            },
+            createdAt: reflectionCreatedAt,
+            updatedAt: reflectionEditedAt,
+            pinned: false
+          }
+        ];
       }
 
       function bindEvents() {
