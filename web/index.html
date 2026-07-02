@@ -43,6 +43,25 @@
     </section>
   </main>
 
+  <dialog id="mbWelcomeDialog" class="mb-welcome-dialog" aria-labelledby="mbWelcomeTitle">
+    <form method="dialog" class="mb-welcome-card">
+      <h2 id="mbWelcomeTitle" class="mb-welcome-title">Welcome to Try MINDBEBOP</h2>
+      <p class="mb-welcome-copy">
+        These browser experiences recreate the native iPhone apps as closely as the web allows.
+      </p>
+      <p class="mb-welcome-copy">
+        Features that require iPhone capabilities are marked with a red boundary when you reach them.
+      </p>
+      <p class="mb-welcome-copy">
+        Everything else follows the native apps as closely as possible.
+      </p>
+      <menu class="mb-welcome-actions">
+        <button id="mbWelcomeStartBtn" class="btn btn-primary" type="button">Start Exploring</button>
+        <button id="mbWelcomeDismissBtn" class="btn btn-secondary" type="button">Don't show again during this visit</button>
+      </menu>
+    </form>
+  </dialog>
+
   <script src="./js/main.js"></script>
 </body>
 </html>
