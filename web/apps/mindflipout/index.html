@@ -7,44 +7,7 @@
   <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body class="mfo-body">
-  <div id="mfoDisclaimer" class="mfo-disclaimer" aria-label="Disclaimer">
-    <div class="mfo-disclaimer-scroll">
-      <h1 class="mfo-disclaimer-title">Disclaimer</h1>
-      <p class="mfo-disclaimer-body">
-        MINDBEBOP apps are designed for personal well-being and reflection, not as medical or psychological treatment.
-      </p>
-      <p class="mfo-disclaimer-body">
-        They do not provide diagnosis, therapy, or crisis guidance.
-      </p>
-      <p class="mfo-disclaimer-body">
-        By continuing, you acknowledge that you are responsible for how you use these tools.
-      </p>
-      <hr class="mfo-disclaimer-divider">
-      <h2 class="mfo-disclaimer-subhead">How this app works</h2>
-      <p class="mfo-disclaimer-lead">Move a looping thought out of active attention</p>
-      <ul class="mfo-disclaimer-list">
-        <li>Capture a Heavy thought as it appears</li>
-        <li>Add a Light response — or tap Flip to respond instantly</li>
-        <li>When you're done, you're back on the main screen</li>
-      </ul>
-      <h3 class="mfo-disclaimer-examples-title">Example responses</h3>
-      <div class="mfo-example-card">
-        <p class="mfo-example-heavy"><em>I always mess things up.</em></p>
-        <p class="mfo-example-arrow">→</p>
-        <p class="mfo-example-light"><em>I'm learning, even when things don't go perfectly.</em></p>
-      </div>
-      <div class="mfo-example-card">
-        <p class="mfo-example-heavy"><em>This probably won't help.</em></p>
-        <p class="mfo-example-arrow">→</p>
-        <p class="mfo-example-light"><em>I'll just try it and see.</em></p>
-      </div>
-    </div>
-    <div class="mfo-disclaimer-footer">
-      <button id="mfoDisclaimerBtn" class="mfo-btn mfo-btn-primary mfo-disclaimer-btn" type="button">Got it</button>
-    </div>
-  </div>
-
-  <main id="mfoMainApp" class="mfo-app" aria-label="MindFlipOut" hidden>
+  <main id="mfoMainApp" class="mfo-app" aria-label="MindFlipOut">
     <header class="mfo-header">
       <button class="mfo-logo-btn" type="button" aria-label="MindFlipOut logo">
         <img class="mfo-logo-light" src="../../assets/mindflipout/app-logo-light.png" alt="">
@@ -61,7 +24,10 @@
 
     <section class="mfo-search-row" aria-label="Search">
       <div class="mfo-search-pill">
-        <span class="mfo-search-icon" aria-hidden="true">⌕</span>
+        <svg class="mfo-search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8.25" cy="8.25" r="5.25" stroke="currentColor" stroke-width="1.75"></circle>
+          <path d="M12.5 12.5L16.25 16.25" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path>
+        </svg>
         <input
           id="mfoSearchInput"
           class="mfo-search-input"
@@ -72,7 +38,7 @@
           spellcheck="false"
           aria-label="Search entries"
         >
-        <button id="mfoSearchClear" class="mfo-search-clear" type="button" hidden aria-label="Clear search">×</button>
+        <button id="mfoSearchClear" class="mfo-search-clear mb-search-clear" type="button" hidden aria-label="Clear search"></button>
       </div>
     </section>
 
@@ -188,6 +154,7 @@
     </form>
   </dialog>
 
+  <script src="../../js/native-parity.js"></script>
   <script src="../../js/boundary-notice.js"></script>
   <script src="../../js/continuation-cards.js"></script>
   <script src="../../js/about-links.js"></script>

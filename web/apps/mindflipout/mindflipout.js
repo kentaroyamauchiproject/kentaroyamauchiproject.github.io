@@ -19,7 +19,6 @@
     entries: [],
     searchText: "",
     showRemix: false,
-    hasAcceptedDisclaimer: false,
     didPreloadExample: false,
     shoutedGroups: Object.create(null),
     edit: null,
@@ -837,15 +836,6 @@
     state.didPreloadExample = true;
   }
 
-  function acceptDisclaimer() {
-    state.hasAcceptedDisclaimer = true;
-    preloadExamples();
-    ui.disclaimerOverlay.hidden = true;
-    ui.mainApp.hidden = false;
-    renderList();
-    syncComposer();
-  }
-
   function bindEvents() {
     ui.composerInput.addEventListener("input", function () {
       state.message = ui.composerInput.value;
@@ -899,7 +889,6 @@
 
     ui.flipBtn.addEventListener("click", submitAndFlipTapped);
     ui.enterBtn.addEventListener("click", submitTapped);
-    ui.disclaimerBtn.addEventListener("click", acceptDisclaimer);
 
     ui.editCancelBtn.addEventListener("click", cancelEditSheet);
     ui.editSaveBtn.addEventListener("click", saveEditSheet);
@@ -969,8 +958,6 @@
   }
 
   function cacheDom() {
-    ui.disclaimerOverlay = document.getElementById("mfoDisclaimer");
-    ui.disclaimerBtn = document.getElementById("mfoDisclaimerBtn");
     ui.mainApp = document.getElementById("mfoMainApp");
     ui.tabHeavy = document.getElementById("tabHeavy");
     ui.tabLight = document.getElementById("tabLight");
@@ -1019,8 +1006,7 @@
   function init() {
     cacheDom();
     bindEvents();
-    ui.mainApp.hidden = true;
-    ui.disclaimerOverlay.hidden = false;
+    preloadExamples();
     syncPolarityTabs();
     syncComposer();
     renderList();
