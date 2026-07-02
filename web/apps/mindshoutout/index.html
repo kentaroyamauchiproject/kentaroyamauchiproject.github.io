@@ -23,10 +23,13 @@
     </header>
 
     <section class="mso-search-wrap">
-      <label class="mso-search" for="searchInput">
-        <span class="mso-search-icon" aria-hidden="true">⌕</span>
+      <div class="mso-search">
+        <svg class="mso-search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8.25" cy="8.25" r="5.25" stroke="currentColor" stroke-width="1.75"></circle>
+          <path d="M12.5 12.5L16.25 16.25" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path>
+        </svg>
         <input id="searchInput" type="search" autocomplete="off" spellcheck="false" aria-label="Search shouts">
-      </label>
+      </div>
     </section>
 
     <section class="mso-content">
@@ -217,6 +220,7 @@
     </form>
   </dialog>
 
+  <script src="../../js/native-parity.js"></script>
   <script src="../../js/boundary-notice.js"></script>
   <script src="../../js/continuation-cards.js"></script>
   <script src="../../js/about-links.js"></script>
@@ -317,11 +321,55 @@
       function init() {
         buildRepeatCountOptions();
         buildWaveformBars();
+        preloadSampleShouts();
         syncDateInput();
         syncDestinationSegment();
         render();
         bindEvents();
         startAutoFireDateTick();
+      }
+
+      function preloadSampleShouts() {
+        if (state.pendingRequests.length) return;
+
+        const now = new Date();
+        const firstDate = new Date(now.getTime() + 26 * 60 * 60 * 1000);
+        const secondDate = new Date(now.getTime() + 52 * 60 * 60 * 1000);
+
+        state.pendingRequests = [
+          {
+            id: makeShoutID(),
+            body: "Follow up with Jordan about the Thursday estimate before lunch.",
+            shoutType: "text",
+            createdAt: new Date(now.getTime() - 90 * 60 * 1000),
+            nextFireDate: firstDate,
+            repeatMode: "none",
+            repeatCount: 1,
+            speak: false,
+            requiresAcknowledgement: false,
+            tapDestination: "mindShoutOut",
+            isDisabled: false,
+            isPinned: false,
+            scheduleFailed: false,
+            audioURL: null
+          },
+          {
+            id: makeShoutID(),
+            body: "Pack gym clothes and water bottle before leaving for work.",
+            shoutType: "text",
+            createdAt: new Date(now.getTime() - 55 * 60 * 1000),
+            nextFireDate: secondDate,
+            repeatMode: "daily",
+            repeatCount: 1,
+            speak: false,
+            requiresAcknowledgement: false,
+            tapDestination: "mindShoutOut",
+            isDisabled: false,
+            isPinned: false,
+            scheduleFailed: false,
+            audioURL: null
+          }
+        ];
       }
 
       function bindEvents() {
