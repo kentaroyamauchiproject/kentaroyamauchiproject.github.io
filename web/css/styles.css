@@ -2529,7 +2529,7 @@ body {
 }
 
 .mfo-section-title {
-  margin: 8px 22px 4px;
+  margin: 8px 0 4px;
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -2539,7 +2539,7 @@ body {
 .mfo-section-rows {
   list-style: none;
   margin: 0;
-  padding: 0 16px 0 22px;
+  padding: 0;
 }
 
 .mfo-row-tap {
