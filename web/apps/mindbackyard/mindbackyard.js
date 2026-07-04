@@ -34,44 +34,60 @@
     facingDoor: null
   };
 
-  const ui = {
-    entry: document.getElementById("mbyEntry"),
-    exploration: document.getElementById("mbyExploration"),
-    enterBtn: document.getElementById("mbyEnterBtn"),
-    continueBtn: document.getElementById("mbyContinueBtn"),
-    homeBtn: document.getElementById("mbyHomeBtn"),
-    passageDialog: document.getElementById("mbyPassageDialog"),
-    passageInput: document.getElementById("mbyPassageInput"),
-    releaseNowBtn: document.getElementById("mbyReleaseNowBtn"),
-    enterBackyardBtn: document.getElementById("mbyEnterBackyardBtn"),
-    passageExitBtn: document.getElementById("mbyPassageExitBtn"),
-    meoDialog: document.getElementById("mbyMeoDialog"),
-    meoSnippet: document.getElementById("mbyMeoSnippet"),
-    meoEnterBtn: document.getElementById("mbyMeoEnterBtn"),
-    meoCancelBtn: document.getElementById("mbyMeoCancelBtn"),
-    hallway: document.getElementById("mbyHallway"),
-    hallwaySvg: document.getElementById("mbyHallwaySvg"),
-    doorLayer: document.getElementById("mbyDoorLayer"),
-    doorFace: document.getElementById("mbyDoorFace"),
-    backToHallBtn: document.getElementById("mbyBackToHallBtn"),
-    openDoorBtn: document.getElementById("mbyOpenDoorBtn"),
-    faceDoorCaption: document.getElementById("mbyFaceDoorCaption"),
-    faceDoorGlyph: document.getElementById("mbyFaceDoorGlyph"),
-    chamber: document.getElementById("mbyChamber"),
-    chamberAtmosphere: document.getElementById("mbyChamberAtmosphere"),
-    chamberTitle: document.getElementById("mbyChamberTitle"),
-    chamberSubtitle: document.getElementById("mbyChamberSubtitle"),
-    exitChamberBtn: document.getElementById("mbyExitChamberBtn"),
-    spaceLabel: document.getElementById("mbySpaceLabel"),
-    hintLabel: document.getElementById("mbyHintLabel")
-  };
+  const ui = {};
+
+  function cacheDom() {
+    ui.entry = document.getElementById("mbyEntry");
+    ui.exploration = document.getElementById("mbyExploration");
+    ui.enterBtn = document.getElementById("mbyEnterBtn");
+    ui.continueBtn = document.getElementById("mbyContinueBtn");
+    ui.homeBtn = document.getElementById("mbyHomeBtn");
+    ui.passageDialog = document.getElementById("mbyPassageDialog");
+    ui.passageInput = document.getElementById("mbyPassageInput");
+    ui.releaseNowBtn = document.getElementById("mbyReleaseNowBtn");
+    ui.enterBackyardBtn = document.getElementById("mbyEnterBackyardBtn");
+    ui.passageExitBtn = document.getElementById("mbyPassageExitBtn");
+    ui.meoDialog = document.getElementById("mbyMeoDialog");
+    ui.meoSnippet = document.getElementById("mbyMeoSnippet");
+    ui.meoEnterBtn = document.getElementById("mbyMeoEnterBtn");
+    ui.meoCancelBtn = document.getElementById("mbyMeoCancelBtn");
+    ui.hallway = document.getElementById("mbyHallway");
+    ui.hallwaySvg = document.getElementById("mbyHallwaySvg");
+    ui.doorLayer = document.getElementById("mbyDoorLayer");
+    ui.doorFace = document.getElementById("mbyDoorFace");
+    ui.backToHallBtn = document.getElementById("mbyBackToHallBtn");
+    ui.openDoorBtn = document.getElementById("mbyOpenDoorBtn");
+    ui.faceDoorCaption = document.getElementById("mbyFaceDoorCaption");
+    ui.faceDoorGlyph = document.getElementById("mbyFaceDoorGlyph");
+    ui.chamber = document.getElementById("mbyChamber");
+    ui.chamberAtmosphere = document.getElementById("mbyChamberAtmosphere");
+    ui.chamberTitle = document.getElementById("mbyChamberTitle");
+    ui.chamberSubtitle = document.getElementById("mbyChamberSubtitle");
+    ui.exitChamberBtn = document.getElementById("mbyExitChamberBtn");
+    ui.spaceLabel = document.getElementById("mbySpaceLabel");
+    ui.hintLabel = document.getElementById("mbyHintLabel");
+  }
 
   function init() {
+    cacheDom();
     bindEntryFlow();
     bindGestures();
     bindActions();
     syncShell();
     render();
+  }
+
+  function openPassageDialog() {
+    if (!ui.passageDialog || !ui.passageInput) {
+      return;
+    }
+    ui.passageInput.value = "";
+    syncPassageButtons();
+    if (typeof ui.passageDialog.showModal === "function") {
+      ui.passageDialog.showModal();
+    } else {
+      ui.passageDialog.setAttribute("open", "");
+    }
   }
 
   function syncShell() {
@@ -81,13 +97,9 @@
   }
 
   function bindEntryFlow() {
-    ui.enterBtn.addEventListener("click", function () {
-      ui.passageInput.value = "";
-      syncPassageButtons();
-      if (typeof ui.passageDialog.showModal === "function") {
-        ui.passageDialog.showModal();
-      }
-    });
+    if (ui.enterBtn) {
+      ui.enterBtn.addEventListener("click", openPassageDialog);
+    }
 
     ui.continueBtn.addEventListener("click", function () {
       if (!state.hasExploredBefore || !state.lastSpace) return;
@@ -562,5 +574,9 @@
     };
   }
 
-  init();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();
