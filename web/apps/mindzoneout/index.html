@@ -113,6 +113,7 @@
     </form>
   </dialog>
 
+  <script src="../../js/swipe-action-icons.js"></script>
   <script src="../../js/swipe-actions.js"></script>
   <script src="../../js/native-parity.js"></script>
   <script src="../../js/boundary-notice.js"></script>
@@ -378,11 +379,15 @@
       }
 
       function mzoSwipeIcon(src) {
+        if (window.MindBebopSwipeActionIcons) {
+          return MindBebopSwipeActionIcons.partner(src);
+        }
         return '<img src="' + src + '" alt="">';
       }
 
       function attachRowSwipes() {
         if (!window.MindBebopSwipeActions) return;
+        const icons = window.MindBebopSwipeActionIcons;
         ui.groupsWrap.querySelectorAll("[data-row-id]").forEach(function (rowEl) {
           const entryId = rowEl.dataset.rowId;
           const entry = state.entries.find(function (item) { return item.id === entryId; });
@@ -391,7 +396,7 @@
             leading: [
               {
                 ariaLabel: entry.pinned ? "Unpin" : "Pin",
-                iconHtml: entry.pinned ? "📍" : "📌",
+                iconHtml: icons ? icons.pin(entry.pinned) : "",
                 tint: "black",
                 onActivate: function () { runRowAction(entryId, "pin"); }
               },
@@ -423,7 +428,7 @@
             trailing: [
               {
                 ariaLabel: "Delete",
-                iconHtml: "🗑",
+                iconHtml: icons ? icons.trash() : "",
                 tint: "red",
                 onActivate: function () { runRowAction(entryId, "delete"); }
               },
