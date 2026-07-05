@@ -446,13 +446,25 @@
     return "";
   }
 
-  function swipeIconImg(src) {
+  function swipePartnerIcon(src) {
+    if (window.MindBebopSwipeActionIcons) {
+      return MindBebopSwipeActionIcons.partner(src);
+    }
     return '<img src="' + src + '" alt="">';
   }
 
   function swipePinIcon(pinned) {
-    return '<span aria-hidden="true" style="transform:rotate(45deg);display:inline-block;font-size:18px">' +
-      (pinned ? "📍" : "📌") + "</span>";
+    if (window.MindBebopSwipeActionIcons) {
+      return MindBebopSwipeActionIcons.pin(pinned);
+    }
+    return "";
+  }
+
+  function swipeTrashIcon() {
+    if (window.MindBebopSwipeActionIcons) {
+      return MindBebopSwipeActionIcons.trash();
+    }
+    return "";
   }
 
   function buildMfoSwipeActions(row) {
@@ -467,19 +479,19 @@
         },
         {
           ariaLabel: "Manual Shout",
-          iconHtml: swipeIconImg("../../assets/mindzoneout/row-mso.png"),
+          iconHtml: swipePartnerIcon("../../assets/mindzoneout/row-mso.png"),
           tint: "black",
           onActivate: function () { handleRowAction(row, "shout"); }
         },
         {
           ariaLabel: "Manual Zone",
-          iconHtml: swipeIconImg(iconBase + "row-mzo.png"),
+          iconHtml: swipePartnerIcon(iconBase + "row-mzo.png"),
           tint: "black",
           onActivate: function () { handleRowAction(row, "zone"); }
         },
         {
           ariaLabel: "Send to Recipe",
-          iconHtml: swipeIconImg(iconBase + "row-me.png"),
+          iconHtml: swipePartnerIcon(iconBase + "row-me.png"),
           tint: "black",
           onActivate: function () { handleRowAction(row, "recipe"); }
         }
@@ -487,19 +499,19 @@
       trailing: [
         {
           ariaLabel: "Delete",
-          iconHtml: '<span aria-hidden="true" style="font-size:18px">🗑</span>',
+          iconHtml: swipeTrashIcon(),
           tint: "red",
           onActivate: function () { handleRowAction(row, "delete"); }
         },
         {
           ariaLabel: "MindEaseOut",
-          iconHtml: swipeIconImg(iconBase + "row-meo.png"),
+          iconHtml: swipePartnerIcon(iconBase + "row-meo.png"),
           tint: "gray",
           onActivate: function () { handleRowAction(row, "letgo"); }
         },
         {
           ariaLabel: "Manual MindBackyard",
-          iconHtml: swipeIconImg(iconBase + "row-mby.png"),
+          iconHtml: swipePartnerIcon(iconBase + "row-mby.png"),
           tint: "black",
           onActivate: function () { handleRowAction(row, "backyard"); }
         }
