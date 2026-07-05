@@ -220,6 +220,7 @@
     </form>
   </dialog>
 
+  <script src="../../js/swipe-action-icons.js"></script>
   <script src="../../js/swipe-actions.js"></script>
   <script src="../../js/native-parity.js"></script>
   <script src="../../js/boundary-notice.js"></script>
@@ -832,11 +833,15 @@
       }
 
       function swipeIcon(src) {
+        if (window.MindBebopSwipeActionIcons) {
+          return MindBebopSwipeActionIcons.partner(src);
+        }
         return '<img src="' + src + '" alt="">';
       }
 
       function attachRowSwipes() {
         if (!window.MindBebopSwipeActions) return;
+        const icons = window.MindBebopSwipeActionIcons;
         ui.groupsWrap.querySelectorAll("[data-row-id]").forEach(function (rowEl) {
           const id = rowEl.dataset.rowId;
           const item = state.pendingRequests.find(function (entry) { return entry.id === id; });
@@ -845,7 +850,7 @@
             leading: [
               {
                 ariaLabel: item.isPinned ? "Unpin" : "Pin",
-                iconHtml: '<span aria-hidden="true" style="transform:rotate(45deg);display:inline-block;font-size:18px">' + (item.isPinned ? "📍" : "📌") + "</span>",
+                iconHtml: icons ? icons.pin(item.isPinned) : "",
                 tint: "black",
                 onActivate: function () { togglePin(id); }
               },
@@ -871,7 +876,7 @@
             trailing: [
               {
                 ariaLabel: "Delete",
-                iconHtml: '<span aria-hidden="true" style="font-size:18px">🗑</span>',
+                iconHtml: icons ? icons.trash() : "",
                 tint: "red",
                 onActivate: function () { deleteShout(id); }
               },
