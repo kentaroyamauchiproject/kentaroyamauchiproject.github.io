@@ -4801,10 +4801,22 @@ body {
   cursor: pointer;
 }
 
-.mb-swipe-action img {
+.mb-swipe-action img,
+.mb-swipe-partner-icon {
   width: 22px;
   height: 22px;
   object-fit: contain;
+}
+
+.mb-swipe-sf-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.mb-swipe-pin-wrap {
+  display: inline-flex;
+  transform: rotate(45deg);
 }
 
 .mb-swipe-action-black {
