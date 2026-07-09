@@ -1,0 +1,58 @@
+/* =========================
+   PAGE-SPECIFIC: THOUGHT FRICTION
+   ========================= */
+.kicker { font-size: 1.05rem; opacity: 0.75; margin-top: -8px; }
+.page ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 24px 0;
+}
+
+.page ul li {
+  margin-bottom: 10px;
+  padding-left: 18px;
+  position: relative;
+}
+
+.page ul li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  opacity: 0.5;
+}
+
+.map-intro { display: flex; gap: 32px; align-items: center; margin-top: 16px; }
+.map-text { flex: 1 1 0; max-width: 38ch; }
+.diagram { flex: 0 0 300px; max-width: 300px; }
+
+@media (max-width: 760px) {
+  .map-intro { flex-direction: column; align-items: flex-start; }
+  .diagram { max-width: 360px; width: 100%; margin: 20px 0; }
+  .map-text { max-width: 70ch; }
+}
+
+.table-wrap { margin-top: 18px; overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; }
+table { width: 100%; border-collapse: collapse; min-width: 860px; }
+thead th { padding: 14px; border-bottom: 1px solid var(--border); background: var(--soft); }
+tbody td { padding: 14px; border-bottom: 1px solid var(--border); }
+.icon { width: 40px; height: 40px; object-fit: contain; }
+
+thead th {
+  font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+  thead th {
+    background: rgba(255,255,255,0.06);
+  }
+}
+.diagram {
+  flex: 0 0 300px;
+  max-width: 300px;
+}
+
+.diagram img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
