@@ -21,32 +21,28 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<link rel="canonical" href="https://mindbebop.com/jp/mindanchor.html">
 
+<meta name="description" content="MindAnchorは、MINDBEBOPのレシピやCogniHackを完了したあとにたどり着いた心の状態を残します。意味のある心の移動の終点を記録するのであって、タスクそのものを記録するものではありません。">
 
-<meta name="description" content="Cross-Dimensional Handshakeは、現実世界とMental Background Layerを双方向につなぐMINDBEBOPの仕組みです。現実のイベントをMindEventとして受け取り、RecipeやCogniHackの完了をWebhook経由で外部へ安全に通知できます。">
-
-<meta name="keywords" content="Cross-Dimensional Handshake, MindEvent API, MindEvent, Webhook, MindEntry, Apple Shortcuts, App Intents, URLスキーム, Share Extension, Universal Links, Mental Background OS, Mental Background Layer, メンタルナビゲーション, メンタルステート, 思考整理, MINDBEBOP">
+<meta name="keywords" content="MindAnchor,Mental Navigation,心の移動,Point B,レシピ,CogniHack,MindEntry,心の状態,思考ノイズ,心の明瞭さ,Mental Background OS,MINDBEBOP">
 
 <meta name="author" content="MINDBEBOP">
 <meta name="robots" content="index, follow">
 
-<meta property="og:title" content="Cross-Dimensional Handshake | MINDBEBOP">
-
-<meta property="og:description" content="現実世界とMental Background Layerを双方向につなぐMINDBEBOPの仕組み。MindEventの受信とWebhookによる外部通知を安全に実現します。">
-
+<meta property="og:title" content="MindAnchor — MINDBEBOP">
+<meta property="og:description" content="レシピやCogniHackによって心が新しい場所へたどり着いたとき、MindAnchorはその到着の小さな痕跡を、消えてしまう前に残します。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mindbebop.com/jp/mindanchor.html">
 <meta property="og:image" content="https://mindbebop.com/image/MB_LOGO_V5_1024.png">
+<meta property="og:image:alt" content="MINDBEBOP ロゴ">
 
 <meta name="twitter:card" content="summary_large_image">
-
-<meta name="twitter:title" content="Cross-Dimensional Handshake | MINDBEBOP">
-
-<meta name="twitter:description" content="MindEventを受け取り、RecipeやCogniHackの完了をWebhookで外部へ通知。現実世界とMental Background Layerを双方向につなぎます。">
-
+<meta name="twitter:title" content="MindAnchor — MINDBEBOP">
+<meta name="twitter:description" content="レシピやCogniHackによって心が新しい場所へたどり着いたとき、MindAnchorはその到着の小さな痕跡を、消えてしまう前に残します。">
 <meta name="twitter:image" content="https://mindbebop.com/image/MB_LOGO_V5_1024.png">
-<title>MINDBEBOP — Cross-Dimensional Handshake</title>
+<meta name="twitter:image:alt" content="MINDBEBOP ロゴ">
+
+<title>MINDBEBOP — MindAnchor</title>
 
 <link rel="stylesheet" href="css/site.css">
 <link rel="stylesheet" href="css/jp.css">
@@ -88,33 +84,37 @@
   </div>
 
 <nav id="mb-menu" class="mb-menu" aria-hidden="true">
-  <div class="mb-menu-main">
-    <div class="mb-dropdown">
-    <a href="#" class="mb-parent">まずはここから</a>
-      <div class="mb-submenu">
+<div class="mb-menu-main">
+<div class="mb-dropdown">
+<a href="#" class="mb-parent">まずはここから</a>
+<div class="mb-submenu">
 <a href="welcome.html">ようこそ</a>
 <a href="where-do-i-start.html">どこから始めればいいの？</a>
 <a href="how-it-works.html">アプリのしくみ</a>
 <a href="thought-noise.html">思考ノイズとは</a>
+<a href="everyday-moments.html">日々のひとコマ</a>
+</div>
+<a href="#" class="mb-parent">OS</a>
+<div class="mb-submenu">
+<div class="submenu-group-label">— Foundation —</div>
 <a href="mindeaseout.html">MindEaseOut</a>
 <a href="mindblank.html">MindBlank</a>
 <a href="mindprecog.html">MindPreCog</a>
+<div class="submenu-group-label">— Mental Navigation —</div>
+<a href="mental-navigation.html" >Mental Navigation</a>
 <a href="stateful-recipes.html">Stateful Recipes</a>
 <a href="hallway-mode.html">Hallway Mode</a>
 <a href="mindanchor.html" aria-current="true">MindAnchor</a>
-<a href="mental-navigation.html" >Mental Navigation</a>
+<div class="submenu-group-label">— Reality Connection —</div>
 <a href="cross-dimensional-handshake.html">Cross-Dimensional Handshake</a>
-      </div>
-    </div>
-    
+  </div>
+</div>
+
     <div class="mb-dropdown">
     <a href="recipes.html" class="mb-highlight" class="mb-parent">レシピ</a>
     </div>
     <div class="mb-dropdown">
     <a href="cognihack.html" class="mb-highlight-blue" class="mb-parent">CogniHack</a>
-    </div>
-    <div class="mb-dropdown">
-    <a href="everyday-moments.html" class="mb-parent">日々のひとコマ</a>
     </div>
     <div class="mb-dropdown">
     <a href="faq.html" class="mb-parent">よくある質問</a>
@@ -139,31 +139,31 @@
 <h1>MindAnchor</h1>
 
 <p class="kicker">
-Anchor the arrival.
+到着した場所を、つなぎとめる。
 </p>
 
 <p>
-Some mental shifts are small, but important.
+心の変化は小さくても、大切なことがあります。
 </p>
 
 <p>
-A Recipe helps you start. A CogniHack helps you move. And sometimes, at the end, your mind arrives somewhere different.
+レシピは、始めることを助けます。CogniHackは、動き出すことを助けます。そして、その先で心が以前とは違う場所にたどり着くことがあります。
 </p>
 
 <p>
-<strong>MindAnchor</strong> is MINDBEBOP’s way of preserving that arrival before it fades.
+<strong>MindAnchor</strong>は、その到着が消えてしまう前に残しておくための、MINDBEBOPの仕組みです。
 </p>
 
 <hr class="rule">
 
-<h2>After the Movement</h2>
+<h2>動いた、そのあとに</h2>
 
 <p>
-Mental Navigation is about moving from Point A to Point B.
+Mental Navigationは、Point AからPoint Bへ移動するためのものです。
 </p>
 
 <p>
-MindAnchor begins when that movement has completed.
+MindAnchorは、その移動が完了したところから始まります。
 </p>
 
 <blockquote>
@@ -171,7 +171,7 @@ Point A
 <br><br>
 ↓
 <br><br>
-Recipe / CogniHack
+レシピ / CogniHack
 <br><br>
 ↓
 <br><br>
@@ -183,146 +183,146 @@ Point B
 </blockquote>
 
 <p>
-It does not track performance.
+パフォーマンスを記録するものではありません。
 </p>
 
 <p>
-It does not ask whether you were productive.
+生産的だったかどうかを尋ねるものでもありません。
 </p>
 
 <p>
-It simply helps you notice:
+ただ、次のことに気づくためのものです。
 </p>
 
 <blockquote>
-This is where my mind arrived.
+私の心は、ここにたどり着いた。
 </blockquote>
 
 <hr class="rule">
 
-<h2>What MindAnchor Captures</h2>
+<h2>MindAnchorが残すもの</h2>
 
 <p>
-MindAnchor is not a journal, scorecard, or achievement log.
+MindAnchorは、日記でも、スコアカードでも、達成記録でもありません。
 </p>
 
 <p>
-It is a small anchor for the mental state reached at completion.
+完了したときにたどり着いた心の状態を、小さくつなぎとめるものです。
 </p>
 
 <table>
   <thead>
     <tr>
-      <th>Before</th>
-      <th>After</th>
+      <th>その前</th>
+      <th>その後</th>
       <th>Anchor</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Unable to start</td>
-      <td>First step completed</td>
-      <td>“I moved.”</td>
+      <td>始められない</td>
+      <td>最初の一歩を終えた</td>
+      <td>「動けた。」</td>
     </tr>
     <tr>
-      <td>Overthinking</td>
-      <td>Quieter mind</td>
-      <td>“This is enough for now.”</td>
+      <td>考えすぎている</td>
+      <td>心が少し静かになった</td>
+      <td>「今は、これで十分。」</td>
     </tr>
     <tr>
-      <td>Waiting for a reply</td>
-      <td>Attention returned</td>
-      <td>“I can come back to my own life.”</td>
+      <td>返事を待ち続けている</td>
+      <td>注意が自分のもとに戻った</td>
+      <td>「自分の生活に戻っていい。」</td>
     </tr>
     <tr>
-      <td>Mentally overloaded</td>
-      <td>One clear next move</td>
-      <td>“I know what comes next.”</td>
+      <td>頭の中がいっぱい</td>
+      <td>次の一手がひとつ見えた</td>
+      <td>「次に何をすればいいかわかる。」</td>
     </tr>
     <tr>
-      <td>Pre-presentation nerves</td>
-      <td>Ready to begin</td>
-      <td>“I can enter the room now.”</td>
+      <td>プレゼン前で緊張している</td>
+      <td>始める準備ができた</td>
+      <td>「もう、部屋に入れる。」</td>
     </tr>
   </tbody>
 </table>
 
 <hr class="rule">
 
-<h2>Why Anchor It?</h2>
+<h2>なぜ、つなぎとめるのか</h2>
 
 <p>
-A useful mental state can disappear quickly.
+役に立つ心の状態は、すぐに消えてしまうことがあります。
 </p>
 
 <p>
-You may complete a Recipe, feel clearer for a moment, and then immediately get pulled back into messages, tabs, errands, or the next open loop.
+レシピを完了して、一瞬だけ頭がすっきりしても、すぐにメッセージやタブ、用事、次の未完了の思考へ引き戻されることがあります。
 </p>
 
 <p>
-MindAnchor gives the arrival a small marker.
+MindAnchorは、その到着に小さな印を残します。
 </p>
 
 <p>
-Not to preserve everything.
+すべてを保存するためではありません。
 </p>
 
 <p>
-Just to say:
+ただ、こう言えるようにするためです。
 </p>
 
 <blockquote>
-Something shifted here.
+ここで、何かが動いた。
 </blockquote>
 
 <hr class="rule">
 
-<h2>What It Is Not</h2>
+<h2>MindAnchorではないもの</h2>
 
 <p>
-MindAnchor is intentionally narrow.
+MindAnchorは、意図的に役割を絞っています。
 </p>
 
 <ul>
-  <li>It is not a daily journal.</li>
-  <li>It is not a mood tracker.</li>
-  <li>It is not a streak system.</li>
-  <li>It is not a memory archive.</li>
-  <li>It is not a measurement of progress.</li>
+  <li>毎日書く日記ではありません。</li>
+  <li>気分を記録するトラッカーではありません。</li>
+  <li>連続記録をつくる仕組みではありません。</li>
+  <li>記憶を保管するアーカイブではありません。</li>
+  <li>進歩を測るものではありません。</li>
 </ul>
 
 <p>
-It only appears when a meaningful mental transition has completed.
+意味のある心の移動が完了したときにだけ現れます。
 </p>
 
 <hr class="rule">
 
-<h2>How It Fits MINDBEBOP</h2>
+<h2>MINDBEBOPの中での役割</h2>
 
 <p>
-Most MINDBEBOP tools help reduce thought noise, loosen stuck loops, redirect attention, or create a quieter place to move.
+MINDBEBOPの多くのツールは、思考ノイズを減らし、止まったループをゆるめ、注意の向きを変え、より静かに動ける場所をつくります。
 </p>
 
 <p>
-MindAnchor completes that movement.
+MindAnchorは、その移動を完了させます。
 </p>
 
 <blockquote>
-Release what should not linger.
+残す必要のないものは、手放す。
 <br><br>
-Move what needs to move.
+動かす必要のあるものは、動かす。
 <br><br>
-Anchor what helped you arrive.
+たどり着く助けになったものは、つなぎとめる。
 </blockquote>
 
 <hr class="rule">
 
-<h2>The Simple Idea</h2>
+<h2>シンプルな考え方</h2>
 
 <blockquote>
-When your mind reaches somewhere useful,
+心が、役に立つ場所へたどり着いたとき、
 <br><br>
-MindAnchor helps you keep a small trace of that arrival.
+MindAnchorは、その到着の小さな痕跡を残します。
 </blockquote>
 
 <hr class="rule">
