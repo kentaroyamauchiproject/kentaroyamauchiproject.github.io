@@ -31,6 +31,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.6;
   overflow-y: scroll; /* ← ADD THIS */
+}
 
 a {
   color: inherit;
@@ -83,10 +84,11 @@ a:hover { opacity: 0.6; }
   font-weight: 600;
 }
 
-.mb-menu-main a.mb-highlight-blue {
-  color: #3A6EA5;
-  font-weight: 600;
-}
+  .mb-menu-main a.mb-highlight-blue {
+    color: #3A6EA5;
+    font-weight: 600;
+  }
+
 
 /* ---------- LANGUAGE SWITCH ---------- */
 
@@ -103,7 +105,7 @@ a:hover { opacity: 0.6; }
   font-weight: 600;
 }
 
-@media (max-width: 899px) {
+@media (max-width: 900px) {
   .lang-switch { display: none; }
 }
 
@@ -242,7 +244,7 @@ body.mb-menu-open {
     font-weight: 600;
   }
 
-   .mb-menu-main a.mb-highlight-blue {
+    .mb-menu-main a.mb-highlight-blue {
     color: #3A6EA5;
     font-weight: 600;
   }
@@ -290,6 +292,10 @@ body.mb-menu-open {
 
 }
 
+.lang-switch {
+    margin-bottom: 10px;
+  }
+
 /* ---------- PAGE ---------- */
 
 .page {
@@ -323,12 +329,15 @@ hr {
   letter-spacing:-0.015em;
 }
 
-.start-card-image{
-  width:100%;
-  max-width:280px;
-  display:block;
-  margin:16px auto;
-  border-radius:16px;
-  border:1px solid var(--border);
-  box-shadow:0 8px 24px rgba(0,0,0,.08);
+/* ---------- IMAGES ---------- */
+
+.start-card-image {
+  width: 100%;
+  max-width: 280px;
+  display: block;
+  margin: 16px auto;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
 }
+
