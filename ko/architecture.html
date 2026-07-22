@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="https://mindbebop.com/architecture.html">
+
+<link rel="alternate" hreflang="en" href="https://mindbebop.com/architecture.html">
+<link rel="alternate" hreflang="ja" href="https://mindbebop.com/jp/architecture.html">
+<link rel="alternate" hreflang="de" href="https://mindbebop.com/de/architecture.html">
+<link rel="alternate" hreflang="ko" href="https://mindbebop.com/ko/architecture.html">
+<link rel="alternate" hreflang="fr" href="https://mindbebop.com/fr/architecture.html">
+<link rel="alternate" hreflang="es" href="https://mindbebop.com/es/architecture.html">
+<link rel="alternate" hreflang="pt-BR" href="https://mindbebop.com/pt-br/architecture.html">
+<link rel="alternate" hreflang="x-default" href="https://mindbebop.com/architecture.html">
+
+<meta name="description" content="MINDBEBOP의 세 가지 레이어를 살펴보세요. Thought Noise를 줄이고, 원하는 마음 상태로 안내하며, 마음이 도착한 곳을 북마크합니다.">
+
+<meta name="keywords" content="MINDBEBOP Architecture, Noise-Canceling Apps for Your Mind, Google Maps for Your Mind, Bookmarks for Your Mind, Thought Noise, Mental Navigation, MindAnchor, 마음 상태">
+<meta name="author" content="MINDBEBOP">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="MINDBEBOP Architecture — 마음을 위한 세 가지 레이어">
+<meta property="og:description" content="Thought Noise를 줄입니다. 원하는 마음 상태로 안내합니다. 마음이 도착한 곳을 북마크합니다.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mindbebop.com/architecture.html">
+<meta property="og:image" content="https://mindbebop.com/image/MB_LOGO_V5_1024.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MINDBEBOP Architecture">
+<meta name="twitter:description" content="Noise-Canceling, Mental Navigation, 그리고 마음을 위한 북마크.">
+<meta name="twitter:image" content="https://mindbebop.com/image/MB_LOGO_V5_1024.png">
+
+<title>MINDBEBOP Architecture — 마음을 위한 세 가지 레이어</title>
+
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+
+<div class="mb-nav">
+<header class="mb-header">
+  <a class="mb-brand" href="index.html">
+    <img src="../image/MB_LOGO_V5_1024.png"
+         data-light="../image/MB_LOGO_V5_1024.png"
+         data-dark="../image/MB_LOGO_V5_1024_INV.png"
+         alt="MINDBEBOP logo">
+    <span class="mb-brand-name">MINDBEBOP</span>
+    <span class="mb-brand-tagline">Mental Background OS</span>
+  </a>
+
+  <button class="mb-hamburger"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mb-menu">
+    <span class="mb-open">☰</span>
+    <span class="mb-close">×</span>
+  </button>
+</header>
+
+<div class="lang-switch">
+    <a href="/architecture.html">English</a>
+    <a href="/jp/architecture.html">日本語</a>
+    <a href="/de/architecture.html">Deutsch</a>
+    <a href="/ko/architecture.html" aria-current="true">한국어</a>
+    <a href="/fr/architecture.html">Français</a>
+    <a href="/es/architecture.html">Español</a>
+    <a href="/pt-br/architecture.html">Português (Brasil)</a>
+    </div>
+
+<nav id="mb-menu" class="mb-menu" aria-hidden="true">
+  <div class="mb-menu-main">
+    <!-- START HERE -->
+    <div class="mb-dropdown">
+        <a href="#" class="mb-parent">여기서 시작하기</a>
+      <div class="mb-submenu">
+<a href="welcome.html">환영합니다</a>
+<a href="where-do-i-start.html">어디서 시작하면 될까요?</a>
+<a href="how-it-works.html">작동 원리</a>
+<a href="thought-noise.html">생각 노이즈</a>
+<a href="everyday-moments.html">일상의 순간들</a>
+      </div>
+    </div>
+
+<div class="mb-dropdown">
+<a href="#" class="mb-parent">OS</a>
+<div class="mb-submenu">
+<a href="mental-background-os.html">Mental Background OS</a>
+<a href="architecture.html" aria-current="page">Architecture</a>
+<div class="submenu-group-label">— 기반 —</div>
+<a href="mindeaseout.html">MindEaseOut</a>
+<a href="mindblank.html">MindBlank</a>
+<a href="mindprecog.html">MindPreCog</a>
+<div class="submenu-group-label">— 멘탈 내비게이션 —</div>
+<a href="mental-navigation.html">Mental Navigation</a>
+<a href="stateful-recipes.html">Stateful Recipes</a>
+<a href="hallway-mode.html">Hallway Mode</a>
+<a href="mindanchor.html">MindAnchor</a>
+<div class="submenu-group-label">— 현실 —</div>
+<a href="cross-dimensional-handshake.html">Cross-Dimensional Handshake</a>
+      </div>
+    </div>
+
+    <div class="mb-dropdown">
+    <a href="recipes.html" class="mb-highlight" class="mb-parent">레시피</a>
+    </div>
+    <div class="mb-dropdown">
+    <a href="cognihack.html" class="mb-highlight-blue" class="mb-parent">CogniHack</a>
+    </div>
+    <div class="mb-dropdown">
+    <a href="faq.html" class="mb-parent">자주 묻는 질문</a>
+    </div>
+    <div class="mb-dropdown">
+    <a href="philosophy.html" class="mb-parent">철학</a>
+    </div>
+  
+    <div class="mb-menu-lang">
+    <a href="/architecture.html">English</a>
+    <a href="/jp/architecture.html">日本語</a>
+    <a href="/de/architecture.html">Deutsch</a>
+    <a href="/ko/architecture.html" aria-current="true">한국어</a>
+    <a href="/fr/architecture.html">Français</a>
+    <a href="/es/architecture.html">Español</a>
+    <a href="/pt-br/architecture.html">Português (Brasil)</a>
+    </div>
+  </div>
+  </nav>
+</div>
+
+<div class="page">
+
+<p class="kicker">MINDBEBOP 아키텍처</p>
+
+<p class="hero-lead">
+  MINDBEBOP은 하나의 앱이 아닙니다.
+  Mental Background OS로 함께 작동하는 작은 도구들의 모음입니다.
+</p>
+
+<p>
+  이 도구들은 서로 연결된 세 개의 레이어를 이룹니다.
+  Thought Noise를 줄이고, Mental Navigation을 지원하며,
+  의미 있는 도착을 보존하기 위한 레이어입니다.
+</p>
+
+<p>
+  먼저, 계속해서 주의를 요구하는 생각을 줄입니다.
+  다음으로, 원하는 정신 상태에 도달할 수 있도록 길을 안내합니다.
+  마지막으로, 마음이 도착한 곳을 나중에도 다시 떠올릴 수 있도록 남겨 둡니다.
+</p>
+
+<hr class="rule">
+
+  <!-- LAYER 1 -->
+  <section style="margin-top:42px;">
+    <p class="kicker">레이어 1 — 줄이기</p>
+
+    <h2>당신의 마음을 위한 노이즈 캔슬링 앱</h2>
+
+    <p style="font-size:1.15rem; line-height:1.7;">
+      Thought Noise를 줄입니다.
+    </p>
+
+    <p>
+      어떤 생각은 그 순간이 지나도 마음속에서 계속 활성화된 채 남아 있습니다.
+      기다리고 있는 답장.
+      계속해서 다시 열어보게 되는 작업.
+      머릿속에서 반복되는 대화.
+      잊고 싶지 않은 것.
+    </p>
+
+    <p>
+      MINDBEBOP은 그런 생각에 작은 출구와 머물 곳, 경계,
+      그리고 마무리할 방법을 제공합니다.
+      목표는 기억을 지우는 것이 아닙니다.
+      생각이 계속해서 주의를 요구하지 않도록 돕는 것입니다.
+    </p>
+
+    <p>
+      이것이 Mental Background OS의 기반이 되는 레이어입니다.
+    </p>
+
+    <p>
+      <a href="thought-noise.html">Thought Noise 자세히 보기 →</a>
+    </p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- LAYER 2 -->
+<section style="margin-top:42px;">
+  <p class="kicker">레이어 2 — 안내하기</p>
+
+  <h2>당신의 마음을 위한 Google 지도</h2>
+
+  <p style="font-size:1.15rem; line-height:1.7;">
+    지금의 마음 상태에서 필요한 마음 상태로 이동하세요.
+  </p>
+
+  <p>
+    Thought Noise를 줄이면 마음에 여유가 생깁니다.
+    하지만 여유만으로는 언제나 앞으로 나아갈 수 있는 것은 아닙니다.
+    어디에 도착하고 싶은지는 알지만,
+    그곳까지 어떻게 가야 하는지는 모를 때가 있습니다.
+  </p>
+
+  <p>
+    예를 들어, 내일 중요한 대화를 앞두고 있다고 해 봅시다.
+    어떤 마음으로 그 대화에 임하고 싶은지는 알지만,
+    그 상태에 어떻게 도달해야 하는지는 모릅니다.
+  </p>
+
+  <p>
+    Mental Navigation은
+    현재의 마음 상태에서
+    원하는 마음 상태까지의 이동을 안내합니다.
+  </p>
+
+  <p>
+    상황에 따라 선택할 수 있는 길은 여러 가지입니다.
+    한 경로가 도움이 되지 않는다면,
+    목적지는 그대로 둔 채 다른 경로를 시도할 수 있습니다.
+  </p>
+
+  <p>
+    목적지는 당신이 정합니다.
+    MINDBEBOP은 그곳까지 가는 길을 돕습니다.
+  </p>
+
+  <p>
+    <a href="mental-navigation.html">Mental Navigation 알아보기 →</a>
+  </p>
+</section>
+
+<hr class="rule">
+
+<!-- LAYER 3 -->
+<section style="margin-top:42px;">
+  <p class="kicker">레이어 3 — 남기기</p>
+
+  <h2>당신의 마음을 위한 북마크</h2>
+
+  <p style="font-size:1.15rem; line-height:1.7;">
+    마음이 도착한 곳을 남기세요.
+  </p>
+
+  <p>
+    원하는 마음 상태에 도달했다고 해서
+    항상 여정이 끝나는 것은 아닙니다.
+    평온함, 명료함, 준비된 마음,
+    결심이나 '도착했다'는 감각은
+    일상으로 돌아오면서 점차 희미해질 수 있습니다.
+  </p>
+
+  <p>
+    그 대화를 마친 뒤,
+    마침내 마음이 차분해지고, 명확해지며,
+    준비되었다고 느낍니다.
+    하지만 일주일이 지나면
+    그 감각을 다시 떠올리기가 더 어려워질 수 있습니다.
+  </p>
+
+  <p>
+    MindAnchor는
+    그 '도착의 순간'을 남길 수 있도록 돕습니다.
+    사진, 순간,
+    상황 또는 다른 앵커를 남겨두면
+    나중에 그 마음 상태를 더 쉽게 떠올리고
+    다시 돌아가는 데 도움이 됩니다.
+  </p>
+
+  <p>
+    마음 상태를 고정하거나
+    그 상태에 머물도록 강요하는 것이 아닙니다.
+    그것은 다시 돌아올 수 있는
+    작은 북마크를 만드는 것입니다.
+  </p>
+
+  <p>
+    <a href="mindanchor.html">MindAnchor 알아보기 →</a>
+  </p>
+</section>
+
+<hr class="rule">
+
+  <!-- FLOW -->
+  <section style="margin-top:42px;">
+    <p class="kicker">전체 흐름</p>
+
+    <h2>줄이기. 안내하기. 남기기.</h2>
+
+    <div style="
+      margin-top:28px;
+      padding:26px;
+      border:1px solid var(--border);
+      border-radius:18px;
+    ">
+      <p style="margin-top:0;">
+        <strong>Thought Noise는 계속해서 주의를 요구합니다.</strong><br>
+        그 요구를 줄입니다.
+      </p>
+
+      <p aria-hidden="true" style="font-size:1.4rem; opacity:0.5;">↓</p>
+
+      <p>
+        <strong>당신의 마음은 어딘가로 움직일 필요가 있습니다.</strong><br>
+        필요한 마음 상태로 안내합니다.
+      </p>
+
+      <p aria-hidden="true" style="font-size:1.4rem; opacity:0.5;">↓</p>
+
+      <p style="margin-bottom:0;">
+        <strong>기억할 가치가 있는 곳에 도착합니다.</strong><br>
+        그 도착을 북마크합니다.
+      </p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- NOT A CLOSED PIPELINE -->
+  <section style="margin-top:42px;">
+    <h2>모든 순간에 세 가지 레이어가 모두 필요한 것은 아닙니다.</h2>
+
+    <p>
+      때로는 생각이 머물 곳만 있으면 충분합니다.
+      때로는 행동으로 이어지는 길만 필요합니다.
+      또 어떤 때는 이미 원하는 상태에 도달했고,
+      그 상태를 남겨 두기만 하면 됩니다.
+    </p>
+
+    <p>
+      각 레이어는 모듈형으로 설계되었습니다.
+      필요에 따라 각각 독립적으로 사용할 수도 있고,
+      하나의 긴 흐름으로 연결하여 사용할 수도 있습니다.
+    </p>
+
+    <p>
+      MINDBEBOP은 전체 시스템을 사용할 것을 요구하지 않습니다.
+      지금 이 순간 당신에게 가장 작지만 가장 도움이 되는 레이어를 제공합니다.
+    </p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- OS CONNECTION -->
+  <section style="margin-top:42px;">
+    <p class="kicker">Mental Background OS</p>
+
+    <h2>하나의 아키텍처. 작은 도구들.</h2>
+
+    <p>
+      MINDBEBOP의 각 앱은 하나의 제한된 역할만 수행합니다.
+      하지만 모든 앱은 동일한 기반 아키텍처를 공유합니다.
+      Thought Noise를 줄이고,
+      Mental Navigation을 지원하며,
+      주의를 다시 현실과 연결하는 것입니다.
+    </p>
+
+    <p>
+      이 시스템은 모듈형으로 유지되므로,
+      하나의 도구만 사용할 수 있으며
+      전체 방법론이나 루틴,
+      또는 생산성 시스템 전체를 받아들일 필요가 없습니다.
+    </p>
+
+    <p>
+      <a href="mental-background-os.html">Mental Background OS 알아보기 →</a>
+    </p>
+  </section>
+
+  <hr class="rule">
+
+<div class="quiet-note">
+  <p><strong>무엇이 당신을 여기로 이끌었나요?</strong></p>
+  <p>짧은 메모 한 줄이면 충분합니다.</p>
+  <p>
+    <a href="mailto:support@mindbebop.com?subject=What%20brought%20me%20here">
+      support@mindbebop.com
+    </a>
+  </p>
+</div>
+
+<div style="margin-top:60px; opacity:0.7; font-size:0.9rem;">
+<p class="copyright">
+      Copyright © 2026 MINDBEBOP — All rights reserved.
+</p>
+</div>
+</div>
+
+<script>
+(function () {
+  function applyDarkImages(isDark) {
+    document.querySelectorAll('img[data-dark]').forEach(img => {
+      img.src = isDark
+        ? img.getAttribute('data-dark')
+        : img.getAttribute('data-light') || img.src;
+    });
+  }
+
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  applyDarkImages(media.matches);
+  media.addEventListener('change', e => applyDarkImages(e.matches));
+})();
+</script>
+
+<script>
+(() => {
+  const btn = document.querySelector('.mb-hamburger');
+  const menu = document.querySelector('.mb-menu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    menu.setAttribute('aria-hidden', String(open));
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      btn.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+</body>
+</html>
