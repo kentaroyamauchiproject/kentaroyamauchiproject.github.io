@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="https://mindbebop.com/architecture.html">
+
+<link rel="alternate" hreflang="en" href="https://mindbebop.com/architecture.html">
+<link rel="alternate" hreflang="ja" href="https://mindbebop.com/jp/architecture.html">
+<link rel="alternate" hreflang="de" href="https://mindbebop.com/de/architecture.html">
+<link rel="alternate" hreflang="ko" href="https://mindbebop.com/ko/architecture.html">
+<link rel="alternate" hreflang="fr" href="https://mindbebop.com/fr/architecture.html">
+<link rel="alternate" hreflang="es" href="https://mindbebop.com/es/architecture.html">
+<link rel="alternate" hreflang="pt-BR" href="https://mindbebop.com/pt-br/architecture.html">
+<link rel="alternate" hreflang="x-default" href="https://mindbebop.com/architecture.html">
+
+<meta name="description" content="MINDBEBOPの3つのレイヤーをご覧ください。Thought Noiseを減らし、望む心の状態へ導き、心がたどり着いた場所をブックマークします。">
+
+<meta name="keywords" content="MINDBEBOP Architecture, Noise-Canceling Apps for Your Mind, Google Maps for Your Mind, Bookmarks for Your Mind, Thought Noise, Mental Navigation, MindAnchor, 心の状態">
+<meta name="author" content="MINDBEBOP">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="MINDBEBOP Architecture — 心のための3つのレイヤー">
+<meta property="og:description" content="Thought Noiseを減らす。望む心の状態へ導く。心がたどり着いた場所をブックマークする。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mindbebop.com/architecture.html">
+<meta property="og:image" content="https://mindbebop.com/image/MB_LOGO_V5_1024.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MINDBEBOP Architecture">
+<meta name="twitter:description" content="Noise-Canceling、Mental Navigation、そして心のためのブックマーク。">
+<meta name="twitter:image" content="https://mindbebop.com/image/MB_LOGO_V5_1024.png">
+
+<title>MINDBEBOP Architecture — 心のための3つのレイヤー</title>
+
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+
+<div class="mb-nav">
+<header class="mb-header">
+  <a class="mb-brand" href="index.html">
+    <img src="../image/MB_LOGO_V5_1024.png"
+         data-light="../image/MB_LOGO_V5_1024.png"
+         data-dark="../image/MB_LOGO_V5_1024_INV.png"
+         alt="MINDBEBOP logo">
+    <span class="mb-brand-name">MINDBEBOP</span>
+    <span class="mb-brand-tagline">Mental Background OS</span>
+  </a>
+
+  <button class="mb-hamburger"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mb-menu">
+    <span class="mb-open">☰</span>
+    <span class="mb-close">×</span>
+  </button>
+</header>
+
+<div class="lang-switch">
+    <a href="/architecture.html">English</a>
+    <a href="/jp/architecture.html" aria-current="true">日本語</a>
+    <a href="/de/architecture.html">Deutsch</a>
+    <a href="/ko/architecture.html">한국어</a>
+    <a href="/fr/architecture.html">Français</a>
+    <a href="/es/architecture.html">Español</a>
+    <a href="/pt-br/architecture.html">Português (Brasil)</a>
+  </div>
+
+<nav id="mb-menu" class="mb-menu" aria-hidden="true">
+<div class="mb-menu-main">
+
+<div class="mb-dropdown">
+<a href="#" class="mb-parent">まずはここから</a>
+<div class="mb-submenu">
+<a href="welcome.html">ようこそ</a>
+<a href="where-do-i-start.html">どこから始めればいいの？</a>
+<a href="how-it-works.html">アプリのしくみ</a>
+<a href="thought-noise.html">思考ノイズ</a>
+<a href="everyday-moments.html">日々のひとコマ</a>
+</div>
+</div>
+
+<div class="mb-dropdown">
+<a href="#" class="mb-parent">OS</a>
+<div class="mb-submenu">
+<a href="mental-background-os.html">Mental Background OS</a>
+<a href="architecture.html" aria-current="page">Architecture</a>
+<div class="submenu-group-label">— 基盤 —</div>
+<a href="mindeaseout.html">MindEaseOut</a>
+<a href="mindblank.html">MindBlank</a>
+<a href="mindprecog.html">MindPreCog</a>
+<div class="submenu-group-label">— メンタル・ナビゲーション —</div>
+<a href="mental-navigation.html" >Mental Navigation</a>
+<a href="stateful-recipes.html">Stateful Recipes</a>
+<a href="hallway-mode.html">Hallway Mode</a>
+<a href="mindanchor.html">MindAnchor</a>
+<div class="submenu-group-label">— 現実 —</div>
+<a href="cross-dimensional-handshake.html">Cross-Dimensional Handshake</a>
+  </div>
+</div>
+
+<div class="mb-dropdown">
+    <a href="recipes.html" class="mb-highlight" class="mb-parent">レシピ</a>
+    </div>
+    <div class="mb-dropdown">
+    <a href="cognihack.html" class="mb-highlight-blue" class="mb-parent">CogniHack</a>
+    </div>
+    <div class="mb-dropdown">
+    <a href="faq.html" class="mb-parent">よくある質問</a>
+    </div>
+    <div class="mb-dropdown">
+    <a href="philosophy.html" class="mb-parent">哲学</a>
+    </div>
+  </div>
+
+  <div class="mb-menu-lang">
+    <a href="/architecture.html">English</a>
+    <a href="/jp/architecture.html" aria-current="true">日本語</a>
+    <a href="/de/architecture.html">Deutsch</a>
+    <a href="/ko/architecture.html">한국어</a>
+    <a href="/fr/architecture.html">Français</a>
+    <a href="/es/architecture.html">Español</a>
+    <a href="/pt-br/architecture.html">Português (Brasil)</a>
+  </div>
+</nav>
+</div>
+
+<div class="page">
+
+<p class="kicker">MINDBEBOPアーキテクチャ</p>
+
+<p class="hero-lead">
+  MINDBEBOPは、ひとつのアプリではありません。
+  Mental Background OSとして連携する、小さなツール群です。
+</p>
+
+<p>
+  それらは3つのつながったレイヤーで構成されています。
+  Thought Noiseを減らし、Mental Navigationを支え、
+  意味のある到着を残すためのレイヤーです。
+</p>
+
+<p>
+  まず、注意を求め続ける思考を減らします。
+  次に、望む精神状態へ向かう道筋を支えます。
+  そして最後に、たどり着いた場所を、あとから思い出せるように残します。
+</p>
+
+<hr class="rule">
+
+  <!-- LAYER 1 -->
+  <section style="margin-top:42px;">
+    <p class="kicker">レイヤー1 — 減らす</p>
+
+    <h2>あなたの心のためのノイズキャンセリングアプリ</h2>
+
+    <p style="font-size:1.15rem; line-height:1.7;">
+      Thought Noiseを減らします。
+    </p>
+
+    <p>
+      その場は終わったのに、頭の中ではまだ動き続けている思考があります。
+      返事を待っていること。何度も開き直してしまうタスク。
+      頭の中で繰り返してしまう会話。
+      忘れたくないこと。
+    </p>
+
+    <p>
+      MINDBEBOPは、そうした思考に小さな出口や置き場所、境界、
+      そして終わらせる方法を与えます。
+      目的は記憶を消すことではありません。
+      思考が繰り返し注意を求めなくなるようにすることです。
+    </p>
+
+    <p>
+      これがMental Background OSの基盤となるレイヤーです。
+    </p>
+
+    <p>
+      <a href="thought-noise.html">Thought Noiseについて詳しく →</a>
+    </p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- LAYER 2 -->
+<section style="margin-top:42px;">
+  <p class="kicker">レイヤー2 — 導く</p>
+
+  <h2>あなたの心のためのGoogleマップ</h2>
+
+  <p style="font-size:1.15rem; line-height:1.7;">
+    今の心の状態から、必要な心の状態へ。
+  </p>
+
+  <p>
+    Thought Noiseを減らすことで心には余白が生まれます。
+    しかし、その余白だけでは前へ進めないこともあります。
+    たどり着きたい場所はわかっていても、
+    そこへ行く方法がわからないことがあるのです。
+  </p>
+
+  <p>
+    たとえば、明日に大切な話し合いを控えているとします。
+    どういう気持ちで臨みたいかはわかっている。
+    でも、そこへどうたどり着けばいいのかわからない。
+  </p>
+
+  <p>
+    Mental Navigationは、
+    今の心の状態から、望む心の状態への移動を支えます。
+  </p>
+
+  <p>
+    状況によって、選べるルートはさまざまです。
+    ひとつのルートが合わなければ、
+    目的地を変えずに別のルートを試すことができます。
+  </p>
+
+  <p>
+    目的地を決めるのはあなたです。
+    MINDBEBOPは、その道のりを支えます。
+  </p>
+
+  <p>
+    <a href="mental-navigation.html">Mental Navigationについて詳しく →</a>
+  </p>
+</section>
+
+<hr class="rule">
+
+<!-- LAYER 3 -->
+<section style="margin-top:42px;">
+  <p class="kicker">レイヤー3 — 残す</p>
+
+  <h2>あなたの心のためのブックマーク</h2>
+
+  <p style="font-size:1.15rem; line-height:1.7;">
+    心がたどり着いた場所を残します。
+  </p>
+
+  <p>
+    望んでいた心の状態にたどり着いても、
+    それが旅の終わりとは限りません。
+    落ち着きや明晰さ、心の準備、
+    決意や「たどり着いた」という感覚は、
+    日常に戻るにつれて薄れていくことがあります。
+  </p>
+
+  <p>
+    あの話し合いを終えたあと、
+    ようやく落ち着きや明晰さ、心の準備が整ったと感じた。
+    でも一週間後には、その感覚をもう一度思い出すことが難しくなっている。
+  </p>
+
+  <p>
+    MindAnchorは、その「たどり着いた瞬間」の痕跡を残す手助けをします。
+    写真やその瞬間、状況などをアンカーとして残すことで、
+    あの心の状態を思い出し、
+    後から戻りやすくします。
+  </p>
+
+  <p>
+    心の状態を固定したり、
+    そこに留まることを強制したりするものではありません。
+    それは、戻るための小さな目印となるブックマークです。
+  </p>
+
+  <p>
+    <a href="mindanchor.html">MindAnchorについて詳しく →</a>
+  </p>
+</section>
+
+<hr class="rule">
+
+  <!-- FLOW -->
+  <section style="margin-top:42px;">
+    <p class="kicker">全体の流れ</p>
+
+    <h2>減らす。導く。残す。</h2>
+
+    <div style="
+      margin-top:28px;
+      padding:26px;
+      border:1px solid var(--border);
+      border-radius:18px;
+    ">
+      <p style="margin-top:0;">
+        <strong>Thought Noiseは注意を求め続けます。</strong><br>
+        その要求を減らします。
+      </p>
+
+      <p aria-hidden="true" style="font-size:1.4rem; opacity:0.5;">↓</p>
+
+      <p>
+        <strong>心はどこかへ進む必要があります。</strong><br>
+        必要な心の状態へ導きます。
+      </p>
+
+      <p aria-hidden="true" style="font-size:1.4rem; opacity:0.5;">↓</p>
+
+      <p style="margin-bottom:0;">
+        <strong>たどり着いた場所には、残す価値があります。</strong><br>
+        その到達をブックマークします。
+      </p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- NOT A CLOSED PIPELINE -->
+  <section style="margin-top:42px;">
+    <h2>すべての場面で、3つのレイヤーすべてが必要なわけではありません。</h2>
+
+    <p>
+      思考に必要なのは、置き場所だけということもあります。
+      行動へ向かう道筋だけが必要なこともあります。
+      すでに目的の状態にたどり着き、その状態を残したいだけということもあります。
+    </p>
+
+    <p>
+      それぞれのレイヤーは独立して使うことも、
+      必要に応じて一連の流れとして組み合わせることもできます。
+    </p>
+
+    <p>
+      MINDBEBOPは、システム全体を使うことを求めません。
+      その瞬間に必要な、最も小さく役立つレイヤーを提供します。
+    </p>
+  </section>
+
+  <hr class="rule">
+
+  <!-- OS CONNECTION -->
+  <section style="margin-top:42px;">
+    <p class="kicker">Mental Background OS</p>
+
+    <h2>ひとつのアーキテクチャ。小さなツール。</h2>
+
+    <p>
+      MINDBEBOPの各アプリは、それぞれ限られた役割だけを担います。
+      しかし、その根底には共通のアーキテクチャがあります。
+      Thought Noiseを減らし、
+      Mental Navigationを支え、
+      注意を現実へと戻すことです。
+    </p>
+
+    <p>
+      システムはモジュール構造になっているため、
+      ひとつのツールだけを使い、
+      手法やルーティン、あるいは生産性システム全体を取り入れる必要はありません。
+    </p>
+
+    <p>
+      <a href="mental-background-os.html">Mental Background OSについて詳しく →</a>
+    </p>
+  </section>
+
+  <hr class="rule">
+<div class="quiet-note">
+  <p><strong>ここへたどり着いたきっかけは何でしたか？</strong></p>
+  <p>ひと言だけでも十分です。</p>
+  <p>
+    <a href="mailto:support@mindbebop.com?subject=What%20brought%20me%20here">
+      support@mindbebop.com
+    </a>
+  </p>
+</div>
+<div style="margin-top:60px; opacity:0.7; font-size:0.9rem;">
+<p class="copyright">
+      Copyright © 2026 MINDBEBOP — All rights reserved.
+</p>
+</div>
+</div>
+
+<script>
+(function () {
+  function applyDarkImages(isDark) {
+    document.querySelectorAll('img[data-dark]').forEach(img => {
+      img.src = isDark
+        ? img.getAttribute('data-dark')
+        : img.getAttribute('data-light') || img.src;
+    });
+  }
+
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  applyDarkImages(media.matches);
+  media.addEventListener('change', e => applyDarkImages(e.matches));
+})();
+</script>
+
+<script>
+(() => {
+  const btn = document.querySelector('.mb-hamburger');
+  const menu = document.querySelector('.mb-menu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    menu.setAttribute('aria-hidden', String(open));
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      btn.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+</body>
+</html>
