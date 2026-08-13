@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="https://mindbebop.com/fr/architecture.html">
+
+<!-- Available Languages -->
+<link rel="alternate" hreflang="en" href="https://www.mindbebop.com/architecture.html">
+<link rel="alternate" hreflang="ja" href="https://www.mindbebop.com/jp/architecture.html">
+<link rel="alternate" hreflang="de" href="https://www.mindbebop.com/de/architecture.html">
+<link rel="alternate" hreflang="ko" href="https://www.mindbebop.com/ko/architecture.html">
+<link rel="alternate" hreflang="fr" href="https://www.mindbebop.com/fr/architecture.html">
+<link rel="alternate" hreflang="es" href="https://www.mindbebop.com/es/architecture.html">
+<link rel="alternate" hreflang="pt-BR" href="https://www.mindbebop.com/pt-br/architecture.html">
+<link rel="alternate" hreflang="x-default" href="https://www.mindbebop.com/architecture.html">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+
+
+<meta name="description" content="Découvrez les trois couches de MINDBEBOP : réduire le Thought Noise, naviguer vers l'état mental souhaité et marquer l'endroit où votre esprit est arrivé.">
+
+<meta name="keywords" content="MINDBEBOP Architecture, Noise-Canceling Apps for Your Mind, Google Maps for Your Mind, Bookmarks for Your Mind, Thought Noise, Mental Navigation, MindAnchor, état mental">
+<meta name="author" content="MINDBEBOP">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="MINDBEBOP Architecture — Trois couches pour l'esprit">
+<meta property="og:description" content="Réduisez le Thought Noise. Naviguez vers l'état mental souhaité. Marquez l'endroit où votre esprit est arrivé.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mindbebop.com/architecture.html">
+<meta property="og:image" content="https://mindbebop.com/image/MB_LOGO_V5_1024.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MINDBEBOP Architecture">
+<meta name="twitter:description" content="Noise-Canceling, Mental Navigation et Bookmarks pour votre esprit.">
+<meta name="twitter:image" content="https://mindbebop.com/image/MB_LOGO_V5_1024.png">
+
+<title>MINDBEBOP Architecture — Trois couches pour l'esprit</title>
+
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+
+<div class="mb-nav">
+<header class="mb-header">
+  <a class="mb-brand" href="index.html">
+    <img src="../image/MB_LOGO_V5_1024.png"
+         data-light="../image/MB_LOGO_V5_1024.png"
+         data-dark="../image/MB_LOGO_V5_1024_INV.png"
+         alt="MINDBEBOP logo">
+    <span class="mb-brand-name">MINDBEBOP</span>
+    <span class="mb-brand-tagline">Mental Background OS</span>
+  </a>
+
+  <button class="mb-hamburger"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mb-menu">
+    <span class="mb-open">☰</span>
+    <span class="mb-close">×</span>
+  </button>
+</header>
+
+<div class="lang-switch">
+    <a href="/architecture.html">English</a>
+    <a href="/jp/architecture.html">日本語</a>
+    <a href="/de/architecture.html">Deutsch</a>
+    <a href="/ko/architecture.html">한국어</a>
+    <a href="/fr/architecture.html" aria-current="true">Français</a>
+    <a href="/es/architecture.html">Español</a>
+    <a href="/pt-br/architecture.html">Português (Brasil)</a>
+</div>
+
+<nav id="mb-menu" class="mb-menu" aria-hidden="true">
+  <div class="mb-menu-main">
+    <!-- START HERE -->
+    <div class="mb-dropdown">
+        <a href="#" class="mb-parent">Commencez ici</a>
+      <div class="mb-submenu">
+<a href="welcome.html">Bienvenue</a>
+<a href="where-do-i-start.html">Par où commencer&nbsp;?</a>
+<a href="how-it-works.html">Fonctionnement</a>
+<a href="thought-noise.html">Bruit mental</a>
+<a href="why-is-my-mind-still-there.html">Pourquoi mon esprit est-il encore là ?</a>
+<a href="everyday-moments.html">Moments du Quotidien</a>
+      </div>
+    </div>
+
+<div class="mb-dropdown">
+<a href="#" class="mb-parent">OS</a>
+<div class="mb-submenu">
+<a href="mental-background-os.html">Mental Background OS</a>
+<a href="architecture.html" aria-current="page">Architecture</a>
+<div class="submenu-group-label">— Fondations —</div>
+<a href="mindeaseout.html">MindEaseOut</a>
+<a href="mindblank.html">MindBlank</a>
+<a href="mindprecog.html">MindPreCog</a>
+<div class="submenu-group-label">— Navigation mentale —</div>
+<a href="mental-navigation.html">Mental Navigation</a>
+<a href="stateful-recipes.html">Stateful Recipes</a>
+<a href="hallway-mode.html">Hallway Mode</a>
+<a href="mindanchor.html">MindAnchor</a>
+<div class="submenu-group-label">— Réalité —</div>
+<a href="cross-dimensional-handshake.html">Cross-Dimensional Handshake</a>
+      </div>
+    </div>
+
+    <div class="mb-dropdown">
+    <a href="recipes.html" class="mb-highlight" class="mb-parent">Recettes</a>
+    </div>
+        <div class="mb-dropdown">
+    <a href="cognihack.html" class="mb-highlight-blue" class="mb-parent">CogniHack</a>
+    </div>
+    <div class="mb-dropdown">
+    <a href="faq.html" class="mb-parent">Questions fréquentes</a>
+    </div>
+    <div class="mb-dropdown">
+    <a href="philosophy.html" class="mb-parent">Philosophie</a>
+    </div>
+
+    <div class="mb-menu-lang">
+    <a href="/architecture.html">English</a>
+    <a href="/jp/architecture.html">日本語</a>
+    <a href="/de/architecture.html">Deutsch</a>
+    <a href="/ko/architecture.html">한국어</a>
+    <a href="/fr/architecture.html" aria-current="true">Français</a>
+    <a href="/es/architecture.html">Español</a>
+    <a href="/pt-br/architecture.html">Português (Brasil)</a>
+    </div>
+  </div>
+</nav>
+
+</div>
+<div class="page">
+
+<h1>Adaptive Navigation</h1>
+
+<p class="kicker">
+Keep moving, even when the path changes.
+</p>
+
+<p>
+You may know where you want to go.
+</p>
+
+<p>
+But the next step may feel too large.
+The current route may stop helping.
+A different tool may fit the moment better.
+Or the destination itself may no longer be the right destination.
+</p>
+
+<p>
+Adaptive Navigation allows a mental journey to change while it is already in progress.
+</p>
+
+<p>
+You can change the next step, the route, the perspective, the tool, or Point B itself without throwing away the entire journey.
+</p>
+
+<hr class="rule">
+
+<h2>Real Journeys Do Not Follow Fixed Routes</h2>
+
+<p>
+A fixed sequence assumes that the route will remain correct from beginning to end.
+</p>
+
+<blockquote>
+Point A
+<br><br>
+↓
+<br><br>
+Follow the plan
+<br><br>
+↓
+<br><br>
+Follow the next step
+<br><br>
+↓
+<br><br>
+<strong>Point B</strong>
+</blockquote>
+
+<p>
+But real journeys rarely unfold exactly as planned.
+</p>
+
+<p>
+You may hesitate.
+You may discover that the next step is too large.
+You may lose momentum.
+You may learn something that changes the direction of the journey.
+</p>
+
+<p>
+Adaptive Navigation treats those changes as part of the journey rather than as failure.
+</p>
+
+<hr class="rule">
+
+<h2>What Is Adaptive Navigation?</h2>
+
+<p>
+Adaptive Navigation allows you to adjust what happens next while the journey is still active.
+</p>
+
+<blockquote>
+Current Point B
+<br><br>
+↓
+<br><br>
+Navigate
+<br><br>
+↓
+<br><br>
+Check in
+<br><br>
+↓
+<br><br>
+What needs to change?
+<br><br>
+↓
+<br><br>
+The next step
+<br>
+The route
+<br>
+The perspective
+<br>
+The tool
+<br>
+Point B
+<br><br>
+↓
+<br><br>
+Continue Navigation
+</blockquote>
+
+<p>
+You do not need to find the perfect route before you begin.
+</p>
+
+<p>
+The route can evolve while you are using it.
+</p>
+
+<hr class="rule">
+
+<h2>What Can Change?</h2>
+
+<h3>The Next Step</h3>
+
+<p>
+The next move can become smaller, larger, simpler, more concrete, or completely different.
+</p>
+
+<blockquote>
+Finish the application
+<br><br>
+↓
+<br><br>
+Open the application
+</blockquote>
+
+<p>
+The destination may stay the same while the immediate step changes.
+</p>
+
+<h3>The Route</h3>
+
+<p>
+You can leave the current sequence and try another Recipe, CogniHack, or route toward the same Point B.
+</p>
+
+<p>
+The destination stays.
+The way there changes.
+</p>
+
+<h3>The Perspective</h3>
+
+<p>
+Sometimes the route is not blocked by the step itself.
+</p>
+
+<p>
+It is blocked by the way the step is currently being held in the mind.
+</p>
+
+<blockquote>
+Why can't I do this?
+<br><br>
+↓
+<br><br>
+What part feels difficult?
+<br><br>
+↓
+<br><br>
+What part can I do?
+</blockquote>
+
+<h3>The Tool</h3>
+
+<p>
+A different MINDBEBOP tool may fit the current state better.
+</p>
+
+<p>
+You may move temporarily to MindBackyard, MindZoneOut, MindFlipOut, MindShoutOut, or another Support Surface, then return to the journey.
+</p>
+
+<h3>The Size of Point B</h3>
+
+<p>
+Point B can become smaller or larger.
+</p>
+
+<p>
+Movement does not have to proceed only from a small goal toward a larger one.
+It can move in either direction.
+</p>
+
+<h3>Point B Itself</h3>
+
+<p>
+The destination can be replaced, redefined, postponed, expanded, narrowed, or returned to later.
+</p>
+
+<p>
+Point B is allowed to be a working hypothesis.
+</p>
+
+<hr class="rule">
+
+<h2>Point B Can Change More Than Once</h2>
+
+<p>
+Adaptive Navigation does not assume that every journey has one fixed destination.
+</p>
+
+<p>
+Point B can become smaller, larger, more concrete, more abstract, or different in direction.
+Then it can change again.
+</p>
+
+<blockquote>
+Point B₁
+<br><br>
+↓
+<br><br>
+Navigate
+<br><br>
+↓
+<br><br>
+Point B₂
+<br><br>
+↓
+<br><br>
+Navigate
+<br><br>
+↓
+<br><br>
+Point B₃
+<br><br>
+↓
+<br><br>
+Navigate
+<br><br>
+↓
+<br><br>
+Point B₄
+</blockquote>
+
+<p>
+Point B₂ does not have to be further away than Point B₁.
+</p>
+
+<p>
+It may be a smaller move.
+A broader purpose.
+A temporary stopping point.
+A return to something earlier.
+Or a new destination revealed by the journey itself.
+</p>
+
+<hr class="rule">
+
+<h2>Example: A Changing Point B</h2>
+
+<p>
+Imagine that the initial destination is:
+</p>
+
+<blockquote>
+Finish my tax return.
+</blockquote>
+
+<p>
+That Point B may be too large to move toward directly.
+</p>
+
+<blockquote>
+Finish my tax return
+<br><br>
+↓
+<br><br>
+Find out which documents are missing
+<br><br>
+↓
+<br><br>
+Obtain one missing document
+<br><br>
+↓
+<br><br>
+Open the filing system
+<br><br>
+↓
+<br><br>
+Inspect the first section
+<br><br>
+↓
+<br><br>
+Submit the tax return
+</blockquote>
+
+<p>
+The journey moves from a large Point B to several smaller Point Bs, then returns to the larger destination.
+</p>
+
+<p>
+This is not a broken plan.
+</p>
+
+<p>
+It is the plan adapting to the mind that is actually taking the journey.
+</p>
+
+<hr class="rule">
+
+<h2>Thought Rotation</h2>
+
+<p>
+Sometimes changing the step is not enough.
+</p>
+
+<p>
+The thought surrounding the step may also need to turn.
+</p>
+
+<blockquote>
+I cannot do this.
+<br><br>
+↓
+<br><br>
+Which part feels impossible?
+<br><br>
+↓
+<br><br>
+What is the smallest part I could touch without finishing it?
+</blockquote>
+
+<p>
+Thought Rotation does not require you to replace a negative thought with a positive one.
+</p>
+
+<p>
+It allows you to turn the thought until another way of holding it becomes visible.
+</p>
+
+<p>
+You may rotate it once.
+You may rotate it again.
+You may discover that the original thought still contains something useful.
+</p>
+
+<hr class="rule">
+
+<h2>How It Works with Stateful Recipes</h2>
+
+<p>
+A traditional recipe assumes that the sequence remains correct from beginning to end.
+</p>
+
+<p>
+A Stateful Recipe can respond to what is happening during the journey.
+</p>
+
+<blockquote>
+Recipe Step
+<br><br>
+↓
+<br><br>
+How is this going?
+<br><br>
+↓
+<br><br>
+Continue
+<br>
+Not Yet
+<br>
+Change the next step
+<br>
+Rotate the perspective
+<br>
+Try another route
+<br>
+Change Point B
+<br>
+Continue Later
+</blockquote>
+
+<p>
+Stateful Recipes provide a structured route.
+</p>
+
+<p>
+Adaptive Navigation allows the route, the destination, and the way the journey is experienced to evolve.
+</p>
+
+<hr class="rule">
+
+<h2>When the Route Stops Helping</h2>
+
+<p>
+Adaptive Navigation can begin when you explicitly say:
+</p>
+
+<blockquote>
+I'm Stuck.
+</blockquote>
+
+<p>
+It may also become relevant when:
+</p>
+
+<ul>
+  <li>The next step feels larger than expected.</li>
+  <li>The current route no longer fits.</li>
+  <li>You have resumed the same journey several times.</li>
+  <li>A different destination begins to make more sense.</li>
+  <li>You reach a smaller Point B and want to continue.</li>
+  <li>You discover that the original Point B was not what you needed.</li>
+</ul>
+
+<p>
+The response is not simply to try harder.
+</p>
+
+<p>
+The response is to ask what needs to change.
+</p>
+
+<hr class="rule">
+
+<h2>Local Arrival</h2>
+
+<p>
+Reaching the current Point B does not always mean that the entire journey is complete.
+</p>
+
+<blockquote>
+Arrived at the current Point B
+<br><br>
+≠
+<br><br>
+The whole Navigation is complete
+</blockquote>
+
+<p>
+You may arrive at a temporary destination and then choose the next Point B.
+</p>
+
+<p>
+Finding the missing documents may be an arrival.
+Opening the filing system may be another arrival.
+Submitting the return may be the final arrival.
+</p>
+
+<p>
+Each arrival can become the beginning of the next movement.
+</p>
+
+<hr class="rule">
+
+<h2>This Is Not About Forcing Progress</h2>
+
+<p>
+Adaptive Navigation does not exist to make every person complete every task.
+</p>
+
+<p>
+Sometimes the right move is to make the step smaller.
+</p>
+
+<p>
+Sometimes it is to choose a larger direction.
+</p>
+
+<p>
+Sometimes it is to pause.
+</p>
+
+<p>
+Sometimes it is to abandon the route.
+</p>
+
+<p>
+Sometimes it is to change the destination.
+</p>
+
+<blockquote>
+The goal is not obedience to the original plan.
+<br><br>
+The goal is a journey that can remain responsive to reality.
+</blockquote>
+
+<hr class="rule">
+
+<h2>A Navigation Habit</h2>
+
+<p>
+Over time, Adaptive Navigation can become more than a feature.
+</p>
+
+<p>
+It can become a way of responding when movement stops.
+</p>
+
+<blockquote>
+Notice the friction
+<br><br>
+↓
+<br><br>
+Do not force the route
+<br><br>
+↓
+<br><br>
+Change what needs to change
+<br><br>
+↓
+<br><br>
+Take the next available move
+<br><br>
+↓
+<br><br>
+Check again
+</blockquote>
+
+<p>
+You do not need to know the whole route.
+</p>
+
+<p>
+You only need a route that can keep changing with you.
+</p>
+
+<hr class="rule">
+
+<h2>The Simple Idea</h2>
+
+<blockquote>
+Keep moving.
+<br><br>
+Even when the path changes.
+</blockquote>
+
+<p>
+Adaptive Navigation is being developed as part of MindEntry and the MINDBEBOP Mental Navigation system.
+</p>
+
+<p>
+<a href="mindentry.html">Explore MindEntry</a>
+</p>
+
+<p>
+<a href="mental-navigation.html">Learn about Mental Navigation</a>
+</p>
+
+<p>
+<a href="stateful-recipes.html">Learn about Stateful Recipes</a>
+</p>
+
+<hr class="rule">
+
+<div class="quiet-note">
+  <p><strong>Qu’est-ce qui vous a amené ici&nbsp;?</strong></p>
+  <p>Une simple note suffit.</p>
+  <p>
+    <a href="mailto:support@mindbebop.com?subject=What%20brought%20me%20here">
+      support@mindbebop.com
+    </a>
+  </p>
+</div>
+<div style="margin-top:60px; opacity:0.7; font-size:0.9rem;">
+<p class="copyright">
+      Copyright © 2026 MINDBEBOP — All rights reserved.
+</p>
+</div>
+</div>
+
+<script>
+(function () {
+  function applyDarkImages(isDark) {
+    document.querySelectorAll('img[data-dark]').forEach(img => {
+      img.src = isDark
+        ? img.getAttribute('data-dark')
+        : img.getAttribute('data-light') || img.src;
+    });
+  }
+
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  applyDarkImages(media.matches);
+  media.addEventListener('change', e => applyDarkImages(e.matches));
+})();
+</script>
+
+<script>
+(() => {
+  const btn = document.querySelector('.mb-hamburger');
+  const menu = document.querySelector('.mb-menu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    menu.setAttribute('aria-hidden', String(open));
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      btn.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+</script>
+</body>
+</html>
