@@ -170,7 +170,7 @@
 
 <h1>MINDBEBOP Privacy Policy</h1>
 <p class="last-updated">
-  <strong>Last Updated:</strong> 2026-08-18
+  <strong>Last Updated:</strong> 2026-09-17
 </p>
 
 <div class="section">
@@ -189,33 +189,37 @@ and any built-in modes or features released under the MINDBEBOP brand,
 including time-based thought release functionality.
     </p>
     <p>
-        All MINDBEBOP apps operate entirely on your device.
-        We do not collect, store, transmit, or sell personal information.
+        MINDBEBOP is designed primarily around local, on-device processing and storage.
+        We do not automatically collect or upload the thoughts or other content you create in MINDBEBOP.
+        Some optional features, such as Cross-Dimensional Handshake,
+        can transmit limited event information to an external HTTPS destination
+        that you explicitly configure.
     </p>
 </div>
 
 <div class="section">
     <h2>2. Information We Do NOT Collect</h2>
-    <p>We do <strong>not</strong> collect or transmit any of the following data:</p>
+    <p>We do <strong>not</strong> automatically collect any of the following data:</p>
     <ul>
-        <li>Personal information</li>
+        <li>Your written thoughts or reflections</li>
         <li>Email address or contact information</li>
         <li>Location data</li>
-        <li>Identifiers (device ID, advertising ID)</li>
-        <li>Analytics, usage data, diagnostics, or crash logs</li>
+        <li>Advertising identifiers</li>
+        <li>Analytics or behavioral tracking data</li>
         <li>Contacts, photos, files, or browsing history</li>
-        <li>Information from third-party SDKs</li>
+        <li>Information for advertising profiles</li>
     </ul>
     <p>
-        MINDBEBOP apps do not use external servers, cloud storage,
-        or third-party analytics services.
-        All processing happens locally on your device.
+        MINDBEBOP does not operate a server that automatically receives
+        a copy of the thoughts or other content you create in MINDBEBOP.
+        Core thought-related processing is designed to happen locally on your device.
     </p>
     <p>
-    When available, some features may use Apple-provided on-device language models.
-    This processing occurs entirely on your device.
-    MINDBEBOP does not receive, collect, store, or transmit this processing.
-</p>
+        When available, some features may use Apple-provided on-device language models.
+        This processing occurs on your device.
+        MINDBEBOP does not receive, collect, store, or transmit the text processed
+        through those on-device features.
+    </p>
 </div>
 
 <div class="section">
@@ -224,20 +228,31 @@ including time-based thought release functionality.
 Depending on the app, you may create text entries,
 written thoughts, responses, reminders,
 scheduled notifications, audio recordings,
-Mental Steps-related content, session-related content,
+Mental Steps-related content, Mental Navigation state,
+session-related content,
 favorites, tags, folders, presets,
 prompt schedules, event-based actions,
+Thought Blocks, Thought Space arrangements,
+connections between Thought Blocks and Mental Steps,
 and app preferences.
     </p>
     <p>
-        All such data:
+        Such content is designed to:
     </p>
     <ul>
-        <li>Remains stored only on your device</li>
-        <li>Is not transmitted to MINDBEBOP</li>
-        <li>Is not shared with third parties</li>
-        <li>Is deleted when you uninstall the app</li>
+        <li>Be stored and processed locally on your device</li>
+        <li>Not be automatically transmitted to MINDBEBOP</li>
+        <li>Be shared between MINDBEBOP apps only when needed for supported on-device features or actions you choose</li>
+        <li>Never be included as user-created text in an outbound Cross-Dimensional Handshake</li>
     </ul>
+    <p>
+        Some MINDBEBOP data may be stored in local storage shared between
+        MINDBEBOP apps using Apple App Groups.
+        Because persistence can depend on iOS, shared App Group storage,
+        backups, installation state, and other device behavior,
+        uninstalling one MINDBEBOP app should not be understood as a guarantee
+        that all locally shared MINDBEBOP data has been deleted.
+    </p>
 </div>
 
 <div class="section">
@@ -245,8 +260,8 @@ and app preferences.
     <p>
         Some MINDBEBOP apps use <strong>local notifications</strong>
         to deliver reminders, prompts, and Mental Steps triggers.
-        Notification content is created, stored, and delivered
-        entirely on your device.
+        Notification content is created and scheduled
+        using on-device iOS notification mechanisms.
     </p>
     <p>
         Notifications may be used for:
@@ -258,7 +273,8 @@ and app preferences.
         <li>Event-based actions that open MindEntry or other MINDBEBOP apps</li>
     </ul>
     <p>
-        No notification content is transmitted to MINDBEBOP.
+        MINDBEBOP does not automatically upload your notification content
+        to a MINDBEBOP server.
     </p>
 </div>
 
@@ -268,80 +284,116 @@ and app preferences.
         If an app allows audio recording or playback:
     </p>
     <ul>
-        <li>Audio recordings remain stored only on your device</li>
-        <li>No recordings are uploaded, transmitted, or analyzed externally</li>
-        <li>You may delete audio at any time</li>
+        <li>Audio recordings remain stored locally on your device</li>
+        <li>No recordings are included in Cross-Dimensional Handshake events</li>
+        <li>You may delete audio at any time using the available app controls</li>
     </ul>
 </div>
 
 <div class="section">
-    <h2>6. Inter-App Communication and Cross-Dimensional Handshakes</h2>
+    <h2>6. Inter-App Communication and Cross-Dimensional Handshake</h2>
+
 <p>
-    Some MINDBEBOP apps can optionally communicate with each other
-    using an on-device architecture called
-    <strong>Cross-Dimensional Handshakes</strong>.
+    Some MINDBEBOP apps can communicate with each other
+    using on-device iOS mechanisms in order to continue
+    an experience across apps.
 </p>
 
 <p>
-    A Cross-Dimensional Handshake represents a structured event between
-    MINDBEBOP apps or between a MINDBEBOP app and supported iOS system
-    features. These handshakes exchange only the minimum information
-    required to continue a requested action.
+    This communication between MINDBEBOP apps is
+    <strong>not Cross-Dimensional Handshake</strong>.
+    It is local inter-app communication within the MINDBEBOP environment.
 </p>
 
 <p>
-    Cross-Dimensional Handshakes occur entirely on your device using
-    Apple-provided technologies such as custom URL schemes,
-    Share Extensions, App Intents, local notifications,
-    shared on-device storage, or similar on-device communication mechanisms.
-    They do not require MINDBEBOP servers.
+    Local inter-app communication may use Apple-provided technologies
+    such as custom URL schemes, Share Extensions, App Intents,
+    local notifications, shared on-device storage,
+    or similar on-device communication mechanisms.
+    It does not require a MINDBEBOP server.
 </p>
+
 <p>
-    Cross-Dimensional Handshakes exchange discrete, user-initiated events rather than continuously sharing information between apps.
-    Each handshake transfers only the information necessary
-    to perform the requested action while keeping all other
-    information on your device.
+    Depending on the feature you choose to use,
+    local inter-app communication may include:
 </p>
-    <p>
-        This may include:
-    </p>
 
 <ul>
 
-<li>Sending thoughts, reminders, reflections, or Mental Steps content between MINDBEBOP apps when you explicitly request it</li>
+<li>Sending thoughts, reminders, reflections, or Mental Steps-related content between MINDBEBOP apps when needed for an action you choose</li>
 
-<li>Launching another MINDBEBOP app as part of a set of Mental Steps or manual workflow</li>
+<li>Launching another MINDBEBOP app as part of Mental Steps or another supported workflow</li>
 
 <li>Cross-app actions such as MindFlipOut → MindZoneOut, MindShoutOut → MindFlipOut, MindZoneOut → MindShoutOut, or similar supported workflows</li>
 
-<li>Using Send to Mental Steps to continue work inside MindEntry</li>
+<li>Using Send to Mental Steps to continue inside MindEntry</li>
 
 <li>Returning from another MINDBEBOP app back into MindEntry while continuing Mental Steps</li>
 
-<li>Opening MindEntry, MindZoneOut, MindBackyard, or other MINDBEBOP apps from notifications or Mental Steps</li>
+<li>Opening MindEntry, MindZoneOut, MindBackyard, MindBackOut, or other MINDBEBOP apps from notifications or Mental Steps</li>
+
+<li>Passing locally stored state needed to continue Mental Navigation or Mental Steps across supported MINDBEBOP apps</li>
 
 <li>Launching MindPreCog prompts and other event-based actions</li>
 
-<li>Future Cross-Dimensional Handshakes introduced in later versions that follow the same privacy principles described in this policy</li>
-
 </ul>
+
 <p>
-    Some handshakes may include text or other content that you
-    explicitly choose to send to another MINDBEBOP app.
-    This content remains on your device and is transferred only
-    to perform the requested action.
+    Some of these local interactions may include text or other content
+    needed to perform the action you requested.
+    That content remains within the on-device MINDBEBOP environment
+    and is not Cross-Dimensional Handshake data.
 </p>
+
 <p>
-    All such communication:
+    <strong>Cross-Dimensional Handshake</strong> is different.
+    It is an optional outbound interface between MINDBEBOP
+    and an external HTTPS destination that you configure.
+</p>
+
+<p>
+    <strong>Cross-Dimensional Handshake transmits events, not thoughts.</strong>
+</p>
+
+<p>
+    Cross-Dimensional Handshake does not transmit user-created text.
+    This includes thought text, Thought Block text,
+    Mental Steps names or instructions,
+    Mental Destinations, Current Positions, Next Moves,
+    reminders, reflections, responses,
+    and other text you create in MINDBEBOP.
+</p>
+
+<p>
+    Depending on the supported event,
+    a Cross-Dimensional Handshake may include limited technical metadata such as:
 </p>
 
 <ul>
-    <li>Occurs entirely on your device</li>
-    <li>Does not require MINDBEBOP servers</li>
-    <li>Does not transmit data outside your device unless you explicitly configure an optional external integration</li>
-    <li>Shares only the minimum information necessary for the requested action</li>
-    <li>Can be avoided simply by not using optional cross-app features</li>
+    <li>An event identifier</li>
+    <li>A timestamp</li>
+    <li>A duration where relevant</li>
+    <li>An opaque Mental Steps identifier where relevant</li>
+    <li>An opaque session identifier where relevant</li>
 </ul>
+
+<p>
+    These identifiers are used to identify technical events or sessions.
+    They do not contain the name, instructions, or text of your Mental Steps.
+</p>
+
+<p>
+    Cross-Dimensional Handshake is optional.
+    External event transmission requires the feature to be enabled
+    and an HTTPS destination to be configured.
+</p>
+
+<p>
+    Once event information is sent to an external destination you configure,
+    that destination's storage, processing, security, and privacy practices
+    apply to the information it receives.
+</p>
+
 </div>
 
 <div class="section">
@@ -349,49 +401,72 @@ and app preferences.
 <h2>6A. Optional External Integrations</h2>
 
 <p>
-Some versions of MindEntry may support optional external integrations
-through the MindEvent API or similar event-based interfaces.
+Some versions of MINDBEBOP may support optional external integrations,
+including outbound Cross-Dimensional Handshake events
+or incoming interfaces such as MindEvent.
 </p>
 
 <p>
-These integrations are entirely optional and are initiated only
-when you explicitly configure them.
+These integrations are optional and operate only when you
+choose to configure or use them.
 </p>
 
 <p>
-When enabled, only the event information necessary for the configured integration is transmitted.
-MINDBEBOP does not automatically transmit your thoughts.
-If an optional integration allows user-provided content to be included, only the content you explicitly choose to send is transmitted.
+Outbound Cross-Dimensional Handshake events contain limited event metadata
+and do not contain user-created text.
+MINDBEBOP does not automatically transmit your thoughts
+through Cross-Dimensional Handshake.
+</p>
+
+<p>
+Incoming MindEvent or similar interfaces are separate from
+outbound Cross-Dimensional Handshake.
+They may allow an external action to initiate or open
+a supported experience in MINDBEBOP.
 </p>
 
 <p>
 MINDBEBOP does not automatically upload your thoughts
 to external services.
-Any external communication occurs only according to the
-destinations that you configure.
+When you configure an external destination,
+the event metadata sent to that destination is subject
+to the privacy practices of the destination you choose.
 </p>
 
 </div>
 
 <div class="section">
-    <h2>7. No Third-Party Access</h2>
+    <h2>7. No Advertising or Behavioral Tracking</h2>
     <p>MINDBEBOP apps do not use:</p>
     <ul>
-        <li>Analytics frameworks</li>
         <li>Advertising networks</li>
-        <li>Tracking technologies</li>
-       <li>External data services, except optional integrations you explicitly configure</li>
+        <li>Behavioral advertising profiles based on your thought content</li>
+        <li>Cross-app advertising tracking technologies</li>
+        <li>Your thought content for sale to advertisers</li>
     </ul>
+    <p>
+        Optional external integrations that you explicitly configure
+        are not advertising or behavioral tracking services operated by MINDBEBOP.
+        Information sent to a destination you choose is subject
+        to that destination's own privacy practices.
+    </p>
 </div>
 
 <div class="section">
     <h2>8. Security</h2>
     <p>
-        Because MINDBEBOP apps do not collect or transmit data,
-        security is handled by your device and Apple’s iOS protections,
-        including encrypted local storage,
-        passcode protection,
-        Touch ID, and Face ID where available.
+        MINDBEBOP is designed to minimize unnecessary transmission
+        of thought-related content by keeping core content and processing
+        on your device where practical.
+        Local data is protected by the security mechanisms provided by iOS
+        and your device.
+    </p>
+    <p>
+        When you enable Cross-Dimensional Handshake,
+        supported event metadata is transmitted over HTTPS
+        to the destination you configure.
+        No method of electronic storage or transmission
+        can be guaranteed to be completely secure.
     </p>
 </div>
 
@@ -403,11 +478,12 @@ destinations that you configure.
         “Last Updated” date at the top of this page.
     </p>
     <p>
-    As MINDBEBOP evolves, additional Cross-Dimensional Handshakes,
-    on-device integrations, or supported iOS communication mechanisms
-    may be introduced while continuing to follow the privacy
-    principles described in this Privacy Policy.
-</p>
+        As MINDBEBOP evolves, additional on-device integrations,
+        inter-app communication mechanisms,
+        or optional external event integrations may be introduced
+        while continuing to follow the privacy principles
+        described in this Privacy Policy.
+    </p>
 </div>
 
 
@@ -419,17 +495,19 @@ destinations that you configure.
 <div class="app-section">
     <h2 class="app-name">Mind<strong>Flip</strong>Out</h2>
     <p>
-        <span class="app-name">Mind<strong>Flip</strong>Out</span> is a local journaling and thought-response app.
-        All written thoughts, rewrites,
-        and reflections remain stored
-        only on your device.
+        <span class="app-name">Mind<strong>Flip</strong>Out</span>
+        is a local thought-response app that allows you
+        to write a thought and look at it from another perspective.
+        Written thoughts, rewrites,
+        and reflections are stored locally on your device.
     </p>
     <p>
         If Manual Shout or Auto Shout features are enabled
         and <span class="app-name">Mind<strong>Shout</strong>Out</span> is installed,
-        the text of a thought response may be shared locally with <span class="app-name">Mind<strong>Shout</strong>Out</span>.
-        This sharing occurs only on your device
-        and never leaves it.
+        the text of a thought response may be shared locally with
+        <span class="app-name">Mind<strong>Shout</strong>Out</span>.
+        This is on-device inter-app communication
+        and is not an outbound Cross-Dimensional Handshake.
     </p>
 </div>
 
@@ -441,39 +519,43 @@ destinations that you configure.
         optional speech settings,
         and audio recordings locally on your device.
         Notifications are generated using iOS local
-        notification services only.
+        notification services.
     </p>
     <p>
         If Manual Zone or Auto Zone features are enabled
         and <span class="app-name">Mind<strong>Zone</strong>Out</span> is installed,
         the text of a reminder related to a thought
         may be shared locally
-        with <span class="app-name">Mind<strong>Zone</strong>Out</span> for on-device display.
+        with <span class="app-name">Mind<strong>Zone</strong>Out</span>
+        for on-device display.
     </p>
     <p>
-    If you configure the optional “When Tapped” action,
-    tapping a notification may open
-    <span class="app-name">Mind<strong>Entry</strong></span>
-    or <span class="app-name">Mind<strong>Zone</strong>Out</span>.
-    This behavior occurs entirely on-device.
-</p>
+        If you configure the optional “When Tapped” action,
+        tapping a notification may open
+        <span class="app-name">Mind<strong>Entry</strong></span>
+        or <span class="app-name">Mind<strong>Zone</strong>Out</span>.
+        This behavior uses on-device inter-app communication
+        and is not Cross-Dimensional Handshake.
+    </p>
 </div>
 
 <div class="app-section">
 <h2 class="app-name">Mind<strong>Zone</strong>Out</h2>
     <p>
-        <span class="app-name">Mind<strong>Zone</strong>Out</span> is a local stillness and reflection app.
+        <span class="app-name">Mind<strong>Zone</strong>Out</span>
+        is a local stillness and reflection app.
         Incoming messages,
         short reflections,
         and session-related content
-        are processed and displayed entirely on your device.
+        are processed and displayed locally on your device.
     </p>
     <p>
         If Manual Flip or Auto Flip features are used
         and <span class="app-name">Mind<strong>Flip</strong>Out</span> is installed,
         reflection text may be shared locally
-        with <span class="app-name">Mind<strong>Flip</strong>Out</span> to continue working with the thought.
-        No data is transmitted outside your device.
+        with <span class="app-name">Mind<strong>Flip</strong>Out</span>
+        to continue working with the thought.
+        This local transfer is not Cross-Dimensional Handshake.
     </p>
 </div>
 
@@ -482,43 +564,63 @@ destinations that you configure.
 
     <p>
         <span class="app-name">Mind<strong>Backyard</strong></span>
-        is a local digital fidget environment designed to gently occupy restless attention.
-        All environments, favorites, settings, and optional preferences
-        are stored entirely on your device.
+        is a local environment that gives attention room to move
+        through experiences including Infinite Hallway and Thought Space.
+        Environment settings, favorites, and optional preferences
+        are stored locally on your device.
+    </p>
+
+    <p>
+        Thought Space supports <strong>Spatial Mental Shelving</strong>,
+        allowing selected thoughts to exist as persistent Thought Blocks
+        in a spatial environment.
+        Thought Block text, position, orientation, scale,
+        other spatial settings,
+        and connections between Thought Blocks and Mental Steps
+        are stored locally for the operation of Thought Space.
+    </p>
+
+    <p>
+        Creating, moving, rotating, resizing,
+        or connecting a Thought Block with Mental Steps
+        does not automatically transmit its text outside your device.
+        Thought Block text is never included in an outbound
+        Cross-Dimensional Handshake.
     </p>
 
     <p>
         Optional ambient sounds and haptic settings are processed locally
-        and are never transmitted to MINDBEBOP or any third party.
+        and are not included in Cross-Dimensional Handshake events.
     </p>
 
     <p>
         If you use the built-in <span class="app-name">MindEaseOut</span>
         release field before entering the Backyard,
-        any text you enter is processed entirely on-device.
+        any text you enter is processed locally on-device.
     </p>
 
     <p>
         <span class="app-name">Mind<strong>Backyard</strong></span>
-        does not collect analytics, gameplay data,
-        behavioral data, or any personal information.
+        does not use your Thought Space or Backyard content
+        for advertising or behavioral tracking.
     </p>
 </div>
 
 <div class="app-section">
     <h2 class="app-name">MindEaseOut (Time-Based Thought Release function)</h2>
     <p>
-        All MINDBEBOP apps include a time-based thought release feature
-        that allows a thought to be acknowledged as relating to the past or future.
+        MINDBEBOP may provide time-based thought release functionality
+        that allows you to interact with a thought in relation to time
+        without requiring it to become an ongoing task.
     </p>
     <p>
-        When used, text entered into this feature:
+        When text is entered into this feature:
     </p>
     <ul>
-        <li>Is processed entirely on-device</li>
-        <li>Is not stored as a history unless explicitly saved by the user</li>
-        <li>Is not transmitted to other apps or external services</li>
-        <li>Is not collected by MINDBEBOP</li>
+        <li>It is processed locally on-device</li>
+        <li>It is not automatically uploaded to MINDBEBOP</li>
+        <li>It may participate in supported on-device MINDBEBOP workflows when you choose those actions</li>
+        <li>It is never included as user-created text in an outbound Cross-Dimensional Handshake</li>
     </ul>
 </div>
 
@@ -526,37 +628,59 @@ destinations that you configure.
 <h2 class="app-name">Mind<strong>Back</strong>Out</h2>
 
     <p>
-        <span class="app-name">Mind<strong>Back</strong>Out</span> is a local session-based app that temporarily blocks
-        selected applications using Apple’s Screen Time system.
-        All configuration and session data are stored entirely on your device.
+        <span class="app-name">Mind<strong>Back</strong>Out</span>
+        is a local session-based app that can temporarily block
+        selected applications using Apple's Screen Time system.
+        Configuration and session state are maintained locally on your device.
     </p>
 
     <p>
-        When you select apps to leave outside, this information is stored
-        locally and used only by Apple’s on-device Screen Time framework
-        to apply temporary restrictions.
-        MINDBEBOP does not receive or access this information.
+        When you select apps to block,
+        the selection is used through Apple's on-device Screen Time frameworks
+        to apply the requested restrictions.
+        MINDBEBOP does not operate a server that receives your selected-app list.
     </p>
 
     <p>
         If you enter text in the “Leave at the Door” field and choose
-        to send it to <span class="app-name">Mind<strong>Shout</strong>Out</span>, the text is transferred locally
+        to send it to <span class="app-name">Mind<strong>Shout</strong>Out</span>,
+        the text is transferred locally
         between apps using on-device iOS mechanisms.
-        This transfer does not use external servers
-        and does not leave your device.
+        This local transfer is not Cross-Dimensional Handshake.
     </p>
 
     <p>
         If the optional “Zone Cooldown” feature is enabled,
-        <span class="app-name">Mind<strong>Back</strong>Out</span> may automatically open <span class="app-name">Mind<strong>Zone</strong>Out</span>
+        <span class="app-name">Mind<strong>Back</strong>Out</span>
+        may open <span class="app-name">Mind<strong>Zone</strong>Out</span>
         after a session ends.
-        No data is transmitted externally during this process.
-        The interaction occurs entirely on your device.
+        This is an on-device app-to-app interaction.
     </p>
+
     <p>
-    Presets that store selected apps, duration, and Zone Cooldown settings
-    are stored entirely on your device.
-</p>
+        Presets that store selected apps, duration, and Zone Cooldown settings
+        are stored locally on your device.
+    </p>
+
+    <p>
+        When Mental Steps App Blocking is used,
+        <span class="app-name">Mind<strong>Back</strong>Out</span>
+        may temporarily apply or remove selected app restrictions
+        while Mental Steps continues in
+        <span class="app-name">Mind<strong>Entry</strong></span>.
+        Information needed to coordinate this behavior
+        is communicated locally between MINDBEBOP apps.
+    </p>
+
+    <p>
+        If you enable Cross-Dimensional Handshake,
+        supported Mental Steps App Blocking events may send
+        limited event metadata to the external HTTPS destination you configure.
+        The event does not contain your Mental Destination,
+        Mental Steps name or instructions,
+        selected app names,
+        or other user-created text.
+    </p>
 
     <p>
         <span class="app-name">Mind<strong>Back</strong>Out</span> does not collect:
@@ -565,70 +689,121 @@ destinations that you configure.
     <ul>
         <li>App usage history</li>
         <li>Screen Time statistics</li>
-        <li>Device activity reports</li>
-        <li>Blocked app names outside your device</li>
-        <li>Any personal or identifying information</li>
+        <li>Device activity reports for MINDBEBOP analytics</li>
+        <li>Your selected app names on a MINDBEBOP server</li>
+        <li>Your thought content for advertising or behavioral tracking</li>
     </ul>
+
     <p>
-    <span class="app-name">Mind<strong>Back</strong>Out</span> uses Apple’s Screen Time APIs
-    (such as FamilyControls and ManagedSettings) solely to apply temporary app restrictions
-    based on your explicit selection.
-    These system frameworks operate entirely on-device,
-    and MINDBEBOP does not access, collect, or receive any usage data from them.
-</p>
+        <span class="app-name">Mind<strong>Back</strong>Out</span>
+        uses Apple's Screen Time APIs
+        (such as FamilyControls and ManagedSettings)
+        to apply app restrictions based on your explicit selection
+        or a supported Mental Steps App Blocking action.
+    </p>
 </div>
+
 <div class="app-section">
 <h2 class="app-name">Mind<strong>Entry</strong></h2>
 
     <p>
-        <span class="app-name">Mind<strong>Entry</strong></span> is a local routing and Mental Steps app that helps direct thoughts
-        to the appropriate MINDBEBOP tools on your device.
-        Text you enter, Mental Steps you create, saved Mental Steps history, and imported Mental Steps content
-        remain stored entirely on your device.
+        <span class="app-name">Mind<strong>Entry</strong></span>
+        is a local Mental Steps and Mental Navigation app
+        that helps you move from your Current Position
+        toward a Mental Destination through steps you choose to follow.
+        Text you enter, Mental Steps you create,
+        saved Mental Steps, Mental Navigation state,
+        and imported Mental Steps content
+        are stored locally on your device.
     </p>
 
     <p>
-        <span class="app-name">Mind<strong>Entry</strong></span> may open other installed MINDBEBOP apps
-        using on-device iOS mechanisms such as custom URL schemes in order to continue a selected step.
-        It may also receive return actions from those apps when Mental Steps continues.
-        These interactions occur entirely on your device and do not use external servers.
+        <span class="app-name">Mind<strong>Entry</strong></span>
+        may open other installed MINDBEBOP apps
+        using on-device iOS mechanisms such as custom URL schemes
+        in order to continue a selected Mental Step.
+        It may also receive return actions from those apps
+        when Mental Steps continues.
+        These interactions are local inter-app communication
+        and are not Cross-Dimensional Handshake.
     </p>
 
     <p>
-    <span class="app-name">Mind<strong>Entry</strong></span>
-    may coordinate Cross-Dimensional Handshakes between
-    MINDBEBOP apps in order to continue Mental Steps, Manual Backyard, Send to Mental Steps,
-    and other supported workflows.
-    These interactions occur entirely on your device
-    unless you explicitly configure an optional external integration.
-</p>
-
-    <p>
-        If you import a Mental Steps code, short code, or MINDBEBOP Mental Steps link,
-        the Mental Steps content is processed locally on your device for preview, saving, or execution.
-        MINDBEBOP does not collect, transmit, or store this imported content externally.
+        <span class="app-name">Mind<strong>Entry</strong></span>
+        may communicate locally with MindBackOut,
+        MindBackyard, MindFlipOut, MindShoutOut, MindZoneOut,
+        or other supported MINDBEBOP apps
+        to continue Mental Steps, Mental Navigation,
+        Thought Block connections,
+        Mental Steps App Blocking,
+        and other supported workflows.
     </p>
 
     <p>
-If available on your device, <span class="app-name">Mind<strong>Entry</strong></span> may use Apple’s on-device language models
-to help classify text you enter or generate lightweight Mental Steps explanations.
-This processing occurs entirely on-device and is not transmitted to MINDBEBOP or third parties.
+        If you import a Mental Steps code, short code,
+        or MINDBEBOP Mental Steps link,
+        the Mental Steps content is processed locally on your device
+        for preview, saving, or execution.
+        MINDBEBOP does not automatically upload the imported Mental Steps content
+        to a MINDBEBOP server.
     </p>
+
     <p>
-    <span class="app-name">Mind<strong>Entry</strong></span> may display
-    <span class="app-name">MindBlank</span>,
-    a passive reflection of how long your mind remained quiet after using MINDBEBOP.
-    This information is calculated entirely on-device and is not transmitted to MINDBEBOP.
-</p>
-<p>
-    MindBlank is not a health score, diagnosis, medical metric, stress score, or emotional analysis.
-</p>
-<p>
-    <span class="app-name">MindPreCog</span>
-    allows you to schedule morning, bedtime, weekly, and event-based prompts using local notifications.
-    Prompt schedules, associated actions, and related settings
-    are stored entirely on your device.
-</p>
+        If available on your device,
+        <span class="app-name">Mind<strong>Entry</strong></span>
+        may use Apple's on-device language models
+        to help classify text you enter
+        or generate lightweight Mental Steps explanations.
+        This processing occurs on-device
+        and is not transmitted to MINDBEBOP.
+    </p>
+
+    <p>
+        <span class="app-name">Mind<strong>Entry</strong></span>
+        may display <span class="app-name">MindBlank</span>,
+        a passive reflection of time spent away from active MINDBEBOP interaction
+        in supported situations.
+        MindBlank timing and duration are calculated locally.
+    </p>
+
+    <p>
+        If you enable Cross-Dimensional Handshake,
+        a supported MindBlank end event may transmit limited event metadata,
+        such as the event, end time, and duration where applicable,
+        to the external HTTPS destination you configure.
+        It does not transmit the thought or other user-created text
+        associated with what you were doing before MindBlank.
+    </p>
+
+    <p>
+        MindBlank is not a health score, diagnosis, medical metric,
+        stress score, or emotional analysis.
+    </p>
+
+    <p>
+        <span class="app-name">MindPreCog</span>
+        allows you to schedule morning, bedtime, weekly,
+        and event-based prompts using local notifications.
+        Prompt schedules, associated actions, and related settings
+        are stored locally on your device.
+    </p>
+
+    <p>
+        If you enable Cross-Dimensional Handshake,
+        supported Mental Steps lifecycle events may send
+        limited technical metadata to the external HTTPS destination you configure.
+        This may include an event identifier, timestamp,
+        opaque Mental Steps identifier,
+        opaque session identifier,
+        or duration where applicable.
+    </p>
+
+    <p>
+        Cross-Dimensional Handshake does not transmit
+        the Mental Steps name, instructions,
+        Mental Destination, Current Position, Next Move,
+        Thought Block text, or other user-created text.
+    </p>
 </div>
 
 <hr>
@@ -640,6 +815,7 @@ This processing occurs entirely on-device and is not transmitted to MINDBEBOP or
     <p><strong>Website:</strong> <a href="https://mindbebop.com">www.mindbebop.com</a></p>
 </div>
 <hr class="rule">
+
 <div class="quiet-note">
   <p><strong>What brought you here?</strong></p>
   <p>Just a note is enough.</p>
