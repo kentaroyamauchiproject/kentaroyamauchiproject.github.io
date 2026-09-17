@@ -184,23 +184,29 @@
 <h1>Cross-Dimensional Handshake</h1>
 
 <p class="kicker">
-A bidirectional connection between the real world and the Mental Background Layer.
+A bidirectional connection between the outside world and the Mental Background Layer.
 </p>
 
 <p>
-Most MINDBEBOP tools exist entirely inside the Mental Background Layer. Thoughts can be typed directly into MindEntry or shared intentionally from other apps using the Share Sheet.
+Most communication inside MINDBEBOP stays inside the Mental Background Layer.
+MINDBEBOP apps can open one another, pass information locally,
+and continue Mental Steps across apps using on-device communication.
 </p>
 
 <p>
-A Cross-Dimensional Handshake is different.
+That is not a Cross-Dimensional Handshake.
 </p>
 
 <p>
-It allows meaningful events to cross the boundary between reality and the Mental Background Layer in both directions.
+A <strong>Cross-Dimensional Handshake</strong> happens when something crosses
+the boundary between MINDBEBOP and the outside world.
 </p>
 
 <p>
-Reality can initiate mental state movement inside MINDBEBOP, and completed mental transitions can quietly notify the outside world.
+The handshake can move in either direction:
+an outside event can enter MINDBEBOP,
+or a supported MINDBEBOP event can be sent outward
+to a system chosen by the user.
 </p>
 
 
@@ -209,12 +215,15 @@ Reality can initiate mental state movement inside MINDBEBOP, and completed menta
 <h2>The Bidirectional Circle</h2>
 
 <p>
-Reality-driven events become MindEvents inside MindEntry. Completed Mental Steps can, in turn, emit structured events back into the real world.
+An inbound Cross-Dimensional Handshake can bring an outside event
+into the Mental Background Layer through MindEvent.
+An outbound Cross-Dimensional Handshake can send a supported MINDBEBOP event
+to an external HTTPS destination.
 </p>
 
 <blockquote>
 
-Real World
+Outside World
 
 <br><br>
 
@@ -222,7 +231,7 @@ Real World
 
 <br><br>
 
-Cross-Dimensional Handshake
+Inbound Cross-Dimensional Handshake
 
 <br><br>
 
@@ -246,7 +255,7 @@ Mental Background Layer
 
 <br><br>
 
-Completed Mental Transition
+Supported MINDBEBOP Event
 
 <br><br>
 
@@ -254,7 +263,7 @@ Completed Mental Transition
 
 <br><br>
 
-Cross-Dimensional Handshake
+Outbound Cross-Dimensional Handshake
 
 <br><br>
 
@@ -262,134 +271,357 @@ Cross-Dimensional Handshake
 
 <br><br>
 
-Real World
+Outside World
 
 </blockquote>
 
-<hr class="rule">
-
-<h2>Incoming: Reality → MindEntry</h2>
-
 <p>
-Reality can securely initiate mental state movement without requiring manual navigation inside MindEntry.
-</p>
-
-<p>
-Today's Cross-Dimensional Handshake supports multiple ways for meaningful events to enter the Mental Background Layer.
-</p>
-
-<ul>
-
-<li><strong>Share Extension</strong> — Share selected text or thought residue directly into MindEntry.</li>
-
-<li><strong>URL Schemes</strong> — Launch MindEntry through deep links.</li>
-
-<li><strong>App Intents</strong> — Trigger MindEntry through Apple's automation framework.</li>
-
-<li><strong>Apple Shortcuts</strong> — Send MindEvents from calendars, Focus Modes, locations, NFC tags, or custom Shortcut workflows.</li>
-
-<li><strong>Secure Webhooks (MindEvent API)</strong> — External systems such as Zapier, Make, n8n, Home Assistant, servers, or custom software can securely deliver MindEvents into MindEntry.</li>
-
-</ul>
-
-<p>
-Every incoming event becomes a MindEvent. MindEntry may suggest appropriate Mental Steps, but nothing runs automatically without user confirmation.
+The two directions do not have to form a single workflow.
+Either direction can be used independently.
 </p>
 
 <hr class="rule">
 
-<h2>Outgoing: MindEntry → Reality</h2>
+<h2>Incoming: Outside World → MINDBEBOP</h2>
 
 <p>
-When a meaningful mental transition completes, MindEntry can securely emit a structured event to the outside world.
+An inbound Cross-Dimensional Handshake allows supported information
+or actions from outside MINDBEBOP to enter the Mental Background Layer.
 </p>
 
 <p>
-The application simply announces that a transition has completed. It does not decide what should happen next.
+<strong>MindEvent</strong> is MINDBEBOP's inbound
+Cross-Dimensional Handshake.
+It provides a structured way for an outside event
+to initiate a supported experience in MINDBEBOP.
+</p>
+
+<p>
+An outside system might use MindEvent in response to something
+that happened in the user's own environment or workflow.
+What the event represents is defined by the system or automation
+the user chooses to connect.
+</p>
+
+<p>
+The important distinction is the boundary:
+</p>
+
+<blockquote>
+Outside World
+<br><br>
+→ MindEvent
+<br><br>
+→ MINDBEBOP
+</blockquote>
+
+<p>
+Ordinary movement between MINDBEBOP apps is not MindEvent
+and is not a Cross-Dimensional Handshake.
+It remains internal to the MINDBEBOP environment.
+</p>
+
+<hr class="rule">
+
+<h2>Outgoing: MINDBEBOP → Outside World</h2>
+
+<p>
+An outbound Cross-Dimensional Handshake allows supported MINDBEBOP events
+to be sent to an external HTTPS destination configured by the user.
+</p>
+
+<p>
+MINDBEBOP announces the event.
+It does not decide what the outside world should do with it.
+</p>
+
+<p>
+The external system might use that event to:
 </p>
 
 <ul>
 
-<li>Turn on smart lights</li>
+<li>Run an automation</li>
 
-<li>Start a playlist</li>
+<li>Update another service</li>
 
-<li>Run an Apple Shortcut</li>
+<li>Change a smart-home environment</li>
 
-<li>Update a Slack status</li>
+<li>Record an event in a user-controlled system</li>
 
-<li>Log to Google Sheets</li>
+<li>Notify another application or service</li>
 
-<li>Call a custom API</li>
+<li>Call additional APIs</li>
 
-<li>Trigger Zapier, Make, n8n, or Home Assistant</li>
-
-<li>Anything your automation platform supports</li>
+<li>Trigger any other behavior supported by the user's external system</li>
 
 </ul>
+
+<p>
+What happens after the event leaves MINDBEBOP
+is defined by the user and the external system they choose.
+</p>
+
+<hr class="rule">
+
+<h2>Current Outbound Events</h2>
+
+<p>
+The current outbound Cross-Dimensional Handshake supports
+a small set of events that can reliably initiate an external HTTPS request
+when the event occurs.
+</p>
+
+<ul>
+
+<li><strong>MindBlank Ends</strong></li>
+
+<li><strong>Mental Steps App Blocking Starts</strong></li>
+
+<li><strong>Mental Steps App Blocking Ends</strong></li>
+
+<li><strong>Mental Steps Starts</strong></li>
+
+<li><strong>Mental Steps Finishes</strong></li>
+
+<li><strong>Mental Steps Cancels</strong></li>
+
+</ul>
+
+<p>
+Each event can be enabled or disabled by the user.
+An outbound destination must also be explicitly configured
+before MINDBEBOP attempts to send the event.
+</p>
+
+<p>
+MINDBEBOP intentionally does not offer a Cross-Dimensional Handshake trigger
+simply because an internal event exists.
+An event is exposed only when the implementation can initiate
+the external handshake at the event itself under normal operation.
+</p>
+
+<hr class="rule">
+
+<h2>Events, Not Thoughts</h2>
+
+<p>
+The central privacy rule for outbound Cross-Dimensional Handshake is simple:
+</p>
+
+<blockquote>
+<strong>Cross-Dimensional Handshake transmits events, not thoughts.</strong>
+</blockquote>
+
+<p>
+Outbound Cross-Dimensional Handshake does not transmit user-created text.
+</p>
+
+<p>
+That means it does not send:
+</p>
+
+<ul>
+
+<li>Thought text</li>
+
+<li>Thought Block text</li>
+
+<li>Mental Steps names</li>
+
+<li>Mental Steps instructions</li>
+
+<li>Mental Destinations</li>
+
+<li>Current Positions</li>
+
+<li>Next Moves</li>
+
+<li>Reminder text</li>
+
+<li>Reflections or responses</li>
+
+<li>Other text created by the user inside MINDBEBOP</li>
+
+</ul>
+
+<p>
+Depending on the event, an outbound handshake may contain
+limited technical event metadata such as:
+</p>
+
+<ul>
+
+<li>An event identifier</li>
+
+<li>A timestamp</li>
+
+<li>A duration where relevant</li>
+
+<li>An opaque Mental Steps identifier where relevant</li>
+
+<li>An opaque session identifier where relevant</li>
+
+</ul>
+
+<p>
+These identifiers identify technical events or sessions.
+They do not contain the name, instructions,
+Mental Destination, or other text of the Mental Steps.
+</p>
+
+<hr class="rule">
+
+<h2>The Boundary Principle</h2>
+
+<p>
+Cross-Dimensional Handshake is defined by crossing a boundary,
+not by communication alone.
+</p>
+
+<blockquote>
+
+MINDBEBOP app → MINDBEBOP app
+<br><br>
+<strong>Internal communication</strong>
+
+<br><br>
+
+Outside World → MINDBEBOP
+<br><br>
+<strong>Inbound Cross-Dimensional Handshake</strong>
+
+<br><br>
+
+MINDBEBOP → Outside World
+<br><br>
+<strong>Outbound Cross-Dimensional Handshake</strong>
+
+</blockquote>
+
+<p>
+For example, MindEntry opening MindBackOut during Mental Steps
+is not a Cross-Dimensional Handshake.
+MindBackOut returning to MindEntry is not one either.
+A thought moving between supported MINDBEBOP apps
+remains inside the MINDBEBOP environment.
+</p>
+
+<p>
+The handshake begins only when the MINDBEBOP boundary itself is crossed.
+</p>
 
 <hr class="rule">
 
 <h2>The Firewall Principle</h2>
 
 <p>
-Cross-Dimensional Handshakes exchange structured events—not thoughts.
+The boundary is also a privacy boundary.
 </p>
 
 <p>
-Incoming handshakes describe something that happened in reality. Outgoing handshakes announce that a meaningful mental transition has completed.
+For outbound Cross-Dimensional Handshake,
+MINDBEBOP exposes the event without exposing
+the user-created thought content behind it.
 </p>
 
 <p>
-Only event metadata crosses the boundary. Thoughts, reflections, conversations, and internal mental state remain inside the Mental Background Layer unless you deliberately choose otherwise.
+An external system can therefore know that a supported event occurred
+without receiving the thought, Mental Destination,
+Mental Steps instructions, or other user-created text
+that may have existed inside MINDBEBOP.
 </p>
 
 <blockquote>
-Reality influences mental state movement.
+The outside world can receive the event.
 <br><br>
-Mental state movement influences reality.
+The thought can remain inside.
 </blockquote>
 
+<p>
+Inbound MindEvent works in the opposite direction:
+supported information or an action crosses from outside
+into the MINDBEBOP environment.
+</p>
+
 <hr class="rule">
+
 <h2>Current Implementation</h2>
 
 <p>
-Cross-Dimensional Handshake is an architectural concept rather than a specific technology.
+Cross-Dimensional Handshake is an architectural concept,
+not a single transport technology.
 </p>
 
 <p>
-Current implementations include Share Extension, URL Schemes, App Intents, Apple Shortcuts, Universal Links, and the MindEvent API using secure webhooks.
+The current outbound implementation can send supported event metadata
+as an HTTPS request to a destination explicitly configured by the user.
 </p>
 
 <p>
-Future implementations may introduce additional transports while preserving the same underlying principle: allowing meaningful events—not thoughts—to cross the boundary between reality and the Mental Background Layer.
+MindEvent provides the inbound side of the architecture,
+allowing supported outside events to enter MINDBEBOP.
 </p>
+
+<p>
+Other MINDBEBOP mechanisms — including local app-to-app handoffs,
+shared on-device storage, and internal navigation between MINDBEBOP apps —
+may help experiences continue inside the ecosystem,
+but those mechanisms are not themselves Cross-Dimensional Handshakes.
+</p>
+
+<p>
+Future implementations may introduce additional inbound or outbound transports
+while preserving the same underlying distinction:
+the handshake exists at the boundary between MINDBEBOP
+and the outside world.
+</p>
+
 <p>
 <a href="mindevent-api.html" target="_blank">View the MindEvent API documentation →</a>
 </p>
 
 <hr class="rule">
+
 <h2>Why It Matters</h2>
 
 <p>
-MINDBEBOP does not attempt to automate life.
+MINDBEBOP does not need to become the system that controls everything
+around the user.
 </p>
 
 <p>
-It provides a secure, structured boundary where reality and the Mental Background Layer can acknowledge one another without exposing private thoughts or removing user choice.
+Instead, Cross-Dimensional Handshake provides a narrow boundary
+through which MINDBEBOP and user-chosen external systems
+can acknowledge one another.
+</p>
+
+<p>
+A Mental Steps event can become meaningful outside MINDBEBOP
+without exporting the Mental Steps themselves.
+An outside event can enter MINDBEBOP
+without requiring the outside system to become part of the Mental Background OS.
+</p>
+
+<p>
+The two systems remain independent.
+The handshake connects them only at the boundary.
 </p>
 
 <blockquote>
 
-Thoughts stay inside the Mental Background Layer.
+Inside MINDBEBOP,
+thoughts can remain thoughts.
 
 <br><br>
 
-Events can cross its boundary.
+Across the boundary,
+events can travel.
 
 <br><br>
 
-That boundary is the Cross-Dimensional Handshake.
+That boundary is the
+<strong>Cross-Dimensional Handshake.</strong>
 
 </blockquote>
 
