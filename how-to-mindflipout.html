@@ -32,6 +32,149 @@
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/everyday-thought-noise.css">
 
+<style>
+  :root {
+    color-scheme: light;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: #fff;
+    color: #171717;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.7;
+  }
+
+  .howto-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+  }
+
+  .howto-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .howto-label {
+    color: #777;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 18px 0 24px;
+  }
+
+  .howto-intro {
+    max-width: 620px;
+    margin: 0 auto;
+    font-size: 19px;
+    color: #555;
+  }
+
+  .howto-step {
+    margin-bottom: 100px;
+    text-align: center;
+  }
+
+  .step-number {
+    display: inline-block;
+    color: #c6382c;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .howto-step h2 {
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0 0 16px;
+  }
+
+  .step-description {
+    max-width: 580px;
+    margin: 0 auto 32px;
+    color: #555;
+    font-size: 18px;
+  }
+
+  .screenshot {
+    display: block;
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 24px;
+    border: 1px solid #e5e5e5;
+  }
+
+  .howto-finish {
+    text-align: center;
+    padding: 48px 24px;
+    background: #f6f6f6;
+    border-radius: 20px;
+  }
+
+  .howto-finish h2 {
+    font-size: 30px;
+    margin: 0 0 12px;
+  }
+
+  .howto-finish p {
+    font-size: 18px;
+    color: #555;
+    margin: 0;
+  }
+
+  .howto-video {
+    margin-top: 70px;
+    text-align: center;
+  }
+
+  .howto-video h2 {
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+
+  .howto-video p {
+    color: #666;
+  }
+
+  @media (max-width: 600px) {
+    .howto-page {
+      padding: 40px 20px 70px;
+    }
+
+    .howto-header {
+      margin-bottom: 60px;
+    }
+
+    .howto-step {
+      margin-bottom: 70px;
+    }
+
+    .screenshot {
+      max-width: 300px;
+    }
+
+    .step-description {
+      font-size: 16px;
+    }
+  }
+</style>
+
 </head>
 
 <body>
@@ -57,13 +200,13 @@
 </header>
 
   <div class="lang-switch">
-      <a href="/thought-space.html" aria-current="true">English</a>
-      <a href="/jp/thought-space.html">日本語</a>
-      <a href="/de/thought-space.html">Deutsch</a>
-      <a href="/ko/thought-space.html">한국어</a>
-      <a href="/fr/thought-space.html">Français</a>
-      <a href="/es/thought-space.html">Español</a>
-      <a href="/pt-br/thought-space.html">Português (Brasil)</a>
+      <a href="/adaptive-navigation.html" aria-current="true">English</a>
+      <a href="/jp/adaptive-navigation.html">日本語</a>
+      <a href="/de/adaptive-navigation.html">Deutsch</a>
+      <a href="/ko/adaptive-navigation.html">한국어</a>
+      <a href="/fr/adaptive-navigation.html">Français</a>
+      <a href="/es/adaptive-navigation.html">Español</a>
+      <a href="/pt-br/adaptive-navigation.html">Português (Brasil)</a>
   </div>
 
   <nav id="mb-menu" class="mb-menu" aria-hidden="true">
@@ -106,7 +249,7 @@
         </div>
       </div>
 
-<!-- HOW TO -->
+      <!-- HOW TO -->
 <div class="mb-dropdown">
   <a href="#" class="mb-parent">How To</a>
   <div class="mb-submenu">
@@ -134,8 +277,8 @@
           <div class="submenu-group-label">— Mental Navigation —</div>
           <a href="mental-navigation.html">Mental Navigation</a>
           <a href="stateful-mental-steps.html">Stateful Mental Steps</a>
-          <a href="adaptive-navigation.html">Adaptive Navigation</a>
-          <a href="thought-space.html" aria-current="page">Thought Space</a>
+          <a href="adaptive-navigation.html" aria-current="page">Adaptive Navigation</a>
+<a href="thought-space.html">Thought Space</a>
           <a href="hallway-mode.html">Hallway Mode</a>
           <a href="mindanchor.html">MindAnchor</a>
 
@@ -145,15 +288,15 @@
         </div>
       </div>
 
-      <!-- MENTAL STEPS -->
-      <div class="mb-dropdown">
-        <a href="#" class="mb-parent mb-highlight">Mental Steps</a>
-        <div class="mb-submenu">
-          <a href="mental-steps.html">Mental Steps</a>
-          <a href="steps-library.html">Steps Library</a>
+<!-- MENTAL STEPS -->
+  <div class="mb-dropdown">
+    <a href="#" class="mb-parent mb-highlight">Mental Steps</a>
+    <div class="mb-submenu">
+      <a href="mental-steps.html">Mental Steps</a>
+      <a href="steps-library.html">Steps Library</a>
 <a href="religious-rituals.html">Mental Steps for Religious Rituals</a>
-        </div>
-      </div>
+    </div>
+  </div>
 
       <!-- PHILOSOPHY -->
       <div class="mb-dropdown">
@@ -180,20 +323,20 @@
     </div>
 
     <div class="mb-menu-lang">
-      <a href="/thought-space.html" aria-current="true">English</a>
-      <a href="/jp/thought-space.html">日本語</a>
-      <a href="/de/thought-space.html">Deutsch</a>
-      <a href="/ko/thought-space.html">한국어</a>
-      <a href="/fr/thought-space.html">Français</a>
-      <a href="/es/thought-space.html">Español</a>
-      <a href="/pt-br/thought-space.html">Português (Brasil)</a>
+      <a href="/adaptive-navigation.html" aria-current="true">English</a>
+      <a href="/jp/adaptive-navigation.html">日本語</a>
+      <a href="/de/adaptive-navigation.html">Deutsch</a>
+      <a href="/ko/adaptive-navigation.html">한국어</a>
+      <a href="/fr/adaptive-navigation.html">Français</a>
+      <a href="/es/adaptive-navigation.html">Español</a>
+      <a href="/pt-br/adaptive-navigation.html">Português (Brasil)</a>
     </div>
   </nav>
 </div>
 
 <div class="page">
 
- <!-- INTRODUCTION -->
+<!-- INTRODUCTION -->
 
   <header class="howto-header">
 
@@ -329,10 +472,8 @@
   </section>
   -->
 </div>
-</main>
+
 <hr class="rule">
-
-
 
 <div class="quiet-note">
   <p><strong>What brought you here?</strong></p>
