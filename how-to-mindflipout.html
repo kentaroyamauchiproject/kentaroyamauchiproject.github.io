@@ -469,6 +469,89 @@
   -->
 </div>
 </main>
+<hr class="rule">
+<div class="quiet-note">
+  <p><strong>What brought you here?</strong></p>
+  <p>Just a note is enough.</p>
+  <p>
+    <a href="mailto:support@mindbebop.com?subject=What%20brought%20me%20here">
+      support@mindbebop.com
+    </a>
+  </p>
+</div>
+<div style="margin-top:60px; opacity:0.7; font-size:0.9rem;">
+<p class="copyright">
+      Copyright © 2026 MINDBEBOP — All rights reserved.
+</p>
+</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  function applyDarkImages(isDark) {
+    document.querySelectorAll('img[data-dark]').forEach(img => {
+      img.src = isDark
+        ? img.getAttribute('data-dark')
+        : img.getAttribute('data-light') || img.src;
+    });
+  }
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  applyDarkImages(media.matches);
+  media.addEventListener('change', e => applyDarkImages(e.matches));
+})();
+</script>
+
+<script>
+(() => {
+  const btn = document.querySelector('.mb-hamburger');
+  const menu = document.querySelector('.mb-menu');
+  if (!btn || !menu) return;
+
+  function openMenu() {
+    btn.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('mb-menu-open');
+  }
+
+  function closeMenu() {
+    btn.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('mb-menu-open');
+  }
+
+  btn.addEventListener('click', () => {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeMenu() : openMenu();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeMenu();
+  });
+})();
+</script>
+
+<script>
+document.querySelectorAll('.mb-dropdown').forEach(dropdown => {
+  const parent = dropdown.querySelector('.mb-parent');
+
+  parent.addEventListener('click', function(e) {
+    if (window.innerWidth >= 900) return;
+
+    const alreadyOpen = dropdown.classList.contains('open');
+
+    document.querySelectorAll('.mb-dropdown').forEach(d =>
+      d.classList.remove('open')
+    );
+
+    if (!alreadyOpen) {
+      e.preventDefault();
+      dropdown.classList.add('open');
+    }
+  });
+});
+</script>
 
 </body>
 </html>
