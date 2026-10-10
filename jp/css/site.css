@@ -339,3 +339,12 @@ hr {
   box-shadow: 0 8px 24px rgba(0,0,0,.08);
 }
 
+/* Navigation submenu app names */
+.mb-menu .mb-submenu a.app-name {
+    font-weight: 400;
+}
+
+/* Preserve bold emphasis within app names */
+.mb-menu .mb-submenu a.app-name strong {
+    font-weight: 700;
+}
