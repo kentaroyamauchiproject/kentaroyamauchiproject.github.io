@@ -37,50 +37,59 @@
 
 
 <style>
-/* Keep the download badge at the right edge of each MindEntry section. */
+/* App section styles from index.css, scoped to the two download sections. */
+.mindentry-download { margin-bottom: 72px; }
 .mindentry-download .app-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
 }
 .mindentry-download .app-info {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
-  min-width: 0;
 }
 .mindentry-download .app-icon {
-  width: 56px;
-  height: 56px;
-  flex: 0 0 56px;
+  width: 64px;
+  height: 64px;
   object-fit: contain;
 }
-.mindentry-download .app-name {
-  margin: 0;
-  font-weight: 400;
-}
-.mindentry-download .app-name strong {
-  font-weight: 700;
+.mindentry-download .app-meta {
+  font-size: 0.8rem;
+  opacity: 0.6;
 }
 .mindentry-download .app-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: flex-start;
+  text-align: left;
   margin-left: auto;
-  flex-shrink: 0;
-  text-align: right;
 }
 .mindentry-download .app-badge a {
-  display: inline-block;
+  display: block;
+  line-height: 0;
 }
 .mindentry-download .app-badge img {
   display: block;
-  width: 135px;
-  height: 45px;
-  object-fit: contain;
+  height: auto;
 }
-@media (max-width: 380px) {
+.mindentry-download .badge-caption {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  margin-top: 6px;
+  text-align: right;
+}
+@media (max-width: 700px) {
   .mindentry-download .app-header {
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
   }
+  .mindentry-download .app-badge { margin-top: 12px; }
 }
 </style>
 
@@ -267,7 +276,6 @@ Create, follow, and share Mental Steps with MindEntry. Turn intentions, routines
            class="app-icon">
       <div>
         <h3 class="app-name">Mind<strong>Entry</strong></h3>
-        <div class="app-meta">App size: ~4.0 MB</div>
       </div>
     </div>
     <div class="app-badge">
