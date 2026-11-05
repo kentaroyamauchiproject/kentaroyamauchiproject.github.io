@@ -37,34 +37,50 @@
 
 
 <style>
-/* Compact MindEntry download sections; existing site styles remain in place. */
-.mindentry-download {
+/* Keep the download badge at the right edge of each MindEntry section. */
+.mindentry-download .app-header {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+}
+.mindentry-download .app-info {
+  display: flex;
+  align-items: center;
   gap: 12px;
-  margin: 24px 0;
+  min-width: 0;
 }
 .mindentry-download .app-icon {
-  display: block;
   width: 56px;
   height: 56px;
   flex: 0 0 56px;
   object-fit: contain;
 }
-.mindentry-download .mindentry-name {
+.mindentry-download .app-name {
   margin: 0;
-  font-size: 1rem;
+  font-weight: 400;
 }
-.mindentry-download .app-store-link {
-  display: inline-flex;
-  align-items: center;
+.mindentry-download .app-name strong {
+  font-weight: 700;
 }
-.mindentry-download .app-store-badge {
+.mindentry-download .app-badge {
+  margin-left: auto;
+  flex-shrink: 0;
+  text-align: right;
+}
+.mindentry-download .app-badge a {
+  display: inline-block;
+}
+.mindentry-download .app-badge img {
   display: block;
   width: 135px;
   height: 45px;
   object-fit: contain;
+}
+@media (max-width: 380px) {
+  .mindentry-download .app-header {
+    flex-wrap: wrap;
+  }
 }
 </style>
 
@@ -241,22 +257,30 @@
 Create, follow, and share Mental Steps with MindEntry. Turn intentions, routines, and practices into paths you can follow at your own pace.
 </p>
 
-<div class="mindentry-download">
-  <img src="image/MB_ME_Icon_1024-rounded.png"
-       data-light="image/MB_ME_Icon_1024-rounded.png"
-       data-dark="image/MB_ME_Icon_INV_1024-rounded.png"
-       alt="MindEntry Icon"
-       class="app-icon"
-       width="56" height="56">
-  <p class="mindentry-name"><strong>MindEntry</strong></p>
-  <a class="app-store-link" href="https://apps.apple.com/app/id6760157253">
-    <img src="image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
-         data-light="image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
-         data-dark="image/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg"
-         alt="Download on the App Store"
-         class="app-store-badge"
-         width="135" height="45">
-  </a>
+<div class="app-item mindentry-download" style="margin-top:40px;">
+  <div class="app-header">
+    <div class="app-info">
+      <img src="image/MB_ME_Icon_1024-rounded.png"
+           data-light="image/MB_ME_Icon_1024-rounded.png"
+           data-dark="image/MB_ME_Icon_INV_1024-rounded.png"
+           alt="MindEntry Icon"
+           class="app-icon">
+      <div>
+        <h3 class="app-name">Mind<strong>Entry</strong></h3>
+        <div class="app-meta">App size: ~4.0 MB</div>
+      </div>
+    </div>
+    <div class="app-badge">
+      <a href="https://apps.apple.com/app/id6760157253" target="_blank" rel="noopener noreferrer">
+        <img src="image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+             data-light="image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+             data-dark="image/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg"
+             alt="Download on the App Store">
+      </a>
+      <div class="badge-caption">Available on the App Store — free<br>/subscription/purchase</div>
+    </div>
+  </div>
+  <p style="margin:12px 0 0 0;"><strong>GPS for Your Mind.</strong><br>Move through Mental Steps toward your Mental Destination (Point B).</p>
 </div>
 
 <p>Sometimes you already know what to do. Sometimes someone has shown you. You may have a routine, a responsibility, or a destination in mind.</p>
@@ -376,22 +400,30 @@ Create reusable learning sequences for preparation, independent practice, and ac
 
 <blockquote>Your Mental Destination.<br><br>Your Current Position.<br><br>Your Next Move.</blockquote>
 
-<div class="mindentry-download">
-  <img src="image/MB_ME_Icon_1024-rounded.png"
-       data-light="image/MB_ME_Icon_1024-rounded.png"
-       data-dark="image/MB_ME_Icon_INV_1024-rounded.png"
-       alt="MindEntry Icon"
-       class="app-icon"
-       width="56" height="56">
-  <p class="mindentry-name"><strong>MindEntry</strong></p>
-  <a class="app-store-link" href="https://apps.apple.com/app/id6760157253">
-    <img src="image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
-         data-light="image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
-         data-dark="image/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg"
-         alt="Download on the App Store"
-         class="app-store-badge"
-         width="135" height="45">
-  </a>
+<div class="app-item mindentry-download" style="margin-top:40px;">
+  <div class="app-header">
+    <div class="app-info">
+      <img src="image/MB_ME_Icon_1024-rounded.png"
+           data-light="image/MB_ME_Icon_1024-rounded.png"
+           data-dark="image/MB_ME_Icon_INV_1024-rounded.png"
+           alt="MindEntry Icon"
+           class="app-icon">
+      <div>
+        <h3 class="app-name">Mind<strong>Entry</strong></h3>
+        <div class="app-meta">App size: ~4.0 MB</div>
+      </div>
+    </div>
+    <div class="app-badge">
+      <a href="https://apps.apple.com/app/id6760157253" target="_blank" rel="noopener noreferrer">
+        <img src="image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+             data-light="image/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+             data-dark="image/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg"
+             alt="Download on the App Store">
+      </a>
+      <div class="badge-caption">Available on the App Store — free<br>/subscription/purchase</div>
+    </div>
+  </div>
+  <p style="margin:12px 0 0 0;"><strong>GPS for Your Mind.</strong><br>Move through Mental Steps toward your Mental Destination (Point B).</p>
 </div>
 
 <hr class="rule">
